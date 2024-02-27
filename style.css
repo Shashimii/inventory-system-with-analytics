@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.web-main {
+    margin: 1.5%;
+}
+
+.item-display-header {
+    display: flex;
+    flex-direction: flex-start;
+    justify-content: space-between;
+}
+
+.item-display-header-searchbar {
+    display: flex;
+    gap: 2%;
+}
+
+.item-display-body {
+    padding: 1%;
+    border: 1px solid black;
+    height: 100px;
+    overflow-y: auto;
+}
+

@@ -12,6 +12,8 @@ include 'connection.php';
 <head>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiltac Inventory</title>
@@ -76,51 +78,43 @@ include 'connection.php';
                     </div>
                     <div class="item-display-header-searchbar">
                         <div class="searchbar-filter">
-                            <select class="form-select form-select-sm" name="itemSearchFilter">
-                            <option hidden selected>Search By...</option>
-                            <option>Filter2</option>
-                            <option>Filter3</option>
+                            <select id="searchFilter" class="form-select form-select-sm" name="itemSearchFilter">
+                            <option hidden selected value="item_id">Search By...</option>
+                            <option value="action_date">Date Added</option>
+                            <option value="action_time">Time Added</option>
+                            <option value="action_by">Added By</option>
+                            <option value="item_name">Raw Material Name</option>
+                            <option value="item_id">Raw Material Id</option>
+                            <option value="item_lot">Batch Number</option>
+                            <option value="item_bin">Pallet Number</option>
+                            <option value="quantity_receive">Received Quantity</option>
                             </select>
                         </div>
                         <div class="searchbar-input">
-                        <input class="form-control form-control-sm" type="text" placeholder="Search..." aria-label=".form-control-sm" name="searchKeyword">
+                        <input id="searchInput" oninput="searchLikeInput()" class="form-control form-control-sm" type="text" placeholder="Search..." aria-label=".form-control-sm" name="searchKeyword">
                         </div>
                     </div>
                 </div>
-                <div class="item-display-body">
+                <div class="item-display-body" id="itemDisplayBody">
                     <?php 
                     $rowCountQuery = "SELECT * FROM rm_data";
                     $fetchResult = mysqli_query($connection, $rowCountQuery);
 
                     $numOfRows = mysqli_num_rows($fetchResult); // total number of rows on the table
                     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                    $rowPerPage = 2;
+                    $rowPerPage = 5;
                     $offset = ($page - 1) * $rowPerPage;
                     $pagesNeeded = ceil($numOfRows / $rowPerPage); // compute for pages needed
 
                     // display the rows 
                     $fetchQuery = "SELECT * FROM rm_data ORDER BY id DESC LIMIT $rowPerPage OFFSET $offset";
                     $fetchResult = mysqli_query($connection, $fetchQuery);
-                    if (mysqli_num_rows($fetchResult) > 0) {
+                    $itHasData = mysqli_num_rows($fetchResult);
+                    if ($itHasData > 0) {
                         while ($row = mysqli_fetch_assoc($fetchResult)) {
                             echo "ID:" . $row['id'] . ", " . $row['action_date'] . "|" . $row['action_time'] . "|" . $row['action_by'] . "|" . $row['item_name'] . "|" . $row['item_desc'] . "|" . $row['item_id'] . "|" . $row['item_lot'] . "|" . $row['item_bin'] . "<br>";
                         }       
                         mysqli_free_result($fetchResult);
-                        
-                        // pagination controls
-                        echo "<div class='page-numbers'>";
-                        for ($i = 1; $i <= $pagesNeeded; $i++) {
-                            echo '<a href="?page=' . $i .'">' . $i . '</a> ';
-                        };
-                        echo "</div>";
-
-                        if ($page > 1) {
-                            echo '<a href="?page=' . ($page - 1) . '">Prev</a>';
-                        }
-
-                        if ($page < $pagesNeeded) { // intialize max page number
-                            echo '<a href="?page=' . ($page + 1) . '">Next</a>';
-                        }
                     } else {
                         echo "there are no data";
                     }
@@ -128,7 +122,27 @@ include 'connection.php';
                     ?>
                 </div>
                 <div class="item-display-footer">
-
+                    <?php 
+                    
+                    // pagination controls
+                    if ($itHasData > 0) {
+                        echo "<div class='page-numbers'>";
+                        for ($i = 1; $i <= $pagesNeeded; $i++) {
+                            echo '<a href="?page=' . $i .'">' . $i . '</a> ';
+                        };
+                        echo "</div>";
+    
+                        if ($page > 1) {
+                            echo '<a href="?page=' . ($page - 1) . '">Prev</a>';
+                        }
+    
+                        if ($page < $pagesNeeded) { // intialize max page number
+                            echo '<a href="?page=' . ($page + 1) . '">Next</a>';
+                        }    
+                    } else {
+                        // dont show any controls do nothing
+                    }
+                    ?>
                 </div>
             </div>
         </div>
