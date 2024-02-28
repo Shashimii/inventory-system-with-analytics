@@ -21,7 +21,7 @@
 .item-display-body {
     padding: 1%;
     border: 1px solid black;
-    height: 100px;
+    height: 70vh;
     overflow-y: auto;
 }
 

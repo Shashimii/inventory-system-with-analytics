@@ -107,12 +107,28 @@ include 'connection.php';
                     $pagesNeeded = ceil($numOfRows / $rowPerPage); // compute for pages needed
 
                     // display the rows 
-                    $fetchQuery = "SELECT * FROM rm_data ORDER BY id DESC LIMIT $rowPerPage OFFSET $offset";
+                    $fetchQuery = "SELECT * FROM rm_data GROUP BY item_id ORDER BY id DESC LIMIT $rowPerPage OFFSET $offset;";
                     $fetchResult = mysqli_query($connection, $fetchQuery);
                     $itHasData = mysqli_num_rows($fetchResult);
                     if ($itHasData > 0) {
+                        $itemIndex = 1;
                         while ($row = mysqli_fetch_assoc($fetchResult)) {
-                            echo "ID:" . $row['id'] . ", " . $row['action_date'] . "|" . $row['action_time'] . "|" . $row['action_by'] . "|" . $row['item_name'] . "|" . $row['item_desc'] . "|" . $row['item_id'] . "|" . $row['item_lot'] . "|" . $row['item_bin'] . "<br>";
+                            $accordionItemId = 'flush-collapse' . $itemIndex;
+                            echo   "<div class='accordion accordion-flush' id='accordionDataRow'>
+                                        <div class='accordion-item'>
+                                            <h2 class='accordion-header'>
+                                            <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#$accordionItemId' aria-expanded='false' aria-controls='flush-collapseOne'>
+                                               ". $row['item_name']." / ". $row['item_desc'] ." / ". $row['item_id'] ." / ". $row['item_lot'] ." / ". $row['item_bin'] ." / ". $row['item_id'] ." 
+                                            </button>
+                                            </h2>
+                                        <div id='$accordionItemId' class='accordion-collapse collapse' data-bs-parent='#accordionDataRow'>
+                                                <div class='accordion-body'>
+                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - Received Quantity: ". $row['quantity_receive'] ." - Action By: ". $row['action_by'] ."
+                                                </div>
+                                            </div>
+                                        </div>      
+                                    </div>";
+                            $itemIndex++;
                         }       
                         mysqli_free_result($fetchResult);
                     } else {
