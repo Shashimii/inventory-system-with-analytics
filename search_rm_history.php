@@ -16,7 +16,7 @@ try {
     $filter = isset($_GET['searchFilter']) ? $_GET['searchFilter'] : '';
 
     // Perform search
-    $searchDatabase = "SELECT * FROM rm_data WHERE $filter LIKE :search";
+    $searchDatabase = "SELECT action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, SUM(quantity_receive) AS quantityReceive, SUM(quantity_inProduction) AS quantityInProduction, SUM(quantity_scrap) AS quantityScrap, SUM(quantity_used) AS quantityUsed FROM rm_data WHERE $filter LIKE :search GROUP BY item_id ORDER BY id ASC";
     $stmt = $pdo->prepare($searchDatabase);
     $stmt->bindValue(':search', "%$search%", PDO::PARAM_STR);
     

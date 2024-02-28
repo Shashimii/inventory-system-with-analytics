@@ -97,7 +97,7 @@ include 'connection.php';
                 </div>
                 <div class="item-display-body" id="itemDisplayBody">
                     <?php 
-                    $rowCountQuery = "SELECT * FROM rm_data";
+                    $rowCountQuery = "SELECT * FROM rm_data GROUP BY item_id";
                     $fetchResult = mysqli_query($connection, $rowCountQuery);
 
                     $numOfRows = mysqli_num_rows($fetchResult); // total number of rows on the table
@@ -107,7 +107,7 @@ include 'connection.php';
                     $pagesNeeded = ceil($numOfRows / $rowPerPage); // compute for pages needed
 
                     // display the rows 
-                    $fetchQuery = "SELECT * FROM rm_data GROUP BY item_id ORDER BY id DESC LIMIT $rowPerPage OFFSET $offset;";
+                    $fetchQuery = "SELECT action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, SUM(quantity_receive) AS quantityReceive, SUM(quantity_inProduction) AS quantityInProduction, SUM(quantity_scrap) AS quantityScrap, SUM(quantity_used) AS quantityUsed FROM rm_data GROUP BY item_id ORDER BY id ASC";
                     $fetchResult = mysqli_query($connection, $fetchQuery);
                     $itHasData = mysqli_num_rows($fetchResult);
                     if ($itHasData > 0) {
@@ -118,17 +118,20 @@ include 'connection.php';
                                         <div class='accordion-item'>
                                             <h2 class='accordion-header'>
                                             <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#$accordionItemId' aria-expanded='false' aria-controls='flush-collapseOne'>
-                                               ". $row['item_name']." / ". $row['item_desc'] ." / ". $row['item_id'] ." / ". $row['item_lot'] ." / ". $row['item_bin'] ." / ". $row['item_id'] ." 
+                                               ". $row['item_name']." / ". $row['item_desc'] ." / ". $row['item_id'] ." / ". $row['item_lot'] ." / ". $row['item_bin'] ." 
                                             </button>
                                             </h2>
-                                        <div id='$accordionItemId' class='accordion-collapse collapse' data-bs-parent='#accordionDataRow'>
+                                        <div id='$accordionItemId' class='accordion-collapse collapse'>
                                                 <div class='accordion-body'>
-                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - Received Quantity: ". $row['quantity_receive'] ." - Action By: ". $row['action_by'] ."
+                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - Received: ". $row['quantityReceive'] ." - Action By: ". $row['action_by'] ."<br>
+                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - In Production: ". $row['quantityInProduction'] ." - Action By: ". $row['action_by'] ."<br>
+                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - Used: ". $row['quantityUsed'] ." - Action By: ". $row['action_by'] ."<br>
+                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - Scrap: ". $row['quantityScrap'] ." - Action By: ". $row['action_by'] ."<br>
                                                 </div>
                                             </div>
                                         </div>      
                                     </div>";
-                            $itemIndex++;
+                            $itemIndex++; // increments for generating unique id for every accordion rows
                         }       
                         mysqli_free_result($fetchResult);
                     } else {

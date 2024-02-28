@@ -19,9 +19,17 @@
 }
 
 .item-display-body {
-    padding: 1%;
-    border: 1px solid black;
     height: 70vh;
     overflow-y: auto;
 }
 
+.accordion-button {
+    border: 1px solid black;
+    margin-block: 5px;    
+    
+}
+
+.accordion-collapse {
+    border: 1px solid black;
+    margin-inline-start: 5px;
+}
