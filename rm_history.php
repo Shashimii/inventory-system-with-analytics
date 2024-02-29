@@ -122,12 +122,21 @@ include 'connection.php';
                                             </button>
                                             </h2>
                                         <div id='$accordionItemId' class='accordion-collapse collapse'>
-                                                <div class='accordion-body'>
-                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - Received: ". $row['quantityReceive'] ." - Action By: ". $row['action_by'] ."<br>
-                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - In Production: ". $row['quantityInProduction'] ." - Action By: ". $row['action_by'] ."<br>
-                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - Used: ". $row['quantityUsed'] ." - Action By: ". $row['action_by'] ."<br>
-                                                    Date: ". $row['action_date'] ." - Time: ". $row['action_time'] ." - Scrap: ". $row['quantityScrap'] ." - Action By: ". $row['action_by'] ."<br>
-                                                </div>
+                                                <div class='accordion-body'>";
+                                                    // fetch 4 item data rows related to the item_id then echo it
+                                                    $innerfetchQuery = "SELECT * FROM rm_data WHERE item_id = '{$row['item_id']}'";
+                                                    $innerfetchResult = mysqli_query($connection, $innerfetchQuery);
+                                                    while ($inner_row = mysqli_fetch_assoc($innerfetchResult)) {
+                                                        // Check if the keys exist before accessing them
+                                                        $itemReceive = isset($inner_row['quantity_receive']) ? $inner_row['quantity_receive'] : 'N/A';
+                                                        $itemInProduction = isset($inner_row['quantity_inProduction']) ? $inner_row['quantity_inProduction'] : 'N/A';
+                                                    
+                                                        echo $inner_row['item_name'] . " / " . $itemReceive . " / " . $itemInProduction . "<br>";
+                                                    }
+                                                    
+
+
+                                         echo  "</div>
                                             </div>
                                         </div>      
                                     </div>";
