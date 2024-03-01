@@ -127,15 +127,23 @@ include 'connection.php';
                                                     $innerfetchQuery = "SELECT * FROM rm_data WHERE item_id = '{$row['item_id']}'";
                                                     $innerfetchResult = mysqli_query($connection, $innerfetchQuery);
                                                     while ($inner_row = mysqli_fetch_assoc($innerfetchResult)) {
-                                                        // Check if the keys exist before accessing them
-                                                        $itemReceive = isset($inner_row['quantity_receive']) ? $inner_row['quantity_receive'] : 'N/A';
-                                                        $itemInProduction = isset($inner_row['quantity_inProduction']) ? $inner_row['quantity_inProduction'] : 'N/A';
-                                                    
-                                                        echo $inner_row['item_name'] . " / " . $itemReceive . " / " . $itemInProduction . "<br>";
+                                                        // echo item receive data
+                                                        if ($inner_row['quantity_receive'] > 0) {
+                                                            echo $inner_row['action_date'] . " / " . $inner_row['action_time'] . " / " . $inner_row['action_by'] . " / " . $inner_row['quantity_receive'] . "<br>";
+                                                        }
+                                                        // echo item inProduction data
+                                                        if ($inner_row['quantity_inProduction'] > 0) {
+                                                            echo $inner_row['action_date'] . " / " . $inner_row['action_time'] . " / " . $inner_row['action_by'] . " / " . $inner_row['quantity_inProduction'] . "<br>";
+                                                        }
+                                                        // echo item used data
+                                                        if ($inner_row['quantity_used'] > 0) {
+                                                            echo $inner_row['action_date'] . " / " . $inner_row['action_time'] . " / " . $inner_row['action_by'] . " / " . $inner_row['quantity_used'] . "<br>";
+                                                        }
+                                                        // echo item scrap data
+                                                        if ($inner_row['quantity_scrap'] > 0) {
+                                                            echo $inner_row['action_date'] . " / " . $inner_row['action_time'] . " / " . $inner_row['action_by'] . " / " . $inner_row['quantity_scrap'];
+                                                        }
                                                     }
-                                                    
-
-
                                          echo  "</div>
                                             </div>
                                         </div>      
