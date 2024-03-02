@@ -107,7 +107,7 @@ include 'connection.php';
                     $pagesNeeded = ceil($numOfRows / $rowPerPage); // compute for pages needed
 
                     // display the rows 
-                    $fetchQuery = "SELECT action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, SUM(quantity_receive) AS quantityReceive, SUM(quantity_inProduction) AS quantityInProduction, SUM(quantity_scrap) AS quantityScrap, SUM(quantity_used) AS quantityUsed FROM rm_data GROUP BY item_id ORDER BY id ASC";
+                    $fetchQuery = "SELECT action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin FROM rm_data GROUP BY item_id ORDER BY id ASC";
                     $fetchResult = mysqli_query($connection, $fetchQuery);
                     $itHasData = mysqli_num_rows($fetchResult);
                     if ($itHasData > 0) {
@@ -126,24 +126,32 @@ include 'connection.php';
                                                     // fetch 4 item data rows related to the item_id then echo it
                                                     $innerfetchQuery = "SELECT * FROM rm_data WHERE item_id = '{$row['item_id']}'";
                                                     $innerfetchResult = mysqli_query($connection, $innerfetchQuery);
-                                                    while ($inner_row = mysqli_fetch_assoc($innerfetchResult)) {
-                                                        // echo item receive data
-                                                        if ($inner_row['quantity_receive'] > 0) {
-                                                            echo $inner_row['action_date'] . " / " . $inner_row['action_time'] . " / " . $inner_row['action_by'] . " / " . $inner_row['quantity_receive'] . "<br>";
-                                                        }
-                                                        // echo item inProduction data
-                                                        if ($inner_row['quantity_inProduction'] > 0) {
-                                                            echo $inner_row['action_date'] . " / " . $inner_row['action_time'] . " / " . $inner_row['action_by'] . " / " . $inner_row['quantity_inProduction'] . "<br>";
-                                                        }
-                                                        // echo item used data
-                                                        if ($inner_row['quantity_used'] > 0) {
-                                                            echo $inner_row['action_date'] . " / " . $inner_row['action_time'] . " / " . $inner_row['action_by'] . " / " . $inner_row['quantity_used'] . "<br>";
-                                                        }
-                                                        // echo item scrap data
-                                                        if ($inner_row['quantity_scrap'] > 0) {
-                                                            echo $inner_row['action_date'] . " / " . $inner_row['action_time'] . " / " . $inner_row['action_by'] . " / " . $inner_row['quantity_scrap'];
-                                                        }
+                                                    echo "<table class='table table-bordered'>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Action Date</th>
+                                                            <th>Action Time</th>
+                                                            <th>Action By</th>
+                                                            <th>Quantity Receive</th>
+                                                            <th>Quantity in Production</th>
+                                                            <th>Quantity Scrap</th>
+                                                            <th>Quantity Used</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>"; 
+                                            
+                                            while ($inner_row = mysqli_fetch_assoc($innerfetchResult)) {
+                                                echo "<tr>
+                                                        <td>{$inner_row['action_date']}</td>
+                                                        <td>{$inner_row['action_time']}</td>
+                                                        <td>{$inner_row['action_by']}</td>
+                                                        <td>{$inner_row['quantity_receive']}</td>
+                                                        <td>{$inner_row['quantity_inProduction']}</td>
+                                                        <td>{$inner_row['quantity_used']}</td>
+                                                        <td>{$inner_row['quantity_scrap']}</td>
+                                                      </tr>";
                                                     }
+                                                echo "</tbody></table>";
                                          echo  "</div>
                                             </div>
                                         </div>      

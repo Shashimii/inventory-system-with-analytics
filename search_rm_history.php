@@ -1,34 +1,45 @@
 <?php
-// PDO type php script to prevent sql injection
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'imsdatabase';
-
 try {
-    // Establish database connection
-    $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    include 'connection.php';
 
-    // Get search query
-    // if empty set null if not set the value of the variable
     $search = isset($_GET['searchQuery']) ? $_GET['searchQuery'] : '';
     $filter = isset($_GET['searchFilter']) ? $_GET['searchFilter'] : '';
 
-    // Perform search
-    $searchDatabase = "SELECT action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, SUM(quantity_receive) AS quantityReceive, SUM(quantity_inProduction) AS quantityInProduction, SUM(quantity_scrap) AS quantityScrap, SUM(quantity_used) AS quantityUsed FROM rm_data WHERE $filter LIKE :search GROUP BY item_id ORDER BY id ASC";
-    $stmt = $pdo->prepare($searchDatabase);
-    $stmt->bindValue(':search', "%$search%", PDO::PARAM_STR);
-    
-    // Execute the statement
+    $searchItem = "SELECT action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin FROM rm_data WHERE $filter LIKE ? GROUP BY item_id ORDER BY id ASC";
+    $stmt = $connection->prepare($searchItem);
+    $searchKeyword = '%' . $search .'%';
+    $stmt->bind_param('s', $searchKeyword);
     $stmt->execute();
+    $result1 = $stmt->get_result();
+    
+    $itemData = [];
 
-    // Fetch the results
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (mysqli_num_rows($result1) > 0) {
+        while ($row = $result1->fetch_assoc()) {
+            $item_id = $row['item_id'];
+            $fetchItemData = "SELECT action_date, action_time, action_by, quantity_receive, quantity_inProduction, quantity_scrap, quantity_used FROM rm_data 
+            WHERE item_id = ? ORDER BY id ASC";
+            $stmt2 = $connection->prepare($fetchItemData);
+            $stmt2->bind_param('s', $item_id);
+            $stmt2->execute();
+            $result2 = $stmt2->get_result();
 
-    // Return the results as JSON
+            // Initialize $result2Data inside the loop
+            $result2Data = ($result2->num_rows > 0) ? $result2->fetch_all(MYSQLI_ASSOC) : [];
+
+            $itemData[] = [
+                'result1' => $row,
+                'result2' => $result2Data,
+            ];
+        }
+    } else {
+        // No rows found in $result1
+        $itemData = [];
+    }
+
+    // return the results as JSON
     header('Content-Type: application/json');
-    echo json_encode($results);
+    echo json_encode($itemData);
 
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
