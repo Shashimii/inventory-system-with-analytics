@@ -23,7 +23,8 @@ include 'connection.php';
         <div class="navbar-container">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand">Navbar</a>
+                    <img class="logo" src="assets/logo.jpg" alt="logo" height="40">
+                    <a class="navbar-brand">Hiltac IMS</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -87,7 +88,6 @@ include 'connection.php';
                             <option value="item_id">Raw Material Id</option>
                             <option value="item_lot">Batch Number</option>
                             <option value="item_bin">Pallet Number</option>
-                            <option value="quantity_receive">Received Quantity</option>
                             </select>
                         </div>
                         <div class="searchbar-input">
@@ -118,7 +118,7 @@ include 'connection.php';
                                         <div class='accordion-item'>
                                             <h2 class='accordion-header'>
                                             <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#$accordionItemId' aria-expanded='false' aria-controls='flush-collapseOne'>
-                                               ". $row['item_name']." / ". $row['item_desc'] ." / ". $row['item_id'] ." / ". $row['item_lot'] ." / ". $row['item_bin'] ." 
+                                            ". $row['action_date'] ." / ". $row['action_time'] ." / ". $row['item_name'] ." / ". $row['item_desc'] ." / ". $row['item_id'] ." / ". $row['item_lot'] ." / ". $row['item_bin'] ." / ". $row['action_by'] . " 
                                             </button>
                                             </h2>
                                         <div id='$accordionItemId' class='accordion-collapse collapse'>

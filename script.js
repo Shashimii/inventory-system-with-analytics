@@ -33,7 +33,7 @@ function searchLikeInput() {
                 <div class='accordion-item'>
                     <h2 class='accordion-header'>
                     <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#${accordionItemId}' aria-expanded='false' aria-controls='flush-collapseOne'>
-                    ${result.result1 ? result.result1.item_name : ''} / ${result.result1 ? result.result1.item_desc : ''} / ${result.result1 ? result.result1.item_id : ''} / ${result.result1 ? result.result1.item_lot : ''} / ${result.result1 ? result.result1.item_bin : ''}
+                    ${result.result1 ? result.result1.action_date : ''} / ${result.result1 ? result.result1.action_time : ''} / ${result.result1 ? result.result1.item_name : ''} / ${result.result1 ? result.result1.item_desc : ''} / ${result.result1 ? result.result1.item_id : ''} / ${result.result1 ? result.result1.item_lot : ''} / ${result.result1 ? result.result1.item_bin : ''} / ${result.result1 ? result.result1.action_by : ''}
                     </button>
                     </h2>
                         <div id='${accordionItemId}' class='accordion-collapse collapse'>
