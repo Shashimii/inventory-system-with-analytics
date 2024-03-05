@@ -118,7 +118,40 @@ include 'connection.php';
                                         <div class='accordion-item'>
                                             <h2 class='accordion-header'>
                                             <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#$accordionItemId' aria-expanded='false' aria-controls='flush-collapseOne'>
-                                            ". $row['action_date'] ." / ". $row['action_time'] ." / ". $row['item_name'] ." / ". $row['item_desc'] ." / ". $row['item_id'] ." / ". $row['item_lot'] ." / ". $row['item_bin'] ." / ". $row['action_by'] . " 
+                                                <div class='item-container'>
+                                                    <div class='item-details'>
+                                                        <h5>Material Name</h5>
+                                                        ". $row['item_name'] ."
+                                                    </div>
+                                                    <div class='item-details'>
+                                                        <h5>Description</h5>
+                                                        ". $row['item_desc'] ."
+                                                    </div>
+                                                    <div class='item-details'>
+                                                        <h5>ID</h5>
+                                                        ". $row['item_id'] ."
+                                                    </div>
+                                                    <div class='item-details'>
+                                                        <h5>Batch Number</h5>
+                                                        ". $row['item_lot'] ."
+                                                    </div> 
+                                                    <div class='item-details'>
+                                                        <h5>Pallet Number</h5>
+                                                        ". $row['item_bin'] ." 
+                                                    </div>
+                                                    <div class='item-details'>
+                                                        <h5>Date Received</h5>
+                                                        ". $row['action_date'] ."
+                                                    </div>
+                                                    <div class='item-details'>
+                                                        <h5>Time Received</h5>
+                                                        ". $row['action_time'] ."
+                                                    </div>
+                                                    <div class='item-details'>
+                                                        <h5>Received by</h5>
+                                                        ". $row['action_by'] ."
+                                                    </div>
+                                                </div>
                                             </button>
                                             </h2>
                                         <div id='$accordionItemId' class='accordion-collapse collapse'>

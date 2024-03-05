@@ -23,6 +23,16 @@
     overflow-y: auto;
 }
 
+.item-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.item-details {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .accordion-button {
     border: 1px solid black;
     margin-block: 5px;    
