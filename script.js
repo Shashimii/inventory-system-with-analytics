@@ -22,89 +22,91 @@ function searchLikeInput() {
             return;
         }
 
-        let counter = 1;
+        const containerDiv = document.createElement('div');
+        containerDiv.classList.add('container', 'mt-5');
 
+        const dataTable = document.createElement('table');
+        dataTable.classList.add('table');
+
+        const tableThead = document.createElement('thead');
+        tableThead.innerHTML = `
+        <tr>
+            <th>Material Name</th>
+            <th>Description</th>
+            <th>ID</th>
+            <th>Batch Number</th>
+            <th>Pallet Number</th>
+            <th>Date Received</th>
+            <th>Time Received</th>
+            <th>Received By</th>
+            <th></th>
+        </tr>
+        `;
+
+        dataTable.appendChild(tableThead);
+
+        const tableTbody = document.createElement('tbody');
+        let counter = 1;
         data.forEach(result => {
-            const accordionItemId = "flush-collapse" + counter++;
-            const resultElement = document.createElement('div');
+            const accordionItemId = "collapse" + counter++;
+            const resultElement = document.createElement('tr');
             resultElement.innerHTML =
                 `
-            <div class='accordion accordion-flush' id='accordionDataRow'>
-                <div class='accordion-item'>
-                    <h2 class='accordion-header'>
-                    <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#${accordionItemId}' aria-expanded='false' aria-controls='flush-collapseOne'>
-                        <div class='item-container'>
-                            <div class='item-details'>
-                                <h5>Material Name</h5>
-                                ${result.result1 ? result.result1.item_name : ''}
-                            </div>
-                            <div class='item-details'>
-                                <h5>Description</h5>
-                                ${result.result1 ? result.result1.item_desc : ''}
-                            </div>
-                            <div class='item-details'>
-                                <h5>ID</h5>
-                                ${result.result1 ? result.result1.item_id : ''}
-                            </div>
-                            <div class='item-details'>
-                                <h5>Batch Number</h5>
-                                ${result.result1 ? result.result1.item_lot : ''}
-                            </div> 
-                            <div class='item-details'>
-                                <h5>Pallet Number</h5>
-                                ${result.result1 ? result.result1.item_bin : ''}
-                            </div>
-                            <div class='item-details'>
-                                <h5>Date Received</h5>
-                                ${result.result1 ? result.result1.action_date : ''}
-                            </div>
-                            <div class='item-details'>
-                                <h5>Time Received</h5>
-                                ${result.result1 ? result.result1.action_time : ''}
-                            </div>
-                            <div class='item-details'>
-                                <h5>Received by</h5>
-                                ${result.result1 ? result.result1.action_by : ''}
-                            </div>
-                        </div>
+                <td>${result.result1 ? result.result1.item_name : ''}</td>
+                <td>${result.result1 ? result.result1.item_desc : ''}</td>
+                <td>${result.result1 ? result.result1.item_id : ''}</td>
+                <td>${result.result1 ? result.result1.item_lot : ''}</td>
+                <td>${result.result1 ? result.result1.item_bin : ''}</td>
+                <td>${result.result1 ? result.result1.action_date : ''}</td>
+                <td>${result.result1 ? result.result1.action_time : ''}</td>
+                <td>${result.result1 ? result.result1.action_by : ''}</td>
+                <td>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionItemId}" aria-expanded="false" aria-controls="collapse1">
+                    View Transactions
                     </button>
-                    </h2>
-                        <div id='${accordionItemId}' class='accordion-collapse collapse'>
-                                <div class='accordion-body'>
-                                <table class='table table-bordered'>
-                                <thead>
-                                    <tr>
-                                        <th>Action Date</th>
-                                        <th>Action Time</th>
-                                        <th>Action By</th>
-                                        <th>Quantity Receive</th>
-                                        <th>Quantity in Production</th>
-                                        <th>Quantity Scrap</th>
-                                        <th>Quantity Used</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${result.result2 ? result.result2.map(item => `
-                                        <tr>
-                                            <td>${item.action_date || ''}</td>
-                                            <td>${item.action_time || ''}</td>
-                                            <td>${item.action_by || ''}</td>
-                                            <td>${item.quantity_receive || ''}</td>
-                                            <td>${item.quantity_inProduction || ''}</td>
-                                            <td>${item.quantity_scrap || ''}</td>
-                                            <td>${item.quantity_used || ''}</td>
-                                        </tr>
-                                    `).join('') : ''}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>      
-            </div>
-
+                </td>
+                `;
+            const resultTransactionElement = document.createElement('tr');
+            resultTransactionElement.innerHTML = 
+            `
+            <td colspan="9">
+                <div class="collapse" id="${accordionItemId}">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Action Date</th>
+                                <th>Action Time</th>
+                                <th>Action By</th>
+                                <th>Quantity Receive</th>
+                                <th>Quantity in Production</th>
+                                <th>Quantity Scrap</th>
+                                <th>Quantity Used</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${result.result2 ? result.result2.map(item => `
+                            <tr>
+                                <td>${item.action_date || ''}</td>
+                                <td>${item.action_time || ''}</td>
+                                <td>${item.action_by || ''}</td>
+                                <td>${item.quantity_receive || ''}</td>
+                                <td>${item.quantity_inProduction || ''}</td>
+                                <td>${item.quantity_scrap || ''}</td>
+                                <td>${item.quantity_used || ''}</td>
+                            </tr>
+                            `).join('') : ''}
+                        </tbody>
+                    </table>
+                </div>
+            </td>
             `;
 
-            resultsContainer.appendChild(resultElement);
+            tableTbody.appendChild(resultElement);
+            tableTbody.appendChild(resultTransactionElement);
         })
+
+        dataTable.appendChild(tableTbody);
+        containerDiv.appendChild(dataTable);
+        resultsContainer.appendChild(containerDiv);
     }
 }

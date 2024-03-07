@@ -112,68 +112,59 @@ include 'connection.php';
                     $itHasData = mysqli_num_rows($fetchResult);
                     if ($itHasData > 0) {
                         $itemIndex = 1;
-                        while ($row = mysqli_fetch_assoc($fetchResult)) {
-                            $accordionItemId = 'flush-collapse' . $itemIndex;
-                            echo   "<div class='accordion accordion-flush' id='accordionDataRow'>
-                                        <div class='accordion-item'>
-                                            <h2 class='accordion-header'>
-                                            <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#$accordionItemId' aria-expanded='false' aria-controls='flush-collapseOne'>
-                                                <div class='item-container'>
-                                                    <div class='item-details'>
-                                                        <h5>Material Name</h5>
-                                                        ". $row['item_name'] ."
-                                                    </div>
-                                                    <div class='item-details'>
-                                                        <h5>Description</h5>
-                                                        ". $row['item_desc'] ."
-                                                    </div>
-                                                    <div class='item-details'>
-                                                        <h5>ID</h5>
-                                                        ". $row['item_id'] ."
-                                                    </div>
-                                                    <div class='item-details'>
-                                                        <h5>Batch Number</h5>
-                                                        ". $row['item_lot'] ."
-                                                    </div> 
-                                                    <div class='item-details'>
-                                                        <h5>Pallet Number</h5>
-                                                        ". $row['item_bin'] ." 
-                                                    </div>
-                                                    <div class='item-details'>
-                                                        <h5>Date Received</h5>
-                                                        ". $row['action_date'] ."
-                                                    </div>
-                                                    <div class='item-details'>
-                                                        <h5>Time Received</h5>
-                                                        ". $row['action_time'] ."
-                                                    </div>
-                                                    <div class='item-details'>
-                                                        <h5>Received by</h5>
-                                                        ". $row['action_by'] ."
-                                                    </div>
-                                                </div>
+                        echo "<div class='container mt-5'>
+                                <table class='table'>
+                                    <thead>
+                                    <tr>
+                                        <th>Material Name</th>
+                                        <th>Description</th>
+                                        <th>ID</th>
+                                        <th>Batch Number</th>
+                                        <th>Pallet Number</th>
+                                        <th>Date Received</th>
+                                        <th>Time Received</th>
+                                        <th>Received By</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>";
+                                    while ($row = mysqli_fetch_assoc($fetchResult)) {
+                                        $accordionItemId = 'collapse' . $itemIndex;
+                                echo   "<tr>
+                                            <td>{$row['item_name']}</td>
+                                            <td>{$row['item_desc']}</td>
+                                            <td>{$row['item_id']}</td>
+                                            <td>{$row['item_lot']}</td>
+                                            <td>{$row['item_bin']}</td>
+                                            <td>{$row['action_date']}</td>
+                                            <td>{$row['action_time']}</td>
+                                            <td>{$row['action_by']}</td>
+                                            <td>
+                                            <button class='btn btn-primary' type='button' data-bs-toggle='collapse' data-bs-target='#$accordionItemId' aria-expanded='false' aria-controls='$accordionItemId'>
+                                            View Transactions
                                             </button>
-                                            </h2>
-                                        <div id='$accordionItemId' class='accordion-collapse collapse'>
-                                                <div class='accordion-body'>";
-                                                    // fetch 4 item data rows related to the item_id then echo it
-                                                    $innerfetchQuery = "SELECT * FROM rm_data WHERE item_id = '{$row['item_id']}'";
-                                                    $innerfetchResult = mysqli_query($connection, $innerfetchQuery);
-                                                    echo "<table class='table table-bordered'>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Action Date</th>
-                                                            <th>Action Time</th>
-                                                            <th>Action By</th>
-                                                            <th>Quantity Receive</th>
-                                                            <th>Quantity in Production</th>
-                                                            <th>Quantity Scrap</th>
-                                                            <th>Quantity Used</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>"; 
-                                            
-                                            while ($inner_row = mysqli_fetch_assoc($innerfetchResult)) {
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan='9'>
+                                                <div class='collapse' id='$accordionItemId'>";
+                                                // fetch 4 item data rows related to the item_id then echo it
+                                                $innerfetchQuery = "SELECT * FROM rm_data WHERE item_id = '{$row['item_id']}'";
+                                                $innerfetchResult = mysqli_query($connection, $innerfetchQuery);
+                                                echo "<table class='table table-bordered'>
+                                                        <thead>
+                                                                <tr>
+                                                                <th>Action Date</th>
+                                                                <th>Action Time</th>
+                                                                <th>Action By</th>
+                                                                <th>Quantity Receive</th>
+                                                                <th>Quantity in Production</th>
+                                                                <th>Quantity Scrap</th>
+                                                                <th>Quantity Used</th>
+                                                                </tr>
+                                                        </thead>
+                                                      <tbody>"; 
+                                                while ($inner_row = mysqli_fetch_assoc($innerfetchResult)) {
                                                 echo "<tr>
                                                         <td>{$inner_row['action_date']}</td>
                                                         <td>{$inner_row['action_time']}</td>
@@ -182,15 +173,16 @@ include 'connection.php';
                                                         <td>{$inner_row['quantity_inProduction']}</td>
                                                         <td>{$inner_row['quantity_used']}</td>
                                                         <td>{$inner_row['quantity_scrap']}</td>
-                                                      </tr>";
+                                                    </tr>";
                                                     }
-                                                echo "</tbody></table>";
-                                         echo  "</div>
-                                            </div>
-                                        </div>      
-                                    </div>";
+                                                echo "</tbody>
+                                                </table>
+                                            </td>
+                                        </tr>";
                             $itemIndex++; // increments for generating unique id for every accordion rows
-                        }       
+                        }
+                        echo "</table>
+                        </div>";
                         mysqli_free_result($fetchResult);
                     } else {
                         echo "there are no data";
@@ -223,10 +215,6 @@ include 'connection.php';
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="web-footer">
-
     </div>
 </body>
 </html>
