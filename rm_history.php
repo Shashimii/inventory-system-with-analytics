@@ -99,15 +99,16 @@ include 'connection.php';
                     <?php 
                     $rowCountQuery = "SELECT * FROM rm_data GROUP BY item_id";
                     $fetchResult = mysqli_query($connection, $rowCountQuery);
-
                     $numOfRows = mysqli_num_rows($fetchResult); // total number of rows on the table
-                    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                    $rowPerPage = 5;
-                    $offset = ($page - 1) * $rowPerPage;
+                    
+                    // compute
+                    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // extract the current page from the url ?page=
+                    $rowPerPage = 5; // sets the num of row displayed per page
+                    $offset = ($page - 1) * $rowPerPage; // computes the rows needed to be offsetted depending on the current page
                     $pagesNeeded = ceil($numOfRows / $rowPerPage); // compute for pages needed
 
                     // display the rows 
-                    $fetchQuery = "SELECT action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin FROM rm_data GROUP BY item_id ORDER BY id ASC";
+                    $fetchQuery = "SELECT action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin FROM rm_data GROUP BY item_id ORDER BY id ASC LIMIT $rowPerPage OFFSET $offset";
                     $fetchResult = mysqli_query($connection, $fetchQuery);
                     $itHasData = mysqli_num_rows($fetchResult);
                     if ($itHasData > 0) {
@@ -190,7 +191,7 @@ include 'connection.php';
 
                     ?>
                 </div>
-                <div class="item-display-footer">
+                <div class="item-display-footer" id="itemDisplayFooter">
                     <?php 
                     
                     // pagination controls

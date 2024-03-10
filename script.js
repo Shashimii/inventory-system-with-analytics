@@ -1,34 +1,44 @@
-function searchLikeInput() {
-    const searchThis = document.getElementById('searchInput').value;
-    const searchFilter = document.getElementById('searchFilter').value;
+function searchLikeInput(page = 1) { // default value for page is 1 if its not yet repeated
+    const searchThis = document.getElementById('searchInput').value; // search keyword from user
+    const searchFilter = document.getElementById('searchFilter').value; // search filter
 
-    // AJAX
-    fetch(`search_rm_history.php?searchQuery=${searchThis}&searchFilter=${searchFilter}`)
-        .then(response => response.json())
+    // perform AJAX request to php script => search_rm_history.php
+    fetch(`search_rm_history.php?searchQuery=${searchThis}&searchFilter=${searchFilter}&page=${page}`) // data attached searchInput - searchFilter - page
+        .then(response => response.json()) // proccess response
         .then(data => {
-            displayResults(data);
+            displayResults(data); // holds the array of data from response
 
-            console.log('R1:', data[0] ? data[0].result1 : null);
-            console.log('R2:', data[0] ? data[0].result2 : null);
+            // console.log for debugging
+            console.log('R1:', data[0] ? data[0].result1 : null); // Item Identity
+            console.log('R2:', data[0] ? data[0].result2 : null); // Item Data
+            console.log(data[0] ? data[0].rowCount : null); // Total Count of Rows
+            console.log('pages needed:', data[0] ? data[0].pagesNeeded : null); // Pages Needed
+            console.log('current page:', data[0] ? data[0].currentPage : null); // Current Page
+
+            const pagesNeeded = data[0] ? data[0].pagesNeeded : 1; // pagesNeeded
+            const currentPage = data[0] ? data[0].currentPage : 1; // currentPage
+
+            paginationControls(pagesNeeded, currentPage); // calls the paginationControls and passing the data
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error('Error:', error)); // error handler
 
-    function displayResults(data) {
-        const resultsContainer = document.getElementById('itemDisplayBody');
-        resultsContainer.innerHTML = '';
+    function displayResults(data) { // function for rendering the search results and its table
+        const resultsContainer = document.getElementById('itemDisplayBody'); // targets the div to be the search results will be displayed
+        resultsContainer.innerHTML = ''; // makes it empty first
 
-        if (data.length === 0) {
+        if (data.length === 0) { // handler if no results found
             resultsContainer.innerHTML = 'No Results Found';
             return;
         }
 
-        const containerDiv = document.createElement('div');
-        containerDiv.classList.add('container', 'mt-5');
+        // else proceed render the div and style it using bs5 classes
+        const containerDiv = document.createElement('div'); // div
+        containerDiv.classList.add('container', 'mt-5'); // classes
 
-        const dataTable = document.createElement('table');
-        dataTable.classList.add('table');
+        const dataTable = document.createElement('table'); // table
+        dataTable.classList.add('table'); 
 
-        const tableThead = document.createElement('thead');
+        const tableThead = document.createElement('thead'); // table header
         tableThead.innerHTML = `
         <tr>
             <th>Material Name</th>
@@ -45,11 +55,11 @@ function searchLikeInput() {
 
         dataTable.appendChild(tableThead);
 
-        const tableTbody = document.createElement('tbody');
-        let counter = 1;
-        data.forEach(result => {
-            const accordionItemId = "collapse" + counter++;
-            const resultElement = document.createElement('tr');
+        const tableTbody = document.createElement('tbody'); // table body
+        let counter = 1; // accordion counter
+        data.forEach(result => { // foreach loop to iterate accordion for every data on the array from AJAX response
+            const accordionItemId = "collapse" + counter++; // sets the accordion id and increments the counter for unique id
+            const resultElement = document.createElement('tr'); // item identity row with row for collapsing item data rows
             resultElement.innerHTML =
                 `
                 <td>${result.result1 ? result.result1.item_name : ''}</td>
@@ -65,8 +75,8 @@ function searchLikeInput() {
                     View Transactions
                     </button>
                 </td>
-                `;
-            const resultTransactionElement = document.createElement('tr');
+                `; 
+            const resultTransactionElement = document.createElement('tr'); // item data collapsed row
             resultTransactionElement.innerHTML = 
             `
             <td colspan="9">
@@ -109,4 +119,57 @@ function searchLikeInput() {
         containerDiv.appendChild(dataTable);
         resultsContainer.appendChild(containerDiv);
     }
+
+    function paginationControls(pagesNeeded, currentPage) {
+        const controlsContainer = document.getElementById('itemDisplayFooter');
+        controlsContainer.innerHTML = '';
+    
+        for (let i = 1; i <= pagesNeeded; i++) {
+            const pageNumbers = document.createElement('a');
+            pageNumbers.href = `?page=${i}`;
+            pageNumbers.textContent = i;
+    
+            if (i === currentPage) {
+                pageNumbers.classList.add('link-offset-3');
+            }
+    
+            pageNumbers.addEventListener('click', function (event) {
+                event.preventDefault();
+                handlePageChange(i);
+            });
+    
+            controlsContainer.appendChild(pageNumbers);
+        }
+
+        // Add "Previous" link
+        if (currentPage > 1) {
+            const prevLink = document.createElement('a');
+            prevLink.href = `?page=${currentPage - 1}`;
+            prevLink.textContent = 'Previous';
+            prevLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                handlePageChange(currentPage - 1);
+            });
+            controlsContainer.appendChild(prevLink);
+        }
+
+        // Add "Next" link
+        if (currentPage < pagesNeeded) {
+            const nextLink = document.createElement('a');
+            nextLink.href = `?page=${currentPage + 1}`;
+            nextLink.textContent = 'Next';
+            nextLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                handlePageChange(currentPage + 1);
+            });
+            controlsContainer.appendChild(nextLink);
+        }
+    }
+    
+
+    // function for repeating the proccess but with a different page 
+    function handlePageChange(page) { // the function with a page parameter with a value from handlePageChange(i)
+        searchLikeInput(page); // calls and pass the value of page to function to repeat the whole process when user change pages
+    }
+    // REPEAT => searchLikeInput
 }
