@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     searchLikeInput();
-})
+});
 
 function searchLikeInput(page = 1) { // default value for page is 1 if its not yet repeated
     const searchThis = document.getElementById('searchInput').value; // search keyword from user
