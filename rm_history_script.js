@@ -1,9 +1,13 @@
+document.addEventListener('DOMContentLoaded', function () {
+    searchLikeInput();
+})
+
 function searchLikeInput(page = 1) { // default value for page is 1 if its not yet repeated
     const searchThis = document.getElementById('searchInput').value; // search keyword from user
     const searchFilter = document.getElementById('searchFilter').value; // search filter
 
     // perform AJAX request to php script => search_rm_history.php
-    fetch(`search_rm_history.php?searchQuery=${searchThis}&searchFilter=${searchFilter}&page=${page}`) // data attached searchInput - searchFilter - page
+    fetch(`rm_history_data.php?searchQuery=${searchThis}&searchFilter=${searchFilter}&page=${page}`) // data attached searchInput - searchFilter - page
         .then(response => response.json()) // proccess response
         .then(data => {
             displayResults(data); // holds the array of data from response
