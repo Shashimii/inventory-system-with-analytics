@@ -46,14 +46,28 @@
 
 .item-manage-body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     gap: 20px;
     height: 100%;
-    border: 1px solid black;
+}
+
+.item-manage-body-row1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
 }
 
 .manage-container {
     height: 600px;
     border: 1px solid black;
+}
+
+.receive-item-form {
+    height: 300px;
+}
+
+.form-grid-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
