@@ -71,3 +71,15 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+
+/*-- settings --*/
+
+.set-body-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.set-card {
+    border: 1px solid black;
+    height: 100%;
+}
