@@ -77,27 +77,27 @@
                             </div>
                             <div class="modal-body">
                                 <div class="receive-item-form">
-                                    <form method="POST" action="#">
+                                    <form method="POST" action="rmADD.php">
                                         <div class="form-grid-custom">
                                             <div class="from-input">
                                                 <label for="ItemId">Raw Material Id</label>
-                                                <input class="form-control" type="text" name="ItemId" id="ItemId" placeholder="Enter Raw Material Id" aria-label="Enter Raw Material Id" pattern="[A-Za-z0-9\-]{3,20}" title="Please enter only letters between 3 and 20 characters" required>
+                                                <input class="form-control" type="text" name="itemId" id="ItemId" placeholder="Enter Raw Material Id" aria-label="Enter Raw Material Id" pattern="[A-Za-z0-9\-]{3,20}" title="Please enter only letters between 3 and 20 characters" required>
                                             </div>
                                             <div class="from-input">
                                                 <label for="ItemName">Raw Material Name</label>
-                                                <input class="form-control" type="text" name="ItemName" id="ItemName" placeholder="Enter Raw Material Name" aria-label="Enter Raw Material Name" pattern="[A-Za-z0-9\-]{3,20}" title="Please enter only letters between 3 and 20 characters" required>
+                                                <input class="form-control" type="text" name="itemName" id="ItemName" placeholder="Enter Raw Material Name" aria-label="Enter Raw Material Name" pattern="[A-Za-z0-9\-]{3,20}" title="Please enter only letters between 3 and 20 characters" required>
                                             </div>
                                             <div class="from-input">
                                                 <label for="ItemType">Raw Material Type</label>
-                                                <input class="form-control" type="text" name="ItemType"  id="ItemType" placeholder="Enter Raw Material Type" aria-label="Enter Raw Material Type" pattern="[A-Za-z0-9\-]{3,20}" title="Please enter only letters between 3 and 20 characters" required>
+                                                <input class="form-control" type="text" name="itemType"  id="ItemType" placeholder="Enter Raw Material Type" aria-label="Enter Raw Material Type" pattern="[A-Za-z0-9\-]{3,20}" title="Please enter only letters between 3 and 20 characters" required>
                                             </div>
                                             <div class="from-input">
                                                 <label for="ItemBin">Storage Bin</label>
-                                                <input class="form-control" type="text" name="ItemBin" id="ItemBin" placeholder="Enter Storage Bin" aria-label="Enter Storage Bin" pattern="[A-Za-z0-9\-]{3,20}" title="Please enter only letters between 3 and 20 characters" required>
+                                                <input class="form-control" type="text" name="itemBin" id="ItemBin" placeholder="Enter Storage Bin" aria-label="Enter Storage Bin" pattern="[A-Za-z0-9\-]{3,20}" title="Please enter only letters between 3 and 20 characters" required>
                                             </div>
                                             <div class="from-input">
                                                 <label for="ItemReceiveQuantity">Reciving Quantity</label>
-                                                <input class="form-control" type="number" name="ItemReceiveQuantity" id="ItemReceiveQuantity" placeholder="Enter Receiving Quantity" aria-label="Enter Receiving Quantity" pattern="[0-9\-]" title="Please enter the correct quantity" min="1" max="3000" required>
+                                                <input class="form-control" type="number" name="itemReceiveQuantity" id="ItemReceiveQuantity" placeholder="Enter Receiving Quantity" aria-label="Enter Receiving Quantity" pattern="[0-9\-]" title="Please enter the correct quantity" min="1" max="3000" required>
                                             </div>
                                         </div>
                                 </div>

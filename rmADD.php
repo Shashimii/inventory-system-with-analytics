@@ -5,11 +5,11 @@ include 'index.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['itemName']) && ($_POST['itemId']) && ($_POST['itemQuantity']) && ($_POST['itemDesc']) && ($_POST['itemBin'])) {
+    if (isset($_POST['itemName']) && ($_POST['itemId']) && ($_POST['itemQuantity']) && ($_POST['itemType']) && ($_POST['itemBin'])) {
         $itemName = $_POST['itemName'];
         $itemId = $_POST['itemId'];
         $itemQuantity = $_POST['itemQuantity'];
-        $itemDesc = $_POST['itemDesc'];
+        $itemType = $_POST['itemType'];
         $itemBin = $_POST['itemBin'];
         
         // data status when added
@@ -33,6 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // close the statement
             mysqli_stmt_close($stmt);
+
+            
+
         } else {
             // error handling
             echo "Error Executing fetchLastBatch Query: " . mysqli_error($connection);
@@ -44,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($connection, $insertQuery);
         if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ssssssssis", $currentDate, $currentTime, $currentUser, $itemName, $itemDesc, $itemId, $newBatch, $itemBin, $itemQuantity, $itemDataStatus);
+            mysqli_stmt_bind_param($stmt, "ssssssssis", $currentDate, $currentTime, $currentUser, $itemName, $itemType, $itemId, $newBatch, $itemBin, $itemQuantity, $itemDataStatus);
             if (mysqli_stmt_execute($stmt)) {
                 echo "Raw Material Added";
 
@@ -55,5 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "Error Insert Query Cannot be Prepared" . mysqli_error($connection);
         }
+    } else {
+        
     }
 }
