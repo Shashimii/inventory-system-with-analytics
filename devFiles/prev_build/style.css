@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.web-main {
+    margin: 1.5%;
+}
+
+.item-display-header {
+    display: flex;
+    flex-direction: flex-start;
+    justify-content: space-between;
+}
+
+.item-display-header-searchbar {
+    display: flex;
+    gap: 2%;
+}
+
+.item-display-body {
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.item-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.item-details {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.accordion-button {
+    border: 1px solid black;
+    margin-block: 5px;    
+    
+}
+
+.accordion-collapse {
+    border: 1px solid black;
+    margin-inline-start: 5px;
+}
+
+.item-manage-body {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+.item-manage-body-row1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.manage-container {
+    height: 600px;
+    border: 1px solid black;
+}
+
+.receive-item-form {
+    height: 300px;
+}
+
+.form-grid-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/*-- settings --*/
+
+.set-body-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.set-card {
+    border: 1px solid black;
+    height: 100%;
+}
