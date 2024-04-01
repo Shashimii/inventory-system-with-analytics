@@ -17,6 +17,7 @@ while ($option = $result->fetch_assoc()) {
 <head>
     <script defer src="./js/rmFormSubmit.js"></script>
     <script defer src="./js/rmFormReceive.js"></script>
+    <script defer src="./js/rmFormReceiveAdj.js"></script>
     <script defer src="./js/rmFormInProduction.js"></script>
     <script src="./js/rmTables.js"></script> <!--- render the table first --->
     <script src="./js/rmFetchReceived.js"></script> <!--- attach the event listeners --->
@@ -289,6 +290,48 @@ while ($option = $result->fetch_assoc()) {
                     <input type="hidden" name="item_bin" id="itemBin" value="">
                     <input type="hidden" name="quantity_receive" id="quantityReceive" value="">
                     <button type="submit" class="btn btn-warning"><i class="fa-solid fa-arrow-right"></i> Use In Production</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Adjust Quantity -->
+<div class="modal" id="rmAdjReceivedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmAdjReceivedModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="rmAdjReceivedModal">Adjust Quantity</h1>
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div class="modal-body">
+                <div class="rm-info-container">
+                    <div class="rm-info-header">
+                        <div class="info-header-container">
+                            <h1 id="itemInfoName"></h1>
+                            <h3 id="itemInfoQuantity"></h3>
+                        </div>
+                        <div class="info-header-container">
+                            <h5>Date Received</h5>
+                            <p id="itemInfoDate"></p>
+                            <h5>Id</h5>
+                            <p id="itemInfoId"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                    <form id="rmAdjustmentForm">
+                        <label for="adjQuantityReceive">Enter New Quantity</label>
+                        <input name="adj_quantity_receive" id="adjQuantityReceive" placeholder="New Quantity (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                    <input type="hidden" name="item_name" id="itemNameAdj" value="">
+                    <input type="hidden" name="item_id" id="itemIdAdj" value="">
+                    <input type="hidden" name="quantity_receive" id="quantityReceive" value="">
+                    <button type="submit" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
