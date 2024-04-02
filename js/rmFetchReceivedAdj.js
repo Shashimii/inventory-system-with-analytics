@@ -8,7 +8,7 @@ $(function() {
             url: './php/rm_received_data_adj.php',
             method: 'GET',
             success: function(response) {
-                console.log(searchFilter);
+                console.log(response);
                 switch (searchFilter) {
                     case 'date':
                         var filteredResponse = response.filter(function(item) { 
