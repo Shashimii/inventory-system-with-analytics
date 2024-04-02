@@ -21,6 +21,7 @@ while ($option = $result->fetch_assoc()) {
     <script defer src="./js/rmFormInProduction.js"></script>
     <script src="./js/rmTables.js"></script> <!--- render the table first --->
     <script src="./js/rmFetchReceived.js"></script> <!--- attach the event listeners --->
+    <script src="./js/rmFetchReceivedAdj.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raw Materials | Hiltac</title>
@@ -139,10 +140,8 @@ while ($option = $result->fetch_assoc()) {
                             </div>
                         </div>
                     </div>
-                    <div class="rm-manage-row-2">
-                        <div class="render" id="renderReceiveTable">
+                    <div class="rm-manage-row-2" id="renderReceiveTable">
                             <!--- rmTables.js --->
-                        </div>
                     </div>
                 </div>
             </div>
