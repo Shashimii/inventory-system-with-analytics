@@ -1,310 +1,195 @@
-$(function(){
-    let tableRow = '';
+$(function(){ 
+    let tableData = []; // Array to hold the entire dataset
     let searchFilter = '';
     let searchKey = '';
-
-    function recieveTableData() {
+    let pageNumber = 1; // Initial page number
+    let pageSize = 8; // Number of items per page
+    
+    // Function to preload the dataset
+    function preloadTableData() {
         $.ajax({
             url: './php/rm_received_data.php', // php script
             method: 'GET',
-
             success: function(response) {
-                // process the response
-                switch (searchFilter) { // search filter function
-                    case 'date': // filter name
-                    var filteredResponse = response.filter(function(item) { // filter function
-                        return typeof item.action_date === 'string' && item.action_date.toLowerCase().includes(searchKey.toLowerCase()); // return filtered results based on searchkey
-                    });
-                    
-                    $('#receiveTable tbody').empty(); // remove any existing table rows
-    
-                    if (filteredResponse.length === 0) { // if no results display nothing matched message
-                        tableRow = '<tr>'; 
-                        tableRow += '<td colspan="8"style="text-align: center;">' + 'There is No Data' + '</td>';
-                        tableRow += '</tr>';
-                        $('#receiveTable').append(tableRow);
-                    } else { // else display the results
-                        filteredResponse.forEach(function(item) { 
-                            tableRow = '<tr>';
-                            tableRow += '<td>' + item.action_date + '</td>';
-                            tableRow += '<td>' + item.item_name + '</td>';
-                            tableRow += '<td>' + item.item_desc + '</td>';
-                            tableRow += '<td>' + item.item_id + '</td>';
-                            tableRow += '<td>' + item.item_lot + '</td>';
-                            tableRow += '<td>' + item.item_bin + '</td>';
-                            tableRow += '<td>' + item.quantity_receive + ' KG</td>';
-                            tableRow += '<td class="action-btn">'; 
-                            tableRow += '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>';
-                            tableRow += ' ';
-                            tableRow += '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>';
-                            tableRow += '</td>';
-                            tableRow += '</tr>';
-                            $('#receiveTable').append(tableRow); // appends on the table 
-                        })
-                    }
-                    break;
-
-                    case 'name': // filter name
-                        var filteredResponse = response.filter(function(item) { // filter function
-                            return typeof item.item_name === 'string' && item.item_name.toLowerCase().includes(searchKey.toLowerCase()); // return filtered results based on searchkey
-                        });
-                        
-                        $('#receiveTable tbody').empty(); // remove any existing table rows
-        
-                        if (filteredResponse.length === 0) { // if no results display nothing matched message
-                            tableRow = '<tr>'; 
-                            tableRow += '<td colspan="8"style="text-align: center;">' + 'There is No Data' + '</td>';
-                            tableRow += '</tr>';
-                            $('#receiveTable').append(tableRow);
-                        } else { // else display the results
-                            filteredResponse.forEach(function(item) { 
-                                tableRow = '<tr>';
-                                tableRow += '<td>' + item.action_date + '</td>';
-                                tableRow += '<td>' + item.item_name + '</td>';
-                                tableRow += '<td>' + item.item_desc + '</td>';
-                                tableRow += '<td>' + item.item_id + '</td>';
-                                tableRow += '<td>' + item.item_lot + '</td>';
-                                tableRow += '<td>' + item.item_bin + '</td>';
-                                tableRow += '<td>' + item.quantity_receive + ' KG</td>';
-                                tableRow += '<td class="action-btn">'; 
-                                tableRow += '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>';
-                                tableRow += ' ';
-                                tableRow += '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>';
-                                tableRow += '</td>';
-                                tableRow += '</tr>';
-                                $('#receiveTable').append(tableRow); // appends on the table 
-                            })
-                        }
-                        break;
-
-                    case 'desc':
-                        var filteredResponse = response.filter(function(item) {
-                            return typeof item.item_desc === 'string' && item.item_desc.toLowerCase().includes(searchKey.toLowerCase());
-                        });
-                        
-                        $('#receiveTable tbody').empty(); // remove any existing table rows
-        
-                        if (filteredResponse.length === 0) {
-                            tableRow = '<tr>'; 
-                            tableRow += '<td colspan="8"style="text-align: center;">' + 'There is No Data' + '</td>';
-                            tableRow += '</tr>';
-                            $('#receiveTable').append(tableRow);
-                        } else {
-                            filteredResponse.forEach(function(item) {
-                                tableRow = '<tr>';
-                                tableRow += '<td>' + item.action_date + '</td>';
-                                tableRow += '<td>' + item.item_name + '</td>';
-                                tableRow += '<td>' + item.item_desc + '</td>';
-                                tableRow += '<td>' + item.item_id + '</td>';
-                                tableRow += '<td>' + item.item_lot + '</td>';
-                                tableRow += '<td>' + item.item_bin + '</td>';
-                                tableRow += '<td>' + item.quantity_receive + ' KG</td>';
-                                tableRow += '<td class="action-btn">'; 
-                                tableRow += '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>';
-                                tableRow += ' ';
-                                tableRow += '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>';
-                                tableRow += '</td>';
-                                tableRow += '</tr>';
-                                $('#receiveTable').append(tableRow);
-                            })
-                        }
-                        break;
-
-                    case 'id':
-                        var filteredResponse = response.filter(function(item) {
-                            return typeof item.item_id === 'string' && item.item_id.toLowerCase().includes(searchKey.toLowerCase());
-                        });
-                        
-                        $('#receiveTable tbody').empty(); // remove any existing table rows
-        
-                        if (filteredResponse.length === 0) {
-                            tableRow = '<tr>'; 
-                            tableRow += '<td colspan="8"style="text-align: center;">' + 'There is No Data' + '</td>';
-                            tableRow += '</tr>';
-                            $('#receiveTable').append(tableRow);
-                        } else {
-                            filteredResponse.forEach(function(item) {
-                                tableRow = '<tr>';
-                                tableRow += '<td>' + item.action_date + '</td>';
-                                tableRow += '<td>' + item.item_name + '</td>';
-                                tableRow += '<td>' + item.item_desc + '</td>';
-                                tableRow += '<td>' + item.item_id + '</td>';
-                                tableRow += '<td>' + item.item_lot + '</td>';
-                                tableRow += '<td>' + item.item_bin + '</td>';
-                                tableRow += '<td>' + item.quantity_receive + ' KG</td>';
-                                tableRow += '<td class="action-btn">'; 
-                                tableRow += '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>';
-                                tableRow += ' ';
-                                tableRow += '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>';
-                                tableRow += '</td>';
-                                tableRow += '</tr>';
-                                $('#receiveTable').append(tableRow);
-                            })
-                        }
-                        break;
-
-                    case 'lot':
-                        var filteredResponse = response.filter(function(item) {
-                            return typeof item.item_lot === 'string' && item.item_lot.toLowerCase().includes(searchKey.toLowerCase());
-                        });
-                        
-                        $('#receiveTable tbody').empty(); // remove any existing table rows
-        
-                        if (filteredResponse.length === 0) {
-                            tableRow = '<tr>'; 
-                            tableRow += '<td colspan="8"style="text-align: center;">' + 'There is No Data' + '</td>';
-                            tableRow += '</tr>';
-                            $('#receiveTable').append(tableRow);
-                        } else {
-                            filteredResponse.forEach(function(item) {
-                                tableRow = '<tr>';
-                                tableRow += '<td>' + item.action_date + '</td>';
-                                tableRow += '<td>' + item.item_name + '</td>';
-                                tableRow += '<td>' + item.item_desc + '</td>';
-                                tableRow += '<td>' + item.item_id + '</td>';
-                                tableRow += '<td>' + item.item_lot + '</td>';
-                                tableRow += '<td>' + item.item_bin + '</td>';
-                                tableRow += '<td>' + item.quantity_receive + ' KG</td>';
-                                tableRow += '<td class="action-btn">'; 
-                                tableRow += '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>';
-                                tableRow += ' ';
-                                tableRow += '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>';
-                                tableRow += '</td>';
-                                tableRow += '</tr>';
-                                $('#receiveTable').append(tableRow);
-                            })
-                        }
-                        break;
-
-                    case 'bin':
-                        var filteredResponse = response.filter(function(item) {
-                            return typeof item.item_bin === 'string' && item.item_bin.toLowerCase().includes(searchKey.toLowerCase());
-                        });
-                        
-                        $('#receiveTable tbody').empty(); // remove any existing table rows
-        
-                        if (filteredResponse.length === 0) {
-                            tableRow = '<tr>'; 
-                            tableRow += '<td colspan="8"style="text-align: center;">' + 'There is No Data' + '</td>';
-                            tableRow += '</tr>';
-                            $('#receiveTable').append(tableRow);
-                        } else {
-                            filteredResponse.forEach(function(item) {
-                                tableRow = '<tr>';
-                                tableRow += '<td>' + item.action_date + '</td>';
-                                tableRow += '<td>' + item.item_name + '</td>';
-                                tableRow += '<td>' + item.item_desc + '</td>';
-                                tableRow += '<td>' + item.item_id + '</td>';
-                                tableRow += '<td>' + item.item_lot + '</td>';
-                                tableRow += '<td>' + item.item_bin + '</td>';
-                                tableRow += '<td>' + item.quantity_receive + ' KG</td>';
-                                tableRow += '<td class="action-btn">'; 
-                                tableRow += '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>';
-                                tableRow += ' ';
-                                tableRow += '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>';
-                                tableRow += '</td>';
-                                tableRow += '</tr>';
-                                $('#receiveTable').append(tableRow);
-                            })
-                        }
-                        break;
-
-                    case 'quantity':
-                        var filteredResponse = response.filter(function(item) {
-                            return item.quantity_receive !== null && item.quantity_receive.toString().includes(searchKey);
-                        });
-                        
-                        $('#receiveTable tbody').empty(); // remove any existing table rows
-        
-                        if (filteredResponse.length === 0) {
-                            tableRow = '<tr>'; 
-                            tableRow += '<td colspan="8"style="text-align: center;">' + 'There is No Data' + '</td>';
-                            tableRow += '</tr>';
-                            $('#receiveTable').append(tableRow);
-                        } else {
-                            filteredResponse.forEach(function(item) {
-                                tableRow = '<tr>';
-                                tableRow += '<td>' + item.action_date + '</td>';
-                                tableRow += '<td>' + item.item_name + '</td>';
-                                tableRow += '<td>' + item.item_desc + '</td>';
-                                tableRow += '<td>' + item.item_id + '</td>';
-                                tableRow += '<td>' + item.item_lot + '</td>';
-                                tableRow += '<td>' + item.item_bin + '</td>';
-                                tableRow += '<td>' + item.quantity_receive + ' KG</td>';
-                                tableRow += '<td class="action-btn">'; 
-                                tableRow += '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>';
-                                tableRow += ' ';
-                                tableRow += '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>';
-                                tableRow += '</td>';
-                                tableRow += '</tr>';
-                                $('#receiveTable').append(tableRow);
-                            })
-                        }
-                        break;
-
-                    default:
-                    var filteredResponse = response.filter(function(item) {
-                        return Object.values(item).some(value => {
-                            if (typeof value === 'string') {
-                                return value.toLowerCase().includes(searchKey.toLowerCase());
-                            } else if (typeof value === 'number') {
-                                return value.toString().includes(searchKey);
-                            }
-                        });
-                        // return item.item_name.includes('B');
-                    });
-                    
-                    $('#receiveTable tbody').empty(); // remove any existing table rows
-    
-                    if (filteredResponse.length === 0) {
-                        tableRow = '<tr>'; 
-                        tableRow += '<td colspan="8"style="text-align: center;">' + 'There is No Data' + '</td>';
-                        tableRow += '</tr>';
-                        $('#receiveTable').append(tableRow);
-                    } else {
-                        filteredResponse.forEach(function(item) {
-                            tableRow = '<tr>';
-                            tableRow += '<td>' + item.action_date + '</td>';
-                            tableRow += '<td>' + item.item_name + '</td>';
-                            tableRow += '<td>' + item.item_desc + '</td>';
-                            tableRow += '<td>' + item.item_id + '</td>';
-                            tableRow += '<td>' + item.item_lot + '</td>';
-                            tableRow += '<td>' + item.item_bin + '</td>';
-                            tableRow += '<td>' + item.quantity_receive + ' KG</td>';
-                            tableRow += '<td class="action-btn">'; 
-                            tableRow += '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>';
-                            tableRow += ' ';
-                            tableRow += '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="'+ item.action_date +'" data-name="'+ item.item_name +'" data-desc="'+ item.item_desc +'" data-id="'+ item.item_id +'" data-lot="'+ item.item_lot +'" data-bin="'+ item.item_bin +'" data-quantity="'+ item.quantity_receive +'" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>';
-                            tableRow += '</td>';
-                            tableRow += '</tr>';
-                            $('#receiveTable').append(tableRow);
-                        })
-                    }
-                }
+                tableData = response; // Store the entire dataset
+                receiveTableData(); // Display initial table
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText); // Log the error to the console
             }
-        })
+        });
     }
-    recieveTableData(); // initial table rows display
+    
+// Function to receive and display table data
+    function receiveTableData() {
+    let filteredResponse = tableData; // Start with the entire dataset
 
-    //attached to the document instead of element for listening to dynamic rendering
+    // Apply filtering if searchKey is present
+    if (searchKey !== '') {
+        if (searchFilter !== '') {
+            switch (searchFilter) {
+                case 'date':
+                    filteredResponse = tableData.filter(item => item.action_date.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
+                case 'name':
+                    filteredResponse = tableData.filter(item => item.item_name.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
+                case 'desc':
+                    filteredResponse = tableData.filter(item => item.item_desc.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
+                case 'id':
+                    filteredResponse = tableData.filter(item => item.item_id.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
+                case 'lot':
+                    filteredResponse = tableData.filter(item => item.item_lot.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
+                case 'bin':
+                    filteredResponse = tableData.filter(item => item.item_bin.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
+                case 'quantity':
+                    filteredResponse = tableData.filter(item => item.quantity_receive.toString().includes(searchKey));
+                    break;
+                default:
+                    // If an unknown filter is provided, use the entire dataset
+                    break;
+            }
+        } else {
+            // If no specific filter is selected, filter based on all fields
+            filteredResponse = tableData.filter(item => {
+                return Object.values(item).some(value => {
+                    if (typeof value === 'string') {
+                        return value.toLowerCase().includes(searchKey.toLowerCase());
+                    } else if (typeof value === 'number') {
+                        return value.toString().includes(searchKey);
+                    }
+                });
+            });
+        }
+    }
+
+    // Apply pagination
+    let startIndex = (pageNumber - 1) * pageSize;
+    let endIndex = startIndex + pageSize;
+    let pageData = filteredResponse.slice(startIndex, endIndex);
+
+    // Clear existing table rows
+    $('#receiveTable tbody').empty();
+
+    // Display filtered data or "No Data" message
+    if (pageData.length === 0) {
+        tableRow = '<tr>';
+        tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>';
+        tableRow += '</tr>';
+        $('#receiveTable').append(tableRow);
+    } else {
+        pageData.forEach(function(item) {
+            // Append table rows
+            $('#receiveTable tbody').append(
+                '<tr>' +
+                    '<td>' + item.action_date + '</td>' +
+                    '<td>' + item.item_name + '</td>' +
+                    '<td>' + item.item_desc + '</td>' +
+                    '<td>' + item.item_id + '</td>' +
+                    '<td>' + item.item_lot + '</td>' +
+                    '<td>' + item.item_bin + '</td>' +
+                    '<td>' + item.quantity_receive + ' KG</td>' +
+                    '<td class="action-btn">' +
+                        '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_receive + '" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>' +
+                        ' ' +
+                        '<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_receive + '" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>' +
+                    '</td>' +
+                '</tr>'
+            );
+        });
+    }
+
+    // Generate pagination buttons
+    generatePagination(filteredResponse.length);
+}
+
+    // Function to generate dynamic pagination buttons
+    function generatePagination(totalItems) {
+        let pagination = $('#pagination');
+        pagination.empty();
+        let totalPages = Math.ceil(totalItems / pageSize);
+        let prevButton = $('<li><a id="prev">&laquo; Prev</a></li>');
+        pagination.append(prevButton);
+
+        for (let i = 1; i <= totalPages; i++) {
+            let li = $('<li></li>');
+            let a = $('<a>' + i + '</a>');
+            if (i === pageNumber) {
+                li.addClass('active');
+            }
+            li.append(a);
+            pagination.append(li);
+        }
+
+        let nextButton = $('<li><a id="next">Next &raquo;</a></li>');
+        pagination.append(nextButton);
+    }
+    
+    // Event listener for pagination
+    $('#pagination').on('click', 'a', function(event) {
+        event.preventDefault();
+        let targetPage;
+        let currentPage = parseInt($('#pagination .active a').text());
+        if ($(this).attr('id') === 'prev') {
+            targetPage = Math.max(currentPage - 1, 1);
+        } else if ($(this).attr('id') === 'next') {
+            targetPage = Math.min(currentPage + 1, Math.ceil(tableData.length / pageSize));
+        } else {
+            targetPage = parseInt($(this).text());
+        }
+        pageNumber = targetPage; // Update pageNumber
+        receiveTableData(); // Refresh table data
+    });
+
+    // Initial setup
+    preloadTableData(); // Preload data and display initial table
+
+    
+    receiveTableData(); // initial table rows display
+    
+
+    // attached to the document instead of element for listening to dynamic rendering
     // search filter listener
     $(document).on('change', '#recSearchFilter', function(){
         searchFilter = $(this).val();
-        recieveTableData(); // display search results
-    })
+        receiveTableData(); // display search results
+    });
+
     // searchbar listener
     $(document).on('input', '#recSearch', function() { // triggers on input
         searchKey = $(this).val(); // get search keyword from input field #recSearch
-        recieveTableData(); // display search results
+        receiveTableData(); // display search results
     });
+
     // show received table listener
     $(document).on('click', '#renderReceive', function(){
         searchKey = ''; // clear the searchKey to reset the table contents
-        recieveTableData(); // display data list
-    })
+        receiveTableData(); // display data list
+    });
+
+    receiveTableData(); // initial table rows display
+
+    // Search filter listener
+    $(document).on('change', '#recSearchFilter', function(){
+        searchFilter = $(this).val();
+        receiveTableData(); // Display search results
+    });
+
+    // Search bar listener
+    $(document).on('input', '#recSearch', function() {
+        searchKey = $(this).val(); // Get search keyword from input field #recSearch
+        receiveTableData(); // Display search results
+    });
+
+    // Show received table listener
+    $(document).on('click', '#renderReceive', function(){
+        searchKey = ''; // Clear the searchKey to reset the table contents
+        receiveTableData(); // Display data list
+    });
 
     // button for In Production
     $(document).on('click', '#useInProduction', function() {
@@ -360,4 +245,4 @@ $(function(){
         $('#rmAdjReceivedModal #itemIdAdj').val(itemId);
         $('#rmAdjReceivedModal #quantityReceive').val(quantityReceive);
     });
-})
+});
