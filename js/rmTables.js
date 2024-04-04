@@ -44,12 +44,12 @@ $(function(){
                     </tbody>
                 </table>
                 <div class="table-footer">
-                <div class="pagination-container">
-                <ul class="pagination" id="pagination">
-                <!-- Pagination buttons will be dynamically generated here -->
-            </ul>
+                    <div class="pagination-container">
+                        <ul class="pagination" id="receivedTablePagination">
+                            <!--- rmFetchReceived.js --->
+                        </ul>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
 
@@ -92,7 +92,7 @@ $(function(){
                 <div class="table-footer">
                     <div class="pagination-container">
                         <ul class="pagination" id="receivedAdjTablePagination">
-
+                            <!--- rmFetchReceivedAdj.js -->
                         </ul>
                     </div>
                 </div>
