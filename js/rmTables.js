@@ -25,7 +25,7 @@ $(function(){
                     </button>
                 </div>
             </div>
-            <div class="rm-manage-md-card-row">
+            <div class="rm-manage-md-card-table-body">
                 <table class="table table-striped table-responsive table-hover" id="receiveTable">
                     <thead>
                         <tr>
@@ -43,12 +43,12 @@ $(function(){
                         <!--- rmFetchReceived.js --->
                     </tbody>
                 </table>
-                <div class="table-footer">
-                    <div class="pagination-container">
-                        <ul class="pagination" id="receivedTablePagination">
-                            <!--- rmFetchReceived.js --->
-                        </ul>
-                    </div>
+            </div>
+            <div class="table-footer">
+                <div class="pagination-container">
+                    <ul class="pagination" id="receivedTablePagination">
+                        <!--- rmFetchReceived.js --->
+                    </ul>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@ $(function(){
                     <input id="recAdjSearch" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
             </div>
-            <div class="rm-manage-md-card-row">
+            <div class="rm-manage-md-card-table-body">
                 <table class="table table-striped table-responsive table-hover" id="receiveAdjTable">
                     <thead>
                         <tr>
@@ -89,12 +89,12 @@ $(function(){
                         <!--- rmFetchReceivedAdj.js -->
                     </tbody>
                 </table>
-                <div class="table-footer">
-                    <div class="pagination-container">
-                        <ul class="pagination" id="receivedAdjTablePagination">
-                            <!--- rmFetchReceivedAdj.js -->
-                        </ul>
-                    </div>
+            </div>
+            <div class="table-footer">
+                <div class="pagination-container">
+                    <ul class="pagination" id="receivedAdjTablePagination">
+                        <!--- rmFetchReceivedAdj.js -->
+                    </ul>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ $(function(){
     let searchFilter = ''; // filtered by selected column
     let searchKey = ''; // user search keyword
     let pageNumber = 1; // starting page number 
-    let pageSize = 2; // rows every page 
+    let pageSize = 10; // rows every page 
     
     // function that will fetch the dataset
     function preloadTableData() {
@@ -63,7 +63,6 @@ $(function(){
             };
         };
 
-        console.table(filteredResponse)
 
         // pagination method
         // computes the number of rows per page to be displayed
@@ -71,7 +70,6 @@ $(function(){
         let endIndex = startIndex + pageSize; // end of the index of row = startIndex + pageSize
         // assign the filteredResponse (dataset) -> pageData then slice the dataset array /startIndex [row], [row], [row] endIndex/
         let pageData = filteredResponse.slice(startIndex, endIndex);
-        console.table(pageData);
 
         // clear the existing rows before displaying the rows
         $('#receiveTable tbody').empty(); 

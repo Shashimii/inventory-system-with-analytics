@@ -130,6 +130,7 @@ th {
     border-bottom: 1px solid black;
 }
 
+
 /*== Modal Syles End ==*/
 /*== End ==*/
 
@@ -263,15 +264,21 @@ th {
 }
 
 .rm-manage-md-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.1);
     border: 1px solid black;
     border-radius: 5px;
+    height: 660px;
 }
 
-.rm-manage-md-card-row:nth-child(even) {
+.rm-manage-md-card-table-body {
+    flex: 1;
     max-height: calc(60vh);
     overflow-y: auto;
 }
+
 
 .rm-manage-md-card-btn-searchbar {
     display: flex;
