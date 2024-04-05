@@ -18,7 +18,7 @@ $(function() {
                         text: rm_name + '-' + rm_id + ' Receive Quantity is Adjusted',
                         icon: 'success',
                     }).then(function() {
-                        window.location.href = window.location.href;
+                       location.reload();
                     })
                 } else if (response === '1') {
                     Swal.fire({
@@ -26,7 +26,7 @@ $(function() {
                         text: rm_name + '-' + rm_id + ' Received Quantity cannot be Adjusted',
                         icon: 'error',
                     }).then(function() {
-                        window.location.href = window.location.href;
+                        location.reload();
                     })
                 } else {
                     console.log('Hello? Something Went Wrong on Submitting this data')

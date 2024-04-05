@@ -15,7 +15,7 @@ $(function() { // document ready function
                         text: rm_name + '-' + rm_desc + ' is Successfully Registered',
                         icon: 'success',
                     }).then(function() {
-                        window.location.href = window.location.href;
+                        location.reload();
                     })
                 } else if (response === '1') {
                     Swal.fire({
@@ -23,7 +23,7 @@ $(function() { // document ready function
                         text: rm_name + '-' + rm_desc + ' is Already Registered',
                         icon: 'error',
                     }).then(function() {
-                        window.location.href = window.location.href;
+                        location.reload();
                     })
                 } else {
                     console.log('Hello? Something Went Wrong on Submitting this data')
