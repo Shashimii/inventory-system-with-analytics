@@ -10,3 +10,4 @@ $dataActive = 'Y';
 $dataNotActive = 'N';
 $dataStatusReceived = 'Received';
 $dataStatusInProduction = 'InProduction';
+$dataStatusDepleted = 'Depleted';
