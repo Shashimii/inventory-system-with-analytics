@@ -14,4 +14,4 @@ function syncTime() {
 }
 
 syncTime();
-setInterval(syncTime, 1000)
+setInterval(syncTime, 10000)
