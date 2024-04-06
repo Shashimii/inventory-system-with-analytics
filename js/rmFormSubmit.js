@@ -4,11 +4,14 @@ $(function() { // document ready function
 
         var rm_name = $('#regRmName').val(); // inputed name
         var rm_desc = $('#regRmDesc').val(); // inputed description
+        var inputData = $(this).serialize(); // searlize data from php
 
         $.ajax({
             type: 'POST', // type of request on php script
             url: './php/rm_register.php', // php script
+            data: inputData, // data from php script
             success: function(response) {
+                console.log(response);
                 if (response === '0') {
                     Swal.fire({
                         title: 'Registered',
