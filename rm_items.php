@@ -21,7 +21,7 @@ while ($option = $result->fetch_assoc()) {
     <script defer src="./js/rmFormInProduction.js"></script>
     <script src="./js/rmTables.js"></script> <!--- render the table first --->
     <script src="./js/rmFetchReceived.js"></script> <!--- attach the event listeners --->
-    <script src="./js/rmFetchReceivedAdj.js"></script>
+    <script src="./js/rmFetchInProduction.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raw Materials | Hiltac</title>
@@ -140,7 +140,7 @@ while ($option = $result->fetch_assoc()) {
                             </div>
                         </div>
                     </div>
-                    <div class="rm-manage-row-2" id="renderReceiveTable">
+                    <div class="rm-manage-row-2" id="renderRmTable">
                             <!--- rmTables.js --->
                     </div>
                 </div>
@@ -296,13 +296,13 @@ while ($option = $result->fetch_assoc()) {
     </div>
 </div>
 
-<!-- Adjust Quantity -->
-<div class="modal" id="rmAdjReceivedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmAdjReceivedModal" aria-hidden="true">
+<!-- ==>Depleted -->
+<div class="modal" id="rmDepletedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmDepletedModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmAdjReceivedModal">Adjust Quantity</h1>
-                <i class="fa-solid fa-pen-to-square"></i>
+                <h1 class="modal-title fs-5" id="rmDepletedModal">Raw Material Info</h1>
+                <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
@@ -312,30 +312,46 @@ while ($option = $result->fetch_assoc()) {
                             <h3 id="itemInfoQuantity"></h3>
                         </div>
                         <div class="info-header-container">
-                            <h5>Date Received</h5>
+                            <h5>Date In</h5>
                             <p id="itemInfoDate"></p>
-                            <h5>Id</h5>
-                            <p id="itemInfoId"></p>
                         </div>
                     </div>
                     <hr>
-                    <div>
-                    <form id="rmAdjustmentForm">
-                        <label for="adjQuantityReceive">Enter New Quantity</label>
-                        <input name="adj_quantity_receive" id="adjQuantityReceive" placeholder="New Quantity (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
+                    <div class="info-container">
+                        <div>
+                            <h5>Description</h5>
+                            <p id="itemInfoDesc"></p>
+                        </div>
+                        <div>
+                            <h5>Id</h5>
+                            <p id="itemInfoId"></p>
+                        </div>
+                        <div>
+                            <h5>Lot</h5>
+                            <p id="itemInfoLot"></p>
+                        </div>
+                        <div>
+                            <h5>Storage Bin</h5>
+                            <p id="itemInfoBin"></p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                    <input type="hidden" name="item_name" id="itemNameAdj" value="">
-                    <input type="hidden" name="item_id" id="itemIdAdj" value="">
-                    <input type="hidden" name="quantity_receive" id="quantityReceive" value="">
-                    <button type="submit" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>
+                <form id="rmDepletedForm">
+                    <input type="hidden" name="item_name" id="itemName" value="">
+                    <input type="hidden" name="item_desc" id="itemDesc" value="">
+                    <input type="hidden" name="item_id" id="itemId" value="">
+                    <input type="hidden" name="item_lot" id="itemLot" value="">
+                    <input type="hidden" name="item_bin" id="itemBin" value="">
+                    <input type="hidden" name="item_quantity" id="itemQuantity" value="">
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Mark as Depleted</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
+
 
 </html>
