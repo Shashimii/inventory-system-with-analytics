@@ -23,6 +23,7 @@ while ($option = $result->fetch_assoc()) {
     <script src="./js/rmTables.js"></script> <!--- render the table first --->
     <script src="./js/rmFetchReceived.js"></script> <!--- attach the event listeners --->
     <script src="./js/rmFetchInProduction.js"></script>
+    <script src="./js/rmFetchDepleted.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raw Materials | Hiltac</title>
@@ -366,6 +367,73 @@ while ($option = $result->fetch_assoc()) {
         </div>
     </div>
 </div>
+
+<!-- ==>Remove -->
+<div class="modal" id="rmRemoveModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmRemoveModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="rmRemoveModal">Raw Material Info</h1>
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="modal-body">
+                <div class="rm-info-container">
+                    <div class="rm-info-header">
+                        <div class="info-header-container">
+                            <h1 id="itemInfoName"></h1>
+                            <div class="info-quantity-container">
+                                <div>
+                                    <h5>Quantity Scrap</h5>
+                                    <p id="itemInfoQuantityScrap"></p>
+                                </div>
+                                <div>
+                                    <h5>Quantity Used</h5>
+                                    <p id="itemInfoQuantityUsed"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-header-container">
+                            <h5>Date In</h5>
+                            <p id="itemInfoDate"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info-container">
+                        <div>
+                            <h5>Description</h5>
+                            <p id="itemInfoDesc"></p>
+                        </div>
+                        <div>
+                            <h5>Id</h5>
+                            <p id="itemInfoId"></p>
+                        </div>
+                        <div>
+                            <h5>Lot</h5>
+                            <p id="itemInfoLot"></p>
+                        </div>
+                        <div>
+                            <h5>Storage Bin</h5>
+                            <p id="itemInfoBin"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form id="rmRemoveForm">
+                    <input type="hidden" name="item_name" id="itemName" value="">
+                    <input type="hidden" name="item_desc" id="itemDesc" value="">
+                    <input type="hidden" name="item_id" id="itemId" value="">
+                    <input type="hidden" name="item_lot" id="itemLot" value="">
+                    <input type="hidden" name="item_bin" id="itemBin" value="">
+                    <input type="hidden" name="item_quantity" id="itemQuantity" value="">
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Remove From the List</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Adjust Quantity -->
 <div class="modal" id="rmAdjReceivedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmAdjReceivedModal" aria-hidden="true">
