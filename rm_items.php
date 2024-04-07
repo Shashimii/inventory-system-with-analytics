@@ -19,6 +19,7 @@ while ($option = $result->fetch_assoc()) {
     <script defer src="./js/rmFormReceive.js"></script>
     <script defer src="./js/rmFormInProduction.js"></script>
     <script defer src="./js/rmMarkDepleted.js"></script>
+    <script defer src="./js/rmFormRemove.js"></script>
     <script defer src="./js/rmFormReceiveAdj.js"></script>
     <script src="./js/rmTables.js"></script> <!-- render the table first -->
     <script src="./js/rmFetchReceived.js"></script> <!-- attach the event listeners -->
@@ -421,11 +422,7 @@ while ($option = $result->fetch_assoc()) {
             <div class="modal-footer">
                 <form id="rmRemoveForm">
                     <input type="hidden" name="item_name" id="itemName" value="">
-                    <input type="hidden" name="item_desc" id="itemDesc" value="">
                     <input type="hidden" name="item_id" id="itemId" value="">
-                    <input type="hidden" name="item_lot" id="itemLot" value="">
-                    <input type="hidden" name="item_bin" id="itemBin" value="">
-                    <input type="hidden" name="item_quantity" id="itemQuantity" value="">
                     <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Remove From the List</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

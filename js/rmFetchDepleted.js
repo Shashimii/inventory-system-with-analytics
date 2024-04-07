@@ -188,10 +188,7 @@ $(function() {
     
         // data attached to the modal to be used
         $('#rmRemoveModal #itemName').val(itemName);
-        $('#rmRemoveModal #itemDesc').val(itemDesc);
         $('#rmRemoveModal #itemId').val(itemId);
-        $('#rmRemoveModal #itemLot').val(itemLot);
-        $('#rmRemoveModal #itemBin').val(itemBin);
     });
     
 });
