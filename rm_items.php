@@ -167,11 +167,11 @@ while ($option = $result->fetch_assoc()) {
                     <div class="rm-form-container">
                         <div class="ipt-container">
                             <label for="regRmName">Name</label>
-                            <input name="reg_rm_name" id="regRmName" placeholder="Enter Raw Material Name" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="15" class="form-control form-control-sm" type="text" required>
+                            <input name="reg_rm_name" id="regRmName" placeholder="Enter Raw Material Name" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
                         </div>
                         <div class="ipt-container">
                             <label for="regRmDesc">Description</label>
-                            <input name="reg_rm_desc" id="regRmDesc" placeholder="Enter Raw Material Name" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="15" class="form-control form-control-sm" type="text" required>
+                            <input name="reg_rm_desc" id="regRmDesc" placeholder="Enter Raw Material Name" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
                         </div>
                     </div>
             </div>
@@ -219,7 +219,7 @@ while ($option = $result->fetch_assoc()) {
                         </div>
                         <div class="ipt-container">
                             <label for="recRmId">Id</label>
-                            <input name="rec_rm_id" id="recRmId" placeholder="Enter Raw Material Id" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="15" class="form-control form-control-sm" type="text" required>
+                            <input name="rec_rm_id" id="recRmId" placeholder="Enter Raw Material Id" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
                         </div>
 
                         <div class="ipt-container">
@@ -350,7 +350,7 @@ while ($option = $result->fetch_assoc()) {
                             <option value="PCS">PCS</option>
                         </select>
                         <label for="scrapQuantity">Enter Scrap (KG)</label>
-                        <input name="quantity_scrap" id="scrapQuantity" placeholder="Scrap (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
+                        <input name="quantity_scrap" id="scrapQuantity" placeholder="Scrap (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number" required>
                     </div>
                 </div>
             </div>
