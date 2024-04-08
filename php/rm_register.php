@@ -7,8 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $rm_name = $_POST['reg_rm_name'];
         $rm_desc = $_POST['reg_rm_desc'];
 
-        $stmt = $con->prepare("SELECT * FROM rm_registered WHERE rm_name = ? AND rm_description = ?");
-        $stmt->bind_param('ss', $rm_name, $rm_desc);
+        $stmt = $con->prepare("SELECT * FROM rm_registered WHERE rm_name = ?");
+        $stmt->bind_param('s', $rm_name);
         $stmt->execute();
         $result = $stmt->get_result();
         $num_rows = $result->num_rows;
