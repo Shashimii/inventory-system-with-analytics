@@ -13,7 +13,6 @@ $(function() { // document ready function
             url: './php/rm_receive.php', // php script
             data: inputData, // seralized data to POST request
             success: function(response) {
-                console.log(response)
                 if (response === '0') {
                     Swal.fire({
                         title: 'Received',
@@ -27,8 +26,6 @@ $(function() { // document ready function
                         title: 'Oops',
                         text: rm_name + '-' + rm_desc + '-' + rm_id + '-' + rm_quantity + 'KG is Already Received',
                         icon: 'error',
-                    }).then(function() {
-                        location.reload();
                     })
                 } else {
                     console.log('Hello? Something Went Wrong on Submitting this data')
