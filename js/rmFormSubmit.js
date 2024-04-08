@@ -11,7 +11,6 @@ $(function() { // document ready function
             url: './php/rm_register.php', // php script
             data: inputData, // data from php script
             success: function(response) {
-                console.log(response);
                 if (response === '0') {
                     Swal.fire({
                         title: 'Registered',
