@@ -355,12 +355,12 @@ while ($option = $result->fetch_assoc()) {
                 </div>
             </div>
             <div class="modal-footer">
-                    <input type="hidden" name="item_name" id="itemName" value="">
-                    <input type="hidden" name="item_desc" id="itemDesc" value="">
-                    <input type="hidden" name="item_id" id="itemId" value="">
-                    <input type="hidden" name="item_lot" id="itemLot" value="">
-                    <input type="hidden" name="item_bin" id="itemBin" value="">
-                    <input type="hidden" name="item_quantity" id="itemQuantity" value="">
+                    <input type="hidden" name="item_name" id="ditemName" value="">
+                    <input type="hidden" name="item_desc" id="ditemDesc" value="">
+                    <input type="hidden" name="item_id" id="ditemId" value="">
+                    <input type="hidden" name="item_lot" id="ditemLot" value="">
+                    <input type="hidden" name="item_bin" id="ditemBin" value="">
+                    <input type="hidden" name="item_quantity" id="ditemQuantity" value="">
                     <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Mark as Depleted</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

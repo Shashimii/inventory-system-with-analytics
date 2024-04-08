@@ -181,11 +181,11 @@ $(function() {
         $('#rmDepletedModal p#itemInfoBin').text(itemBin);
 
         // data attached to the modal to be used
-        $('#rmDepletedModal #itemName').val(itemName);
-        $('#rmDepletedModal #itemDesc').val(itemDesc);
-        $('#rmDepletedModal #itemId').val(itemId);
-        $('#rmDepletedModal #itemLot').val(itemLot);
-        $('#rmDepletedModal #itemBin').val(itemBin);
-        $('#rmDepletedModal #itemQuantity').val(itemQuantity);
+        $('#rmDepletedModal #ditemName').val(itemName);
+        $('#rmDepletedModal #ditemDesc').val(itemDesc);
+        $('#rmDepletedModal #ditemId').val(itemId);
+        $('#rmDepletedModal #ditemLot').val(itemLot);
+        $('#rmDepletedModal #ditemBin').val(itemBin);
+        $('#rmDepletedModal #ditemQuantity').val(itemQuantity);
     });
 });
