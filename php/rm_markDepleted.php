@@ -16,7 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $scrap_quantity = $_POST['quantity_scrap'];
         $rm_quantity_used = $rm_quantity - $scrap_quantity;
 
-        if ($rm_quantity_used < 0) {
+        if ($rm_quantity_used === 0) {
+            echo '8';
+        } else if ($rm_quantity_used < 0) {
             echo '9';
         } else {
             $stmt = $con->prepare("SELECT * FROM rm_data WHERE item_name = ? AND item_id = ? AND item_data_status = ?");
