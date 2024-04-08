@@ -2,9 +2,9 @@ $(function() {
     $('#rmDepletedForm').on('submit', function(event) { 
         event.preventDefault();
         
-        var rm_name = $('#itemName').val(); 
-        var rm_desc = $('#itemDesc').val(); 
-        var rm_id = $('#itemId').val(); 
+        var rm_name = $('#ditemName').val(); 
+        var rm_desc = $('#ditemDesc').val(); 
+        var rm_id = $('#ditemId').val(); 
         var inputData = $(this).serialize();
 
         $.ajax({
@@ -12,7 +12,6 @@ $(function() {
             url: './php/rm_markDepleted.php',
             data: inputData,
             success: function(response) {
-                console.log(response)
                 switch(response) {
                     case '0':
                         Swal.fire({
