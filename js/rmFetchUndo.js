@@ -11,17 +11,17 @@ $(document).on('click', '#undoReceive', function(){
             var name = lastReceived.item_name;
             var id = lastReceived.item_id;
 
-            $('#undoModal p#undoInfoDate').text(date);
-            $('#undoModal p#undoInfoTime').text(time);
-            $('#undoModal h1#undoInfoName').text(name);
-            $('#undoModal p#undoInfoUser').text(user);
-            $('#undoModal h4#undoInfoId').text(id);
+            $('#undoReceivedModal p#undoRecievedInfoDate').text(date);
+            $('#undoReceivedModal p#undoReceivedInfoTime').text(time);
+            $('#undoReceivedModal h1#undoReceivedInfoName').text(name);
+            $('#undoReceivedModal p#undoReceivedInfoUser').text(user);
+            $('#undoReceivedModal h4#undoReceivedInfoId').text(id);
 
-            $('#undoModal #undoReceivedDate').val(date);
-            $('#undoModal #undoReceivedTime').val(time);
-            $('#undoModal #undoReceivedName').val(name);
-            $('#undoModal #undoReceivedUser').val(user);
-            $('#undoModal #undoReceivedId').val(id);
+            $('#undoReceivedModal #undoReceivedDate').val(date);
+            $('#undoReceivedModal #undoReceivedTime').val(time);
+            $('#undoReceivedModal #undoReceivedName').val(name);
+            $('#undoReceivedModal #undoReceivedUser').val(user);
+            $('#undoReceivedModal #undoReceivedId').val(id);
         },
         error: function(xhr, status, error) {
             console.error(xhr.responseText); 
@@ -31,13 +31,31 @@ $(document).on('click', '#undoReceive', function(){
 
 $(document).on('click', '#undoInProduction', function(){
         $.ajax({
-        url: '',
+        url: './php/rm_undo_inProdcution_data.php',
         method: 'GET',
         success: function(response) {
+            lastReceived = response[response.length - 1];
 
+            var date = lastReceived.action_date;
+            var time = lastReceived.action_time;
+            var user = lastReceived.action_by;
+            var name = lastReceived.item_name;
+            var id = lastReceived.item_id;
+
+            $('#undoInProductionModal p#undoInProductionInfoDate').text(date);
+            $('#undoInProductionModal p#undoInProductionInfoTime').text(time);
+            $('#undoInProductionModal h1#undoInProductionInfoName').text(name);
+            $('#undoInProductionModal p#undoInProductionInfoUser').text(user);
+            $('#undoInProductionModal h4#undoInProductionInfoId').text(id);
+
+            $('#undoInProductionModal #undoInProductionDate').val(date);
+            $('#undoInProductionModal #undoInProductionTime').val(time);
+            $('#undoInProductionModal #undoInProductionName').val(name);
+            $('#undoInProductionModal #undoInProductionUser').val(user);
+            $('#undoInProductionModal #undoInProductionId').val(id);
         },
         error: function(xhr, status, error) {
-            
+            console.error(xhr.responseText); 
         }
     })
 })

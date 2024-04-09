@@ -24,7 +24,7 @@ $(function(){
                         Receive
                     </button>
                     <button id="undoReceive" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#undoModal"><i class="fa-solid fa-rotate-left"></i>
+                    data-bs-target="#undoReceivedModal"><i class="fa-solid fa-rotate-left"></i>
                         Undo
                     </button>
                 </div>
@@ -85,6 +85,10 @@ $(function(){
                     <button class="btn btn-success btn-sm" data-bs-toggle="modal"
                         data-bs-target="#receiveModal"><i class="fa-solid fa-hands-holding-circle"></i>
                         Receive
+                    </button>
+                    <button id="undoInProduction" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#undoInProductionModal"><i class="fa-solid fa-rotate-left"></i>
+                        Undo
                     </button>
                 </div>
             </div>

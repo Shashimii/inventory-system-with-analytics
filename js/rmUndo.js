@@ -25,3 +25,31 @@ $(document).on('submit', '#undoReceivedForm', function(event){
         }
     })
 })
+
+$(document).on('submit', '#undoInProductionForm', function(event){
+    event.preventDefault();
+
+    var inputData = $(this).serialize();
+    $.ajax({
+        url: './php/rm_undo_InProduction.php',
+        method: 'POST',
+        data: inputData,
+        success: function(response) {
+            console.log(response);
+            if (response === '0') {
+                Swal.fire({
+                    title: 'Undoing last In Production',
+                    text: 'Last In Production Raw Material has been Returned to Received',
+                    icon: 'success',
+                }).then(function() {
+                    location.reload();
+                })
+            } else {
+                console.log('Hello? Something Went Wrong on Submitting this data')
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText); 
+        }
+    })
+})

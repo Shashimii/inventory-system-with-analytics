@@ -476,33 +476,33 @@ while ($option = $result->fetch_assoc()) {
     </div>
 </div>
 
-<!-- Undo -->
-<div class="modal" id="undoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="undoModal" aria-hidden="true">
+<!-- Undo Received -->
+<div class="modal" id="undoReceivedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="undoReceivedModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="undoModal">Undo Last Received Raw Material</h1>
+                <h1 class="modal-title fs-5" id="undoReceivedModal">Undo Last Received Raw Material</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
                     <div class="rm-info-header">
                         <div class="info-header-container">
-                            <h1 id="undoInfoName"></h1>
-                            <h4 id="undoInfoId"></h4>
+                            <h1 id="undoReceivedInfoName"></h1>
+                            <h4 id="undoReceivedInfoId"></h4>
                         </div>
                         <div class="info-header-container">
                             <h5>Date Received</h5>
-                            <p id="undoInfoDate"></p>
+                            <p id="undoRecievedInfoDate"></p>
                             <h5>Time Received</h5>
-                            <p id="undoInfoTime"></p>
+                            <p id="undoReceivedInfoTime"></p>
                         </div>
                     </div>
                     <hr>
                     <div class="info-container">
                         <div>
                             <h5>Received By</h5>
-                            <p id="undoInfoUser"></p>
+                            <p id="undoRecievedInfoUser"></p>
                         </div>
                     </div>
                     <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Removed from the Inventory if you Undo your Last Received</h6>
@@ -523,5 +523,51 @@ while ($option = $result->fetch_assoc()) {
     </div>
 </div>
 
+<!-- Undo In Production -->
+<div class="modal" id="undoInProductionModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="undoInProductionModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="undoInProductionModal">Undo Last In Production Raw Material</h1>
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="modal-body">
+                <div class="rm-info-container">
+                    <div class="rm-info-header">
+                        <div class="info-header-container">
+                            <h1 id="undoInProductionInfoName"></h1>
+                            <h4 id="undoInProductionInfoId"></h4>
+                        </div>
+                        <div class="info-header-container">
+                            <h5>Date Received</h5>
+                            <p id="undoInProductionInfoDate"></p>
+                            <h5>Time Received</h5>
+                            <p id="undoInProductionInfoTime"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info-container">
+                        <div>
+                            <h5>In Production By</h5>
+                            <p id="undoInProductionInfoUser"></p>
+                        </div>
+                    </div>
+                    <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Returned Back to Received if you Undo your Last In Production</h6>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form id="undoInProductionForm">
+                    <input type="hidden" name="action_date" id="undoInProductionDate" value="">
+                    <input type="hidden" name="action_time" id="undoInProductionTime" value="">
+                    <input type="hidden" name="item_name" id="undoInProductionName" value="">
+                    <input type="hidden" name="action_by" id="undoInProductionUser" value="">
+                    <input type="hidden" name="item_id" id="undoInProductionId" value="">
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-triangle-exclamation"></i> Undo Last In Production Raw Material</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </html>
