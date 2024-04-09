@@ -396,7 +396,7 @@ while ($option = $result->fetch_assoc()) {
                             </div>
                         </div>
                         <div class="info-header-container">
-                            <h5>Date In</h5>
+                            <h5>Date Depleted</h5>
                             <p id="itemInfoDate"></p>
                         </div>
                     </div>
@@ -539,9 +539,9 @@ while ($option = $result->fetch_assoc()) {
                             <h4 id="undoInProductionInfoId"></h4>
                         </div>
                         <div class="info-header-container">
-                            <h5>Date Received</h5>
+                            <h5>Date In</h5>
                             <p id="undoInProductionInfoDate"></p>
-                            <h5>Time Received</h5>
+                            <h5>Time In</h5>
                             <p id="undoInProductionInfoTime"></p>
                         </div>
                     </div>
@@ -570,4 +570,50 @@ while ($option = $result->fetch_assoc()) {
     </div>
 </div>
 
+<!-- Undo Depleted -->
+<div class="modal" id="undoDepletedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="undoDepletedModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="undoDepletedModal">Undo Last Marked as Depleted Raw Material</h1>
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="modal-body">
+                <div class="rm-info-container">
+                    <div class="rm-info-header">
+                        <div class="info-header-container">
+                            <h1 id="undoDepletedInfoName"></h1>
+                            <h4 id="undoDepletedInfoId"></h4>
+                        </div>
+                        <div class="info-header-container">
+                            <h5>Date Depleted</h5>
+                            <p id="undoDepletedInfoDate"></p>
+                            <h5>Time Depleted</h5>
+                            <p id="undoDepletedInfoTime"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info-container">
+                        <div>
+                            <h5>In Production By</h5>
+                            <p id="undoDepletedInfoUser"></p>
+                        </div>
+                    </div>
+                    <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Returned Back to In Production if you Undo your Last Marked as Depleted</h6>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form id="undoDepletedForm">
+                    <input type="hidden" name="action_date" id="undoDepletedDate" value="">
+                    <input type="hidden" name="action_time" id="undoDepletedTime" value="">
+                    <input type="hidden" name="item_name" id="undoDepletedName" value="">
+                    <input type="hidden" name="action_by" id="undoDepletedUser" value="">
+                    <input type="hidden" name="item_id" id="undoDepletedId" value="">
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-triangle-exclamation"></i> Undo Last Marked as Depleted Raw Material</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </html>

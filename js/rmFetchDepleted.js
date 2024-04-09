@@ -12,7 +12,11 @@ $(function() {
                 method: 'GET',
                 success: function(response) {
                     tableData = response; 
-                    depletedTableData(); 
+                    depletedTableData();
+                    
+                    if (tableData.length === 0) { 
+                        $('#undoDepleted').hide();
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText); 

@@ -13,6 +13,10 @@ $(function() {
                 success: function(response) {
                     tableData = response; 
                     inProductionTableData(); 
+
+                    if (tableData.length === 0) { 
+                        $('#undoInProduction').hide();
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText); 

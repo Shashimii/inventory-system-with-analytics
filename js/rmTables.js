@@ -149,13 +149,17 @@ $(function(){
                         data-bs-target="#receiveModal"><i class="fa-solid fa-hands-holding-circle"></i>
                         Receive
                     </button>
+                    <button id="undoDepleted" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#undoDepletedModal"><i class="fa-solid fa-rotate-left"></i>
+                        Undo
+                    </button>
                 </div>
             </div>
             <div class="table-body">
                 <table class="table table-striped table-responsive table-hover" id="depletedTable">
                     <thead>
                         <tr>
-                            <th scope="col">Date In</th>
+                            <th scope="col">Date Depleted</th>
                             <th scope="col">Raw Material</th>
                             <th scope="col">Description</th>
                             <th scope="col">Id</th>

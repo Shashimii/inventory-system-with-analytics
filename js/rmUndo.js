@@ -7,7 +7,6 @@ $(document).on('submit', '#undoReceivedForm', function(event){
         method: 'POST',
         data: inputData,
         success: function(response) {
-            console.log(response);
             if (response === '0') {
                 Swal.fire({
                     title: 'Undoing last Receive',
@@ -35,11 +34,38 @@ $(document).on('submit', '#undoInProductionForm', function(event){
         method: 'POST',
         data: inputData,
         success: function(response) {
-            console.log(response);
             if (response === '0') {
                 Swal.fire({
                     title: 'Undoing last In Production',
                     text: 'Last In Production Raw Material has been Returned to Received',
+                    icon: 'success',
+                }).then(function() {
+                    location.reload();
+                })
+            } else {
+                console.log('Hello? Something Went Wrong on Submitting this data')
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText); 
+        }
+    })
+})
+
+$(document).on('submit', '#undoDepletedForm', function(event){
+    event.preventDefault();
+
+    var inputData = $(this).serialize();
+    $.ajax({
+        url: './php/rm_undo_depleted.php',
+        method: 'POST',
+        data: inputData,
+        success: function(response) {
+            console.log(response);
+            if (response === '0') {
+                Swal.fire({
+                    title: 'Undoing last In Production',
+                    text: 'Last Marked as Depleted Raw Material has been Returned to Production',
                     icon: 'success',
                 }).then(function() {
                     location.reload();
