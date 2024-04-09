@@ -47,15 +47,7 @@ $(function() {
                         filteredResponse = tableData.filter(item => item.quantity_inProduction.toString().includes(searchKey));
                         break;
                     default:
-                        filteredResponse = tableData.filter(item => {
-                            return Object.values(item).some(value => {
-                                if (typeof value === 'string') {
-                                    return value.toLowerCase().includes(searchKey.toLowerCase());
-                                } else if (typeof value === 'number') {
-                                    return value.toString().includes(searchKey);
-                                }
-                            });
-                        });
+                        filteredResponse = tableData.filter(item => `${item.item_id} ${item.item_lot} ${item.item_bin}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
                         break;
                 };
             };

@@ -50,15 +50,7 @@ $(function() {
                         filteredResponse = tableData.filter(item => item.quantity_used.toString().includes(searchKey));
                         break;
                     default:
-                        filteredResponse = tableData.filter(item => {
-                            return Object.values(item).some(value => {
-                                if (typeof value === 'string') {
-                                    return value.toLowerCase().includes(searchKey.toLowerCase());
-                                } else if (typeof value === 'number') {
-                                    return value.toString().includes(searchKey);
-                                }
-                            });
-                        });
+                        filteredResponse = tableData.filter(item => `${item.item_id} ${item.item_lot} ${item.item_bin}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
                         break;
                 };
             };
@@ -73,7 +65,7 @@ $(function() {
 
             if (pageData.length === 0) {
                 tableRow = '<tr>';
-                tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; 
+                tableRow += '<td colspan="9" style="text-align: center;">There is No Data</td>'; 
                 tableRow += '</tr>';
                 $('#depletedTable').append(tableRow);
             } else {
