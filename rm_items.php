@@ -21,10 +21,12 @@ while ($option = $result->fetch_assoc()) {
     <script defer src="./js/rmMarkDepleted.js"></script>
     <script defer src="./js/rmFormRemove.js"></script>
     <script defer src="./js/rmFormReceiveAdj.js"></script>
+    <script defer src="./js/rmUndo.js"></script>
     <script src="./js/rmTables.js"></script> <!-- render the table first -->
     <script src="./js/rmFetchReceived.js"></script> <!-- attach the event listeners -->
     <script src="./js/rmFetchInProduction.js"></script>
     <script src="./js/rmFetchDepleted.js"></script>
+    <script src="./js/rmFetchUndo.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raw Materials | Hiltac</title>
@@ -467,6 +469,53 @@ while ($option = $result->fetch_assoc()) {
                     <input type="hidden" name="item_id" id="itemIdAdj" value="">
                     <input type="hidden" name="quantity_receive" id="quantityReceive" value="">
                     <button type="submit" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Undo -->
+<div class="modal" id="undoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="undoModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="undoModal">Undo Last Received Raw Material</h1>
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="modal-body">
+                <div class="rm-info-container">
+                    <div class="rm-info-header">
+                        <div class="info-header-container">
+                            <h1 id="undoInfoName"></h1>
+                            <h4 id="undoInfoId"></h4>
+                        </div>
+                        <div class="info-header-container">
+                            <h5>Date Received</h5>
+                            <p id="undoInfoDate"></p>
+                            <h5>Time Received</h5>
+                            <p id="undoInfoTime"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info-container">
+                        <div>
+                            <h5>Received By</h5>
+                            <p id="undoInfoUser"></p>
+                        </div>
+                    </div>
+                    <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Removed from the Inventory if you Undo your Last Received</h6>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form id="undoReceivedForm">
+                    <input type="hidden" name="action_date" id="undoReceivedDate" value="">
+                    <input type="hidden" name="action_time" id="undoReceivedTime" value="">
+                    <input type="hidden" name="item_name" id="undoReceivedName" value="">
+                    <input type="hidden" name="action_by" id="undoReceivedUser" value="">
+                    <input type="hidden" name="item_id" id="undoReceivedId" value="">
+                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-triangle-exclamation"></i> Undo Last Received Raw Material</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>

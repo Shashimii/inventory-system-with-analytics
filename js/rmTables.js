@@ -9,7 +9,7 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected hidden value="">Filter by...</option>
+                    <option selected value="">Id Lot Bin</option>
                     <option value="date">Date Received</option>
                     <option value="name">Name</option>
                     <option value="desc">Description</option>
@@ -22,6 +22,10 @@ $(function(){
                     <button class="btn btn-success btn-sm" data-bs-toggle="modal"
                         data-bs-target="#receiveModal"><i class="fa-solid fa-hands-holding-circle"></i>
                         Receive
+                    </button>
+                    <button id="undoReceive" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#undoModal"><i class="fa-solid fa-rotate-left"></i>
+                        Undo
                     </button>
                 </div>
             </div>
@@ -68,7 +72,7 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected hidden value="">Filter by...</option>
+                    <option selected value="">Id Lot Bin</option>
                     <option value="date">Date In</option>
                     <option value="name">Name</option>
                     <option value="desc">Description</option>
@@ -126,7 +130,7 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected hidden value="">Filter by...</option>
+                    <option selected value="">Id Lot Bin</option>
                     <option value="date">Date In</option>
                     <option value="name">Name</option>
                     <option value="desc">Description</option>
