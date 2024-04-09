@@ -14,6 +14,11 @@ $(function(){
                 success: function(response) {
                     tableData = response; // stores the response -> tableData array variable
                     receiveTableData(); // displays the table with the start of the tableData array (dataset)
+
+                    // hide the undo button if there is no data
+                    if (tableData.length === 0) { 
+                        $('#undoReceive').hide();
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText); // error logging -> console
@@ -50,16 +55,8 @@ $(function(){
                         filteredResponse = tableData.filter(item => item.quantity_receive.toString().includes(searchKey));
                         break;
                     default:
-                        // if no filter selected search to all columns
-                        filteredResponse = tableData.filter(item => {
-                            return Object.values(item).some(value => {
-                                if (typeof value === 'string') {
-                                    return value.toLowerCase().includes(searchKey.toLowerCase());
-                                } else if (typeof value === 'number') {
-                                    return value.toString().includes(searchKey);
-                                }
-                            });
-                        });
+                        // if no filter selected search by item lot bin combined
+                        filteredResponse = tableData.filter(item => `${item.item_id} ${item.item_lot} ${item.item_bin}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
                         break;
                 };
             };
