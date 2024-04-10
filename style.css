@@ -319,4 +319,13 @@ th {
 
 /*== RM History End ==*/
 
+/*== RM Status ==*/
+
+.rm-status-row-1 {
+    flex: 1;
+    display: flex;
+}
+
+/*== RM Status End ==*/
+
 /*== End ==*/

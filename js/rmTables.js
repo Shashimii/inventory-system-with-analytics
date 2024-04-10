@@ -238,9 +238,58 @@ $(function(){
         $('#renderHistoryTable').append(tableStructure);
     }
 
-    rmRecTableStructure(); // recieve table default displayed
-    rmHistoryTableStructure(); // history table default displayed
+    function rmStatusTableStructure() {
+        $('#renderStatusTable').empty(); 
+        var tableStructure = `
+        <div class="rm-manage-md-card">
+            <div class="rm-manage-md-card-row">
+                <div class="rm-manage-md-card-item">
+                    <h4>Raw Material Status</h4>
+                </div>
+                <div class="rm-manage-md-card-btn-searchbar">
+                <select id="searchFilter" class="form-select form-select-sm dropdown" required>
+                    <option selected value="">Search By...</option>
+                    <option value="name">Name</option>
+                    <option value="desc">Description</option>
+                </select>
+                    <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
+                </div>
+            </div>
+            <div class="table-body">
+                <table class="table table-striped table-responsive table-hover" id="statusTable">
+                    <thead>
+                        <tr>
+                        <th scope="col">Raw Material</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Received</th>
+                        <th scope="col">In Production</th>
+                        <th scope="col">Scrap</th>
+                        <th scope="col">Used</th>
+                        <th scope="col">FG PLY</th>
+                        <th scope="col">FG PCS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-footer">
+                <div class="pagination-container">
+                    <ul class="pagination" id="statusTablePagination">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        `;
+
+        $('#renderStatusTable').append(tableStructure);
+    }
+
+    rmRecTableStructure(); // recieve table default displayed
+    rmHistoryTableStructure(); // history table display
+    rmStatusTableStructure() // status table display
 
 
     // switch displays between tables
