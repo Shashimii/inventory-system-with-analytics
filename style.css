@@ -110,7 +110,6 @@ th {
 /*== Table Styles ==*/
 .table-body {
     flex: 1;
-    max-height: calc(70vh);
     overflow-y: auto;
 }
 
@@ -150,6 +149,7 @@ th {
     border: 2px solid #D24545;
     border-radius: 50px;
 }
+
 
 /*== End ==*/
 
@@ -283,13 +283,13 @@ th {
 }
 
 .rm-manage-md-card {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.1);
     border: 1px solid black;
     border-radius: 5px;
-    height: 660px;
 }
 
 .rm-manage-md-card-btn-searchbar {
@@ -309,5 +309,14 @@ th {
 }
 
 /*== RM Manage End==*/
+
+/*== RM History ==*/
+
+.rm-history-row-1 {
+    flex: 1;
+    display: flex;
+}
+
+/*== RM History End ==*/
 
 /*== End ==*/
