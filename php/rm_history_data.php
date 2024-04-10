@@ -13,7 +13,7 @@ if ($result1->num_rows > 0) {
         $item_identity = $row;
         $item_name = $item_identity['item_name'];
         $item_id = $item_identity['item_id'];
-        $stmt = $con->prepare("SELECT action_date, action_time, action_by, quantity_receive, quantity_inProduction, quantity_scrap, quantity_used FROM rm_data WHERE item_name = ? AND item_id = ?");
+        $stmt = $con->prepare("SELECT action_date, action_time, action_by, quantity_receive, quantity_inProduction, quantity_scrap, quantity_used, quantity_created_ply, quantity_created_pcs FROM rm_data WHERE item_name = ? AND item_id = ?");
         $stmt->bind_param('ss', $item_name, $item_id);
         $stmt->execute();
         $result2 = $stmt->get_result();
