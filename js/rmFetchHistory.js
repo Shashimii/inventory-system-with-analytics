@@ -20,7 +20,6 @@ $(function(){
     }
 
     function historyTableData() {
-        console.log('called')
         let filteredResponse = tableData; 
         if (searchKey !== '') { 
             switch (searchFilter) { 
