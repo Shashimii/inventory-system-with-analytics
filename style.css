@@ -90,11 +90,6 @@ th {
 }
 
 /*== Info Modal ==*/
-.rm-info-header {
-    display: flex;
-    justify-content: space-between;
-}
-
 .info-container {
     display: flex;
     justify-content: space-between;
@@ -308,6 +303,16 @@ th {
     box-shadow: 0px 1px 10px 4px rgba(0,0,0,0.2);
 }
 
+.rm-info-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rm-depleted-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 /*== RM Manage End==*/
 
 /*== RM History ==*/
@@ -327,5 +332,29 @@ th {
 }
 
 /*== RM Status End ==*/
+
+/*== FG Mange ==*/
+
+.fg-manage-row-1 {
+    flex: 1;
+    display: flex;
+}
+
+.fg-pack-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.fg-info-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/*== RM Manage En
+
+/*== FG Manage End ==*/
 
 /*== End ==*/
