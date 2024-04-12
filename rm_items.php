@@ -1,13 +1,21 @@
 <?php
 include 'connections.php';
 
-$options = [];
+$RmOptions = [];
+$FgOptions = [];
 
 // raw material names
 $nameQuery = "SELECT * FROM rm_registered";
 $result = $con->query($nameQuery);
-while ($option = $result->fetch_assoc()) {
-    $options[] = array('rm_name' => $option['rm_name'], 'rm_desc' => $option['rm_description']);
+while ($optionRm = $result->fetch_assoc()) {
+    $RmOptions[] = array('rm_name' => $optionRm['rm_name'], 'rm_desc' => $optionRm['rm_description']);
+}
+
+// fg names
+$nameQuery = "SELECT * FROM fg_registered";
+$result = $con->query($nameQuery);
+while ($optionFg = $result->fetch_assoc()) {
+    $FgOptions[] = array('fg_name' => $optionFg['fg_name'], 'fg_desc' => $optionFg['fg_description']);
 }
 ?>
 
@@ -202,7 +210,7 @@ while ($option = $result->fetch_assoc()) {
                             <select name="rec_rm_name" id="recRmName" class="form-select form-select-sm dropdown" required>
                                 <option selected hidden value="">Select Raw Material</option>
                                 <?php 
-                                 foreach ($options as $option) {
+                                 foreach ($RmOptions as $option) {
                                     echo "<option value='". $option['rm_name'] ."' data-description='". $option['rm_desc'] ."'>". $option['rm_name'] ."</option>";
                                  }
                                 ?>
@@ -303,68 +311,94 @@ while ($option = $result->fetch_assoc()) {
 
 <!-- ==>Depleted -->
 <div class="modal" id="rmDepletedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmDepletedModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="rmDepletedModal">Raw Material Info</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
-                <div class="rm-info-container">
-                    <div class="rm-info-header">
-                        <div class="info-header-container">
-                            <h1 id="itemInfoName"></h1>
-                            <h3 id="itemInfoQuantity"></h3>
+                <div class="rm-depleted-form-container">
+                    <div class="rm-info-container">
+                        <div class="rm-info-header">
+                            <div class="info-header-container">
+                                <h1 id="itemInfoName"></h1>
+                                <h3 id="itemInfoQuantity"></h3>
+                            </div>
+                            <div class="info-header-container">
+                                <h5>Date In</h5>
+                                <p id="itemInfoDate"></p>
+                            </div>
                         </div>
-                        <div class="info-header-container">
-                            <h5>Date In</h5>
-                            <p id="itemInfoDate"></p>
+                        <hr>
+                        <div class="info-container">
+                            <div>
+                                <h5>Description</h5>
+                                <p id="itemInfoDesc"></p>
+                            </div>
+                            <div>
+                                <h5>Id</h5>
+                                <p id="itemInfoId"></p>
+                            </div>
+                            <div>
+                                <h5>Lot</h5>
+                                <p id="itemInfoLot"></p>
+                            </div>
+                            <div>
+                                <h5>Storage Bin</h5>
+                                <p id="itemInfoBin"></p>
+                            </div>
                         </div>
                     </div>
-                    <hr>
-                    <div class="info-container">
-                        <div>
-                            <h5>Description</h5>
-                            <p id="itemInfoDesc"></p>
-                        </div>
-                        <div>
-                            <h5>Id</h5>
-                            <p id="itemInfoId"></p>
-                        </div>
-                        <div>
-                            <h5>Lot</h5>
-                            <p id="itemInfoLot"></p>
-                        </div>
-                        <div>
-                            <h5>Storage Bin</h5>
-                            <p id="itemInfoBin"></p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div>
-                    <form id="rmDepletedForm">
-                        <label for="fgQuantity">Enter Finished Goods Quantity</label>
-                        <input name="fg_quantity" id="fgQuantity" placeholder="Quantity" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
-                        <label for="fgUnit">Quantity Unit</label>
-                        <select name="fg_unit" id="fgUnit" class="form-select form-select-sm dropdown" required>
-                            <option selected hidden value="">Select Quantity Unit</option>
-                            <option value="PLY">PLY</option>
-                            <option value="PCS">PCS</option>
-                        </select>
-                        <label for="scrapQuantity">Enter Scrap (KG)</label>
-                        <input name="quantity_scrap" id="scrapQuantity" placeholder="Scrap (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number" required>
+                    <div class="rm-depleted-form">
+                        <form id="rmDepletedForm">
+                            <label for="recFgName">Finished Goods</label>
+                            <select name="fg_name" id="FgName" class="form-select form-select-sm dropdown" required>
+                                <option selected hidden value="">Select Finished Goods</option>
+                                <?php 
+                                 foreach ($FgOptions as $option) {
+                                    echo "<option value='". $option['fg_name'] ."' data-description='". $option['fg_desc'] ."'>". $option['fg_name'] ."</option>";
+                                 }
+                                ?>
+                            </select>
+
+                            <label for="FgDesc">Description</label>
+                            <input name="fg_desc" id="FgDesc" placeholder="Finished Goods Description" title="Finished Goods Description" class="form-control form-control-sm" type="text" value="" readonly required>
+                            <script>
+                                $('#FgName').on('change', function() {
+                                    var selectedFgName = $(this).find(':selected');
+                                    var selectedFgDesc = selectedFgName.data('description');
+                                    $('#FgDesc').val(selectedFgDesc)
+                                })
+                            </script>
+
+                            <label for="recRmBin">Storage Bin</label>
+                            <input name="fg_bin" id="FgBin" placeholder="Enter Finished Goods Bin" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="15" class="form-control form-control-sm" type="text" required>
+
+                            <label for="fgQuantity">Finished Goods Quantity</label>
+                            <input name="fg_quantity" id="fgQuantity" placeholder="Enter Finished Goods Quantity" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
+
+                            <label for="fgUnit">Quantity Unit</label>
+                            <select name="fg_unit" id="fgUnit" class="form-select form-select-sm dropdown" required>
+                                <option selected hidden value="">Select Quantity Unit</option>
+                                <option value="PLY">PLY</option>
+                                <option value="PCS">PCS</option>
+                            </select>
+
+                            <label for="scrapQuantity">Scrap (KG)</label>
+                            <input name="quantity_scrap" id="scrapQuantity" placeholder="Enter Scrap (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number" required>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                    <input type="hidden" name="item_name" id="ditemName" value="">
-                    <input type="hidden" name="item_desc" id="ditemDesc" value="">
-                    <input type="hidden" name="item_id" id="ditemId" value="">
-                    <input type="hidden" name="item_lot" id="ditemLot" value="">
-                    <input type="hidden" name="item_bin" id="ditemBin" value="">
-                    <input type="hidden" name="item_quantity" id="ditemQuantity" value="">
-                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Mark as Depleted</button>
-                </form>
+                            <input type="hidden" name="item_name" id="ditemName" value="">
+                            <input type="hidden" name="item_desc" id="ditemDesc" value="">
+                            <input type="hidden" name="item_id" id="ditemId" value="">
+                            <input type="hidden" name="item_lot" id="ditemLot" value="">
+                            <input type="hidden" name="item_bin" id="ditemBin" value="">
+                            <input type="hidden" name="item_quantity" id="ditemQuantity" value="">
+                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Mark as Depleted</button>
+                        </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
