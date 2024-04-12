@@ -20,7 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
-                echo '0';
+                $stmt = $con->prepare("DELETE FROM fg_data WHERE from_rm_name = ? AND from_rm_id = ?");
+                $stmt->bind_param('ss', $item_name, $item_id);
+                $stmt->execute();
+                
+                if ($stmt->affected_rows > 0) {
+                    echo '0';
+                }
             } else {
                 echo '3';
             }

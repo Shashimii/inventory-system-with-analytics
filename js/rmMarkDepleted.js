@@ -1,7 +1,9 @@
 $(function() { 
     $('#rmDepletedForm').on('submit', function(event) { 
         event.preventDefault();
-        
+        var fg_name = $('#FgName').val();
+        var fg_desc = $('#FgDesc').val();
+        var fg_id = $('#FgId').val();
         var rm_name = $('#ditemName').val(); 
         var rm_desc = $('#ditemDesc').val(); 
         var rm_id = $('#ditemId').val(); 
@@ -12,6 +14,7 @@ $(function() {
             url: './php/rm_markDepleted.php',
             data: inputData,
             success: function(response) {
+                console.log(response)
                 switch(response) {
                     case '0':
                         Swal.fire({
@@ -27,8 +30,13 @@ $(function() {
                             title: 'Oops',
                             text: rm_name + '-' + rm_desc + '-' + rm_id + ' is Already Marked as Depleted',
                             icon: 'error',
-                        }).then(function() {
-                            location.reload();
+                        })
+                        break;
+                    case '2':
+                        Swal.fire({
+                            title: 'Oops',
+                            text: fg_name + '-' + fg_desc + '-' + fg_id + ' is Already on Finished Goods',
+                            icon: 'error',
                         })
                         break;
                     case '9':
