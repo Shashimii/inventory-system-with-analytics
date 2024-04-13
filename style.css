@@ -97,7 +97,6 @@ th {
 
 .info-quantity-container {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
 }
 /*== Modal Syles End ==*/

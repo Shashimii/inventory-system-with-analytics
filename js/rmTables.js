@@ -81,10 +81,6 @@ $(function(){
                     <option value="quantity">Quantity</option>
                 </select>
                     <input id="recSearch" placeholder="Search..." class="form-control form-control-sm" type="text">
-                    <button class="btn btn-success btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#receiveModal"><i class="fa-solid fa-hands-holding-circle"></i>
-                        Receive
-                    </button>
                     <button id="undoInProduction" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
                     data-bs-target="#undoInProductionModal"><i class="fa-solid fa-rotate-left"></i>
                         Undo
@@ -144,10 +140,6 @@ $(function(){
                     <option value="quantityUsed">Quantity Used</option>
                 </select>
                     <input id="recSearch" placeholder="Search..." class="form-control form-control-sm" type="text">
-                    <button class="btn btn-success btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#receiveModal"><i class="fa-solid fa-hands-holding-circle"></i>
-                        Receive
-                    </button>
                     <button id="undoDepleted" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
                     data-bs-target="#undoDepletedModal"><i class="fa-solid fa-rotate-left"></i>
                         Undo

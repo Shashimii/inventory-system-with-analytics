@@ -257,7 +257,7 @@ while ($optionFg = $result->fetch_assoc()) {
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmInProductionModal">Raw Material Info</h1>
+                <h1 class="modal-title fs-5" id="rmInProductionModal">Use Raw Material in Production</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
@@ -314,12 +314,14 @@ while ($optionFg = $result->fetch_assoc()) {
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmDepletedModal">Raw Material Info</h1>
+                <h1 class="modal-title fs-5" id="rmDepletedModal">Mark Raw Material as Depleted</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
                 <div class="rm-depleted-form-container">
                     <div class="rm-info-container">
+                        <h4>Raw Material Used</h4>
+                        <hr>
                         <div class="rm-info-header">
                             <div class="info-header-container">
                                 <h1 id="itemInfoName"></h1>
@@ -351,10 +353,12 @@ while ($optionFg = $result->fetch_assoc()) {
                         </div>
                     </div>
                     <div class="rm-depleted-form">
+                        <h4>Finished Goods Created</h4>
+                        <hr>
                         <form id="rmDepletedForm">
-                            <label for="recFgName">Finished Goods</label>
+                            <label for="FgName">FG Name</label>
                             <select name="fg_name" id="FgName" class="form-select form-select-sm dropdown" required>
-                                <option selected hidden value="">Select Finished Goods</option>
+                                <option selected hidden value="">Select Fg Name</option>
                                 <?php 
                                  foreach ($FgOptions as $option) {
                                     echo "<option value='". $option['fg_name'] ."' data-description='". $option['fg_desc'] ."'>". $option['fg_name'] ."</option>";
@@ -362,8 +366,8 @@ while ($optionFg = $result->fetch_assoc()) {
                                 ?>
                             </select>
 
-                            <label for="FgDesc">Description</label>
-                            <input name="fg_desc" id="FgDesc" placeholder="Finished Goods Description" title="Finished Goods Description" class="form-control form-control-sm" type="text" value="" readonly required>
+                            <label for="FgDesc">FG Description</label>
+                            <input name="fg_desc" id="FgDesc" placeholder="Description" title="Finished Goods Description" class="form-control form-control-sm" type="text" value="" readonly required>
                             <script>
                                 $('#FgName').on('change', function() {
                                     var selectedFgName = $(this).find(':selected');
@@ -372,20 +376,20 @@ while ($optionFg = $result->fetch_assoc()) {
                                 })
                             </script>
 
-                            <label for="recRmBin">Storage Bin</label>
+                            <label for="recRmBin">FG Storage Bin</label>
                             <input name="fg_bin" id="FgBin" placeholder="Enter Finished Goods Bin" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="15" class="form-control form-control-sm" type="text" required>
 
-                            <label for="fgQuantity">Finished Goods Quantity</label>
+                            <label for="fgQuantity">FG Quantity</label>
                             <input name="fg_quantity" id="fgQuantity" placeholder="Enter Finished Goods Quantity" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
 
-                            <label for="fgUnit">Quantity Unit</label>
+                            <label for="fgUnit">FG Quantity Unit</label>
                             <select name="fg_unit" id="fgUnit" class="form-select form-select-sm dropdown" required>
                                 <option selected hidden value="">Select Quantity Unit</option>
                                 <option value="PLY">PLY</option>
                                 <option value="PCS">PCS</option>
                             </select>
 
-                            <label for="scrapQuantity">Scrap (KG)</label>
+                            <label for="scrapQuantity">Production Scrap (KG)</label>
                             <input name="quantity_scrap" id="scrapQuantity" placeholder="Enter Scrap (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number" required>
                     </div>
                 </div>
@@ -418,16 +422,6 @@ while ($optionFg = $result->fetch_assoc()) {
                     <div class="rm-info-header">
                         <div class="info-header-container">
                             <h1 id="itemInfoName"></h1>
-                            <div class="info-quantity-container">
-                                <div>
-                                    <h5>Quantity Scrap</h5>
-                                    <p id="itemInfoQuantityScrap"></p>
-                                </div>
-                                <div>
-                                    <h5>Quantity Used</h5>
-                                    <p id="itemInfoQuantityUsed"></p>
-                                </div>
-                            </div>
                         </div>
                         <div class="info-header-container">
                             <h5>Date Depleted</h5>
@@ -451,6 +445,32 @@ while ($optionFg = $result->fetch_assoc()) {
                         <div>
                             <h5>Storage Bin</h5>
                             <p id="itemInfoBin"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info-container">
+                        <div>
+                            <h5>Fg Created</h5>
+                            <p id="itemInfoFgName"></p>
+                        </div>
+                        <div>
+                            <h5>Fg Description</h5>
+                            <p id="itemInfoFgDesc"></p>
+                        </div>
+                        <div>
+                            <h5>Fg Quantity</h5>
+                            <p id="itemInfoQuantityFg"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info-quantity-container">
+                        <div>
+                            <h5>Quantity Scrap</h5>
+                            <p id="itemInfoQuantityScrap"></p>
+                        </div>
+                        <div>
+                            <h5>Quantity Used</h5>
+                            <p id="itemInfoQuantityUsed"></p>
                         </div>
                     </div>
                 </div>
