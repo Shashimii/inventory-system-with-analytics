@@ -74,12 +74,12 @@ $(function() {
                     $('#inProductionTable tbody').append( 
                         '<tr>' +
                             '<td>' + item.action_date + '</td>' +
-                            '<td>' + item.item_name + '</td>' +
+                            '<td class="table-primary">' + item.item_name + '</td>' +
                             '<td>' + item.item_desc + '</td>' +
-                            '<td>' + item.item_id + '</td>' +
+                            '<td class="table-primary">' + item.item_id + '</td>' +
                             '<td>' + item.item_lot + '</td>' +
                             '<td>' + item.item_bin + '</td>' +
-                            '<td>' + item.quantity_inProduction + ' KG</td>' +
+                            '<td class="table-warning">' + item.quantity_inProduction + ' KG</td>' +
                             '<td class="action-btn">' +
                                 '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Mark as Depleted</button>' +
                             '</td>' +

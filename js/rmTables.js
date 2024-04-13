@@ -5,7 +5,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>Received</h4>
+                    <h4><i class="fa-solid fa-hands-holding-circle"></i> Received Inventory</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
@@ -67,7 +67,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>In Production</h4>
+                    <h4><i class="fa-solid fa-spinner"></i> Production Inventory</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
@@ -129,7 +129,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>Depleted</h4>
+                    <h4><i class="fa-regular fa-square-full"></i> Depleted List</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>

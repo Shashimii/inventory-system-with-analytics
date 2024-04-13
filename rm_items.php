@@ -146,9 +146,9 @@ while ($optionFg = $result->fetch_assoc()) {
                                 <h5>Manage Raw Materials</h5>
                             </div>
                             <div class="rm-manage-sm-card-item">
-                                <button class="btn btn-secondary btn-sm" id="renderReceive"><i class="fa-solid fa-hands-holding-circle"></i> Received Raw Materials</button>
+                                <button class="btn btn-success btn-sm" id="renderReceive"><i class="fa-solid fa-hands-holding-circle"></i> Received Raw Materials</button>
                                 <button class="btn btn-secondary btn-sm" id="renderInProduction"><i class="fa-solid fa-spinner"></i> In Production Raw Materials</button>
-                                <button class="btn btn-secondary btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Used Raw Materials</button>
+                                <button class="btn btn-danger btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Depleted Raw Materials</button>
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rmRegisterModal"><i class="fa-solid fa-plus"></i> Register Raw Materials</button>
                             </div>
                         </div>
@@ -516,7 +516,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="undoReceivedModal">Undo Last Received Raw Material</h1>
-                <i class="fa-solid fa-database"></i>
+                <i class="fa-solid fa-rotate-left"></i>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
@@ -536,7 +536,7 @@ while ($optionFg = $result->fetch_assoc()) {
                     <div class="info-container">
                         <div>
                             <h5>Received By</h5>
-                            <p id="undoRecievedInfoUser"></p>
+                            <p id="undoReceivedInfoUser"></p>
                         </div>
                     </div>
                     <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Removed from the Inventory if you Undo your Last Received</h6>
@@ -563,7 +563,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="undoInProductionModal">Undo Last In Production Raw Material</h1>
-                <i class="fa-solid fa-database"></i>
+                <i class="fa-solid fa-rotate-left"></i>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
@@ -586,7 +586,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             <p id="undoInProductionInfoUser"></p>
                         </div>
                     </div>
-                    <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Returned Back to Received if you Undo your Last In Production</h6>
+                    <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Returned to Received if you Undo your Last In Production</h6>
                 </div>
             </div>
             <div class="modal-footer">
@@ -633,7 +633,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             <p id="undoDepletedInfoUser"></p>
                         </div>
                     </div>
-                    <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Returned Back to In Production if you Undo your Last Marked as Depleted</h6>
+                    <h6><i class="fa-solid fa-triangle-exclamation"></i> This Raw Material will be Returned Back to Production if you Undo your Last Marked as Depleted</h6>
                 </div>
             </div>
             <div class="modal-footer">

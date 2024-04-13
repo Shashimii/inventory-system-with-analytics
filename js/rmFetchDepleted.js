@@ -77,13 +77,13 @@ $(function() {
                     $('#depletedTable tbody').append( 
                         '<tr>' +
                             '<td>' + item.action_date + '</td>' +
-                            '<td>' + item.item_name + '</td>' +
+                            '<td class="table-primary">' + item.item_name + '</td>' +
                             '<td>' + item.item_desc + '</td>' +
-                            '<td>' + item.item_id + '</td>' +
+                            '<td class="table-primary">' + item.item_id + '</td>' +
                             '<td>' + item.item_lot + '</td>' +
                             '<td>' + item.item_bin + '</td>' +
-                            '<td>' + item.quantity_scrap + ' KG</td>' +
-                            '<td>' + item.quantity_used + ' KG</td>' +
+                            '<td class="table-warning">' + item.quantity_scrap + ' KG</td>' +
+                            '<td class="table-danger">' + item.quantity_used + ' KG</td>' +
                             '<td class="action-btn">' +
                             '<button id="removeFromTheList" data-bs-toggle="modal" data-bs-target="#rmRemoveModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantityscrap="' + item.quantity_scrap + '" data-quantityused="'+ item.quantity_used +'" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Remove From the List</button>' +
                             '</td>' +

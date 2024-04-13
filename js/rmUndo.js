@@ -64,7 +64,7 @@ $(document).on('submit', '#undoDepletedForm', function(event){
             console.log(response);
             if (response === '0') {
                 Swal.fire({
-                    title: 'Undoing last In Production',
+                    title: 'Undoing last Marked as Depleted',
                     text: 'Last Marked as Depleted Raw Material has been Returned to Production',
                     icon: 'success',
                 }).then(function() {
