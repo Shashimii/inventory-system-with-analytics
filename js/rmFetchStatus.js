@@ -55,12 +55,12 @@ let pageSize = 10;
                     '<tr>' +
                         '<td>' + item.item_name + '</td>' +
                         '<td>' + item.item_desc + '</td>' +
-                        '<td>' + item.total_received + '</td>' +
-                        '<td>' + (item.total_inProduction ? item.total_inProduction : '') + '</td>' +
-                        '<td>' + (item.total_scrap ? item.total_scrap : '') + '</td>' +
-                        '<td>' + (item.total_used ? item.total_used : '') + '</td>' +
-                        '<td>' + (item.total_ply ? item.total_used : '') + '</td>' +
-                        '<td>' + (item.total_pcs ? item.total_used : '') + '</td>' +
+                        '<td class="table-success">' + item.total_received + ' KG' + '</td>' +
+                        '<td' + (item.total_inProduction != null ? ' class="table-warning"' : '') + '>' + (item.total_inProduction ? item.total_inProduction + ' KG' : '') + '</td>' +
+                        '<td' + (item.total_scrap != null ? ' class="table-secondary"' : '') + '>' + (item.total_scrap ? item.total_scrap + ' KG' : '') + '</td>' +
+                        '<td' + (item.total_used != null ? ' class="table-danger"' : '') + '>' + (item.total_used ? item.total_used + ' KG' : '') + '</td>' +
+                        '<td' + (item.total_ply != null ? ' class="table-info"' : '') + '>' + (item.total_ply ? item.total_ply + ' KG' : '') + '</td>' +
+                        '<td' + (item.total_pcs != null ? ' class="table-primary"' : '') + '>' + (item.total_pcs ? item.total_pcs + ' KG' : '') + '</td>' +
                     '</tr>'
                 );
             });

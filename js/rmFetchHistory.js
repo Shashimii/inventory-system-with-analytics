@@ -91,12 +91,12 @@ $(function(){
                                                 <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td>${data.quantity_receive ? data.quantity_receive : ''}</td>
-                                                <td>${data.quantity_inProduction ? data.quantity_inProduction : ''}</td>
-                                                <td>${data.quantity_scrap ? data.quantity_scrap : ''}</td>
-                                                <td>${data.quantity_used ? data.quantity_used : ''}</td>
-                                                <td>${data.quantity_created_ply ? data.quantity_created_ply : ''}</td>
-                                                <td>${data.quantity_created_pcs ? data.quantity_created_pcs : ''}</td>
+                                                <td ${data.quantity_receive != null ? ' class="table-success"' : ''} >${data.quantity_receive ? data.quantity_receive : ''}</td>
+                                                <td ${data.quantity_inProduction != null ? ' class="table-warning"' : ''} >${data.quantity_inProduction ? data.quantity_inProduction : ''}</td>
+                                                <td ${data.quantity_scrap != null ? ' class="table-secondary"' : ''} >${data.quantity_scrap ? data.quantity_scrap : ''}</td>
+                                                <td ${data.quantity_used != null ? ' class="table-danger"' : ''} >${data.quantity_used ? data.quantity_used : ''}</td>
+                                                <td ${data.quantity_created_ply != null ? ' class="table-primary"' : ''} >${data.quantity_created_ply ? data.quantity_created_ply : ''}</td>
+                                                <td ${data.quantity_created_pcs != null ? ' class="table-primary"' : ''} >${data.quantity_created_pcs ? data.quantity_created_pcs : ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`
