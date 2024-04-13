@@ -2,7 +2,7 @@
 
 include 'script_con.php';
 
-$stmt = $con->prepare("SELECT action_date, item_name, item_desc, item_id, item_lot, item_bin, quantity_scrap, quantity_used FROM rm_data WHERE item_data_status = '$dataStatusDepleted' AND item_data_active = '$dataActive' AND quantity_scrap AND quantity_used IS NOT NULL ORDER BY id DESC");
+$stmt = $con->prepare("SELECT action_date, item_name, item_desc, item_id, item_lot, item_bin, quantity_scrap, quantity_used, fg_created_name, fg_created_desc, quantity_created_ply, quantity_created_pcs FROM rm_data WHERE item_data_status = '$dataStatusDepleted' AND item_data_active = '$dataActive' AND quantity_scrap AND quantity_used IS NOT NULL ORDER BY id DESC");
 $stmt->execute();
 $result = $stmt->get_result();
 

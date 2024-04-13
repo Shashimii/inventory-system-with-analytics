@@ -50,10 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo '1';
             }  else if ($fg_unit === 'PLY') {
                 $insertItem = "INSERT INTO rm_data 
-                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, quantity_scrap, quantity_used, quantity_created_ply, item_data_status, item_data_active) VALUES 
-                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, quantity_scrap, quantity_used, fg_created_name, fg_created_desc, quantity_created_ply, item_data_status, item_data_active) VALUES 
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $con->prepare($insertItem);
-                $stmt->bind_param("ssssssssiiiss", $sys_date, $sys_time, $sys_user, $rm_name, $rm_desc, $rm_id, $rm_batch, $rm_bin, $scrap_quantity, $rm_quantity_used, $fg_quantity, $dataStatusDepleted, $dataActive);
+                $stmt->bind_param("ssssssssiississ", $sys_date, $sys_time, $sys_user, $rm_name, $rm_desc, $rm_id, $rm_batch, $rm_bin, $scrap_quantity, $rm_quantity_used, $fg_name, $fg_desc, $fg_quantity, $dataStatusDepleted, $dataActive);
 
                 if ($stmt->execute()) {
                     $changeStatus = "UPDATE rm_data SET item_data_active = ? WHERE item_name = ? AND item_id = ? AND item_data_status = ?";
@@ -81,10 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->close();
             } else if ($fg_unit === 'PCS') {
                 $insertItem = "INSERT INTO rm_data 
-                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, quantity_scrap, quantity_used, quantity_created_pcs, item_data_status, item_data_active) VALUES 
-                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, quantity_scrap, quantity_used, fg_created_name, fg_created_desc, quantity_created_pcs, item_data_status, item_data_active) VALUES 
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $con->prepare($insertItem);
-                $stmt->bind_param("ssssssssiiiss", $sys_date, $sys_time, $sys_user, $rm_name, $rm_desc, $rm_id, $rm_batch, $rm_bin, $scrap_quantity, $rm_quantity_used, $fg_quantity, $dataStatusDepleted, $dataActive);
+                $stmt->bind_param("ssssssssiississ", $sys_date, $sys_time, $sys_user, $rm_name, $rm_desc, $rm_id, $rm_batch, $rm_bin, $scrap_quantity, $rm_quantity_used, $fg_name, $fg_desc, $fg_quantity, $dataStatusDepleted, $dataActive);
 
                 if ($stmt->execute()) {
                     $changeStatus = "UPDATE rm_data SET item_data_active = ? WHERE item_name = ? AND item_id = ? AND item_data_status = ?";

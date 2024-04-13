@@ -85,7 +85,7 @@ $(function() {
                             '<td class="table-warning">' + item.quantity_scrap + ' KG</td>' +
                             '<td class="table-danger">' + item.quantity_used + ' KG</td>' +
                             '<td class="action-btn">' +
-                            '<button id="removeFromTheList" data-bs-toggle="modal" data-bs-target="#rmRemoveModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantityscrap="' + item.quantity_scrap + '" data-quantityused="'+ item.quantity_used +'" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Remove From the List</button>' +
+                            '<button id="removeFromTheList" data-bs-toggle="modal" data-bs-target="#rmRemoveModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantityscrap="' + item.quantity_scrap + '" data-quantityused="'+ item.quantity_used +'" data-fgname="'+ item.fg_created_name +'" data-fgdesc="'+ item.fg_created_desc +'" data-fgquantityply="'+ (item.quantity_created_ply !== null ? item.quantity_created_ply + ' PLY' : '') +'" data-fgquantitypcs="'+ (item.quantity_created_pcs !== null ? item.quantity_created_pcs + ' PCS' : '') +'" class="btn btn-primary btn-sm"><i class="fa-solid fa-bars"></i> View Info</button>' +
                             '</td>' +
                         '</tr>'
                     );
@@ -171,17 +171,28 @@ $(function() {
         var itemBin = $(this).data('bin');
         var itemQuantityScrap = $(this).data('quantityscrap');
         var itemQuantityUsed = $(this).data('quantityused');  
+        var fgCreatedName = $(this).data('fgname');
+        var fgCreatedDesc = $(this).data('fgdesc');
+        var fgQuantityPly = $(this).data('fgquantityply');
+        var fgQuantityPcs = $(this).data('fgquantitypcs');
 
+        var fgQuantity = fgQuantityPly !== '' ? fgQuantityPly : fgQuantityPcs;
+
+ 
         // modal data visualization
         $('#rmRemoveModal p#itemInfoDate').text(actionDate);
         $('#rmRemoveModal h1#itemInfoName').text(itemName);
-        $('#rmRemoveModal p#itemInfoQuantityScrap').text(itemQuantityScrap + ' KG'); 
-        $('#rmRemoveModal p#itemInfoQuantityUsed').text(itemQuantityUsed + ' KG');
         $('#rmRemoveModal p#itemInfoLot').text(itemLot);
         $('#rmRemoveModal p#itemInfoDesc').text(itemDesc);
         $('#rmRemoveModal p#itemInfoId').text(itemId);
         $('#rmRemoveModal p#itemInfoBin').text(itemBin);
-    
+
+        $('#rmRemoveModal p#itemInfoQuantityScrap').text(itemQuantityScrap + ' KG'); 
+        $('#rmRemoveModal p#itemInfoQuantityUsed').text(itemQuantityUsed + ' KG');
+        $('#rmRemoveModal p#itemInfoFgName').text(fgCreatedName); 
+        $('#rmRemoveModal p#itemInfoFgDesc').text(fgCreatedDesc);
+        $('#rmRemoveModal p#itemInfoQuantityFg').text(fgQuantity); 
+
         // data attached to the modal to be used
         $('#rmRemoveModal #itemName').val(itemName);
         $('#rmRemoveModal #itemId').val(itemId);
