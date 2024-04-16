@@ -37,7 +37,6 @@ let pageSize = 10;
             };
         };
 
-
         let startIndex = (pageNumber - 1) * pageSize;
         let endIndex = startIndex + pageSize;
         let pageData = filteredResponse.slice(startIndex, endIndex);
@@ -126,6 +125,56 @@ let pageSize = 10;
         pageNumber = 1; 
         statusTableData(); 
     });
+
+    $('#dateAdjustForm').on('submit', function(event) {
+        event.preventDefault();
+
+        var inputData = $(this).serialize();
+
+        var notFormated = inputData.split("&");
+        var formatted = [];
+
+        for (var i = 0; i < notFormated.length; i++) {
+            var keyValue = notFormated[i].split("=");
+            var key = keyValue[0];
+            var value = keyValue[1];
+
+            if (key.includes("date")) {
+                var splitDate = value.split("-");
+                var formatDate = splitDate[1] + "/" + splitDate[2] + "/" + splitDate[0];
+                value = formatDate;
+            }
+
+            if (key === "start_date") {
+                start_date = value;
+            } else if (key === "end_date"){
+                end_date = value;
+            }
+
+            formatted.push(key + "=" + value);
+        }
+
+        var formattedInputData = formatted.join("&");
+
+        console.log(start_date)
+        console.log(end_date)
+
+        $.ajax({
+            type: 'POST', 
+            url: './php/rm_status_data.php',
+            data: formattedInputData,
+            success: function(response) {
+                if(response) {
+                    tableData = response;
+                    statusTableData() 
+                   $('#dateRangeDisplay').val(start_date + ' - ' + end_date)
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        })
+    })
 
     preloadTableData();
 });

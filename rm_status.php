@@ -101,5 +101,29 @@ include 'connections.php';
         </div>
     </div>
 </body>
-</html>
 
+<div class="modal" id="dateRangeModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="dateRangeModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="dateRangeModal">Date Range</h1>
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div class="modal-body">
+                <form id="dateAdjustForm">
+                    <label for="startDate">Start Date:</label>
+                    <input class="form-control form-control-sm" type="date" id="startDate" name="start_date">
+                    <br>
+                    <label for="endDate">End Date:</label>
+                    <input class="form-control form-control-sm" type="date" id="endDate" name="end_date">
+
+            <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="fa-solid fa-pen-to-square"></i> Set Date Range</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
