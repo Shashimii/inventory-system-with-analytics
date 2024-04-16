@@ -2,7 +2,7 @@
 
 include 'script_con.php';
 
-$query_date = "SELECT DATE_FORMAT(NOW(), '%d/%m/%Y') AS date_now";
+$query_date = "SELECT DATE_FORMAT(NOW(), '%m/%d/%Y') AS date_now";
 $date_result = $con->query($query_date);
 if ($date_result->num_rows > 0) {
     $cur_date = $date_result->fetch_assoc();
