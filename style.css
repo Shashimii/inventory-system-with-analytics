@@ -354,7 +354,7 @@ th {
 .fg-manage-row-1 {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: 1fr 0.5fr;
     gap: 20px;
 }
 
