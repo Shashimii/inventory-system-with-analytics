@@ -27,6 +27,7 @@ $(function(){
                     <thead>
                         <tr>
                             <th scope="col">Date Created</th>
+                            <th scope="col">RawMat Id</th>
                             <th scope="col">Finished Goods</th>
                             <th scope="col">Description</th>
                             <th scope="col">Lot</th>
