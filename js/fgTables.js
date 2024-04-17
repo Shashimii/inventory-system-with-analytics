@@ -26,14 +26,14 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="receiveTable">
                     <thead>
                         <tr>
-                            <th scope="col">Date Received</th>
+                            <th scope="col">Date Created</th>
                             <th scope="col">Finished Goods</th>
                             <th scope="col">Description</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
                             <th scope="col">Quantity (PCS)</th>
                             <th scope="col">Quantity (PLY)</th>
-                            <th scope="col" class="action-btn">Action</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>

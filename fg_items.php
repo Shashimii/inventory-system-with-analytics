@@ -99,8 +99,30 @@ while ($optionFg = $result->fetch_assoc()) {
         </div>
         <div class="content-body">
             <div class="main-content">
-                <div class="fg-manage-row-1" id="renderfgTable">
+                <div class="fg-manage-row-1">
+                    <div class="fg-manage-table" id="renderfgTable">
 
+                    </div>
+                    <div class="fg-manage-list">
+                        <div>
+                            <h3>Selected Raw Materials</h3>
+                            <hr class="border border-danger border-2 opacity-75">
+                        </div>
+                        <div class="selected-list" id="selectedList">
+
+                        </div>
+                        <div class="selected-list-btn">
+                        <hr class="border border-danger border-2 opacity-75">
+                            <div class="row row-cols-1 g-2">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-sm btn-primary">Pack Raw Material</button>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-sm btn-secondary">Clear Selected</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -74,8 +74,9 @@ $(function(){
                         '<td>' + item.item_bin + '</td>' +
                         '<td>' + (item.quantity_pcs ? item.quantity_pcs : '') + '</td>' +
                         '<td>' + (item.quantity_ply ? item.quantity_ply : '')+ '</td>' +
-                        '<td class="action-btn">' +
-                        '<button id="fgPack" data-bs-toggle="modal" data-bs-target="#fgPackModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantitypcs="' + item.quantity_pcs + '" data-quantityply="'+ item.quantity_ply +'" class="btn btn-primary btn-sm"><i class="fa-solid fa-box"></i> Pack</button>' +
+                        '<td>' +
+                        '<button id="fg-add" class="btn btn-success btn-sm col mx-1">+</button>' +
+                        '<button id="fg-minus" class="btn btn-danger btn-sm col mx-1">-</button>' +
                         '</td>' +
                     '</tr>'
                 );
