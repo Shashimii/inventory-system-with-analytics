@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // batch system that will only count the batches daily and reset the next day
         $stmt = $con->prepare("SELECT MAX(item_lot) AS last_batch_num from fg_data WHERE action_date = ? AND item_name = ?");
-        $stmt->bind_param("ss", $sys_date, $rm_name);
+        $stmt->bind_param("ss", $sys_date, $fg_name);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
