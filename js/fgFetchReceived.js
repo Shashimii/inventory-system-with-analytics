@@ -66,18 +66,17 @@ $(function(){
         } else {
             pageData.forEach(function(item) { 
                 $('#receiveTable tbody').append( 
-                    '<tr>' +
-                        '<td class="action-date">' + item.action_date + '</td>' +
-                        '<td class="rm-id">' + item.from_rm_id + '</td>' +
-                        '<td class="item-name">' + item.item_name + '</td>' +
-                        '<td class="item-desc">' + item.item_desc + '</td>' +
-                        '<td class="item-lot">' + item.item_lot + '</td>' +
-                        '<td class="item-bin">' + item.item_bin + '</td>' +
-                        '<td class="quantity-pcs">' + (item.quantity_pcs ? item.quantity_pcs : '') + '</td>' +
-                        '<td class="quantity-ply">' + (item.quantity_ply ? item.quantity_ply : '')+ '</td>' +
+                    '<tr class="">' +
+                        '<td>' + item.action_date + '</td>' +
+                        '<td>' + item.from_rm_id + '</td>' +
+                        '<td>' + item.item_name + '</td>' +
+                        '<td>' + item.item_desc + '</td>' +
+                        '<td>' + item.item_lot + '</td>' +
+                        '<td>' + item.item_bin + '</td>' +
+                        '<td>' + (item.quantity_pcs ? item.quantity_pcs : '') + '</td>' +
+                        '<td>' + (item.quantity_ply ? item.quantity_ply : '')+ '</td>' +
                         '<td>' +
-                        '<button id="fg-add" class="btn btn-success btn-sm col mx-1">+</button>' +
-                        '<button id="fg-minus" class="btn btn-danger btn-sm col mx-1">-</button>' +
+                        '<button class="select btn btn-primary btn-sm col mx-1">Select</button>' +
                         '</td>' +
                     '</tr>'
                 );

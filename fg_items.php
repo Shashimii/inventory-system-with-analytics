@@ -15,6 +15,7 @@ while ($optionFg = $result->fetch_assoc()) {
 <head>
     <script src="./js/fgTables.js"></script>
     <script src="./js/fgFetchReceived.js"></script>
+    <script src="./js/fgPack.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finished Goods | Hiltac</title>
@@ -118,7 +119,7 @@ while ($optionFg = $result->fetch_assoc()) {
                                     <button class="btn btn-sm btn-primary">Pack Raw Material</button>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-sm btn-secondary">Clear Selected</button>
+                                    <button id="clearSelected" class="btn btn-sm btn-secondary">Clear Selected</button>
                                 </div>
                             </div>
                         </div>
