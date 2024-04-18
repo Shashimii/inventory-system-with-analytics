@@ -130,4 +130,3 @@ while ($optionFg = $result->fetch_assoc()) {
     </div>
 </body>
 </html>
-
