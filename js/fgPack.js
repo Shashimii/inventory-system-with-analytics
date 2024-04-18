@@ -106,7 +106,6 @@ $(function() {
             });
 
             selectedList.splice(itemIndex, 1);
-
             renderselectedList()
         }
     });
