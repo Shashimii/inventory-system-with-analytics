@@ -381,6 +381,8 @@ th {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow-x: hidden; 
+    overflow-y: auto;
 }
 
 .fg-info-header {
@@ -394,6 +396,10 @@ th {
     box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.1);
 }
 
+.selected-list::-webkit-scrollbar {
+    width: 0; 
+    display: none; 
+}
 
 /*== RM Manage End
 
