@@ -125,5 +125,10 @@ $(function() {
         $('tr').removeClass('table-success');
         renderselectedList()
     })
-    
+
+    window.onload = function() {
+        var fgManageList = $('#selectedList');
+        var currentHeight = fgManageList.height();
+        fgManageList.css("max-height", currentHeight + "px");
+    };
 });
