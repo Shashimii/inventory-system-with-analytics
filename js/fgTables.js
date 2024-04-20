@@ -33,7 +33,6 @@ $(function(){
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
                             <th scope="col">Quantity (PCS)</th>
-                            <th scope="col">Quantity (PLY)</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>

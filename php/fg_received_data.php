@@ -2,7 +2,7 @@
 
 include 'script_con.php';
 
-$stmt = $con->prepare("SELECT action_date, item_name, item_desc, item_lot, item_bin, from_rm_name, from_rm_id, quantity_pcs, quantity_ply FROM fg_data WHERE item_data_status = '$dataStatusReceived' AND item_data_active = '$dataActive' ORDER BY id DESC");
+$stmt = $con->prepare("SELECT action_date, item_name, item_desc, item_lot, item_bin, from_rm_name, from_rm_id, quantity_pcs FROM fg_data WHERE item_data_status = '$dataStatusReceived' AND item_data_active = '$dataActive' ORDER BY id DESC");
 $stmt->execute();
 $result = $stmt->get_result();
 

@@ -60,7 +60,7 @@ $(function(){
 
         if (pageData.length === 0) {
             tableRow = '<tr>';
-            tableRow += '<td colspan="9" style="text-align: center;">There is No Data</td>'; 
+            tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; 
             tableRow += '</tr>';
             $('#receiveTable').append(tableRow);
         } else {
@@ -74,7 +74,6 @@ $(function(){
                         '<td>' + item.item_lot + '</td>' +
                         '<td>' + item.item_bin + '</td>' +
                         '<td>' + (item.quantity_pcs ? item.quantity_pcs : '') + '</td>' +
-                        '<td>' + (item.quantity_ply ? item.quantity_ply : '')+ '</td>' +
                         '<td>' +
                         '<button class="select btn btn-primary btn-sm col mx-1">Select</button>' +
                         '</td>' +

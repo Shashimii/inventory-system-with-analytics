@@ -15,7 +15,7 @@ while ($optionRm = $result->fetch_assoc()) {
 $nameQuery = "SELECT * FROM fg_registered";
 $result = $con->query($nameQuery);
 while ($optionFg = $result->fetch_assoc()) {
-    $FgOptions[] = array('fg_name' => $optionFg['fg_name'], 'fg_desc' => $optionFg['fg_description'], 'fg_unit' => $optionFg['fg_unit']);
+    $FgOptions[] = array('fg_name' => $optionFg['fg_name'], 'fg_desc' => $optionFg['fg_description']);
 }
 
 ?>
@@ -380,19 +380,8 @@ while ($optionFg = $result->fetch_assoc()) {
                             <label for="recRmBin">FG Storage Bin</label>
                             <input name="fg_bin" id="FgBin" placeholder="Enter Finished Goods Bin" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="15" class="form-control form-control-sm" type="text" required>
 
-                            <label for="fgQuantity">FG Quantity</label>
+                            <label for="fgQuantity">FG Quantity (PCS)</label>
                             <input name="fg_quantity" id="fgQuantity" placeholder="Enter Finished Goods Quantity" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
-
-                            <label for="fgUnit">FG Quantity Unit</label>
-                            <input name="fg_unit" id="fgUnit" placeholder="Description" title="Finished Goods Description" class="form-control form-control-sm" type="text" value="" readonly required>
-                            <script>
-                                $('#FgName').on('change', function() {
-                                    var selectedFgName = $(this).find(':selected');
-                                    var selectedFgUnit = selectedFgName.data('unit');
-                                    $('#fgUnit').val(selectedFgUnit)
-                                })
-                            </script>
-
 
                             <label for="scrapQuantity">Production Scrap (KG)</label>
                             <input name="quantity_scrap" id="scrapQuantity" placeholder="Enter Scrap (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number" required>
