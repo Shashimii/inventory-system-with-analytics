@@ -80,7 +80,6 @@ $(function(){
                                                     <th>In Production</th>
                                                     <th>Scrap</th>
                                                     <th>Used</th>
-                                                    <th>FG PLY</th>
                                                     <th>FG PCS</th>
                                                 </tr>
                                             </thead>
@@ -95,7 +94,6 @@ $(function(){
                                                 <td ${data.quantity_inProduction != null ? ' class="table-warning"' : ''} >${data.quantity_inProduction ? data.quantity_inProduction : ''}</td>
                                                 <td ${data.quantity_scrap != null ? ' class="table-secondary"' : ''} >${data.quantity_scrap ? data.quantity_scrap : ''}</td>
                                                 <td ${data.quantity_used != null ? ' class="table-danger"' : ''} >${data.quantity_used ? data.quantity_used : ''}</td>
-                                                <td ${data.quantity_created_ply != null ? ' class="table-primary"' : ''} >${data.quantity_created_ply ? data.quantity_created_ply : ''}</td>
                                                 <td ${data.quantity_created_pcs != null ? ' class="table-primary"' : ''} >${data.quantity_created_pcs ? data.quantity_created_pcs : ''}</td>
                                             </tr>`;
                                             })

@@ -162,7 +162,7 @@ $(function(){
                         </tr>
                     </thead>
                     <tbody>
-
+                        
                     </tbody>
                 </table>
             </div>
@@ -262,7 +262,6 @@ $(function(){
                         <th scope="col">In Production</th>
                         <th scope="col">Scrap</th>
                         <th scope="col">Used</th>
-                        <th scope="col">FG PLY</th>
                         <th scope="col">FG PCS</th>
                         </tr>
                     </thead>
