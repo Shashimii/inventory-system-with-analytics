@@ -19,13 +19,21 @@ $(function() {
             maxquantity: parseInt(row.find('td:nth-child(7)').text()) || parseInt(row.find('td:nth-child(8)').text())
         };
 
-        const selectedIndex = selectedList.findIndex(item => item.rawid === itemData.rawid);
+        if (clicked.is('button')) {
+            if (selectedQuantity != addLimit) {
+                row.addClass('table-success');
+            }
+            
+            const selectedIndex = selectedList.findIndex(item => item.rawid === itemData.rawid);
 
-        if (clicked.hasClass('select') && selectedIndex === -1) {
-            selectedList.push({ ...itemData, quantityselected: 1 });
-            updateSelection();
-            renderSelectedList();
-            listMaxHeight();
+            if (clicked.hasClass('select') && selectedIndex === -1) {
+                if (selectedQuantity != addLimit) {
+                    selectedList.push({ ...itemData, quantityselected: 1 });
+                    updateSelection();
+                    renderSelectedList();
+                    listMaxHeight();
+                }   
+            }
         }
     }
 
@@ -112,8 +120,14 @@ $(function() {
             updateSelection();
             renderSelectedList();
         }
-        if (selectedList[itemIndex].quantityselected === 0) {
-            $('#receiveTable tr').removeClass('table-success').filter(`:contains(${selectedList[itemIndex].rawid})`).removeClass('table-success');
+        if (selectedList[itemIndex].quantityselected === 0) {   
+            $('#receiveTable tr').each(function() {
+                const row = $(this);
+                const rowRawmatId = row.find('td:nth-child(2)').text();
+                if (rowRawmatId === selectedList[itemIndex].rawid) {
+                    row.removeClass('table-success');
+                }
+            });
             selectedList.splice(itemIndex, 1);
             renderSelectedList();
         }
