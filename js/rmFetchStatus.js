@@ -12,7 +12,6 @@ let pageSize = 10;
             success: function(response) {
                 tableData = response;
                 statusTableData() 
-                console.table(tableData);
             },
             
             error: function(xhr, status, error) {
@@ -58,8 +57,7 @@ let pageSize = 10;
                         '<td' + (item.total_inProduction != null ? ' class="table-warning"' : '') + '>' + (item.total_inProduction ? item.total_inProduction + ' KG' : '') + '</td>' +
                         '<td' + (item.total_scrap != null ? ' class="table-secondary"' : '') + '>' + (item.total_scrap ? item.total_scrap + ' KG' : '') + '</td>' +
                         '<td' + (item.total_used != null ? ' class="table-danger"' : '') + '>' + (item.total_used ? item.total_used + ' KG' : '') + '</td>' +
-                        '<td' + (item.total_ply != null ? ' class="table-info"' : '') + '>' + (item.total_ply ? item.total_ply + ' KG' : '') + '</td>' +
-                        '<td' + (item.total_pcs != null ? ' class="table-primary"' : '') + '>' + (item.total_pcs ? item.total_pcs + ' KG' : '') + '</td>' +
+                        '<td' + (item.total_pcs != null ? ' class="table-primary"' : '') + '>' + (item.total_pcs ? item.total_pcs + ' PCS' : '') + '</td>' +
                     '</tr>'
                 );
             });
@@ -106,7 +104,7 @@ let pageSize = 10;
             targetPage = Math.max(currentPage - 1, 1); 
         } else if ($(this).attr('id') === 'next') { 
             targetPage = Math.min(currentPage + 1, Math.ceil(tableData.length / pageSize)); 
-        } else { // number is clicked
+        } else {
             targetPage = parseInt($(this).text());  
         }
         pageNumber = targetPage; 
@@ -128,37 +126,42 @@ let pageSize = 10;
 
     $('#dateAdjustForm').on('submit', function(event) {
         event.preventDefault();
-
+    
+        if ($('#startDate').val() === '' || $('#endDate').val() === '') {
+            $('[data-toggle="tooltip"]').tooltip('show');
+            return; 
+        }
+    
         var inputData = $(this).serialize();
-
+    
         var notFormated = inputData.split("&");
         var formatted = [];
-
+    
         for (var i = 0; i < notFormated.length; i++) {
             var keyValue = notFormated[i].split("=");
             var key = keyValue[0];
             var value = keyValue[1];
-
+    
             if (key.includes("date")) {
                 var splitDate = value.split("-");
                 var formatDate = splitDate[1] + "/" + splitDate[2] + "/" + splitDate[0];
                 value = formatDate;
             }
-
+    
             if (key === "start_date") {
                 start_date = value;
             } else if (key === "end_date"){
                 end_date = value;
             }
-
+    
             formatted.push(key + "=" + value);
         }
-
+    
         var formattedInputData = formatted.join("&");
-
-        console.log(start_date)
-        console.log(end_date)
-
+    
+        console.log(start_date);
+        console.log(end_date);
+    
         $.ajax({
             type: 'POST', 
             url: './php/rm_status_data.php',
@@ -166,15 +169,17 @@ let pageSize = 10;
             success: function(response) {
                 if(response) {
                     tableData = response;
-                    statusTableData() 
-                   $('#dateRangeDisplay').val(start_date + ' - ' + end_date)
+                    statusTableData();
+                    $('#dateRangeDisplay').val(start_date + ' - ' + end_date);
                 }
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
             }
-        })
-    })
+        });
+
+        $('#dateRangeModal').modal('hide');
+    });
 
     preloadTableData();
 });

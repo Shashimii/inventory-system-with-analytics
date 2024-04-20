@@ -112,13 +112,13 @@ include 'connections.php';
             <div class="modal-body">
                 <form id="dateAdjustForm">
                     <label for="startDate">Start Date:</label>
-                    <input class="form-control form-control-sm" type="date" id="startDate" name="start_date">
+                    <input class="form-control form-control-sm" type="date" id="startDate" name="start_date" data-toggle="tooltip" title="Please enter a start date">
                     <br>
                     <label for="endDate">End Date:</label>
-                    <input class="form-control form-control-sm" type="date" id="endDate" name="end_date">
+                    <input class="form-control form-control-sm" type="date" id="endDate" name="end_date" data-toggle="tooltip" title="Please enter an end date">
 
             <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="fa-solid fa-pen-to-square"></i> Set Date Range</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Set Date Range</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
