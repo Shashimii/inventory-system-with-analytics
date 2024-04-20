@@ -91,7 +91,6 @@ $(function() {
         `).join('');
 
         $('#selectedList').empty().append(list);
-        console.log(addBtnLimit)
     }
 
     $('#receiveTable').on('click', 'tr', selectItem);
@@ -124,6 +123,7 @@ $(function() {
     $('#clearSelected').on('click', function() {
         selectedList = [];
         $('#receiveTable tr').removeClass('table-success');
+        $('#quantityCount').empty();
         renderSelectedList();
         updateSelection();
         listMaxHeight();
@@ -133,8 +133,6 @@ $(function() {
         if (selectedQuantity != 0) {
             $('#selectedList').css("max-height", $('#selectedList').height() + "px");
         } else {
-            console.log('empty')
-            console.log(maxHeight)
             $('#selectedList').css("max-height", maxHeight + "px");
         }
     };
