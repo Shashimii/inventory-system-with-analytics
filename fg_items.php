@@ -114,6 +114,9 @@ while ($optionFg = $result->fetch_assoc()) {
                         </div>
                         <div class="selected-list-btn">
                         <hr class="border border-danger border-2 opacity-75">
+                            <div class="selected-counter">
+                                <h5 id="quantityCount"></h5>
+                            </div>
                             <div class="row row-cols-1 g-2">
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-sm btn-primary">Pack Raw Material</button>
