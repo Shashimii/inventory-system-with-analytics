@@ -27,6 +27,9 @@ $(function(){
                 case 'date': 
                     filteredResponse = tableData.filter(item => item.action_date.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
+                case 'id':
+                    filteredResponse = tableData.filter(item => item.from_rm_id.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
                 case 'name': 
                     filteredResponse = tableData.filter(item => item.item_name.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
@@ -42,11 +45,8 @@ $(function(){
                 case 'quantityPcs': 
                     filteredResponse = tableData.filter(item => item.quantity_pcs.toString().includes(searchKey));
                     break;
-                case 'quantityPly': 
-                    filteredResponse = tableData.filter(item => item.quantity_ply.toString().includes(searchKey));
-                    break;
                 default:
-                    filteredResponse = tableData.filter(item => `${item.item_id} ${item.item_lot} ${item.item_bin}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
+                    filteredResponse = tableData.filter(item => `${item.action_date} ${item.from_rm_id} ${item.item_name} ${item.item_desc} ${item.item_lot} ${item.item_bin} ${item.quantity_pcs}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
                     break;
             };
         };

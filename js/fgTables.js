@@ -9,15 +9,14 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">Id Lot Bin</option>
-                    <option value="date">Date Received</option>
+                    <option selected value="">No Filter</option>
+                    <option value="date">Date Created</option>
+                    <option value="id">Raw Material Id</option>
                     <option value="name">Name</option>
                     <option value="desc">Description</option>
-                    <option value="id">Id</option>
                     <option value="lot">Lot</option>
                     <option value="bin">Bin</option>
-                    <option value="quantityPcs">Quantity Pcs</option>
-                    <option value="quantityPly">Quantity Ply</option>
+                    <option value="quantityPcs">Quantity</option>
                 </select>
                     <input id="search" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>

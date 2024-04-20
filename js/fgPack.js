@@ -40,13 +40,13 @@ $(function() {
     function updateSelection() {
         selectedQuantity = selectedList.reduce((total, item) => total + item.quantityselected, 0);
         if (selectedQuantity <= 16) {
-            selectedBox = 'Small';
+            selectedBox = 'Small Box will be Used';
             selectedLimit = '16';
         } else if (selectedQuantity <= 24) {
-            selectedBox = 'Medium';
+            selectedBox = 'Medium Box will be Used';
             selectedLimit = '24';
         } else {
-            selectedBox = 'Large';
+            selectedBox = 'Large Box will be Used';
             selectedLimit = '32';
         }
 
@@ -97,7 +97,6 @@ $(function() {
                 </div>
             </div>
         `).join('');
-
         $('#selectedList').empty().append(list);
     }
 
