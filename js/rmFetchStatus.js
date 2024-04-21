@@ -53,7 +53,7 @@ let pageSize = 10;
                     '<tr>' +
                         '<td>' + item.item_name + '</td>' +
                         '<td>' + item.item_desc + '</td>' +
-                        '<td class="table-success">' + item.total_received + ' KG' + '</td>' +
+                        '<td' + (item.total_received != null ? ' class="table-success"' : '') + '>' + (item.total_received ?  item.total_received + ' KG' : '') + '</td>' +
                         '<td' + (item.total_inProduction != null ? ' class="table-warning"' : '') + '>' + (item.total_inProduction ? item.total_inProduction + ' KG' : '') + '</td>' +
                         '<td' + (item.total_scrap != null ? ' class="table-secondary"' : '') + '>' + (item.total_scrap ? item.total_scrap + ' KG' : '') + '</td>' +
                         '<td' + (item.total_used != null ? ' class="table-danger"' : '') + '>' + (item.total_used ? item.total_used + ' KG' : '') + '</td>' +
@@ -126,14 +126,16 @@ let pageSize = 10;
 
     $('#dateAdjustForm').on('submit', function(event) {
         event.preventDefault();
-    
-        if ($('#startDate').val() === '' || $('#endDate').val() === '') {
-            $('[data-toggle="tooltip"]').tooltip('show');
+
+        if ($('#startDate').val() === '') {
+            $('#startDate').tooltip('show');
+            return; 
+        } else if ($('#endDate').val() === ''){
+            $('#endDate').tooltip('show');
             return; 
         }
-    
+
         var inputData = $(this).serialize();
-    
         var notFormated = inputData.split("&");
         var formatted = [];
     
