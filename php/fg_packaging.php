@@ -26,26 +26,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bin = $row['bin'];
             $quantity = $row['quantityselected'];
 
-            $stmt = $con->prepare("SELECT quantity_pcs FROM fg_data WHERE from_rm_id = ? AND item_data_status = ?");
-            $stmt->bind_param('ss', $rawid, $dataStatusFloat);
-            if ($stmt->execute()) {
-                $result = $stmt->get_result();
-                $row = $result->fetch_assoc();
+            $stmt1 = $con->prepare("SELECT quantity_pcs FROM fg_data WHERE from_rm_id = ? AND item_data_status = ?");
+            $stmt1->bind_param('ss', $rawid, $dataStatusFloat);
+            if ($stmt1->execute()) {
+                $result1 = $stmt1->get_result();
+                $row1 = $result1->fetch_assoc();
 
-                $itemQuantity = $row['quantity_pcs'];
-
+                $itemQuantity = $row1['quantity_pcs'];
                 $newQuantity = $itemQuantity - $quantity;
 
                 if ($selectedBox === 'Small') {
-                    $stmt = $con->prepare("INSERT INTO fg_data 
+                    $stmt2 = $con->prepare("INSERT INTO fg_data 
                     (action_date, action_time, action_by, item_name, item_desc, item_lot, item_bin, from_rm_name, from_rm_id, quantity_pcs, pack_small, item_data_status, item_data_active)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    $stmt->bind_param('sssssssssiiss', $sys_date, $sys_time, $sys_user, $name, $desc, $lot, $bin, $rawname, $rawid, $newQuantity, $quantity, $dataStatusInUse, $dataActive);
-                    if ($stmt->execute()) {
-                        $stmt = $con->prepare("UPDATE fg_data SET
+                    $stmt2->bind_param('sssssssssiiss', $sys_date, $sys_time, $sys_user, $name, $desc, $lot, $bin, $rawname, $rawid, $newQuantity, $quantity, $dataStatusInUse, $dataActive);
+                    if ($stmt2->execute()) {
+                        $stmt3 = $con->prepare("UPDATE fg_data SET
                         quantity_pcs = ? WHERE from_rm_name = ? AND from_rm_id = ? AND item_data_status = ?");
-                        $stmt->bind_param("isss", $newQuantity, $rawname, $rawid, $dataStatusFloat);
-                        if ($stmt->execute()) {
+                        $stmt3->bind_param("isss", $newQuantity, $rawname, $rawid, $dataStatusFloat);
+                        if ($stmt3->execute()) {
                             $successCheck = 'true';
                         }
                     }; 
