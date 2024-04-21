@@ -11,12 +11,13 @@ $(function() {
         const row = clicked.closest('tr');
         const itemData = {
             date: row.find('td:nth-child(1)').text(),
-            rawid: row.find('td:nth-child(2)').text(),
-            name: row.find('td:nth-child(3)').text(),
-            desc: row.find('td:nth-child(4)').text(),
-            lot: row.find('td:nth-child(5)').text(),
-            bin: row.find('td:nth-child(6)').text(),
-            maxquantity: parseInt(row.find('td:nth-child(7)').text()) || parseInt(row.find('td:nth-child(8)').text())
+            rawname: row.find('td:nth-child(2)').text(),
+            rawid: row.find('td:nth-child(3)').text(),
+            name: row.find('td:nth-child(4)').text(),
+            desc: row.find('td:nth-child(5)').text(),
+            lot: row.find('td:nth-child(6)').text(),
+            bin: row.find('td:nth-child(7)').text(),
+            maxquantity: parseInt(row.find('td:nth-child(8)').text()) || parseInt(row.find('td:nth-child(9)').text())
         };
 
         if (clicked.is('button')) {
@@ -40,18 +41,18 @@ $(function() {
     function updateSelection() {
         selectedQuantity = selectedList.reduce((total, item) => total + item.quantityselected, 0);
         if (selectedQuantity <= 16) {
-            selectedBox = 'Small Box will be Used';
+            selectedBox = 'Small';
             selectedLimit = '16';
         } else if (selectedQuantity <= 24) {
-            selectedBox = 'Medium Box will be Used';
+            selectedBox = 'Medium';
             selectedLimit = '24';
         } else {
-            selectedBox = 'Large Box will be Used';
+            selectedBox = 'Large';
             selectedLimit = '32';
         }
 
         if (selectedQuantity != 0) {
-            $('#quantityCount').text(`Selected: ${selectedQuantity}/${selectedLimit} ~ ${selectedBox}`);
+            $('#quantityCount').text(`Selected: ${selectedQuantity}/${selectedLimit} ~ ${selectedBox} Box will be used`);
         } else {
             $('#quantityCount').empty();
         }
@@ -106,7 +107,7 @@ $(function() {
         $('#receiveTable tr:not(:has(th))').each(function() { // Ignore rows containing <th> elements
             var rowData = {};
             $(this).find('td').each(function(index) {
-                if (index === 1) { // Assuming "rawid" column is at index 1
+                if (index === 2) { // Assuming "rawid" column is at index 2
                     rowData['rawid'] = $(this).text(); // Store the value of "rawid" column
                     return false; // Exit the loop after retrieving "rawid" column value
                 }
@@ -186,5 +187,52 @@ $(function() {
 
     window.onload = function() {
         maxHeight =  $('#selectedList').height();
+    }
+
+    $('#packSelected').on('click', function() {
+        packSelectedItems()
+    })
+
+    function packSelectedItems() {
+        if (selectedList.length != 0) {
+            var dataToPost = {
+                selectedList: selectedList,
+                selectedQuantity: selectedQuantity,
+                selectedBox: selectedBox
+            };
+
+            $.ajax({
+                url: './php/fg_packaging.php',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(dataToPost),
+                success: function(response) {
+                    console.log(response)
+
+                    if (response === '0') {
+                        Swal.fire({
+                            title: 'Packed',
+                            text: 'Packed',
+                            icon: 'success',
+                        }).then(function() {
+                            location.reload();
+                        })
+                    } else {
+                        console.log('Hello? Something Went Wrong on Submitting this data')
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText)
+                }
+            })
+        } else {
+            Swal.fire({
+                title: 'Selection is Empty',
+                text: 'Select Finished Goods to be Packed',
+                icon: 'warning',
+            }).then(function() {
+                location.reload();
+            })
+        }
     }
 });
