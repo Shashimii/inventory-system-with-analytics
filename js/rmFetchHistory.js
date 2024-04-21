@@ -76,11 +76,11 @@ $(function(){
                                                     <th class="table-primary">Date</th>
                                                     <th class="table-primary">Time</th>
                                                     <th class="table-primary">Action By</th>
-                                                    <th>Received</th>
-                                                    <th>In Production</th>
-                                                    <th>Scrap</th>
-                                                    <th>Used</th>
-                                                    <th>FG PCS</th>
+                                                    <th class="table-success">Received</th>
+                                                    <th class="table-warning">In Production</th>
+                                                    <th class="table-secondary">Scrap</th>
+                                                    <th class="table-danger">Used</th>
+                                                    <th class="table-primary">FG PCS</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">`;

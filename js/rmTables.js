@@ -34,12 +34,12 @@ $(function(){
                     <thead>
                         <tr>
                             <th scope="col">Date Received</th>
-                            <th scope="col">Raw Material</th>
+                            <th class="table-primary" scope="col">Raw Material</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Id</th>
+                            <th class="table-primary" scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th scope="col">Quantity</th>
+                            <th class="table-success" scope="col">Quantity</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>
@@ -92,12 +92,12 @@ $(function(){
                     <thead>
                         <tr>
                             <th scope="col">Date In</th>
-                            <th scope="col">Raw Material</th>
+                            <th class="table-primary" scope="col">Raw Material</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Id</th>
+                            <th class="table-primary" scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th scope="col">Quantity</th>
+                            <th class="table-warning" scope="col">Quantity</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>
@@ -151,13 +151,13 @@ $(function(){
                     <thead>
                         <tr>
                             <th scope="col">Date Depleted</th>
-                            <th scope="col">Raw Material</th>
+                            <th class="table-primary" scope="col">Raw Material</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Id</th>
+                            <th class="table-primary" scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th scope="col">Quantity Scrap</th>
-                            <th scope="col">Quantity Used</th>
+                            <th class="table-warning" scope="col">Quantity Scrap</th>
+                            <th class="table-danger" scope="col">Quantity Used</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>
@@ -190,8 +190,8 @@ $(function(){
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
                     <option selected value="">Id Lot Bin</option>
-                    <option value="date">Date</option>
-                    <option value="time">Time</option>
+                    <option value="date">Date Received</option>
+                    <option value="time">Time Received</option>
                     <option value="name">Name</option>
                     <option value="desc">Description</option>
                 </select>
@@ -258,11 +258,11 @@ $(function(){
                         <tr>
                         <th scope="col">Raw Material</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Received</th>
-                        <th scope="col">In Production</th>
-                        <th scope="col">Scrap</th>
-                        <th scope="col">Used</th>
-                        <th scope="col">FG PCS</th>
+                        <th class="table-success" scope="col">Received</th>
+                        <th class="table-warning" scope="col">In Production</th>
+                        <th class="table-secondary" scope="col">Scrap</th>
+                        <th class="table-danger" scope="col">Used</th>
+                        <th class="table-info" scope="col">FG PCS</th>
                         </tr>
                     </thead>
                     <tbody>
