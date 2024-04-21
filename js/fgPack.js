@@ -100,6 +100,28 @@ $(function() {
         $('#selectedList').empty().append(list);
     }
 
+    function maintainHighlight() {
+        var tableRowsData = [];
+    
+        $('#receiveTable tr:not(:has(th))').each(function() { // Ignore rows containing <th> elements
+            var rowData = {};
+            $(this).find('td').each(function(index) {
+                if (index === 1) { // Assuming "rawid" column is at index 1
+                    rowData['rawid'] = $(this).text(); // Store the value of "rawid" column
+                    return false; // Exit the loop after retrieving "rawid" column value
+                }
+            });
+            tableRowsData.push(rowData);
+        });
+    
+        tableRowsData.forEach(function(rowData, rowIndex) {
+            var rowRawid = rowData['rawid'];
+            if (selectedList.some(item => item['rawid'] === rowRawid)) {
+                $('#receiveTable tr:not(:has(th))').eq(rowIndex).addClass('table-success');
+            }
+        });
+    }
+    
     $('#receiveTable').on('click', 'tr', selectItem);
 
     $('#selectedList').on('click', '.plus', function() {
@@ -133,8 +155,10 @@ $(function() {
         listMaxHeight();
     });
 
-    $('#search').on('change', function(){
-        
+    $('#search').on('input', function(){
+        if (selectedList.length != 0) {
+            setTimeout(maintainHighlight, 3000);
+        }
     });
 
     $('#clearSelected').on('click', function() {
