@@ -13,3 +13,4 @@ $dataStatusInProduction = 'InProduction';
 $dataStatusDepleted = 'Depleted';
 
 $dataStatusFloat = 'Float';
+$dataStatusInUse = 'InUse';
