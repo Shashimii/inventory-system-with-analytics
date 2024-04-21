@@ -68,6 +68,7 @@ $(function(){
                 $('#receiveTable tbody').append( 
                     '<tr class="">' +
                         '<td>' + item.action_date + '</td>' +
+                        '<td>' + item.from_rm_name + '</td>' +
                         '<td class="table-warning">' + item.from_rm_id + '</td>' +
                         '<td class="table-primary">' + item.item_name + '</td>' +
                         '<td>' + item.item_desc + '</td>' +
