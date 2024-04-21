@@ -145,7 +145,7 @@ $(function() {
         if (selectedList[itemIndex].quantityselected === 0) {   
             $('#receiveTable tr').each(function() {
                 const row = $(this);
-                const rowRawmatId = row.find('td:nth-child(2)').text();
+                const rowRawmatId = row.find('td:nth-child(3)').text();
                 if (rowRawmatId === selectedList[itemIndex].rawid) {
                     row.removeClass('table-success');
                 }
