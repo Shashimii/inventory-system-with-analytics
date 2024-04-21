@@ -67,7 +67,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $stmt->bind_param("sssssssissss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $rm_name, $rm_id, $dataStatusReceived, $dataActive);
 
                         if($stmt->execute()) {
-                            echo '0';
+                            $insertFg = "INSERT INTO fg_data 
+                            (action_date, action_time, action_by, item_name, item_desc, item_lot, item_bin, quantity_pcs, from_rm_name, from_rm_id, item_data_status, item_data_active) VALUES 
+                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            $stmt = $con->prepare($insertFg);
+                            $stmt->bind_param("sssssssissss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $rm_name, $rm_id, $dataStatusFloat, $dataActive);
+
+                            if($stmt->execute()) {
+                                echo '0';
+                            } else {
+                                echo '7';
+                            }
                         } else {
                             echo '6';
                         }
