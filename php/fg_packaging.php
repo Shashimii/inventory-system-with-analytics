@@ -60,7 +60,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         if ($stmt3->execute()) {
                             $successQuery = true;
                         }
-                    };
+                    }
+                } else if ($selectedBox === 'Large') {
+                    $stmt2 = $con->prepare("INSERT INTO fg_data 
+                    (action_date, action_time, action_by, item_name, item_desc, item_lot, item_bin, from_rm_name, from_rm_id, quantity_pcs, pack_large, item_data_status, item_data_active)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $stmt2->bind_param('sssssssssiiss', $sys_date, $sys_time, $sys_user, $name, $desc, $lot, $bin, $rawname, $rawid, $newQuantity, $quantity, $dataStatusInUse, $dataActive);
+                    if ($stmt2->execute()) {
+                        $stmt3 = $con->prepare("UPDATE fg_data SET
+                        quantity_pcs = ? WHERE from_rm_name = ? AND from_rm_id = ? AND item_data_status = ?");
+                        $stmt3->bind_param("isss", $newQuantity, $rawname, $rawid, $dataStatusFloat);
+                        if ($stmt3->execute()) {
+                            $successQuery = true;
+                        }
+                    }
+                } else {
+                    $successQuery = false;
                 }
             };
         }
