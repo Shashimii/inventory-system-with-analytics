@@ -7,7 +7,7 @@ $(function(){
 
     function preloadTableData() {
         $.ajax({
-            url: './php/fg_received_data.php',
+            url: './php/fg_float_data.php',
             method: 'GET',
             success: function(response) {
                 tableData = response;
@@ -60,7 +60,7 @@ $(function(){
 
         if (pageData.length === 0) {
             tableRow = '<tr>';
-            tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; 
+            tableRow += '<td colspan="9" style="text-align: center;">There is No Data</td>'; 
             tableRow += '</tr>';
             $('#receiveTable').append(tableRow);
         } else {
