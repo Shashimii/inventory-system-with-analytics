@@ -161,6 +161,12 @@ $(function() {
         }
     });
 
+    $('#receivedTablePagination').on('click', function(event) {
+        if (selectedList.length != 0) {
+            setTimeout(maintainHighlight, 3000)
+        }
+    });
+
     $('#clearSelected').on('click', function() {
         selectedList = [];
         $('#receiveTable tr').removeClass('table-success');
