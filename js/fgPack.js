@@ -133,6 +133,10 @@ $(function() {
         listMaxHeight();
     });
 
+    $('#search').on('change', function(){
+        
+    });
+
     $('#clearSelected').on('click', function() {
         selectedList = [];
         $('#receiveTable tr').removeClass('table-success');
