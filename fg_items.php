@@ -119,7 +119,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             </div>
                             <div class="row row-cols-1 g-2">
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-sm btn-primary">Pack Raw Material</button>
+                                    <button id="packSelected" class="btn btn-sm btn-primary">Pack Raw Material</button>
                                 </div>
                                 <div class="d-grid gap-2">
                                     <button id="clearSelected" class="btn btn-sm btn-secondary">Clear Selected</button>
