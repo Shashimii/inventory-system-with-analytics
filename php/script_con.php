@@ -11,3 +11,5 @@ $dataNotActive = 'N';
 $dataStatusReceived = 'Received';
 $dataStatusInProduction = 'InProduction';
 $dataStatusDepleted = 'Depleted';
+
+$dataStatusFloat = 'Float';
