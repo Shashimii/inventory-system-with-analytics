@@ -68,8 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt2->bind_param('sssssssssiiss', $sys_date, $sys_time, $sys_user, $name, $desc, $lot, $bin, $rawname, $rawid, $newQuantity, $quantity, $dataStatusInUse, $dataActive);
                     if ($stmt2->execute()) {
                         $stmt3 = $con->prepare("UPDATE fg_data SET
-                        quantity_pcs = ? WHERE from_rm_name = ? AND from_rm_id = ? AND item_data_status = ?");
-                        $stmt3->bind_param("isss", $newQuantity, $rawname, $rawid, $dataStatusFloat);
+                        item_data_active = ? WHERE from_rm_id = ? AND item_data_status = ?");
+                        $stmt3->bind_param("sss", $rawname, $rawid, $dataStatusFloat);
                         if ($stmt3->execute()) {
                             $successQuery = true;
                         }
@@ -78,6 +78,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $successQuery = false;
                 }
             };
+
+            if ($newQuantity === 0) {
+                $stmtRemove = $con->prepare("UPDATE fg_data SET item_data_active = ? WHERE from_rm_id = ? AND item_data_status = ?");
+                $stmtRemove->bind_param("sss", $dataNotActive, $rawid, $dataStatusFloat);
+                if ($stmtRemove->execute()) {   
+                    $successQuery = true;
+                };
+            }
         }
 
         if($successQuery) {
