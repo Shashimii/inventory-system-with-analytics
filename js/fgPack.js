@@ -257,6 +257,12 @@ $(function() {
                         }).then(function() {
                             location.reload();
                         })
+                    } else if (response === '2') {
+                        Swal.fire({
+                            title: 'Already There',
+                            text: 'Product with Same Id Already Packed',
+                            icon: 'error',
+                        })
                     } else {
                         console.log('Hello? Something Went Wrong on Submitting this data')
                     }
