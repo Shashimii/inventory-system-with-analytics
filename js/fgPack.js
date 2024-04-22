@@ -214,15 +214,18 @@ $(function() {
         maxHeight =  $('#selectedList').height();
     }
 
-    $('#packSelected').on('click', function(event) {
+    $('#packForm').on('submit', function(event) {
         event.preventDefault();
+        const packName = $('#packName').val().trim();
+        const packDesc = $('#packDesc').val().trim();
+        const packId = $('#packId').val().trim();
+        const packStorage = $('#packStorage').val().trim();
 
-        const packName = $('#packName').val();
-        const packDesc = $('#packDesc').val();
-        const packId = $('#packId').val();
-        const packStorage = $('#packStorage').val();
-
-        packSelectedItems(packName, packDesc, packId, packStorage)
+        if (packName !== '' && packDesc !== '' && packId !== '' && packStorage !== '') {
+            packSelectedItems(packName, packDesc, packId, packStorage);
+        } else {
+            return
+        }
     })
 
     function packSelectedItems(packName, packDesc, packId, packStorage) {
