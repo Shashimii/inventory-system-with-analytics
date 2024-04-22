@@ -2,10 +2,10 @@
 
 include 'connections.php';
 
-$nameQuery = "SELECT * FROM fg_registered";
+$nameQuery = "SELECT * FROM products_registered";
 $result = $con->query($nameQuery);
-while ($optionFg = $result->fetch_assoc()) {
-    $FgOptions[] = array('fg_name' => $optionFg['fg_name'], 'fg_desc' => $optionFg['fg_description']);
+while ($optionProduct = $result->fetch_assoc()) {
+    $productOptions[] = array('product_name' => $optionProduct['product_name'], 'product_desc' => $optionProduct['product_desc']);
 }
 
 ?>
@@ -144,9 +144,23 @@ while ($optionFg = $result->fetch_assoc()) {
                 <form id="packForm">
                     <div class="ipt-container">
                         <label for="packName">Product Name</label>
-                        <input name="pack_name" id="packName" placeholder="Enter Product Name" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
+                        <select name="pack_name" id="packName" class="form-select form-select-sm dropdown" required>
+                            <option selected hidden value="">Select Product Name</option>
+                            <?php 
+                                foreach ($productOptions as $option) {
+                                echo "<option value='". $option['product_name'] ."' data-description='". $option['product_desc'] ."'>". $option['product_name'] ."</option>";
+                                }
+                            ?>
+                        </select>
                         <label for="packDesc">Product Description</label>
-                        <input name="pack_desc" id="packDesc" placeholder="Enter Product Description" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
+                        <input name="pack_desc" id="packDesc" placeholder="Product Description" title="Product Description" class="form-control form-control-sm" type="text" value="" readonly required>
+                            <script>
+                                $('#packName').on('change', function() {
+                                    var selectedName = $(this).find(':selected');
+                                    var selectedDesc = selectedName.data('description');
+                                    $('#packDesc').val(selectedDesc)
+                                })
+                            </script>
                         <label for="packId">Product Id</label>
                         <input name="pack_id" id="packId" placeholder="Enter Product Id" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
                         <label for="packStorage">Storage Bin</label>
@@ -161,5 +175,4 @@ while ($optionFg = $result->fetch_assoc()) {
         </div>
     </div>
 </div>
-
 </html>
