@@ -200,6 +200,7 @@ $(function() {
         renderSelectedList();
         updateSelection();
         listMaxHeight();
+        disableButtons();
     });
 
     function listMaxHeight() {
