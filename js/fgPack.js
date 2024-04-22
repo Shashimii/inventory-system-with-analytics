@@ -29,7 +29,18 @@ $(function() {
 
             if (clicked.hasClass('select') && selectedIndex === -1) {
                 if (selectedQuantity != addLimit) {
-                    selectedList.push({ ...itemData, quantityselected: 1 });
+                    if (selectedList.length === 0) {
+                        selectedList.push({ ...itemData, quantityselected: 1 });
+                    } else if (selectedList.some(item => item.name === itemData.name)) {
+                        selectedList.push({ ...itemData, quantityselected: 1 });
+                    } else {
+                        row.removeClass('table-success');
+                        Swal.fire({
+                            title: 'Finished Goods Mistmatch',
+                            text: 'Select Same Finished Goods',
+                            icon: 'error',
+                        });
+                    }
                     updateSelection();
                     renderSelectedList();
                     listMaxHeight();
