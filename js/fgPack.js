@@ -31,12 +31,14 @@ $(function() {
                 if (selectedQuantity != addLimit) {
                     if (selectedList.length === 0) {
                         selectedList.push({ ...itemData, quantityselected: 1 });
+                        enableButtons()
                     } else if (selectedList.some(item => item.name === itemData.name)) {
                         selectedList.push({ ...itemData, quantityselected: 1 });
+                        enableButtons()
                     } else {
                         row.removeClass('table-success');
                         Swal.fire({
-                            title: 'Finished Goods Mistmatch',
+                            title: 'Finished Goods Missmatch',
                             text: 'Select Same Finished Goods',
                             icon: 'error',
                         });
@@ -44,10 +46,21 @@ $(function() {
                     updateSelection();
                     renderSelectedList();
                     listMaxHeight();
-                }   
+                }
             }
         }
     }
+
+    function enableButtons() {
+        $('#selectModal').removeAttr('disabled');
+        $('#clearSelected').removeAttr('disabled');
+    }
+
+    function disableButtons() {
+        $('#selectModal').attr('disabled', 'disabled');
+        $('#clearSelected').attr('disabled', 'disabled');
+    }
+
 
     function updateSelection() {
         selectedQuantity = selectedList.reduce((total, item) => total + item.quantityselected, 0);
@@ -162,6 +175,7 @@ $(function() {
                 }
             });
             selectedList.splice(itemIndex, 1);
+            disableButtons()
             renderSelectedList();
         }
         listMaxHeight();

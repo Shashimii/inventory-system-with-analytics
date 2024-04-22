@@ -119,10 +119,10 @@ while ($optionFg = $result->fetch_assoc()) {
                             </div>
                             <div class="row row-cols-1 g-2">
                                 <div class="d-grid gap-2">
-                                    <button data-bs-toggle="modal" data-bs-target="#fgPackModal" class="btn btn-sm btn-primary">Pack Raw Material</button>
+                                    <button id="selectModal" data-bs-toggle="modal" data-bs-target="#fgPackModal" class="btn btn-sm btn-success" disabled>Pack Finished Goods</button>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button id="clearSelected" class="btn btn-sm btn-secondary">Clear Selected</button>
+                                    <button id="clearSelected" class="btn btn-sm btn-secondary" disabled>Clear Selected</button>
                                 </div>
                             </div>
                         </div>
