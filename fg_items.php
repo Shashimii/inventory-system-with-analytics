@@ -119,7 +119,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             </div>
                             <div class="row row-cols-1 g-2">
                                 <div class="d-grid gap-2">
-                                    <button id="packSelected" class="btn btn-sm btn-primary">Pack Raw Material</button>
+                                    <button data-bs-toggle="modal" data-bs-target="#fgPackModal" class="btn btn-sm btn-primary">Pack Raw Material</button>
                                 </div>
                                 <div class="d-grid gap-2">
                                     <button id="clearSelected" class="btn btn-sm btn-secondary">Clear Selected</button>
@@ -132,4 +132,34 @@ while ($optionFg = $result->fetch_assoc()) {
         </div>
     </div>
 </body>
+
+<div class="modal" id="fgPackModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fgPackModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="fgPackModal">Pack Finished Goods</h1>
+                <i class="fa-solid fa-box"></i>
+            </div>
+            <div class="modal-body">
+                <form id="packForm">
+                    <div class="ipt-container">
+                        <label for="packName">Product Name</label>
+                        <input name="pack_name" id="packName" placeholder="Enter Product Name" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
+                        <label for="packDesc">Product Description</label>
+                        <input name="pack_desc" id="packDesc" placeholder="Enter Product Description" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
+                        <label for="packId">Product Id</label>
+                        <input name="pack_id" id="packId" placeholder="Enter Product Id" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
+                        <label for="packStorage">Storage Bin</label>
+                        <input name="pack_storage" id="packStorage" placeholder="Enter Storage Bin" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="submit" id="packSelected" class="btn btn-success">Pack Finished Goods</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>

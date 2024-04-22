@@ -200,16 +200,27 @@ $(function() {
         maxHeight =  $('#selectedList').height();
     }
 
-    $('#packSelected').on('click', function() {
-        packSelectedItems()
+    $('#packSelected').on('click', function(event) {
+        event.preventDefault();
+
+        const packName = $('#packName').val();
+        const packDesc = $('#packDesc').val();
+        const packId = $('#packId').val();
+        const packStorage = $('#packStorage').val();
+
+        packSelectedItems(packName, packDesc, packId, packStorage)
     })
 
-    function packSelectedItems() {
+    function packSelectedItems(packName, packDesc, packId, packStorage) {
         if (selectedList.length != 0) {
             var dataToPost = {
                 selectedList: selectedList,
                 selectedQuantity: selectedQuantity,
-                selectedBox: selectedBox
+                selectedBox: selectedBox,
+                packName: packName,
+                packDesc: packDesc,
+                packId: packId,
+                packStorage: packStorage
             };
 
             $.ajax({

@@ -13,6 +13,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $selectedList = $data['selectedList'];
         $selectedQuantity = $data['selectedQuantity'];
         $selectedBox = $data['selectedBox'];
+        $packName = $data['packName'];
+        $packDesc = $data['packDesc'];
+        $packId = $data['packId'];
+        $packStorage = $data['packStorage'];
+
+        // batch system that will only count the batches daily and reset the next day
+        $stmt = $con->prepare("SELECT MAX(item_lot) AS last_batch_num from products_data WHERE action_date = ? AND item_name = ?");
+        $stmt->bind_param("ss", $sys_date, $packName);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $row['last_batch_num'];
+        
+        // check if batch number is not blank or null if it is batch number will be 1 as the start of batch
+        $batchNumber = $row['last_batch_num'] ? intval(substr($row['last_batch_num'], 5)) + 1 : '1';
+        $pack_batch = "Batch" . $batchNumber;
 
         $successQuery = false;
 
@@ -89,7 +105,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if($successQuery) {
-            echo '0';
+            if ($selectedBox === 'Small') {
+                $stmtInsert = $con->prepare("INSERT INTO products_data 
+                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_small, item_data_status, item_data_active) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmtInsert->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive);
+                if ($stmtInsert->execute()) {
+                    echo "0";
+                }
+            } else if ($selected_id === 'Medium') {
+                $stmtInsert = $con->prepare("INSERT INTO products_data 
+                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_medium, item_data_status, item_data_active) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmtInsert->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive);
+                if ($stmtInsert->execute()) {
+                    echo "0";
+                }
+            } else if ($selectedBox === 'Large') {
+                $stmtInsert = $con->prepare("INSERT INTO products_data 
+                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_large, item_data_status, item_data_active) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmtInsert->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive);
+                if ($stmtInsert->execute()) {
+                    echo "0";
+                }
+            }
         } else {
             echo '1';
         }
