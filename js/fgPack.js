@@ -252,7 +252,7 @@ $(function() {
                     if (response === '0') {
                         Swal.fire({
                             title: 'Packed',
-                            text: 'Packed',
+                            text: 'Finished Goods is Packed',
                             icon: 'success',
                         }).then(function() {
                             location.reload();
