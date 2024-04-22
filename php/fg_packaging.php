@@ -84,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt2->bind_param('sssssssssiiss', $sys_date, $sys_time, $sys_user, $name, $desc, $lot, $bin, $rawname, $rawid, $newQuantity, $quantity, $dataStatusInUse, $dataActive);
                     if ($stmt2->execute()) {
                         $stmt3 = $con->prepare("UPDATE fg_data SET
-                        item_data_active = ? WHERE from_rm_id = ? AND item_data_status = ?");
-                        $stmt3->bind_param("sss", $rawname, $rawid, $dataStatusFloat);
+                        quantity_pcs = ? WHERE from_rm_name = ? AND from_rm_id = ? AND item_data_status = ?");
+                        $stmt3->bind_param("isss", $newQuantity, $rawname, $rawid, $dataStatusFloat);
                         if ($stmt3->execute()) {
                             $successQuery = true;
                         }
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmtInsert->execute()) {
                     echo "0";
                 }
-            } else if ($selected_id === 'Medium') {
+            } else if ($selectedBox === 'Medium') {
                 $stmtInsert = $con->prepare("INSERT INTO products_data 
                 (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_medium, item_data_status, item_data_active) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
