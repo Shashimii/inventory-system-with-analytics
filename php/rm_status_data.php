@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         SUM(quantity_scrap) AS total_scrap,
         SUM(quantity_used) AS total_used,
         SUM(quantity_created_pcs) AS total_pcs
-        FROM `rm_data` WHERE action_date BETWEEN ? AND ? GROUP BY item_name ORDER BY id DESC;");
+        FROM `rm_data` WHERE WHERE item_data_active = 'Y' AND action_date BETWEEN ? AND ? GROUP BY item_name ORDER BY id DESC;");
         $stmt->bind_param("ss", $start_date, $end_date);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -30,12 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } 
 } else {
     $stmt = $con->prepare("SELECT item_name, item_desc,
-    SUM(quantity_receive) AS total_received,
+    SUM(quantity_receive) AS total_quantity,
     SUM(quantity_inProduction) AS total_inProduction,
     SUM(quantity_scrap) AS total_scrap,
     SUM(quantity_used) AS total_used,
     SUM(quantity_created_pcs) AS total_pcs
-    FROM `rm_data` GROUP BY item_name ORDER BY id DESC;");
+    FROM `rm_data` WHERE item_data_active = 'Y' GROUP BY item_name ORDER BY id DESC;");
     $stmt->execute();
     $result = $stmt->get_result();
 
