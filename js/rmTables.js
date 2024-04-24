@@ -258,11 +258,11 @@ $(function(){
                         <tr>
                         <th scope="col">Raw Material</th>
                         <th scope="col">Description</th>
-                        <th class="table-success" scope="col">Received</th>
+                        <th class="table-success" scope="col">Total Quantity</th>
                         <th class="table-warning" scope="col">In Production</th>
                         <th class="table-secondary" scope="col">Scrap</th>
                         <th class="table-danger" scope="col">Used</th>
-                        <th class="table-info" scope="col">FG PCS</th>
+                        <th class="table-info" scope="col">FG</th>
                         </tr>
                     </thead>
                     <tbody>

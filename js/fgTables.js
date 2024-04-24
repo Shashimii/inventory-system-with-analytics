@@ -32,7 +32,7 @@ $(function(){
                             <th scope="col">Description</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th class="table-success" scope="col">Quantity (PCS)</th>
+                            <th class="table-success" scope="col">Quantity</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -120,7 +120,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-status-md-card-row">
                 <div class="rm-row-md-card-item">
-                    <h4>Raw Material Status</h4>
+                    <h4>Finished Goods Status</h4>
                 </div>
                 <div class="rm-status-md-card-btn-searchbar">
                     <button id="dateRange" class="btn btn-primary btn-sm" data-bs-toggle="modal"
@@ -142,7 +142,7 @@ $(function(){
                         <tr>
                         <th scope="col">Finished Goods</th>
                         <th scope="col">Description</th>
-                        <th class="table-success" scope="col">Quantity (PCS)</th>
+                        <th class="table-success" scope="col">Total Quantity</th>
                         <th class="table-info" scope="col">Packed Small</th>
                         <th class="table-warning" scope="col">Packed Medium</th>
                         <th class="table-danger" scope="col">Packed Large</th>

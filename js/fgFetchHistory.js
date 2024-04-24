@@ -102,10 +102,10 @@ $(function(){
                                                 <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td ${data.quantity_pcs != null ? ' class="table-success"' : ''} >${data.quantity_pcs ? data.quantity_pcs : ''}</td>
-                                                <td ${data.pack_small != null ? ' class="table-info"' : ''} >${data.pack_small ? data.pack_small : ''}</td>
-                                                <td ${data.pack_medium != null ? ' class="table-warning"' : ''} >${data.pack_medium ? data.pack_medium : ''}</td>
-                                                <td ${data.pack_large != null ? ' class="table-danger"' : ''} >${data.pack_large ? data.pack_large : ''}</td>
+                                                <td ${data.quantity_pcs != null ? ' class="table-success"' : ''} >${data.quantity_pcs ? data.quantity_pcs  + ' pcs' : ''}</td>
+                                                <td ${data.pack_small != null ? ' class="table-info"' : ''} >${data.pack_small ? data.pack_small  + ' pcs' : ''}</td>
+                                                <td ${data.pack_medium != null ? ' class="table-warning"' : ''} >${data.pack_medium ? data.pack_medium  + ' pcs' : ''}</td>
+                                                <td ${data.pack_large != null ? ' class="table-danger"' : ''} >${data.pack_large ? data.pack_large + ' pcs': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

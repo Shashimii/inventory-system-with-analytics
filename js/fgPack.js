@@ -38,7 +38,7 @@ $(function() {
                     } else {
                         row.removeClass('table-success');
                         Swal.fire({
-                            title: 'Finished Goods Missmatch',
+                            title: 'Finished Goods Mismatch',
                             text: 'Select Same Finished Goods',
                             icon: 'error',
                         });

@@ -53,10 +53,10 @@ $(function(){
                         '<tr>' +
                             '<td>' + item.item_name + '</td>' +
                             '<td>' + item.item_desc + '</td>' +
-                            '<td' + (item.total_quantity != null ? ' class="table-success"' : '') + '>' + (item.total_quantity ?  item.total_quantity + ' KG' : '') + '</td>' +
-                            '<td' + (item.total_small != null ? ' class="table-info"' : '') + '>' + (item.total_small ? item.total_small + ' KG' : '') + '</td>' +
-                            '<td' + (item.total_medium != null ? ' class="table-warning"' : '') + '>' + (item.total_medium ? item.total_medium + ' KG' : '') + '</td>' +
-                            '<td' + (item.total_large != null ? ' class="table-danger"' : '') + '>' + (item.total_large ? item.total_large + ' KG' : '') + '</td>' +
+                            '<td' + (item.total_quantity != null ? ' class="table-success"' : '') + '>' + (item.total_quantity ?  item.total_quantity + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td' + (item.total_small != null ? ' class="table-info"' : '') + '>' + (item.total_small ? item.total_small + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td' + (item.total_medium != null ? ' class="table-warning"' : '') + '>' + (item.total_medium ? item.total_medium + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td' + (item.total_large != null ? ' class="table-danger"' : '') + '>' + (item.total_large ? item.total_large + ' pcs' : 0 +' pcs') + '</td>' +
                         '</tr>'
                     );
                 });
