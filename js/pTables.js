@@ -5,7 +5,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>Finished Goods</h4>
+                    <h4>Products Stocks</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
