@@ -350,7 +350,7 @@ th {
 
 /*== RM Status End ==*/
 
-/*== FG Mange ==*/
+/*== Product Manage ==*/
 .fg-manage-row-1 {
     flex: 1;
     display: grid;
@@ -401,8 +401,33 @@ th {
     display: none; 
 }
 
-/*== RM Manage End
-
 /*== FG Manage End ==*/
+
+
+/*== FG Mange ==*/
+.p-manage-row-1 {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+}
+
+.p-manage-table {
+    flex: 1;
+    display: flex;
+}
+
+.fg-pack-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.fg-manage-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/*== Product Manage End ==*/
 
 /*== End ==*/
