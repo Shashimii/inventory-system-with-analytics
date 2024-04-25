@@ -14,3 +14,5 @@ $dataStatusDepleted = 'Depleted';
 
 $dataStatusFloat = 'Float';
 $dataStatusInUse = 'InUse';
+
+$dataStatusShip = 'Shipped';
