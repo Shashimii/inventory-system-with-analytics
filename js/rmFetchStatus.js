@@ -58,6 +58,15 @@ let pageSize = 10;
                         '<td' + (item.total_scrap != null ? ' class="table-secondary"' : '') + '>' + (item.total_scrap ? item.total_scrap + ' kg' : 0 + ' kg') + '</td>' +
                         '<td' + (item.total_used != null ? ' class="table-danger"' : '') + '>' + (item.total_used ? item.total_used + ' kg' : 0 + ' kg') + '</td>' +
                         '<td' + (item.total_pcs != null ? ' class="table-primary"' : '') + '>' + (item.total_pcs ? item.total_pcs + ' pcs' : 0 + ' pcs') + '</td>' +
+                        '<td' + 
+                        (item.total_quantity < 2000 ? ' class="table-danger"' : '') +
+                        (item.total_quantity >= 2000 && item.total_quantity <= 9999 ? ' class="table-success"' : '') +
+                        (item.total_quantity > 9999 ? ' class="table-warning"' : '') +
+                        '>' + 
+                            (item.total_quantity < 2000 ? 'Low' : '') + 
+                            (item.total_quantity >= 2000 && item.total_quantity <= 9999 ? 'Normal' : '') +
+                            (item.total_quantity > 9999 ? 'Overstock' : '') +
+                        '</td>' +
                     '</tr>'
                 );
             });
