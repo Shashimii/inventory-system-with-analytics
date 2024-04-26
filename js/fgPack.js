@@ -57,8 +57,10 @@ $(function() {
     }
 
     function disableButtons() {
-        $('#selectModal').attr('disabled', 'disabled');
-        $('#clearSelected').attr('disabled', 'disabled');
+        if (selectedList.length === 0) {
+            $('#selectModal').attr('disabled', 'disabled');
+            $('#clearSelected').attr('disabled', 'disabled');
+        }
     }
 
 
@@ -84,43 +86,43 @@ $(function() {
 
     function renderSelectedList() {
         const list = selectedList.map(item => `
-            <div class='selected-box text-center' style="background-color: #98EECC;">
-                <div class="row row-cols-3 g-1">
-                    <div class='col'>
-                        <h6 style="margin: 0px">FG</h6>
-                        ${item.name}
-                    </div>
-                    <div class='col'>
-                        <h6 style="margin: 0px">Description</h6>
-                        ${item.desc}
-                    </div>
-                    <div class='col'>
-                        <h6 style="margin: 0px">Lot</h6>
-                        ${item.lot}
-                    </div>
-                    <div class='col'>
-                        <h6 style="margin: 0px">Date Created</h6>
-                        ${item.date}
-                    </div>
-                    <div class='col'>
-                        <h6 style="margin: 0px">RawMat Id</h6>
-                        ${item.rawid}
-                    </div>
-                    <div class='col'>
-                        <h6 style="margin: 0px">Bin</h6>
-                        ${item.bin}
-                    </div>
+        <div class='selected-box text-center' style="background-color: #F5F5F5; border-radius: 10px; padding: 10px;">
+            <div class="row row-cols-3 g-1">
+                <div class='col'>
+                    <h6 style="margin: 0px">FG</h6>
+                    ${item.name}
                 </div>
-                <hr class="border border-dark opacity-100" style="padding: 0; margin: 0;">
-                <div style="background-color: #F0DBAF; margin: 1px;">
-                    <h6>Quantity Selected</h6>
-                    ${item.quantityselected} / ${item.maxquantity}
-                    <div>
-                        <button class="plus btn btn-sm btn-success" ${selectedQuantity === addLimit ? 'disabled' : ''}><i class="fa-solid fa-plus"></i></button>
-                        <button class="minus btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i></button>
-                    </div>
+                <div class='col'>
+                    <h6 style="margin: 0px">Description</h6>
+                    ${item.desc}
+                </div>
+                <div class='col'>
+                    <h6 style="margin: 0px">Lot</h6>
+                    ${item.lot}
+                </div>
+                <div class='col'>
+                    <h6 style="margin: 0px">Date Created</h6>
+                    ${item.date}
+                </div>
+                <div class='col'>
+                    <h6 style="margin: 0px">RawMat Id</h6>
+                    ${item.rawid}
+                </div>
+                <div class='col'>
+                    <h6 style="margin: 0px">Bin</h6>
+                    ${item.bin}
                 </div>
             </div>
+            <hr class="border border-dark opacity-100" style="padding: 0; margin: 5px;">
+            <div style="background-color: #FFFFFF; padding: 5px; border-radius: 5px;">
+                <h6>Quantity Selected</h6>
+                ${item.quantityselected} / ${item.maxquantity}
+                <div class="btn-group" style="width: 100%;">
+                    <button class="plus btn btn-sm btn-success" style="width: 49%;" ${selectedQuantity === addLimit ? 'disabled' : ''}><i class="fa-solid fa-plus"></i></button>
+                    <button class="minus btn btn-sm btn-danger" style="width: 49%;"><i class="fa-solid fa-minus"></i></button>
+                </div>
+            </div>
+        </div>    
         `).join('');
         $('#selectedList').empty().append(list);
     }
