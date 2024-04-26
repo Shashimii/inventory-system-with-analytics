@@ -92,7 +92,7 @@ $(function(){
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
                                                 <td ${data.quantity_receive != null ? ' class="table-success"' : ''} >${data.quantity_receive ? data.quantity_receive + ' kg': ''}</td>
                                                 <td ${data.quantity_inProduction != null ? ' class="table-warning"' : ''} >${data.quantity_inProduction ? data.quantity_inProduction  + ' kg': ''}</td>
-                                                <td ${data.quantity_scrap != null ? ' class="table-secondary"' : ''} >${data.quantity_scrap ? data.quantity_scrap  + ' kg': ''}</td>
+                                                <td ${data.quantity_scrap != null && data.quantity_scrap != 0 ? ' class="table-secondary"' : ''} >${data.quantity_scrap ? data.quantity_scrap  + ' kg': ''}</td>
                                                 <td ${data.quantity_used != null ? ' class="table-danger"' : ''} >${data.quantity_used ? data.quantity_used  + ' kg': ''}</td>
                                                 <td ${data.quantity_created_pcs != null ? ' class="table-primary"' : ''} >${data.quantity_created_pcs ? data.quantity_created_pcs  + ' pcs': ''}</td>
                                             </tr>`;
