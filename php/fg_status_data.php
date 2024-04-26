@@ -8,7 +8,7 @@ SUM(CASE WHEN item_data_status = 'Float' THEN quantity_pcs ELSE 0 END) AS total_
 SUM(pack_small) AS total_small,
 SUM(pack_medium) AS total_medium,
 SUM(pack_large) AS total_large
-FROM `fg_data` WHERE item_data_status != 'Received' GROUP BY item_name ORDER BY id DESC;");
+FROM `fg_data` WHERE item_data_status != 'Received' AND item_data_active = 'Y' GROUP BY item_name ORDER BY id DESC;");
 $stmt->execute();
 $result = $stmt->get_result();
 
