@@ -338,7 +338,6 @@ th {
 }
 
 .rm-status-md-card-btn-searchbar {
-    flex: 1;
     display: flex;
     gap: 20px;
 }

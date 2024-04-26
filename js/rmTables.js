@@ -5,11 +5,11 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-solid fa-hands-holding-circle"></i> Received Inventory</h4>
+                    <h4><i class="fa-solid fa-database"></i> Raw Material Inventory</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">Id Lot Bin</option>
+                    <option selected value="">id lot bin</option>
                     <option value="date">Date Received</option>
                     <option value="name">Name</option>
                     <option value="desc">Description</option>
@@ -67,11 +67,11 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-solid fa-spinner"></i> Production Inventory</h4>
+                    <h4><i class="fa-solid fa-spinner"></i> Raw Material Production</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">Id Lot Bin</option>
+                    <option selected value="">id lot bin</option>
                     <option value="date">Date In</option>
                     <option value="name">Name</option>
                     <option value="desc">Description</option>
@@ -125,11 +125,11 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-regular fa-square-full"></i> Depleted List</h4>
+                    <h4><i class="fa-regular fa-square-full"></i> Depleted Raw Material List</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">Id Lot Bin</option>
+                    <option selected value="">id lot bin</option>
                     <option value="date">Date In</option>
                     <option value="name">Name</option>
                     <option value="desc">Description</option>
@@ -185,7 +185,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>Transaction History</h4>
+                    <h4><i class="fa-solid fa-database"></i> Raw Material History</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
@@ -236,16 +236,11 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-status-md-card-row">
                 <div class="rm-row-md-card-item">
-                    <h4>Raw Material Status</h4>
+                    <h4><i class="fa-solid fa-database"></i> Raw Material Status</h4>
                 </div>
                 <div class="rm-status-md-card-btn-searchbar">
-                    <button id="dateRange" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#dateRangeModal"><i class="fa-regular fa-calendar-plus"></i>
-                        Date
-                    </button>
-                    <input id="dateRangeDisplay" class="form-control form-control-sm" placeholder="Select Date Range" type="text" value="" readonly>
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                        <option selected value="">Search By...</option>
+                        <option selected value="">No Filter</option>
                         <option value="name">Name</option>
                         <option value="desc">Description</option>
                     </select>
@@ -258,7 +253,7 @@ $(function(){
                         <tr>
                         <th scope="col">Raw Material</th>
                         <th scope="col">Description</th>
-                        <th class="table-success" scope="col">Total Quantity</th>
+                        <th class="table-success" scope="col">In Stock</th>
                         <th class="table-warning" scope="col">In Production</th>
                         <th class="table-secondary" scope="col">Scrap</th>
                         <th class="table-danger" scope="col">Used</th>

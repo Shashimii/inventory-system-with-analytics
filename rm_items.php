@@ -147,7 +147,7 @@ while ($optionFg = $result->fetch_assoc()) {
                                 <h5>Manage Raw Materials</h5>
                             </div>
                             <div class="rm-manage-sm-card-item">
-                                <button class="btn btn-success btn-sm" id="renderReceive"><i class="fa-solid fa-hands-holding-circle"></i> Received Raw Materials</button>
+                                <button class="btn btn-success btn-sm" id="renderReceive"><i class="fa-solid fa-database"></i> Raw Material Inventory</button>
                                 <button class="btn btn-secondary btn-sm" id="renderInProduction"><i class="fa-solid fa-spinner"></i> In Production Raw Materials</button>
                                 <button class="btn btn-danger btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Depleted Raw Materials</button>
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rmRegisterModal"><i class="fa-solid fa-plus"></i> Register Raw Materials</button>
@@ -230,7 +230,7 @@ while ($optionFg = $result->fetch_assoc()) {
                         </div>
                         <div class="ipt-container">
                             <label for="recRmId">Id</label>
-                            <input name="rec_rm_id" id="recRmId" placeholder="Enter Raw Material Id" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
+                            <input name="rec_rm_id" id="recRmId" placeholder="Enter Raw Material Id" pattern="[a-zA-Z0-9-]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
                         </div>
 
                         <div class="ipt-container">
@@ -474,49 +474,6 @@ while ($optionFg = $result->fetch_assoc()) {
                     <input type="hidden" name="item_name" id="itemName" value="">
                     <input type="hidden" name="item_id" id="itemId" value="">
                     <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Remove From the List</button>
-                </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Adjust Quantity -->
-<div class="modal" id="rmAdjReceivedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmAdjReceivedModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmAdjReceivedModal">Adjust Quantity</h1>
-                <i class="fa-solid fa-pen-to-square"></i>
-            </div>
-            <div class="modal-body">
-                <div class="rm-info-container">
-                    <div class="rm-info-header">
-                        <div class="info-header-container">
-                            <h1 id="itemInfoName"></h1>
-                            <h3 id="itemInfoQuantity"></h3>
-                        </div>
-                        <div class="info-header-container">
-                            <h5>Date Received</h5>
-                            <p id="itemInfoDate"></p>
-                            <h5>Id</h5>
-                            <p id="itemInfoId"></p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div>
-                    <form id="rmAdjustmentForm">
-                        <label for="adjQuantityReceive">Enter New Quantity</label>
-                        <input name="adj_quantity_receive" id="adjQuantityReceive" placeholder="New Quantity (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                    <input type="hidden" name="item_name" id="itemNameAdj" value="">
-                    <input type="hidden" name="item_id" id="itemIdAdj" value="">
-                    <input type="hidden" name="quantity_receive" id="quantityReceive" value="">
-                    <button type="submit" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
