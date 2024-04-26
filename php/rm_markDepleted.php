@@ -4,7 +4,7 @@ include 'script_con.php';
 include 'sysDateTime.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['item_name']) && ($_POST['item_desc']) && ($_POST['item_id']) && ($_POST['item_lot']) && ($_POST['item_bin']) && ($_POST['item_quantity'] && ($_POST['fg_name']) && ($_POST['fg_desc']) && ($_POST['fg_bin']) && ($_POST['fg_quantity']) && ($_POST['quantity_scrap']))) {
+    if (isset($_POST['item_name']) && ($_POST['item_desc']) && ($_POST['item_id']) && ($_POST['item_lot']) && ($_POST['item_bin']) && ($_POST['item_quantity'] && ($_POST['fg_name']) && ($_POST['fg_desc']) && ($_POST['fg_bin']) && ($_POST['fg_quantity']))) {
         // raw material
         $rm_name = $_POST['item_name'];
         $rm_desc = $_POST['item_desc'];
@@ -17,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fg_desc = $_POST['fg_desc'];
         $fg_bin = $_POST['fg_bin'];
         $fg_quantity = $_POST['fg_quantity'];
+        // scrap quantity
+        $scrap_quantity = isset($_POST['quantity_scrap']) ? $_POST['quantity_scrap'] : 0;
 
         // batch system that will only count the batches daily and reset the next day
         $stmt = $con->prepare("SELECT MAX(item_lot) AS last_batch_num from fg_data WHERE action_date = ? AND item_name = ?");
@@ -30,10 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $batchNumber = $row['last_batch_num'] ? intval(substr($row['last_batch_num'], 5)) + 1 : '1';
         $fg_batch = "Batch" . $batchNumber;
 
-        // scrap and used
-        $scrap_quantity = $_POST['quantity_scrap'];
+        // scrap and used computation
         $rm_quantity_used = $rm_quantity - $scrap_quantity;
-
+        
         if ($rm_quantity_used === 0) {
             echo '8';
         } else if ($rm_quantity_used < 0) {
