@@ -58,6 +58,15 @@ $(function(){
                             '<td' + (item.total_medium != null ? ' class="table-warning"' : '') + '>' + (item.total_medium ? item.total_medium + ' pcs' : 0 +' pcs') + '</td>' +
                             '<td' + (item.total_large != null ? ' class="table-danger"' : '') + '>' + (item.total_large ? item.total_large + ' pcs' : 0 +' pcs') + '</td>' +
                             '<td' + (item.total_ship != null ? ' class="table-primary"' : '') + '>' + (item.total_ship ? item.total_ship + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td' + 
+                            (item.total_quantity < 100 ? ' class="table-danger"' : '') +
+                            (item.total_quantity >= 100 && item.total_quantity <= 999 ? ' class="table-success"' : '') +
+                            (item.total_quantity > 999 ? ' class="table-warning"' : '') +
+                            '>' + 
+                                (item.total_quantity < 100 ? 'Low' : '') + 
+                                (item.total_quantity >= 100 && item.total_quantity <= 999 ? 'Normal' : '') +
+                                (item.total_quantity > 999 ? 'Overstock' : '') +
+                            '</td>' +
                         '</tr>'
                     );
                 });
