@@ -137,6 +137,7 @@ $(function(){
                         <th class="table-warning" scope="col">In Medium Boxes</th>
                         <th class="table-danger" scope="col">In Large Boxes</th>
                         <th class="table-primary" scope="col">Shipped</th>
+                        <th>Stock Level</th>
                         </tr>
                     </thead>
                     <tbody>

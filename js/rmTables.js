@@ -258,6 +258,7 @@ $(function(){
                         <th class="table-secondary" scope="col">Scrap</th>
                         <th class="table-danger" scope="col">Used</th>
                         <th class="table-info" scope="col">FG</th>
+                        <th>Stock Level</th>
                         </tr>
                     </thead>
                     <tbody>

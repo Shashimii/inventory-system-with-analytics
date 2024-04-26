@@ -137,10 +137,11 @@ $(function(){
                         <tr>
                         <th scope="col">Finished Goods</th>
                         <th scope="col">Description</th>
-                        <th class="table-success" scope="col">Total Quantity</th>
+                        <th class="table-success" scope="col">In Stock</th>
                         <th class="table-info" scope="col">Packed Small</th>
                         <th class="table-warning" scope="col">Packed Medium</th>
                         <th class="table-danger" scope="col">Packed Large</th>
+                        <th>Stock Level</th>
                         </tr>
                     </thead>
                     <tbody>
