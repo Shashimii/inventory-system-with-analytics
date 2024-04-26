@@ -46,23 +46,23 @@ while ($optionCode = $result->fetch_assoc()) {
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="rm_items">Manage</a></li>
                                         <li><a class="dropdown-item" href="rm_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="rm_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item" href="rm_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Finished Goods</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item active" href="fg_items">Manage</a></li>
+                                        <li><a class="dropdown-item" href="fg_items">Manage</a></li>
                                         <li><a class="dropdown-item" href="fg_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="fg_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item" href="fg_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="p_stocks">Manage</a></li>
+                                        <li><a class="dropdown-item active" href="p_stocks">Manage</a></li>
                                         <li><a class="dropdown-item" href="p_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="p_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item" href="p_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">

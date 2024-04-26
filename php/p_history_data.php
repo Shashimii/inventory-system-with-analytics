@@ -11,7 +11,7 @@ if ($result1->num_rows > 0) {
         $item_identity = $row;
         $from_id = $item_identity["item_id"];
         $from_name = $item_identity["item_name"];
-        $stmt = $con->prepare("SELECT action_date, action_time, action_by, pack_small, pack_medium, pack_large, client_company FROM `products_data` WHERE item_id = ? AND item_name = ? ORDER BY item_id");
+        $stmt = $con->prepare("SELECT action_date, action_time, action_by, pack_small, pack_medium, pack_large, shipped_quantity, client_company FROM `products_data` WHERE item_id = ? AND item_name = ? ORDER BY item_id");
         $stmt->bind_param("ss", $from_id, $from_name);
         $stmt->execute();
         $result2 = $stmt->get_result();

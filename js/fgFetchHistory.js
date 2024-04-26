@@ -60,9 +60,9 @@ $(function(){
         $('#historyTable tbody').empty(); 
         if (pageData.length === 0) {
             tableRow = '<tr>';
-            tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; // show this message
+            tableRow += '<td colspan="9" style="text-align: center;">There is No Data</td>'; // show this message
             tableRow += '</tr>';
-            $('#receiveTable').append(tableRow);
+            $('#historyTable').append(tableRow);
         } else {
             var $tbody = $('#historyTable tbody');
             var historyAccordion = '';

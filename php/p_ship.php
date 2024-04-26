@@ -23,54 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($num_rows > 0) {
             echo '1';
         } else {
-            if ($boxType === 'Small') {
-                $InsertShip = "INSERT INTO products_data
-                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_small, client_company, item_data_status, item_data_active) VALUES
-                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $stmt = $con->prepare($InsertShip);
-                $stmt->bind_param("ssssssssisss", $sys_date, $sys_time, $sys_user, $name, $desc, $id, $lot, $bin, $quantity, $code, $dataStatusShip, $dataActive);
+            $InsertShip = "INSERT INTO products_data
+            (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, shipped_quantity, client_company, item_data_status, item_data_active) VALUES
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $con->prepare($InsertShip);
+            $stmt->bind_param("ssssssssisss", $sys_date, $sys_time, $sys_user, $name, $desc, $id, $lot, $bin, $quantity, $code, $dataStatusShip, $dataActive);
+            if ($stmt->execute()) {
+                $updateStatus = "UPDATE products_data SET item_data_active = ? WHERE item_name = ? AND item_id = ? AND item_data_status = ?";
+                $stmt= $con->prepare($updateStatus);
+                $stmt->bind_param("ssss", $dataNotActive, $name, $id, $dataStatusReceived);
                 if ($stmt->execute()) {
-                    $updateStatus = "UPDATE products_data SET item_data_active = ? WHERE item_name = ? AND item_id = ?";
-                    $stmt= $con->prepare($updateStatus);
-                    $stmt->bind_param("sss", $dataNotActive, $name, $id);
-                    if ($stmt->execute()) {
-                        echo "0";
-                    }
-                } else {
-                    echo "2";
+                    echo "0";
                 }
-            } else if ($boxType === "Medium") {
-                $InsertShip = "INSERT INTO products_data
-                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_medium, client_company, item_data_status, item_data_active) VALUES
-                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $stmt = $con->prepare($InsertShip);
-                $stmt->bind_param("ssssssssisss", $sys_date, $sys_time, $sys_user, $name, $desc, $id, $lot, $bin, $quantity, $code, $dataStatusShip, $dataActive);
-                if ($stmt->execute()) {
-                    $updateStatus = "UPDATE products_data SET item_data_active = ? WHERE item_name = ? AND item_id = ?";
-                    $stmt= $con->prepare($updateStatus);
-                    $stmt->bind_param("sss", $dataNotActive, $name, $id);
-                    if ($stmt->execute()) {
-                        echo "0";
-                    }
-                } else {
-                    echo "2";
-                }
-            } else if ( $boxType === "Large") {
-                $InsertShip = "INSERT INTO products_data
-                (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_large, client_company, item_data_status, item_data_active) VALUES
-                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $stmt = $con->prepare($InsertShip);
-                $stmt->bind_param("ssssssssisss", $sys_date, $sys_time, $sys_user, $name, $desc, $id, $lot, $bin, $quantity, $code, $dataStatusShip, $dataActive);
-                if ($stmt->execute()) {
-                    $updateStatus = "UPDATE products_data SET item_data_active = ? WHERE item_name = ? AND item_id = ?";
-                    $stmt= $con->prepare($updateStatus);
-                    $stmt->bind_param("sss", $dataNotActive, $name, $id);
-                    if ($stmt->execute()) {
-                        echo "0";
-                    }
-                } else {
-                    echo "2";
-                }
+            } else {
+                echo "2";
             }
         }
     }

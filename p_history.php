@@ -11,7 +11,7 @@ include 'connections.php';
     <script src="./js/pFetchHistory.js"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finished Goods History | Hiltac</title>
+    <title>Product History | Hiltac</title>
 </head>
 <body>
     <div class="main">
@@ -30,7 +30,7 @@ include 'connections.php';
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="dashboard" role="button" data-bs-toggle="dropdown" aria-expanded="false">Inventory</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item active" href="dashboard">Dashboard</a></li>
+                                        <li><a class="dropdown-item" href="dashboard">Dashboard</a></li>
                                         <li><a class="dropdown-item" href="dailyreports">Daily Reports</a></li>
                                     </ul>
                                 </li>
@@ -39,7 +39,7 @@ include 'connections.php';
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="rm_items">Manage</a></li>
                                         <li><a class="dropdown-item" href="rm_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="rm_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item" href="rm_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -47,7 +47,7 @@ include 'connections.php';
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="fg_items">Manage</a></li>
                                         <li><a class="dropdown-item" href="fg_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="fg_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item" href="fg_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -55,7 +55,7 @@ include 'connections.php';
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="p_stocks">Manage</a></li>
                                         <li><a class="dropdown-item" href="p_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="p_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item active" href="p_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">

@@ -5,11 +5,11 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>Products Stocks</h4>
+                    <h4><i class="fa-solid fa-boxes-stacked"></i> Products Stocks</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">Id Lot Bin</option>
+                    <option selected value="">id lot bin</option>
                     <option value="date">Date Created</option>
                     <option value="staff">Staff</option>
                     <option value="name">Product Name</option>
@@ -29,9 +29,9 @@ $(function(){
                             <th class="table-primary" scope="col">Product Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th class="table-info" scope="col">Small Box</th>
-                            <th class="table-warning" scope="col">Medium Box</th>
-                            <th class="table-danger" scope="col">Large Box</th>
+                            <th class="table-info" scope="col">In Small Boxes</th>
+                            <th class="table-warning" scope="col">In Medium Boxes</th>
+                            <th class="table-danger" scope="col">In Large Boxes</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -60,11 +60,11 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>Transaction History</h4>
+                    <h4><i class="fa-solid fa-boxes-stacked"></i> Products History</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">Id Lot Bin</option>
+                    <option selected value="">id lot bin</option>
                     <option value="date">Date Created</option>
                     <option value="time">Time Created</option>
                     <option value="name">Product Name</option>
@@ -115,16 +115,11 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-status-md-card-row">
                 <div class="rm-row-md-card-item">
-                    <h4>Products Status</h4>
+                    <h4><i class="fa-solid fa-boxes-stacked"></i> Products Status</h4>
                 </div>
                 <div class="rm-status-md-card-btn-searchbar">
-                    <button id="dateRange" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#dateRangeModal"><i class="fa-regular fa-calendar-plus"></i>
-                        Date
-                    </button>
-                    <input id="dateRangeDisplay" class="form-control form-control-sm" placeholder="Select Date Range" type="text" value="" readonly>
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                        <option selected value="">Search By...</option>
+                        <option selected value="">No Filter</option>
                         <option value="name">Name</option>
                         <option value="desc">Description</option>
                     </select>
@@ -137,9 +132,11 @@ $(function(){
                         <tr>
                         <th scope="col">Products</th>
                         <th scope="col">Description</th>
-                        <th class="table-info" scope="col">Packed Small</th>
-                        <th class="table-warning" scope="col">Packed Medium</th>
-                        <th class="table-danger" scope="col">Packed Large</th>
+                        <th class="table-success" scope="col">In Stock</th>
+                        <th class="table-info" scope="col">In Small Boxes</th>
+                        <th class="table-warning" scope="col">In Medium Boxes</th>
+                        <th class="table-danger" scope="col">In Large Boxes</th>
+                        <th class="table-primary" scope="col">Shipped</th>
                         </tr>
                     </thead>
                     <tbody>

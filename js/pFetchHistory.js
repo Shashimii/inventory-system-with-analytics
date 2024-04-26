@@ -59,7 +59,7 @@ $(function(){
             tableRow = '<tr>';
             tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; // show this message
             tableRow += '</tr>';
-            $('#receiveTable').append(tableRow);
+            $('#historyTable').append(tableRow);
         } else {
             var $tbody = $('#historyTable tbody');
             var historyAccordion = '';
@@ -85,10 +85,11 @@ $(function(){
                                                     <th class="table-primary">Date</th>
                                                     <th class="table-primary">Time</th>
                                                     <th class="table-primary">Action By</th>
-                                                    <th class="table-info">Packed Small</th>
-                                                    <th class="table-warning">Packed Medium</th>
-                                                    <th class="table-danger">Packed Large</th>
-                                                    <th class="table-success">Company Code</th>
+                                                    <th class="table-info">In Small Boxes</th>
+                                                    <th class="table-warning">In Medium Boxes</th>
+                                                    <th class="table-danger">In Large Boxes</th>
+                                                    <th class="table-primary">Shipped Quantity</th>
+                                                    <th class="table-primary">Company Code</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">`;
@@ -101,7 +102,8 @@ $(function(){
                                                 <td ${data.pack_small != null ? ' class="table-info"' : ''} >${data.pack_small ? data.pack_small  + ' pcs' : ''}</td>
                                                 <td ${data.pack_medium != null ? ' class="table-warning"' : ''} >${data.pack_medium ? data.pack_medium  + ' pcs' : ''}</td>
                                                 <td ${data.pack_large != null ? ' class="table-danger"' : ''} >${data.pack_large ? data.pack_large + ' pcs': ''}</td>
-                                                <td ${data.client_company != '' ? ' class="table-success"' : ''} >${data.client_company ? data.client_company : ''}</td>
+                                                <td ${data.shipped_quantity != null ? ' class="table-primary"' : ''} >${data.shipped_quantity ? data.shipped_quantity : ''}</td>
+                                                <td ${data.client_company != '' ? ' class="table-primary"' : ''} >${data.client_company ? data.client_company : ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

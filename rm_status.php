@@ -40,7 +40,7 @@ include 'connections.php';
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="rm_items">Manage</a></li>
                                         <li><a class="dropdown-item active" href="rm_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="rm_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item" href="rm_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -48,7 +48,7 @@ include 'connections.php';
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="fg_items">Manage</a></li>
                                         <li><a class="dropdown-item" href="fg_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="fg_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item" href="fg_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -56,7 +56,7 @@ include 'connections.php';
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="p_stocks">Manage</a></li>
                                         <li><a class="dropdown-item" href="p_status">Status</a></li>
-                                        <li><a class="dropdown-item" href="p_history">Transaction History</a></li>
+                                        <li><a class="dropdown-item" href="p_history">History</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">

@@ -5,7 +5,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>Finished Goods</h4>
+                    <h4><i class="fa-solid fa-toilet-paper"></i> Finished Goods Inventory</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
@@ -62,7 +62,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4>Transaction History</h4>
+                    <h4><i class="fa-solid fa-toilet-paper"></i> Finished Goods History</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
@@ -120,16 +120,11 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-status-md-card-row">
                 <div class="rm-row-md-card-item">
-                    <h4>Finished Goods Status</h4>
+                    <h4><i class="fa-solid fa-toilet-paper"></i> Finished Goods Status</h4>
                 </div>
                 <div class="rm-status-md-card-btn-searchbar">
-                    <button id="dateRange" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#dateRangeModal"><i class="fa-regular fa-calendar-plus"></i>
-                        Date
-                    </button>
-                    <input id="dateRangeDisplay" class="form-control form-control-sm" placeholder="Select Date Range" type="text" value="" readonly>
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                        <option selected value="">Search By...</option>
+                        <option selected value="">No Filter</option>
                         <option value="name">Name</option>
                         <option value="desc">Description</option>
                     </select>
