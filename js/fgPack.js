@@ -84,6 +84,20 @@ $(function() {
         }
     }
 
+    function renderNoSelected() {
+        if (selectedList.length === 0) {
+            const noList = `
+            <div style="text-align: center; margin-top: 20px;">
+                <p style="font-size: 18px; color: #333;">No Finished Goods Selected</p>
+            </div>`
+            $('#selectedList').empty().append(noList);
+        }
+    }
+
+    if (selectedList.length === 0) {
+        renderNoSelected();
+    }
+
     function renderSelectedList() {
         const list = selectedList.map(item => `
         <div class='selected-box text-center' style="background-color: #F5F5F5; border-radius: 10px; padding: 10px;">
@@ -181,6 +195,7 @@ $(function() {
             renderSelectedList();
         }
         listMaxHeight();
+        renderNoSelected();
     });
 
     $('#search').on('input', function(){
@@ -203,6 +218,7 @@ $(function() {
         updateSelection();
         listMaxHeight();
         disableButtons();
+        renderNoSelected();
     });
 
     function listMaxHeight() {
