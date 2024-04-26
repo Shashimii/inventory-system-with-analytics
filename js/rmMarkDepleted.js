@@ -1,9 +1,9 @@
 $(function() { 
     $('#rmDepletedForm').on('submit', function(event) { 
         event.preventDefault();
-        var fg_name = $('#FgName').val();
-        var fg_desc = $('#FgDesc').val();
-        var fg_id = $('#FgId').val();
+        //var fg_name = $('#FgName').val();
+        //var fg_desc = $('#FgDesc').val();
+        //var fg_id = $('#FgId').val();
         var rm_name = $('#ditemName').val(); 
         var rm_desc = $('#ditemDesc').val(); 
         var rm_id = $('#ditemId').val(); 
@@ -31,28 +31,24 @@ $(function() {
                     case '1':
                         Swal.fire({
                             title: 'Oops',
-                            text: rm_name + '-' + rm_desc + '-' + rm_id + ' is Already Marked as Depleted',
-                            icon: 'error',
-                        })
-                        break;
-                    case '2':
-                        Swal.fire({
-                            title: 'Oops',
-                            text: fg_name + '-' + fg_desc + '-' + fg_id + ' is Already on Finished Goods',
+                            html: '<div style="text-align: center; font-family: Arial, sans-serif;">' +
+                            '<p style="font-size: 18px; color: #333; margin-bottom: 10px;">Raw Material Id: <span style="color: red;">' + rm_id + '</span> is Already Marked as Depleted</p>' +
+                            '<p style="font-size: 16px; color: #666;">Refresh the Page if this kept Showing</p>' +
+                            '</div>',
                             icon: 'error',
                         })
                         break;
                     case '9':
                         Swal.fire({
                             title: 'Oops',
-                            text: 'Scrap is Greater than Raw Material Quantity',
+                            html: '<div style="text-align: center; font-family: Arial, sans-serif;"><p style="font-size: 18px; color: #333;">Scrap is quantity is Greater then Raw Material</p><p style="font-size: 18px; color: #333;">Check your scrap quantity</p></div>',
                             icon: 'error',
                         })
                         break;
                     case '8':
                         Swal.fire({
                             title: 'Oops',
-                            text: 'Raw Material is not Used',
+                            html: '<div style="text-align: center; font-family: Arial, sans-serif;"><p style="font-size: 18px; color: #333;">Raw Material is not Used</p><p style="font-size: 18px; color: #333;">Check your scrap quantity</p></div>',
                             icon: 'error',
                         })
                         break;
