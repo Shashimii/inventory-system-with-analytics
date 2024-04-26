@@ -7,6 +7,9 @@ $(function() {
         var rm_name = $('#ditemName').val(); 
         var rm_desc = $('#ditemDesc').val(); 
         var rm_id = $('#ditemId').val(); 
+        var rm_lot = $('#ditemLot').val();
+        var rm_bin = $('#ditemBin').val();
+        var rm_quantity = $('#ditemQuantity').val();
         var inputData = $(this).serialize();
 
         $.ajax({
@@ -18,8 +21,8 @@ $(function() {
                 switch(response) {
                     case '0':
                         Swal.fire({
-                            title: 'In Production',
-                            text: rm_name + '-' + rm_desc + '-' + rm_id + ' is Marked as Depleted',
+                            title: 'Raw Material Marked as Depleted',
+                            html: '<div style="text-align: center;"><p>Raw Material Info</p><table style="margin: 0 auto; text-align: left;"><tr><td><b>Name:</b></td><td>' + rm_name + '</td></tr><tr><td><b>Description:</b></td><td>' + rm_desc + '</td></tr><tr><td><b>Id:</b></td><td>' + rm_id + '</td></tr><tr><td><b>Lot:</b></td><td>' + rm_lot + '</td></tr><tr><td><b>Bin:</b></td><td>' + rm_bin + '</td></tr><tr><td><b>Quantity (kg):</b></td><td>' + rm_quantity + ' kg</td></tr></table></div>',
                             icon: 'success',
                         }).then(function() {
                             location.reload();
