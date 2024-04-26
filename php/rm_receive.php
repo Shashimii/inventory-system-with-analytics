@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $batchNumber = $row['last_batch_num'] ? intval(substr($row['last_batch_num'], 5)) + 1 : '1';
         $rm_batch = "Batch" . $batchNumber;
 
-        $stmt = $con->prepare("SELECT * FROM rm_data WHERE item_name = ? AND item_id = ?");
-        $stmt->bind_param('ss', $rm_name, $rm_id);
+        $stmt = $con->prepare("SELECT * FROM rm_data WHERE item_id = ?");
+        $stmt->bind_param('s', $rm_id);
         $stmt->execute();
         $result = $stmt->get_result();
         $num_rows = $result->num_rows;
