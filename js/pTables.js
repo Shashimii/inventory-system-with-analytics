@@ -108,4 +108,57 @@ $(function(){
         $('#renderHistoryTable').append(tableStructure);
     }
     pHistoryTableStructure();
+
+    function pStatusTableStructure() {
+        $('#renderStatusTable').empty(); 
+        var tableStructure = `
+        <div class="rm-manage-md-card">
+            <div class="rm-status-md-card-row">
+                <div class="rm-row-md-card-item">
+                    <h4>Products Status</h4>
+                </div>
+                <div class="rm-status-md-card-btn-searchbar">
+                    <button id="dateRange" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#dateRangeModal"><i class="fa-regular fa-calendar-plus"></i>
+                        Date
+                    </button>
+                    <input id="dateRangeDisplay" class="form-control form-control-sm" placeholder="Select Date Range" type="text" value="" readonly>
+                    <select id="searchFilter" class="form-select form-select-sm dropdown" required>
+                        <option selected value="">Search By...</option>
+                        <option value="name">Name</option>
+                        <option value="desc">Description</option>
+                    </select>
+                    <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
+                </div>
+            </div>
+            <div class="table-body">
+                <table class="table table-striped table-responsive table-hover" id="statusTable">
+                    <thead>
+                        <tr>
+                        <th scope="col">Products</th>
+                        <th scope="col">Description</th>
+                        <th class="table-info" scope="col">Packed Small</th>
+                        <th class="table-warning" scope="col">Packed Medium</th>
+                        <th class="table-danger" scope="col">Packed Large</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-footer">
+                <div class="pagination-container">
+                    <ul class="pagination" id="statusTablePagination">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        `;
+
+        $('#renderStatusTable').append(tableStructure);
+    }
+
+    pStatusTableStructure()
 });
