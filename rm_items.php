@@ -230,7 +230,7 @@ while ($optionFg = $result->fetch_assoc()) {
                         </div>
                         <div class="ipt-container">
                             <label for="recRmId">Id</label>
-                            <input name="rec_rm_id" id="recRmId" placeholder="Enter Raw Material Id" pattern="[a-zA-Z0-9-]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
+                            <input name="rec_rm_id" id="recRmId" placeholder="Enter Raw Material Id" pattern="^[a-zA-Z0-9 \-]*$"  title="Avoid unecessary special characters" maxlength="25" class="form-control form-control-sm" type="text" required>
                         </div>
 
                         <div class="ipt-container">
@@ -245,9 +245,9 @@ while ($optionFg = $result->fetch_assoc()) {
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success">Receive Raw Material</button>
+                <button type="submit" class="btn btn-success"><i class="fa-solid fa-hands-holding-circle"></i> Receive Raw Material</button>
                 </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
             </div>
         </div>
     </div>
@@ -384,7 +384,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             <input name="fg_quantity" id="fgQuantity" placeholder="Enter Finished Goods Quantity" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
 
                             <label for="scrapQuantity">Production Scrap (KG)</label>
-                            <input name="quantity_scrap" id="scrapQuantity" placeholder="Enter Scrap (KG)" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number" required>
+                            <input name="quantity_scrap" id="scrapQuantity" placeholder="Enter Scrap (KG)" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number" required>
                     </div>
                 </div>
             </div>
