@@ -156,8 +156,9 @@ include 'connections.php';
                             </div>  
                         </div>
                     </div>
+                    <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="daily-footer">
-
+                        <button id="toggle-print" class="btn btn-sm btn-primary"><i class="fa-solid fa-print"></i> Print</button>
                     </div>
                 </div>
             </div>
@@ -165,3 +166,15 @@ include 'connections.php';
     </div>
 </body>
 </html>
+
+<style>
+    @media print {
+        .content-head{
+            display: none !important;
+        }
+
+        .daily-footer{
+            display: none !important;
+        }
+    }
+</style>

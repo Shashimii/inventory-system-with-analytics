@@ -204,11 +204,9 @@ $(function() {
                 $('#pShipped').append(renderData);
             });
         }
-
-        console.log(pShipped)
     }
 
-    
-
-
+    $('#toggle-print').on('click', function() {
+        window.print();
+    });
 });
