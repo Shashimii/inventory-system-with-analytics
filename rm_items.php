@@ -24,7 +24,6 @@ while ($optionFg = $result->fetch_assoc()) {
 <html lang="en">
 
 <head>
-    <script defer src="./js/rmFormSubmit.js"></script>
     <script defer src="./js/rmFormReceive.js"></script>
     <script defer src="./js/rmFormInProduction.js"></script>
     <script defer src="./js/rmMarkDepleted.js"></script>
@@ -143,7 +142,6 @@ while ($optionFg = $result->fetch_assoc()) {
                                 <button class="btn btn-success btn-sm" id="renderReceive"><i class="fa-solid fa-database"></i> Raw Material Inventory</button>
                                 <button class="btn btn-secondary btn-sm" id="renderInProduction"><i class="fa-solid fa-spinner"></i> In Production Raw Materials</button>
                                 <button class="btn btn-danger btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Depleted Raw Materials</button>
-                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rmRegisterModal"><i class="fa-solid fa-plus"></i> Register Raw Materials</button>
                             </div>
                         </div>
                     </div>
@@ -157,36 +155,6 @@ while ($optionFg = $result->fetch_assoc()) {
 </body>
 
 <!-- Modal -->
-
-<!-- Register -->
-<div class="modal" id="rmRegisterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmRegisterModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmRegisterModal">Register Raw Materials</h1>
-                <i class="fa-solid fa-plus"></i>
-            </div>
-            <div class="modal-body">
-                <form id="rm_register_form">
-                    <div class="rm-form-container">
-                        <div class="ipt-container">
-                            <label for="regRmName">Name</label>
-                            <input name="reg_rm_name" id="regRmName" placeholder="Enter Raw Material Name" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
-                        </div>
-                        <div class="ipt-container">
-                            <label for="regRmDesc">Description</label>
-                            <input name="reg_rm_desc" id="regRmDesc" placeholder="Enter Raw Material Name" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success">Register Raw Material</button>
-                </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Receive -->
 <div class="modal" id="receiveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="receiveModalLabel" aria-hidden="true">
