@@ -40,6 +40,7 @@ while ($optionProduct = $result->fetch_assoc()) {
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="dashboard">Dashboard</a></li>
                                         <li><a class="dropdown-item" href="dailyreports">Daily Reports</a></li>
+                                        <li><a class="dropdown-item" href="analytics">Analytics</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
