@@ -435,6 +435,56 @@ th {
 
 /*== Product Manage End ==*/
 
+/*== daily reports ==*/
+
+.daily-content {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+
+.daily-header {
+    display: flex;
+    gap: 10px;
+}
+
+.company-title {
+    padding-top: 10px;
+}
+
+.daily-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.daily-count {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #0d6efd;
+}
+
+.daily-card-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.daily-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    width: 100%;
+    height: 150px;
+}
+
+/*=== daily reports end ==*/
+
 /*== Settings ==*/
 
 .s-container {
