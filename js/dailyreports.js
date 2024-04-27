@@ -85,10 +85,10 @@ $(function() {
         if (rmUsed.length === 0) {
             var renderData =  `
             <tr class="table-row">
-                <td><i No Used Raw Material</i></td>
+                <td><i> No Used Raw Material</i></td>
             </tr>
             `;
-            $('#rmReceived').append(renderData);
+            $('#rmUsed').append(renderData);
         } else {
             rmUsed.forEach(function(data) {
                 var renderData =  `
@@ -101,6 +101,7 @@ $(function() {
                 $('#rmUsed').append(renderData);
             });
         }
+        console.log(rmUsed);
     }
 
     function renderRmScrap(rmScrap) {
