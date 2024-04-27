@@ -435,4 +435,27 @@ th {
 
 /*== Product Manage End ==*/
 
+/*== Settings ==*/
+
+.s-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.s-tables {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.s-c-table {
+    flex: 1;
+    border: 1px solid black;
+    background-color: #F6F5F2;
+    box-shadow: 0px 1px 10px 4px rgba(0,0,0,0.2);
+}
+
 /*== End ==*/

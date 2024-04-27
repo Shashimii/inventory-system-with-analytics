@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $item_name = $_POST['item_name'];
         $item_desc = $_POST['item_desc'];
 
-        $stmt = $con->prepare("SELECT * FROM rm_registered WHERE rm_name = ?");
+        $stmt = $con->prepare("SELECT * FROM products_registered WHERE product_name = ?");
         $stmt->bind_param('s', $item_name);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo '1'; // sends 1 as response to ajax
         } else {
             // item not yet registered
-            $register_query = "INSERT INTO rm_registered (rm_name, rm_description) VALUES (?, ?)";
+            $register_query = "INSERT INTO products_registered (product_name, product_desc) VALUES (?, ?)";
             $stmt = $con->prepare($register_query);
             $stmt->bind_param("ss", $item_name, $item_desc);
             $stmt->execute();
