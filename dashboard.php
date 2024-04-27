@@ -67,20 +67,18 @@ include 'connections.php';
                                 <a class="nav-link"><i class="fa-solid fa-user-plus"></i><?php echo $sys_user ?></a>
                                 <a class="nav-link"><?php echo $sys_date ?></a>
                                 <a class="nav-link" id="sysTime"></a>
-                                <div class="badge">
-                                    <p>99+</p>
+                                <div class="notification-wrapper">
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link" role="button" data-bs-toggle="dropdown"><h6><i class="fa-solid fa-bell"></i></h6></a>
+                                        <a class="nav-link notification-bell" role="button" data-bs-toggle="dropdown"><h6><i class="fa-solid fa-bell"></i></h6></a>
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             <li><h6 class="dropdown-item">Notifications</h6></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="notif">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</a></li>
-                                            <li><a class="dropdown-item" href="notif">AAA</a></li>
-                                            <li><a class="dropdown-item" href="notif">AAA</a></li>
-                                            <li><a class="dropdown-item" href="notif">AAA</a></li>
-                                            <li><a class="dropdown-item" href="notif">AAA</a></li>
+                                            <div class="d-grid gap-1" id="notif">
+                                                
+                                            </div>
                                         </ul>
                                     </li>
+                                    <span class="badge" id="notificationCounter"></span>
                                 </div>
                             </ul>
                         </div>
