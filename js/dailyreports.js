@@ -105,23 +105,25 @@ $(function() {
 
     function renderRmScrap(rmScrap) {
         $('#rmScrap').empty();
-        if (rmScrap.length === 0) {
-            var renderData =  `
-            <tr class="table-row">
-                <td><i>No Raw Material Scrap</i></td>
-            </tr>
-            `;
-            $('#rmReceived').append(renderData);
-        } else {
-            rmScrap.forEach(function(data) {
+        rmScrap.forEach(function(data) {
+            if (data.total_scrap === null) {
                 var renderData =  `
                 <tr class="table-row">
-                    <td><strong><i>Production Scrap:</i></strong> ${data.total_scrap}kg</td>
+                    <td><i>No Raw Material Scrap</i></td>
                 </tr>
                 `;
                 $('#rmScrap').append(renderData);
-            });
-        }
+            } else {
+                rmScrap.forEach(function(data) {
+                    var renderData =  `
+                    <tr class="table-row">
+                        <td><strong><i>Production Scrap:</i></strong> ${data.total_scrap}kg</td>
+                    </tr>
+                    `;
+                    $('#rmScrap').append(renderData);
+                });
+            }
+        })
     }
 
     function renderFgProduced(fgProduced) {
