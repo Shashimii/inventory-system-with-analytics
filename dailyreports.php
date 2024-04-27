@@ -7,6 +7,7 @@ include 'connections.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="./js/dailyreports.js"></script>
     <script defer src="./js/alert.js"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,12 +109,21 @@ include 'connections.php';
                             <div class="daily-card-wrapper">
                                 <div class="daily-card">
                                     <h5>Received</h5>
+                                    <div id="rmReceived">
+                                        
+                                    </div>
                                 </div>
                                 <div class="daily-card">
                                     <h5>Used</h5>
+                                    <div id="rmUsed">
+
+                                    </div>
                                 </div>
                                 <div class="daily-card">
                                     <h5>Scrap</h5>
+                                    <div id="rmScrap">
+
+                                    </div>
                                 </div>
                             </div>  
                         </div>
@@ -122,9 +132,9 @@ include 'connections.php';
                             <div class="daily-card-wrapper">
                                 <div class="daily-card">
                                     <h5>Produced</h5>
-                                </div>
-                                <div class="daily-card">
-                                    <h5>Packed</h5>
+                                    <div id="fgProduced">
+
+                                    </div>
                                 </div>
                             </div>  
                         </div>
@@ -133,9 +143,15 @@ include 'connections.php';
                             <div class="daily-card-wrapper">
                                 <div class="daily-card">
                                     <h5>Produced</h5>
+                                    <div id="pProduced">
+
+                                    </div>
                                 </div>
                                 <div class="daily-card">
                                     <h5>Shipped</h5>
+                                    <div id="pShipped">
+
+                                    </div>
                                 </div>
                             </div>  
                         </div>
