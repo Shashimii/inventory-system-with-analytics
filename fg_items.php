@@ -16,6 +16,7 @@ while ($optionProduct = $result->fetch_assoc()) {
     <script src="./js/fgTables.js"></script>
     <script src="./js/fgFetchReceived.js"></script>
     <script src="./js/fgPack.js"></script>
+    <script defer src="./js/alert.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finished Goods | Hiltac</title>

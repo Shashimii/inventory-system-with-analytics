@@ -10,6 +10,7 @@ include 'connections.php';
     
     <script src="./js/fgTables.js"></script>
     <script src="./js/fgFetchStatus.js"></script>
+    <script defer src="./js/alert.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finished Good Status | Hiltac</title>

@@ -9,7 +9,8 @@ include 'connections.php';
 <html lang="en">
 <head>
     <script src="./js/rmTables.js"></script> <!-- render the table first -->
-    <script src="./js/rmFetchHistory.js"></script> 
+    <script src="./js/rmFetchHistory.js"></script>
+    <script defer src="./js/alert.js"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raw Material History | Hiltac</title>

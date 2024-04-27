@@ -36,6 +36,7 @@ while ($optionFg = $result->fetch_assoc()) {
     <script src="./js/rmFetchInProduction.js"></script>
     <script src="./js/rmFetchDepleted.js"></script>
     <script src="./js/rmFetchUndo.js"></script>
+    <script defer src="./js/alert.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raw Materials | Hiltac</title>

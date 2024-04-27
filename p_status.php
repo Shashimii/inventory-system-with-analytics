@@ -10,6 +10,7 @@ include 'connections.php';
     
     <script src="./js/pTables.js"></script>
     <script src="./js/pFetchStatus.js"></script>
+    <script defer src="./js/alert.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Status | Hiltac</title>

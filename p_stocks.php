@@ -16,6 +16,7 @@ while ($optionCode = $result->fetch_assoc()) {
     <script src="./js/pTables.js"></script>
     <script src="./js/pFetchReceived.js"></script>
     <script src="./js/pFormShip.js"></script>
+    <script defer src="./js/alert.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products Stock  | Hiltac</title>
