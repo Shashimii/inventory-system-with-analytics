@@ -98,6 +98,7 @@ while ($optionFg = $result->fetch_assoc()) {
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                         aria-expanded="false">Settings</a>
                                     <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="settings_items">Items</a></li>
                                         <li><a class="dropdown-item" href="settings_accounts">Accounts</a></li>
                                         <li><a class="dropdown-item" href="settings_data">Backup Data</a></li>
                                     </ul>
