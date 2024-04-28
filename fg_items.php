@@ -107,7 +107,7 @@ while ($optionProduct = $result->fetch_assoc()) {
                     </div>
                     <div class="fg-manage-list">
                         <div>
-                            <h3>Selected Raw Materials</h3>
+                            <h3>Selected Finished Goods</h3>
                             <hr class="border border-danger border-2 opacity-75">
                         </div>
                         <div class="selected-list" id="selectedList">
