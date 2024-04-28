@@ -5,6 +5,7 @@ include 'connections.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="./js/dashboard.js"></script>
     <script defer src="./js/alert.js"></script>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,7 +104,7 @@ include 'connections.php';
                             </div>
                             <div class="dashboard-card-sm-row">
                                 <div class="dashboard-card-sm-item">
-                                    <h5>Stocks 0</h5>
+                                    <h5 id="rmStocks"></h5>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +119,7 @@ include 'connections.php';
                             </div>
                             <div class="dashboard-card-sm-row">
                                 <div class="dashboard-card-sm-item">
-                                    <h5>Stocks 0</h5>
+                                    <h5 id="fgStocks"></h5>
                                 </div>
                             </div>
                         </div>
@@ -133,14 +134,14 @@ include 'connections.php';
                             </div>
                             <div class="dashboard-card-sm-row">
                                 <div class="dashboard-card-sm-item">
-                                    <h5>Stocks 0</h5>
+                                    <h5 id="pStocks"></h5>
                                 </div>
                             </div>
                         </div>
                         <div class="dashboard-card-sm">
                             <div class="dashboard-card-sm-row">
                                 <div class="dashboard-card-sm-item">
-                                    <h3>Returned</h3>
+                                    <h3>Shipped</h3>
                                 </div>
                                 <div class="dashboard-card-sm-item">
                                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
@@ -148,7 +149,7 @@ include 'connections.php';
                             </div>
                             <div class="dashboard-card-sm-row">
                                 <div class="dashboard-card-sm-item">
-                                    <h5>Products 0</h5>
+                                    <h5 id="sStocks"></h5>
                                 </div>
                             </div>
                         </div>
@@ -159,8 +160,8 @@ include 'connections.php';
                                 <h4>Clients</h4>
                                 <i class="fa-solid fa-users"></i>
                             </div>
-                            <div class="dashboard-card-md-row">
-                                <p>Client Chart Here</p>
+                            <div id="clients" class="dashboard-card-md-row">
+                                
                             </div>
                         </div>
                         <div class="dashboard-card-md">
@@ -168,17 +169,8 @@ include 'connections.php';
                                 <h4>Products</h4>
                                 <i class="fa-solid fa-boxes-stacked"></i>
                             </div>
-                            <div class="dashboard-card-md-row">
-                                <p>Product Chart Here</p>
-                            </div>
-                        </div>
-                        <div class="dashboard-card-md">
-                            <div class="dashboard-card-md-row">
-                                <h4>Recent Inventory Updates</h4>
-                                <i class="fa-solid fa-repeat"></i>
-                            </div>
-                            <div class="dashboard-card-md-row">
-                                <p>Inventory Changes Here</p>
+                            <div id="products" class="dashboard-card-md-row">
+
                             </div>
                         </div>
                     </div>
