@@ -191,6 +191,49 @@ include 'connections.php';
                             </div>
                         </div>
                     </div>
+                    <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
+                    <div class="an-analysis">
+                        <div class="an-header">
+                            <h4><i>Results</i></h4>
+                        </div>
+                    </div>
+                    <div class="an-analysis-body">
+                        <div class="an-analysis-card">
+                            <div class="an-card-header">
+                                <h4>Inventory</h4>
+                            </div>
+                            <div class="an-analysis-card-body" style="height: 450px;">
+                               <div class="analysis-card">
+                                    <div class="analysis-card-header">
+                                        <h4>Daily Report</h4>
+                                    </div>
+                                    <div class="analysis-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
+                                        <h5>Raw Material Used</h5>
+                                        <h3 id="analysisRmCount">1000kg</h3>
+                                        <h5>Finished Goods Produced</h5>
+                                        <h3 id="analysisFgCount">1000pcs</h3>
+                                        <h5>As of 04/29/2024</h5>
+                                    </div>
+                               </div>
+                               <div class="analysis-card">
+                                    <div class="analysis-card-header">
+                                        <h4>Monthly Report</h4>
+                                    </div>
+                                    <div class="analysis-card-body">
+                                        
+                                    </div>
+                               </div>
+                               <div class="analysis-card">
+                                    <div class="analysis-card-header">
+                                        <h4>Top 5 Clients</h4>
+                                    </div>
+                                    <div class="analysis-card-body">
+                                        
+                                    </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
