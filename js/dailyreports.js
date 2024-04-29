@@ -95,7 +95,7 @@ $(function() {
                 <tr class="table-row">
                     <td><strong><i>Name:</i></strong> ${data.item_name}</td>
                     <td><strong><i>ID:</i></strong> ${data.item_id}</td>
-                    <td><strong><i>Qty:</i></strong> ${data.quantity_inProduction}kg</td>
+                    <td><strong><i>Qty:</i></strong> ${data.quantity_used}kg</td>
                 </tr>
                 `;
                 $('#rmUsed').append(renderData);
