@@ -38,40 +38,58 @@ $(function() {
     function renderDailyData(rmCount, rmTotal, fgCount, fgTotal) {
         $('#rmCount').empty();  
         $('#fgCount').empty();
+        $('#rmTotal').empty();  
+        $('#fgTotal').empty();
+
+        if (rmCount.length === 0) {
+            $('#rmDailyBody').empty();
+            var noTotal = `
+                <h4 style="color: #666;"><i>No Used Raw Material as of Today</i></h4>
+            `;
+            $('#rmDailyBody').append(noTotal);
+        } else {
+            rmCount.forEach(function(data) {
+                var renderRmCount =`
+                    <tr>
+                        <td>${data.action_time}</td>
+                        <td>${data.item_name}</td>
+                        <td>${data.item_id}</td>
+                        <td>${data.quantity_used}kg</td>
+                    </tr>
+                `;
+                $('#rmCount').append(renderRmCount);
+            })
+    
+            var renderRmTotal =`
+                ${rmTotal.total_quantity}kg
+            `;
+            $('#rmTotal').append(renderRmTotal);
+        }
+
+        if (fgCount.length === 0) {
+            $('#fgDailyBody').empty();
+            var noTotal = `
+                <h4 style="color: #666;"><i>No Finished Goods Produced as of Today</i></h4>
+            `;
+            $('#fgDailyBody').append(noTotal);
+        } else {
+            fgCount.forEach(function(data) {
+                var renderFgCount =`
+                    <tr>
+                        <td>${data.action_time}</td>
+                        <td>${data.item_name}</td>
+                        <td>${data.from_rm_id}</td>
+                        <td>${data.quantity_pcs}pcs</td>
+                    </tr>
+                `;
+                $('#fgCount').append(renderFgCount);
+            })
         
-        rmCount.forEach(function(data) {
-            var renderRmCount =`
-                <tr>
-                    <td>${data.action_time}</td>
-                    <td>${data.item_name}</td>
-                    <td>${data.item_id}</td>
-                    <td>${data.quantity_used}kg</td>
-                </tr>
+            var renderFgTotal =`
+                ${fgTotal.total_quantity}pcs
             `;
-            $('#rmCount').append(renderRmCount);
-        })
-
-        var renderRmTotal =`
-            ${rmTotal.total_quantity}kg
-        `;
-        $('#rmTotal').append(renderRmTotal);
-
-        fgCount.forEach(function(data) {
-            var renderFgCount =`
-                <tr>
-                    <td>${data.action_time}</td>
-                    <td>${data.item_name}</td>
-                    <td>${data.from_rm_id}</td>
-                    <td>${data.quantity_pcs}pcs</td>
-                </tr>
-            `;
-            $('#fgCount').append(renderFgCount);
-        })
-
-        var renderFgTotal =`
-            ${fgTotal.total_quantity}pcs
-        `;
-        $('#fgTotal').append(renderFgTotal);
+            $('#fgTotal').append(renderFgTotal);
+        }
     }
     fetchDailyData();
 })

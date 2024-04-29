@@ -107,7 +107,7 @@ include 'connections.php';
                                 <div class="an-card-header">
                                     <h4>Used Raw Materials</h4>
                                 </div>
-                                <div class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
+                                <div id="rmDailyBody" class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
                                     <h4>Raw Materials Used Today<h4>
                                         <table class="table table-borderless table-danger">
                                             <thead>
@@ -130,7 +130,7 @@ include 'connections.php';
                                 <div class="an-card-header">
                                     <h4>Finished Products Produced</h4>
                                 </div>
-                                <div class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
+                                <div id="fgDailyBody" class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
                                     <h4>Finished Goods Produced Today<h4>
                                         <table class="table table-borderless table-success">
                                             <thead>
