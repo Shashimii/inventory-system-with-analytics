@@ -7,6 +7,7 @@ include 'connections.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="./js/analytics.js"></script>
     <script defer src="./js/alert.js"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,10 +99,61 @@ include 'connections.php';
                     </div>
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="an-daily">
+                        <div class="an-header">
+                            <h4><i>Daily Reports</i></h4>
+                        </div>
+                        <div class="an-body">
+                            <div class="an-daily-card">
+                                <div class="an-card-header">
+                                    <h4>Used Raw Materials</h4>
+                                </div>
+                                <div class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
+                                    <h4>Raw Materials Used Today<h4>
+                                        <table class="table table-borderless table-danger">
+                                            <thead>
+                                                <tr>
+                                                    <th>Time Used</th>
+                                                    <th>Raw Material</th>
+                                                    <th>Id</th>
+                                                    <th>Quantity Used</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="rmCount">
 
+                                            </tbody>
+                                        </table>    
+                                    <h4>Total Quantity of Raw Materials used is</h4>
+                                    <h4 id="rmTotal" style="font-weight: bold; color: red;"></h4>
+                                </div>
+                            </div>
+                            <div class="an-daily-card">
+                                <div class="an-card-header">
+                                    <h4>Finished Products Produced</h4>
+                                </div>
+                                <div class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
+                                    <h4>Finished Goods Produced Today<h4>
+                                        <table class="table table-borderless table-success">
+                                            <thead>
+                                                <tr>
+                                                    <th>Time Used</th>
+                                                    <th>Finished Goods</th>
+                                                    <th>RawMat used Id</th>
+                                                    <th>Quantity Produced</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="fgCount">
+
+                                            </tbody>
+                                        </table>    
+                                    <h4>Total Quantity of Finished Goods produced is</h4>
+                                    <h4 id="fgTotal" style="font-weight: bold; color: green;"></h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="an-monthly">
-                        
+                        <h1>monthly</h1>
                     </div>
                 </div>
             </div>

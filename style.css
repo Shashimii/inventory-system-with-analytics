@@ -514,7 +514,45 @@ th {
 
 .an-main {
     flex: 1;
-    background-color: #0d6efd;
+    display: flex;
+    flex-direction: column;
+}
+
+.an-daily {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.an-body {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1%;
+}
+
+.an-daily-card {
+    padding: 1%;
+    border: 1px solid black;
+    width: 40%;
+    background-color: #f8f9fa;
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.1);
+}
+
+.an-card-header {
+    border-bottom: 1px solid black;
+}
+
+.an-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 2%;
+}
+
+.an-monthly {
+    flex: 1;
 }
 
 /*== End ==*/

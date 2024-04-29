@@ -3,17 +3,15 @@
 include 'script_con.php';
 include 'sysDateTime.php';
 
-$stmt = $con->prepare("SELECT action_date, action_time, item_name, item_id, quantity_used 
+$stmt = $con->prepare("SELECT SUM(quantity_used) AS total_quantity 
 FROM rm_data 
 WHERE action_date = ? AND item_data_status = ?");
 $stmt->bind_param("ss", $sys_date, $dataStatusDepleted);
 $stmt->execute();
 $result = $stmt->get_result();
-
-$data = array();
-while($row = $result->fetch_assoc()) {
-    $data[] = $row;
-}
+ 
+$row = $result->fetch_assoc();
+    $data = $row;
 
 $stmt->close();
 $con->close();
