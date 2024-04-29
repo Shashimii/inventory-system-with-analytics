@@ -122,7 +122,7 @@ include 'connections.php';
 
                                             </tbody>
                                         </table>    
-                                    <h4>Total Quantity of Raw Materials used is</h4>
+                                    <h4>Total Quantity of Raw Materials used</h4>
                                     <h4 id="rmTotal" style="font-weight: bold; color: red;"></h4>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@ include 'connections.php';
 
                                             </tbody>
                                         </table>    
-                                    <h4>Total Quantity of Finished Goods produced is</h4>
+                                    <h4>Total Quantity of Finished Goods produced</h4>
                                     <h4 id="fgTotal" style="font-weight: bold; color: green;"></h4>
                                 </div>
                             </div>
@@ -153,7 +153,27 @@ include 'connections.php';
                     </div>
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="an-monthly">
-                        <h1>monthly</h1>
+                        <div class="an-header">
+                            <h4><i>Monthly Analytics</i></h4>
+                        </div>
+                    </div>
+                    <div class="an-monthly-body">
+                        <div class="an-monthly-card">
+                            <div class="an-card-header">
+                                <h4>Finished Goods Produced</h4>
+                            </div>
+                            <div class="an-card-body" style="height: 450px;">
+                                <canvas id="fgMonthlyChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="an-monthly-card">
+                            <div class="an-card-header">
+                                <h4>Products Shipped</h4>
+                            </div>
+                            <div class="an-card-body" style="height: 450px;">
+                                <canvas id="pMonthlyChart"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,3 +181,100 @@ include 'connections.php';
     </div>
 </body>
 </html>
+
+<!-- chartjs configurations -->
+<script>
+fetch('./php/analytics_monthly_fg_produced.php')
+.then(response => response.json())
+.then(data => {
+    var ctx = document.getElementById('fgMonthlyChart').getContext('2d');
+
+    var myLineChart1 = new Chart(ctx, {
+    type: 'line',
+    data: {
+        datasets: data, 
+    },
+    options: {
+        scales: {
+            x: {
+        grid: {
+            display: true,           // Set to true to show x-axis grid lines
+        },
+        ticks: {
+            color: 'black',           // X-axis label color
+            beginAtZero: true
+        },            
+    },
+        y: {
+            grid: {
+                display: true,            // Set to true to show y-axis grid lines
+                borderWidth: 1,           // Width of the grid lines
+                drawBorder: false,        // Set to true to draw a border around the chart
+                drawOnChartArea: true,    // Set to true to draw grid lines on the chart area
+                drawTicks: false,         // Set to true to draw ticks on the grid lines
+            },
+            ticks: {
+            color: 'black',           // Y-axis label color
+            },
+        }
+        },
+        elements: {
+            line: {
+                tension: 0.2  // Adjust the tension value here (0 = straight lines, 1 = very curved lines)
+            }
+        }
+        }
+    });
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+
+fetch('./php/analytics_monthly_p_ship.php')
+.then(response => response.json())
+.then(data => {
+    var ctx = document.getElementById('pMonthlyChart').getContext('2d');
+
+    var myLineChart2 = new Chart(ctx, {
+    type: 'line',
+    data: {
+        datasets: data, 
+    },
+    options: {
+        scales: {
+            x: {
+        grid: {
+            display: true,           // Set to true to show x-axis grid lines
+        },
+        ticks: {
+            color: 'black',           // X-axis label color
+            beginAtZero: true
+        },            
+    },
+        y: {
+            grid: {
+                display: true,            // Set to true to show y-axis grid lines
+                borderWidth: 1,           // Width of the grid lines
+                drawBorder: false,        // Set to true to draw a border around the chart
+                drawOnChartArea: true,    // Set to true to draw grid lines on the chart area
+                drawTicks: false,         // Set to true to draw ticks on the grid lines
+            },
+            ticks: {
+            color: 'black',           // Y-axis label color
+            },
+        }
+        },
+        elements: {
+            line: {
+                tension: 0.2  // Adjust the tension value here (0 = straight lines, 1 = very curved lines)
+            }
+        }
+        }
+    });
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+
+</script>
+                   

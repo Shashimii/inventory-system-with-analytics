@@ -30,6 +30,7 @@ if ($date_result->num_rows > 0) {
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">    
     <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="./js/chart.js"></script>
     <link rel="stylesheet" href="style.css">
     <script defer src="./js/time.js"></script>   
 </head>

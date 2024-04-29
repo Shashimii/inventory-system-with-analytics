@@ -552,7 +552,25 @@ th {
 }
 
 .an-monthly {
-    flex: 1;
+    display: flex;
+}
+
+.an-monthly-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    padding: 1%;
+}
+
+.an-monthly-card {
+    padding: 1%;
+    border: 1px solid black;
+    width: 85%;
+    background-color: #f8f9fa;
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.1);
+    height: 500px;
 }
 
 /*== End ==*/

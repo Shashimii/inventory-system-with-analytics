@@ -75,3 +75,5 @@ $(function() {
     }
     fetchDailyData();
 })
+
+
