@@ -160,7 +160,7 @@ include 'connections.php';
                     <div class="an-monthly-body">
                         <div class="an-monthly-card">
                             <div class="an-card-header">
-                                <h4>Finished Goods Produced</h4>
+                                <h4>Finished Goods Produced <span style="color: #666;">(pcs)</span></h4>
                             </div>
                             <div class="an-card-body" style="height: 450px;">
                                 <canvas id="fgMonthlyChart"></canvas>
@@ -168,10 +168,26 @@ include 'connections.php';
                         </div>
                         <div class="an-monthly-card">
                             <div class="an-card-header">
-                                <h4>Products Shipped</h4>
+                                <h4>Products Shipped <span style="color: #666;">(pcs)</span></h4>
                             </div>
                             <div class="an-card-body" style="height: 450px;">
                                 <canvas id="pMonthlyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
+                    <div class="an-client">
+                        <div class="an-header">
+                            <h4><i>Clients</i></h4>
+                        </div>
+                    </div>
+                    <div class="an-client-body">
+                        <div class="an-client-card">
+                            <div class="an-card-header">
+                                <h4>Product Shippments</h4>
+                            </div>
+                            <div class="an-card-body" style="height: 450px;">
+                                <canvas id="clientChart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -276,5 +292,56 @@ fetch('./php/analytics_monthly_p_ship.php')
     console.error('Error fetching data:', error);
 });
 
+
+fetch('./php/analytics_client.php')
+    .then(response => response.json())
+    .then(data => {
+        const labels = data.map(entry => entry.client_company);
+        const quantities = data.map(entry => entry.total_quantity);
+
+        const randomColor = () => {
+    let r, g, b;
+    do {
+        r = Math.floor(Math.random() * 128); // Limit the range to generate darker colors
+        g = Math.floor(Math.random() * 128);
+        b = Math.floor(Math.random() * 128);
+    } while (r + g + b > 128); // Ensure the combined RGB value is below a certain threshold to generate dark colors
+    const alpha = Math.random() * 0.9; // Generate random alpha value between 0 and 0.9
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`; // Use rgba format to include alpha value
+};
+
+
+        // Generate random colors for each bar
+        const backgroundColors = labels.map(() => randomColor());
+
+        const ctx = document.getElementById('clientChart').getContext('2d');
+        const clientChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Shipped Count (pcs)',
+                    data: quantities,
+                    backgroundColor: backgroundColors, // Use the generated random colors
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
 </script>
                    

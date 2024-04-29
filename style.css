@@ -573,4 +573,27 @@ th {
     height: 500px;
 }
 
+.an-client {
+    display: flex;
+}
+
+.an-client-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    padding: 1%;
+}
+
+.an-client-card {
+    padding: 1%;
+    border: 1px solid black;
+    width: 85%;
+    background-color: #f8f9fa;
+    box-shadow: 0 12px 14px rgba(0, 0, 0, 0.1);
+    height: 500px;
+}
+
+
 /*== End ==*/
