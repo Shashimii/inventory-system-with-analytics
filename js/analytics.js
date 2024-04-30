@@ -124,7 +124,6 @@ $(function() {
     }
 
     function renderResultsData(daily, monthly, topClient) {
-        console.log(daily)
         var dailyResult = daily[0];
         var monthlyResult = monthly[0];
 

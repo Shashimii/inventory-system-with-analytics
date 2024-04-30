@@ -272,7 +272,7 @@ fetch('./php/analytics_monthly_fg_produced.php')
 .then(response => response.json())
 .then(data => {
     var ctx = document.getElementById('fgMonthlyChart').getContext('2d');
-
+    
     var myLineChart1 = new Chart(ctx, {
     type: 'line',
     data: {
@@ -416,7 +416,6 @@ const ctx = document.getElementById('clientChart').getContext('2d');
 fetch('./php/analytics_report_daily.php')
 .then(response => response.json())
 .then(data => {
-
     // Summing up the total quantities for both categories
     const total_rm = data.reduce((acc, entry) => acc + parseInt(entry.total_rm), 0);
     const total_fg = data.reduce((acc, entry) => acc + parseInt(entry.total_fg), 0);
