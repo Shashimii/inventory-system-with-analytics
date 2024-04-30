@@ -208,11 +208,12 @@ include 'connections.php';
                                         <h4>Daily Report</h4>
                                     </div>
                                     <div class="analysis-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
-                                        <h5>Raw Material Used</h5>
-                                        <h3 id="analysisRmCount">1000kg</h3>
-                                        <h5>Finished Goods Produced</h5>
-                                        <h3 id="analysisFgCount">1000pcs</h3>
-                                        <h5>As of 04/29/2024</h5>
+                                        <div class="card-chart" style="height: 200px">
+                                            <canvas id="dailyReportChart"></canvas>
+                                        </div>
+                                        <div class="card-info">
+                                            <h4>Info</h4>
+                                        </div>
                                     </div>
                                </div>
                                <div class="analysis-card">
@@ -220,7 +221,12 @@ include 'connections.php';
                                         <h4>Monthly Report</h4>
                                     </div>
                                     <div class="analysis-card-body">
-                                        
+                                        <div class="card-chart" style="height: 200px">
+                                            <canvas id="monthlyReportChart"></canvas>
+                                        </div>
+                                        <div class="card-info">
+                                            <h4>Info</h4>
+                                        </div>
                                     </div>
                                </div>
                                <div class="analysis-card">
@@ -228,7 +234,12 @@ include 'connections.php';
                                         <h4>Top 5 Clients</h4>
                                     </div>
                                     <div class="analysis-card-body">
-                                        
+                                        <div class="card-chart" style="height: 200px; padding-top: 30px">
+                                            <canvas id="clientReportChart"></canvas>
+                                        </div>
+                                        <div class="card-info">
+                                            <h4>Info</h4>
+                                        </div>
                                     </div>
                                </div>
                             </div>
@@ -337,54 +348,180 @@ fetch('./php/analytics_monthly_p_ship.php')
 
 
 fetch('./php/analytics_client.php')
-    .then(response => response.json())
-    .then(data => {
-        const labels = data.map(entry => entry.client_company);
-        const quantities = data.map(entry => entry.total_quantity);
+.then(response => response.json())
+.then(data => {
+    const labels = data.map(entry => entry.client_company);
+    const quantities = data.map(entry => entry.total_quantity);
 
-        const randomColor = () => {
-    let r, g, b;
-    do {
-        r = Math.floor(Math.random() * 128); // Limit the range to generate darker colors
-        g = Math.floor(Math.random() * 128);
-        b = Math.floor(Math.random() * 128);
-    } while (r + g + b > 128); // Ensure the combined RGB value is below a certain threshold to generate dark colors
-    const alpha = Math.random() * 0.9; // Generate random alpha value between 0 and 0.9
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`; // Use rgba format to include alpha value
+    const randomColor = () => {
+let r, g, b;
+do {
+    r = Math.floor(Math.random() * 128); // Limit the range to generate darker colors
+    g = Math.floor(Math.random() * 128);
+    b = Math.floor(Math.random() * 128);
+} while (r + g + b > 128); // Ensure the combined RGB value is below a certain threshold to generate dark colors
+const alpha = Math.random() * 0.9; // Generate random alpha value between 0 and 0.9
+return `rgba(${r}, ${g}, ${b}, ${alpha})`; // Use rgba format to include alpha value
 };
 
 
-        // Generate random colors for each bar
-        const backgroundColors = labels.map(() => randomColor());
+// Generate random colors for each bar
+const backgroundColors = labels.map(() => randomColor());
 
-        const ctx = document.getElementById('clientChart').getContext('2d');
-        const clientChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Shipped Count (pcs)',
-                    data: quantities,
-                    backgroundColor: backgroundColors, // Use the generated random colors
-                    borderWidth: 1
-                }]
+const ctx = document.getElementById('clientChart').getContext('2d');
+    const clientChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Shipped Count (pcs)',
+                data: quantities,
+                backgroundColor: backgroundColors, // Use the generated random colors
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            plugins: {
+                legend: {
+                    display: false
                 }
             }
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
+        }
     });
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+
+
+fetch('./php/analytics_report_daily.php')
+.then(response => response.json())
+.then(data => {
+
+    // Summing up the total quantities for both categories
+    const total_rm = data.reduce((acc, entry) => acc + parseInt(entry.total_rm), 0);
+    const total_fg = data.reduce((acc, entry) => acc + parseInt(entry.total_fg), 0);
+
+    const ctx = document.getElementById('dailyReportChart').getContext('2d');
+    const dailyReportChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["RM Used (kg)", "FG Produced (pcs)"],
+            datasets: [{
+                data: [total_rm, total_fg], // Ensure these variables are correctly defined and hold numeric values
+                backgroundColor: ["#FF6384", "#36A2EB"],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true // Hides the legend
+                },
+                tooltip: {
+                    enabled: true // Disables tooltips
+                }
+            }
+        }
+    });
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+
+
+fetch('./php/analytics_report_monthly.php')
+.then(response => response.json())
+.then(data => {
+
+    // Summing up the total quantities for both categories
+    const total_fg = data.reduce((acc, entry) => acc + parseInt(entry.total_fg), 0);
+    const total_p = data.reduce((acc, entry) => acc + parseInt(entry.total_p), 0);
+
+    const ctx = document.getElementById('monthlyReportChart').getContext('2d');
+    const dailyReportChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["FG Produced (pcs)", "Products Ship (pcs)"],
+            datasets: [{
+                data: [total_fg, total_p], // Ensure these variables are correctly defined and hold numeric values
+                backgroundColor: ["#FF6384", "#36A2EB"],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true // Hides the legend
+                },
+                tooltip: {
+                    enabled: true // Disables tooltips
+                }
+            }
+        }
+    });
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+
+
+fetch('./php/analytics_report_client.php')
+.then(response => response.json())
+.then(data => {
+    const labels = data.map(entry => entry.client_company);
+    const quantities = data.map(entry => entry.total_shipped_quantity);
+
+    const randomColor = () => {
+let r, g, b;
+do {
+    r = Math.floor(Math.random() * 128); // Limit the range to generate darker colors
+    g = Math.floor(Math.random() * 128);
+    b = Math.floor(Math.random() * 128);
+} while (r + g + b > 128); // Ensure the combined RGB value is below a certain threshold to generate dark colors
+const alpha = Math.random() * 0.9; // Generate random alpha value between 0 and 0.9
+return `rgba(${r}, ${g}, ${b}, ${alpha})`; // Use rgba format to include alpha value
+};
+
+
+// Generate random colors for each bar
+const backgroundColors = labels.map(() => randomColor());
+
+const ctx = document.getElementById('clientReportChart').getContext('2d');
+    const clientChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Shipped Count (pcs)',
+                data: quantities,
+                backgroundColor: backgroundColors, // Use the generated random colors
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                   display: false
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+
+
 </script>
                    

@@ -2,14 +2,16 @@
 
 include 'script_con.php';
 
-$query_date = "SELECT DATE_FORMAT(NOW(), '%m/%d/%Y') AS date_now";
-$date_result = $con->query($query_date);
-if ($date_result->num_rows > 0) {
-    $cur_date = $date_result->fetch_assoc();
-    $sys_date = $cur_date['date_now'];
-} else {
-    $sys_date = "WARNING: current date cannot be fetched";
-}
+//$query_date = "SELECT DATE_FORMAT(NOW(), '%m/%d/%Y') AS date_now";
+//$date_result = $con->query($query_date);
+//if ($date_result->num_rows > 0) {
+//    $cur_date = $date_result->fetch_assoc();
+//    $sys_date = $cur_date['date_now'];
+//} else {
+//    $sys_date = "WARNING: current date cannot be fetched";
+//}
+
+$sys_date = '04/29/2024';
 
 $query_time = "SELECT TIME_FORMAT(NOW(), '%h:%i %p') AS time_now";
 $time_result = $con->query($query_time);
