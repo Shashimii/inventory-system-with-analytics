@@ -91,6 +91,74 @@ $(function() {
             $('#fgTotal').append(renderFgTotal);
         }
     }
+
+    function fetchResultsData() {
+        var dailyPromise = $.ajax({
+            url: './php/analytics_report_daily.php', 
+            method: 'GET'
+        });
+
+        var monthlyPromise = $.ajax({
+            url: './php/analytics_report_monthly.php', 
+            method: 'GET'
+        });
+    
+    
+        var topClientPromise = $.ajax({
+            url: './php/analytics_report_client.php', 
+            method: 'GET'
+        });
+
+        Promise.all([dailyPromise, monthlyPromise, topClientPromise])
+    
+        .then(function(responses) {
+            var daily = responses[0];
+            var monthly = responses[1];
+            var topClient = responses[2];
+
+            renderResultsData(daily, monthly, topClient);
+        })
+        .catch(function(error) {
+            console.error(error);
+        });
+    }
+
+    function renderResultsData(daily, monthly, topClient) {
+        console.log(daily)
+        var dailyResult = daily[0];
+        var monthlyResult = monthly[0];
+
+        var resultData = `
+            ${dailyResult.total_rm}kg
+        `;
+        $('#resultsDailyRm').append(resultData);
+
+        var resultData = `
+            ${dailyResult.total_fg}pcs
+        `;
+        $('#resultsDailyFg').append(resultData);
+
+        var resultData = `
+            ${monthlyResult.total_fg}pcs
+        `;
+        $('#resultsMonthlyFg').append(resultData);
+
+        var resultData = `
+            ${monthlyResult.total_p}pcs
+        `;
+        $('#resultsMonthlyP').append(resultData);
+
+        topClient.forEach(function(data) {
+            var resultClientData = `
+                ${data.client_company} you shipped
+                ${data.total_shipped_quantity}pcs</br>
+                
+            `;
+            $('#clientTopResults').append(resultClientData);
+        })
+    }
+
+    fetchResultsData()
     fetchDailyData();
 })
 

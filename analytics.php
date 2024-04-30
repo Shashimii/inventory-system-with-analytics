@@ -212,7 +212,13 @@ include 'connections.php';
                                             <canvas id="dailyReportChart"></canvas>
                                         </div>
                                         <div class="card-info">
-                                            <h4>Info</h4>
+                                            <p>
+                                                Today you have used 
+                                                <span id="resultsDailyRm"></span> 
+                                                of Raw Materials to Produce 
+                                                <span id="resultsDailyFg"></span> 
+                                                of Finished Goods
+                                            </p>
                                         </div>
                                     </div>
                                </div>
@@ -220,12 +226,19 @@ include 'connections.php';
                                     <div class="analysis-card-header">
                                         <h4>Monthly Report</h4>
                                     </div>
-                                    <div class="analysis-card-body">
+                                    <div class="analysis-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
                                         <div class="card-chart" style="height: 200px">
                                             <canvas id="monthlyReportChart"></canvas>
                                         </div>
                                         <div class="card-info">
-                                            <h4>Info</h4>
+                                            <p>
+                                                This Month you have Produced
+                                                <span id="resultsMonthlyFg"></span>
+                                                of Finished Goods
+                                                and Shipped
+                                                <span id="resultsMonthlyP"></span>
+                                                of Products
+                                            </p>
                                         </div>
                                     </div>
                                </div>
@@ -233,12 +246,13 @@ include 'connections.php';
                                     <div class="analysis-card-header">
                                         <h4>Top 5 Clients</h4>
                                     </div>
-                                    <div class="analysis-card-body">
+                                    <div class="analysis-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
                                         <div class="card-chart" style="height: 200px; padding-top: 30px">
                                             <canvas id="clientReportChart"></canvas>
                                         </div>
                                         <div class="card-info">
-                                            <h4>Info</h4>
+                                            <p>This is your Top Clients</p>
+                                            <p style="font-size: 15px; "><span id="clientTopResults"></span></p>
                                         </div>
                                     </div>
                                </div>
