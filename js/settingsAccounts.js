@@ -1,4 +1,42 @@
 $(function() {
+    $('#addAccountForm').on('submit', function(event) {
+        event.preventDefault();
+
+        var inputData = $(this).serialize();
+        console.log(inputData);
+
+        $.ajax({
+            type: 'POST',
+            url: './php/settings_account_add.php',
+            data: inputData,
+            success: function(response) {
+                console.log(response)
+                if (response === '0') {
+                    Swal.fire({
+                        title: 'Account Added',
+                        text: 'Account can be now used for Login',
+                        icon: 'success',
+                    }).then(function() {
+                        location.reload();
+                    })
+                } else if (response === '1') {
+                    Swal.fire({
+                        title: 'Oops',
+                        text: 'Already Added',
+                        icon: 'error',
+                    }).then(function() {
+                        location.reload();
+                    })
+                } else {
+                    console.log('Hello? Something Went Wrong on Submitting this data')
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText); 
+            }
+        })
+    })
+
     function accountsTable() {
         $('#accountTable').empty(); // remove any existing table rows
         var tableStructure = `

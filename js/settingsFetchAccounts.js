@@ -43,7 +43,10 @@ $(function() {
                     '<tr>' +
                         '<td>' + item.user_name + '</td>' +
                         '<td>' + item.user_password + '</td>' +
-                        '<td>' + item.user_type + '</td>' + +
+                        '<td>' + item.user_type + '</td>' + 
+                        '<td class="action-btn">' +
+                        '<button id="RemoveAccount" data-bs-toggle="modal" data-bs-target="#removeAccountModal" data-id="' + item.id + '" data-username="' + item.user_name + '" data-password="' + item.user_password + '" data-type="' + item.user_type + '" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Remove</button>' +
+                        '</td>' +
                     '</tr>'
                 );
             });
@@ -82,4 +85,21 @@ $(function() {
     }
 
     fetchAccounts()
+
+    $(document).on('click', '#RemoveAccount', function() {
+        var username = $(this).data('username');
+        var password = $(this).data('password');
+        var type = $(this).data('type');
+        var id = $(this).data('id');
+
+        console.log("ID: " + id);
+        console.log("Username: " + username);
+        console.log("Password: " + password);
+        console.log("Type: " + type);
+    
+        $('#displayUser').val(username);
+        $('#displayPassword').val(password);
+        $('#displayType').val(type);
+        $('#thisId').val(id);
+    });
 })

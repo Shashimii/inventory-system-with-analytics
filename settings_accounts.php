@@ -8,6 +8,7 @@
 <head>
     <script src="./js/settingsAccounts.js"></script>
     <script src="./js/settingsFetchAccounts.js"></script>
+    <script src="./js/settingsAccountsRemove.js"></script>
     <script defer src="./js/alert.js"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,7 +106,7 @@
                         <div class="s-accounts">
                             <div class="s-card">
                                 <div class="d-grid gap-2">
-                                    <button id='registerAcc' class="btn btn-success btn-sm">Add Accounts</button>
+                                    <button id='registerAcc' data-bs-toggle="modal" data-bs-target="#addAccount" class="btn btn-success btn-sm">Add Accounts</button>
                                     <button id='Logout' class="btn btn-danger btn-sm" onclick="window.location.href = 'logout.php'">Logout</button>
                                 </div>
                             </div>
@@ -116,4 +117,65 @@
         </div>
     </div>
 </body>
+
+
+<!-- Modal -->
+<div class="modal" id="addAccount" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addAccount" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addAccount">Add Account</h1>
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="modal-body">
+                <form id="addAccountForm">
+                    <div class="ipt-container">
+                        <label for="username">Username</label>
+                        <input class="form-control form-control-sm" type="text" name="user" required placeholder="Username" pattern="[a-zA-Z0-9]+" title="Enter Username">
+                        <label for="userpass">Password/Pin</label>
+                        <input class="form-control form-control-sm" type="password" name="password" id="password-input" pattern="[0-9]{8}" title="Enter correct PIN" required placeholder="Enter Password/Pin">
+                        <label for="accountType">Account Type</label>
+                        <select name="account_type" id="accountType" class="form-select form-select-sm dropdown" required>
+                            <option selected hidden value="">Select Account Type</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Add Account</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="removeAccountModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="removeAccountModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="removeAccountModal">Remove Account</h1>
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="modal-body">
+                <form id="removeAccountForm">
+                    <div class="ipt-container">
+                        <label for="username">Username</label>
+                        <input class="form-control form-control-sm" id="displayUser" type="text" value="" readonly>
+                        <label for="userpass">Password/Pin</label>
+                        <input class="form-control form-control-sm" id="displayPassword" type="text" value="" readonly>
+                        <label for="accountType">Account Type</label>
+                        <input name="account_type" id="displayType" class="form-control form-control-sm" type="text" value="" readonly>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                    <input type="hidden" name="account_id" id="thisId" value="">
+                    <button type="submit" class="btn btn-danger">Remove Account</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>
