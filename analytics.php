@@ -11,7 +11,7 @@ include 'connections.php';
     <script defer src="./js/alert.js"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>template | Hiltac</title>
+    <title>Analytics | Hiltac</title>
 </head>
 <body>
     <div class="main">
@@ -64,7 +64,6 @@ include 'connections.php';
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="settings_items">Items</a></li>
                                         <li><a class="dropdown-item" href="settings_accounts">Accounts</a></li>
-                                        <li><a class="dropdown-item" href="settings_data">Backup Data</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -100,12 +99,12 @@ include 'connections.php';
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="an-daily">
                         <div class="an-header">
-                            <h4><i>Daily Reports</i></h4>
+                            <h4><i class="fa-solid fa-bolt"></i><i> Daily Reports</i></h4>
                         </div>
                         <div class="an-body">
                             <div class="an-daily-card">
                                 <div class="an-card-header">
-                                    <h4>Used Raw Materials</h4>
+                                    <h4><i class="fa-solid fa-database"></i> Used Raw Materials</h4>
                                 </div>
                                 <div id="rmDailyBody" class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
                                     <h4>Raw Materials Used Today<h4>
@@ -128,7 +127,7 @@ include 'connections.php';
                             </div>
                             <div class="an-daily-card">
                                 <div class="an-card-header">
-                                    <h4>Finished Products Produced</h4>
+                                    <h4><i class="fa-solid fa-toilet-paper"></i> Finished Products Produced</h4>
                                 </div>
                                 <div id="fgDailyBody" class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
                                     <h4>Finished Goods Produced Today<h4>
@@ -154,55 +153,70 @@ include 'connections.php';
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="an-monthly">
                         <div class="an-header">
-                            <h4><i>Monthly Analytics</i></h4>
+                            <h4><i class="fa-solid fa-chart-line"></i><i> Monthly Analytics</i></h4>
                         </div>
                     </div>
                     <div class="an-monthly-body">
                         <div class="an-monthly-card">
                             <div class="an-card-header">
-                                <h4>Finished Goods Produced <span style="color: #666;">(pcs)</span></h4>
+                                <h4><i class="fa-solid fa-toilet-paper"></i> Finished Goods Produced <span style="color: #666;">(pcs)</span></h4>
                             </div>
                             <div class="an-card-body" style="height: 450px;">
                                 <canvas id="fgMonthlyChart"></canvas>
                             </div>
+                            <div class="an-card-footer">
+                                <p style="padding: 0; margin: 0;">
+                                    <strong><i>Produced Finished Goods Throughout the Year</i></strong>
+                                </p>
+                            </div>
                         </div>
                         <div class="an-monthly-card">
                             <div class="an-card-header">
-                                <h4>Products Shipped <span style="color: #666;">(pcs)</span></h4>
+                                <h4><i class="fa-solid fa-box"></i> Products Shipped <span style="color: #666;">(pcs)</span></h4>
                             </div>
                             <div class="an-card-body" style="height: 450px;">
                                 <canvas id="pMonthlyChart"></canvas>
+                            </div>
+                            <div class="an-card-footer">
+                                <p style="padding: 0; margin: 0;">
+                                    <strong><i>Products Shipped Throughout the Year</i></strong>
+                                </p>
                             </div>
                         </div>
                     </div>
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="an-client">
                         <div class="an-header">
-                            <h4><i>Clients</i></h4>
+                            <h4><i class="fa-solid fa-users"></i><i> Clients</i></h4>
                         </div>
                     </div>
                     <div class="an-client-body">
                         <div class="an-client-card">
                             <div class="an-card-header">
-                                <h4>Product Shippments</h4>
+                                <h4><i class="fa-solid fa-truck-fast"></i> Shipments Count <span style="color: #666;">(pcs)</span></h4>
                             </div>
                             <div class="an-card-body" style="height: 450px;">
                                 <canvas id="clientChart"></canvas>
                             </div>
+                            <div class="an-card-footer">
+                            <p style="padding: 0; margin: 0;">
+                                <strong><i>The Count of Products Shipped to your Clients</i></strong>
+                            </p>
+                        </div>
                         </div>
                     </div>
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="an-analysis">
                         <div class="an-header">
-                            <h4><i>Results</i></h4>
+                            <h4><i class="fa-solid fa-arrow-trend-up"></i><i> Analysis</i></h4>
                         </div>
                     </div>
                     <div class="an-analysis-body">
                         <div class="an-analysis-card">
                             <div class="an-card-header">
-                                <h4>Inventory</h4>
+                                <h4><i class="fa-brands fa-instalod"></i> Inventory</h4>
                             </div>
-                            <div class="an-analysis-card-body" style="height: 450px;">
+                            <div class="an-analysis-card-body">
                                <div class="analysis-card">
                                     <div class="analysis-card-header">
                                         <h4>Daily Report</h4>
@@ -254,6 +268,38 @@ include 'connections.php';
                                             <p>This is your Top Clients</p>
                                             <p style="font-size: 15px; "><span id="clientTopResults"></span></p>
                                         </div>
+                                    </div>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="an-analysis-card">
+                            <div class="an-card-header">
+                                <h4><i class="fa-brands fa-instalod"></i> Inventory Issues</h4>
+                            </div>
+                            <div class="an-card-body">
+                                <div id="issueInventory" class="analysis-card">
+                                    <div class="analysis-card-header">
+                                        <h4>Findings</h4>
+                                    </div>
+                                    <div class="issue-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6;">
+                                        <div class="issue-count">
+                                            <div id="issueNum" class="issue-number">
+
+                                            </div>
+                                            <div id="issueTxt" class="issue-text">
+
+                                            </div>
+                                        </div>
+                                        <strong>
+                                        <div id="cardIssue" class="card-issue" style="padding-top: 30px">
+                                            
+                                        </div>
+                                        </strong>
+                                    </div>
+                                    <div class="issue-card-footer">
+                                        <h5 style="padding-top: 15px; margin:0; color: #333;">
+                                            <i>Check the Notifications to address this issues or check the Inventory Alerts on Dashboard</i>
+                                        <h5>
                                     </div>
                                </div>
                             </div>
