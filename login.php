@@ -1,6 +1,6 @@
 <?php 
 
-include 'connections.php';
+include 'login_con.php';
 
 session_start();
 
@@ -28,11 +28,11 @@ else if (isset($_SESSION['inventory'])) {
 
 //login query
 if(isset($_POST['submit'])){
-    $user = mysqli_real_escape_string($connections, $_POST['user']);
+    $user = mysqli_real_escape_string($con, $_POST['user']);
     $pass = ($_POST['password']);
 
     $select = "SELECT * FROM users WHERE user_name = '$user' && user_password = '$pass'";
-    $result = mysqli_query($connections, $select);
+    $result = mysqli_query($con, $select);
 
     if(mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result);
@@ -64,11 +64,8 @@ if(isset($_POST['submit'])){
 if(isset($err)){
     echo '<script>';
     foreach($err as $error){
-        echo 'Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "' . $error . '"
-          });';
+        // Use alert instead of SweetAlert2
+        echo 'alert("' . $error . '");';
     };
     echo '</script>';
 }
@@ -78,11 +75,6 @@ if(isset($err)){
 
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="font6/css/all.css">
-        <script defer src="js/bootstrap.bundle.min.js"></script>
-        <script defer src="js/jquery-3.7.0.js"></script>
         <link rel="stylesheet" href="style.css">
         <title>Login</title>
     </head>
@@ -133,7 +125,6 @@ if(isset($err)){
         </div>
     </div>
     </body>
-
 </html>
 
 <style>

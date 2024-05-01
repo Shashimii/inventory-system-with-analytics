@@ -1,18 +1,14 @@
-<?php 
-session_start();
-if(!isset($_SESSION['admin_name'])){
-    header('location: login');
-}
-
-// user config
-$sys_user = $_SESSION['admin_name'];
-
+<?php
 
 // database config
 $con = mysqli_connect ("localhost", "root", "", "imsdatabase");
 if (mysqli_connect_errno()) {
     echo "<script>alert('Failed Database Connection: " . mysqli_connect_error() . "');</script>";
 }
+
+
+// user config
+$sys_user = " Developer";
 
 // date config
 $query_date = "SELECT DATE_FORMAT(NOW(), '%m/%d/%Y') AS date_now";
