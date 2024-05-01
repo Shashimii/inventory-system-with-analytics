@@ -72,7 +72,6 @@ while ($optionCode = $result->fetch_assoc()) {
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="settings_items">Items</a></li>
                                         <li><a class="dropdown-item" href="settings_accounts">Accounts</a></li>
-                                        <li><a class="dropdown-item" href="settings_data">Backup Data</a></li>
                                     </ul>
                                 </li>
                             </ul>

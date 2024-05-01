@@ -62,7 +62,6 @@ include 'connections.php';
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="settings_items">Items</a></li>
                                         <li><a class="dropdown-item" href="settings_accounts">Accounts</a></li>
-                                        <li><a class="dropdown-item" href="settings_data">Backup Data</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -171,6 +170,17 @@ include 'connections.php';
                             </div>
                             <div id="products" class="dashboard-card-md-row">
 
+                            </div>
+                        </div>
+                        <div class="dashboard-card-md">
+                            <div class="dashboard-card-md-row">
+                                <h4>Inventory Alerts</h4>
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div class="dashboard-card-md-row">
+                                <ul class="alerts" id="alerts">
+
+                                </ul>
                             </div>
                         </div>
                     </div>
