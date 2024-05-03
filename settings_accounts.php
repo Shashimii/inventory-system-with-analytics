@@ -130,9 +130,9 @@
             <div class="modal-body">
                 <form id="addAccountForm">
                     <div class="ipt-container">
-                        <label for="username">Username</label>
-                        <input class="form-control form-control-sm" type="text" name="user" required placeholder="Username" pattern="[a-zA-Z0-9]+" title="Enter Username">
-                        <label for="userpass">Password/Pin</label>
+                        <label for="user-input">Username</label>
+                        <input class="form-control form-control-sm" type="text" name="user" id="user-input" required placeholder="Username" pattern="[a-zA-Z0-9]+" title="Enter Username">
+                        <label for="password-input">Password/Pin</label>
                         <input class="form-control form-control-sm" type="password" name="password" id="password-input" pattern="[0-9]{8}" title="Enter correct PIN" required placeholder="Enter Password/Pin">
                         <label for="accountType">Account Type</label>
                         <select name="account_type" id="accountType" class="form-select form-select-sm dropdown" required>
@@ -160,11 +160,11 @@
             <div class="modal-body">
                 <form id="removeAccountForm">
                     <div class="ipt-container">
-                        <label for="username">Username</label>
+                        <label for="displayUser">Username</label>
                         <input class="form-control form-control-sm" id="displayUser" type="text" value="" readonly>
-                        <label for="userpass">Password/Pin</label>
+                        <label for="displayPassword">Password/Pin</label>
                         <input class="form-control form-control-sm" id="displayPassword" type="text" value="" readonly>
-                        <label for="accountType">Account Type</label>
+                        <label for="displayType">Account Type</label>
                         <input name="account_type" id="displayType" class="form-control form-control-sm" type="text" value="" readonly>
                     </div>
             </div>
