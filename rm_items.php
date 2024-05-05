@@ -141,7 +141,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             <div class="rm-manage-sm-card-item">
                                 <button class="btn btn-success btn-sm" id="renderReceive"><i class="fa-solid fa-database"></i> Raw Material Inventory</button>
                                 <button class="btn btn-secondary btn-sm" id="renderInProduction"><i class="fa-solid fa-spinner"></i> In Production Raw Materials</button>
-                                <button class="btn btn-danger btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Depleted Raw Materials</button>
+                                <button class="btn btn-danger btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Used Raw Materials</button>
                             </div>
                         </div>
                     </div>
@@ -369,7 +369,7 @@ while ($optionFg = $result->fetch_assoc()) {
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmRemoveModal">Raw Material Info</h1>
+                <h1 class="modal-title fs-5" id="rmRemoveModal">Used Raw Material Info</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
@@ -379,7 +379,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             <h1 id="itemInfoName"></h1>
                         </div>
                         <div class="info-header-container">
-                            <h5>Date Depleted</h5>
+                            <h5>Date of Usage</h5>
                             <p id="itemInfoDate"></p>
                         </div>
                     </div>

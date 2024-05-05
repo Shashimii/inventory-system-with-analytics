@@ -125,7 +125,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-regular fa-square-full"></i> Depleted Raw Material List</h4>
+                    <h4><i class="fa-regular fa-square-full"></i> Used Raw Material List</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
