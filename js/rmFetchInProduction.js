@@ -80,7 +80,8 @@ $(function() {
                             '<td>' + item.item_bin + '</td>' +
                             '<td class="table-warning">' + item.quantity_inProduction + ' kg</td>' +
                             '<td class="action-btn">' +
-                                '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Mark as Used</button>' +
+                                '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmUseModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-bars"></i> Add Use Quantity</button>' +
+                                '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-secondary btn-sm"><i class="fa-solid fa-bars"></i> Mark as Depleted</button>' +
                             '</td>' +
                         '</tr>'
                     );
@@ -159,14 +160,32 @@ $(function() {
 
     $(document).on('click', '#markAsDepleted', function() {
         var actionDate = $(this).data('date');
-        var itemName = $(this).data('name');
         var itemDesc = $(this).data('desc');
         var itemId = $(this).data('id');
         var itemLot = $(this).data('lot');
         var itemBin = $(this).data('bin');
-        var itemQuantity = $(this).data('quantity'); 
+        var itemQuantity = $(this).data('quantity');
 
-        // modal data vizualization
+        // use
+
+        // visual
+        $('#rmUseModal p#itemInfoDate').text(actionDate);
+        $('#rmUseModal h3#itemInfoQuantity').text(itemQuantity + ' KG');
+        $('#rmUseModal p#itemInfoLot').text(itemLot);
+        $('#rmUseModal p#itemInfoDesc').text(itemDesc);
+        $('#rmUseModal h1#itemInfoId').text(itemId);
+        $('#rmUseModal p#itemInfoBin').text(itemBin); 
+
+        // attach data
+        $('#rmUseModal #ditemDesc').val(itemDesc);
+        $('#rmUseModal #ditemId').val(itemId);
+        $('#rmUseModal #ditemLot').val(itemLot);
+        $('#rmUseModal #ditemBin').val(itemBin);
+        $('#rmUseModal #ditemQuantity').val(itemQuantity);
+
+        // depleted
+        
+        // visual
         $('#rmDepletedModal p#itemInfoDate').text(actionDate);
         $('#rmDepletedModal h3#itemInfoQuantity').text(itemQuantity + ' KG');
         $('#rmDepletedModal p#itemInfoLot').text(itemLot);
@@ -174,8 +193,7 @@ $(function() {
         $('#rmDepletedModal h1#itemInfoId').text(itemId);
         $('#rmDepletedModal p#itemInfoBin').text(itemBin);
 
-        // data attached to the modal to be used
-        $('#rmDepletedModal #ditemName').val(itemName);
+        // attach data
         $('#rmDepletedModal #ditemDesc').val(itemDesc);
         $('#rmDepletedModal #ditemId').val(itemId);
         $('#rmDepletedModal #ditemLot').val(itemLot);

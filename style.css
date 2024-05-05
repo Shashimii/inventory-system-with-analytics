@@ -328,7 +328,7 @@ ul, ol {
     justify-content: space-between;
 }
 
-.rm-depleted-form-container {
+.rm-use-form-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;

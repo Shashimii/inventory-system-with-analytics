@@ -190,7 +190,7 @@ $(function(){
         $('#rmInProductionModal h3#itemInfoQuantity').text(quantityReceive + ' KG');
         $('#rmInProductionModal p#itemInfoLot').text(itemLot);
         $('#rmInProductionModal p#itemInfoDesc').text(itemDesc);
-        $('#rmInProductionModal h1#itemInfoId').text(itemId);
+        $('#rmInProductionModal h2#itemInfoId').text(itemId);
         $('#rmInProductionModal p#itemInfoBin').text(itemBin);
 
         // data attached to the modal to be used

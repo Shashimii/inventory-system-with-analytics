@@ -26,10 +26,11 @@ while ($optionFg = $result->fetch_assoc()) {
 <head>
     <script defer src="./js/rmFormReceive.js"></script>
     <script defer src="./js/rmFormInProduction.js"></script>
+    <script defer src="./js/rmUse.js"></script>
     <script defer src="./js/rmMarkDepleted.js"></script>
     <script defer src="./js/rmFormRemove.js"></script>
-    <script defer src="./js/rmFormReceiveAdj.js"></script>
-    <script defer src="./js/rmUndo.js"></script>
+    <!--<script defer src="./js/rmFormReceiveAdj.js"></script>
+    <script defer src="./js/rmUndo.js"></script>-->
     <script src="./js/rmTables.js"></script> <!-- render the table first -->
     <script src="./js/rmFetchReceived.js"></script> <!-- attach the event listeners -->
     <script src="./js/rmFetchInProduction.js"></script>
@@ -140,7 +141,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             </div>
                             <div class="rm-manage-sm-card-item">
                                 <button class="btn btn-success btn-sm" id="renderReceive"><i class="fa-solid fa-database"></i> Raw Material Inventory</button>
-                                <button class="btn btn-secondary btn-sm" id="renderInProduction"><i class="fa-solid fa-spinner"></i> In Production Raw Materials</button>
+                                <button class="btn btn-warning btn-sm" id="renderInProduction"><i class="fa-solid fa-spinner"></i> In Production Raw Materials</button>
                                 <button class="btn btn-danger btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Used Raw Materials</button>
                             </div>
                         </div>
@@ -201,14 +202,14 @@ while ($optionFg = $result->fetch_assoc()) {
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmInProductionModal">Use Raw Material in Production</h1>
+                <h1 class="modal-title fs-5" id="rmInProductionModal">Add Use Quantity</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
                     <div class="rm-info-header">
                         <div class="info-header-container">
-                            <h1 id="itemInfoId"></h1>
+                            <h2 id="itemInfoId"></h2>
                             <h3 id="itemInfoQuantity"></h3>
                         </div>
                         <div class="info-header-container">
@@ -249,18 +250,18 @@ while ($optionFg = $result->fetch_assoc()) {
     </div>
 </div>
 
-<!-- ==>Depleted -->
-<div class="modal" id="rmDepletedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmDepletedModal" aria-hidden="true">
+<!-- ==>Use -->
+<div class="modal" id="rmUseModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmUseModal" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmDepletedModal">Mark Raw Material as Used</h1>
+                <h1 class="modal-title fs-5" id="rmUseModal">Use Raw Material</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
-                <div class="rm-depleted-form-container">
+                <div class="rm-use-form-container">
                     <div class="rm-info-container">
-                        <h4>Raw Material that will be Used</h4>
+                        <h4>Raw Material</h4>
                         <hr>
                         <div class="rm-info-header">
                             <div class="info-header-container">
@@ -287,14 +288,17 @@ while ($optionFg = $result->fetch_assoc()) {
                                 <p id="itemInfoBin"></p>
                             </div>
                         </div>
+                        <hr>
+                        <form id="rmUseForm">
+                        <label for="rmUsageQuantity">Raw Material Usage Quantity (kg)</label>
+                        <input name="item_quantity_used" id="rmUseQuantity" placeholder="Enter Raw Material Usage Quantity" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
                     </div>
                     <div class="rm-depleted-form">
-                        <h4>FG that will be Created</h4>
+                        <h4>Finished Goods that will be Created</h4>
                         <hr>
-                        <form id="rmDepletedForm">
-                            <label for="FgName">FG Name</label>
+                            <label for="FgName">Finished Goods Name</label>
                             <select name="fg_name" id="FgName" class="form-select form-select-sm dropdown" required>
-                                <option selected hidden value="">Select Fg Name</option>
+                                <option selected hidden value="">Select Finished Goods Name</option>
                                 <?php 
                                  foreach ($FgOptions as $option) {
                                     echo "<option value='". $option['fg_name'] ."' data-description='". $option['fg_desc'] ."' data-unit='". $option['fg_unit'] ."'>". $option['fg_name'] ."</option>";
@@ -302,8 +306,8 @@ while ($optionFg = $result->fetch_assoc()) {
                                 ?>
                             </select>
 
-                            <label for="FgDesc">FG Description</label>
-                            <input name="fg_desc" id="FgDesc" placeholder="Description" title="Finished Goods Description" class="form-control form-control-sm" type="text" value="" readonly required>
+                            <label for="FgDesc">Finished Goods Dimensions</label>
+                            <input name="fg_desc" id="FgDesc" placeholder="Finished Goods Dimensions" title="Finished Goods Description" class="form-control form-control-sm" type="text" value="" readonly required>
                             <script>
                                 $('#FgName').on('change', function() {
                                     var selectedFgName = $(this).find(':selected');
@@ -312,14 +316,11 @@ while ($optionFg = $result->fetch_assoc()) {
                                 })
                             </script>
 
-                            <label for="recRmBin">FG Storage Bin</label>
+                            <label for="recRmBin">Finished Goods Storage Bin</label>
                             <input name="fg_bin" id="FgBin" placeholder="Enter Finished Goods Bin" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="15" class="form-control form-control-sm" type="text" required>
 
-                            <label for="fgQuantity">FG Quantity (PCS)</label>
+                            <label for="fgQuantity">Finished Goods Quantity (PCS)</label>
                             <input name="fg_quantity" id="fgQuantity" placeholder="Enter Finished Goods Quantity" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
-
-                            <label for="scrapQuantity">Production Scrap (KG)</label>
-                            <input name="quantity_scrap" id="scrapQuantity" placeholder="Enter Scrap (KG)" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number" required>
                     </div>
                 </div>
             </div>
@@ -330,9 +331,63 @@ while ($optionFg = $result->fetch_assoc()) {
                             <input type="hidden" name="item_lot" id="ditemLot" value="">
                             <input type="hidden" name="item_bin" id="ditemBin" value="">
                             <input type="hidden" name="item_quantity" id="ditemQuantity" value="">
-                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Mark as Used</button>
+                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Use Raw Material</button>
                         </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==>Depleted -->
+<div class="modal" id="rmDepletedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rmDepletedModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="rmDepletedModal">Mark Raw Material as Depleted</h1>
+                <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="modal-body">
+                <div class="rm-depleted-form-container">
+                    <div class="rm-info-container">
+                        <div class="rm-info-header">
+                            <div class="info-header-container">
+                                <h1 id="itemInfoId"></h1>
+                                <h3 id="itemInfoQuantity"></h3>
+                            </div>
+                            <div class="info-header-container">
+                                <h5>Date In</h5>
+                                <p id="itemInfoDate"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="info-container">
+                            <div>
+                                <h5>Dimensions</h5>
+                                <p id="itemInfoDesc"></p>
+                            </div>
+                            <div>
+                                <h5>Lot</h5>
+                                <p id="itemInfoLot"></p>
+                            </div>
+                            <div>
+                                <h5>Storage Bin</h5>
+                                <p id="itemInfoBin"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                            <input type="hidden" name="item_name" id="ditemName" value="">
+                            <input type="hidden" name="item_desc" id="ditemDesc" value="">
+                            <input type="hidden" name="item_id" id="ditemId" value="">
+                            <input type="hidden" name="item_lot" id="ditemLot" value="">
+                            <input type="hidden" name="item_bin" id="ditemBin" value="">
+                            <input type="hidden" name="item_quantity" id="ditemQuantity" value="">
+                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Marked as Depleted</button>
+                        </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
             </div>
         </div>
     </div>
