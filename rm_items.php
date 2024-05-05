@@ -276,7 +276,7 @@ while ($optionFg = $result->fetch_assoc()) {
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmDepletedModal">Mark Raw Material as Depleted</h1>
+                <h1 class="modal-title fs-5" id="rmDepletedModal">Mark Raw Material as Used</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
@@ -356,7 +356,7 @@ while ($optionFg = $result->fetch_assoc()) {
                             <input type="hidden" name="item_lot" id="ditemLot" value="">
                             <input type="hidden" name="item_bin" id="ditemBin" value="">
                             <input type="hidden" name="item_quantity" id="ditemQuantity" value="">
-                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Mark as Depleted</button>
+                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i> Mark as Used</button>
                         </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
