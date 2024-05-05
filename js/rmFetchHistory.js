@@ -10,6 +10,7 @@ $(function(){
             url: './php/rm_history_data.php', 
             method: 'GET',
             success: function(response) {
+                console.log(response)
                 tableData = response;
                 historyTableData(); 
             },
@@ -29,9 +30,6 @@ $(function(){
                 case 'time': 
                     filteredResponse = tableData.filter(item => item.item.action_time.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
-                case 'name': 
-                    filteredResponse = tableData.filter(item => item.item.item_name.toLowerCase().includes(searchKey.toLowerCase()));
-                    break;
                 case 'desc': 
                     filteredResponse = tableData.filter(item => item.item.item_desc.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
@@ -48,7 +46,7 @@ $(function(){
         $('#historyTable tbody').empty(); 
         if (pageData.length === 0) {
             tableRow = '<tr>';
-            tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; // show this message
+            tableRow += '<td colspan="7" style="text-align: center;">There is No Data</td>'; // show this message
             tableRow += '</tr>';
             $('#historyTable').append(tableRow);
         } else {
@@ -60,7 +58,6 @@ $(function(){
                     <tr>
                         <td>${item.item.action_date}</td>
                         <td>${item.item.action_time}</td>
-                        <td>${item.item.item_name}</td>
                         <td>${item.item.item_desc}</td>
                         <td>${item.item.item_id}</td>
                         <td>${item.item.item_lot}</td>

@@ -36,9 +36,6 @@ $(function(){
                     case 'date': // if the selected filter is date 
                         filteredResponse = tableData.filter(item => item.action_date.toLowerCase().includes(searchKey.toLowerCase()));
                         break;
-                    case 'name': // if the selected filter is name 
-                        filteredResponse = tableData.filter(item => item.item_name.toLowerCase().includes(searchKey.toLowerCase()));
-                        break;
                     case 'desc': // if the selected filter is desc 
                         filteredResponse = tableData.filter(item => item.item_desc.toLowerCase().includes(searchKey.toLowerCase()));
                         break;
@@ -75,7 +72,7 @@ $(function(){
             // if the length of the array is 0 meaning there is no data
             if (pageData.length === 0) {
                 tableRow = '<tr>';
-                tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; // show this message
+                tableRow += '<td colspan="7" style="text-align: center;">There is No Data</td>'; // show this message
                 tableRow += '</tr>';
                 $('#receiveTable').append(tableRow);
             } else {
@@ -84,7 +81,6 @@ $(function(){
                     $('#receiveTable tbody').append( // append it to body of the table
                         '<tr>' +
                             '<td>' + item.action_date + '</td>' +
-                            '<td class="table-primary">' + item.item_name + '</td>' +
                             '<td>' + item.item_desc + '</td>' +
                             '<td class="table-primary">' + item.item_id + '</td>' +
                             '<td>' + item.item_lot + '</td>' +
@@ -191,11 +187,10 @@ $(function(){
 
         // modal data vizualization
         $('#rmInProductionModal p#itemInfoDate').text(actionDate);
-        $('#rmInProductionModal h1#itemInfoName').text(itemName);
         $('#rmInProductionModal h3#itemInfoQuantity').text(quantityReceive + ' KG');
         $('#rmInProductionModal p#itemInfoLot').text(itemLot);
         $('#rmInProductionModal p#itemInfoDesc').text(itemDesc);
-        $('#rmInProductionModal p#itemInfoId').text(itemId);
+        $('#rmInProductionModal h1#itemInfoId').text(itemId);
         $('#rmInProductionModal p#itemInfoBin').text(itemBin);
 
         // data attached to the modal to be used

@@ -69,7 +69,7 @@ $(function() {
 
             if (pageData.length === 0) {
                 tableRow = '<tr>';
-                tableRow += '<td colspan="9" style="text-align: center;">There is No Data</td>'; 
+                tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; 
                 tableRow += '</tr>';
                 $('#depletedTable').append(tableRow);
             } else {
@@ -77,7 +77,6 @@ $(function() {
                     $('#depletedTable tbody').append( 
                         '<tr>' +
                             '<td>' + item.action_date + '</td>' +
-                            '<td class="table-primary">' + item.item_name + '</td>' +
                             '<td>' + item.item_desc + '</td>' +
                             '<td class="table-primary">' + item.item_id + '</td>' +
                             '<td>' + item.item_lot + '</td>' +
@@ -178,10 +177,9 @@ $(function() {
  
         // modal data visualization
         $('#rmRemoveModal p#itemInfoDate').text(actionDate);
-        $('#rmRemoveModal h1#itemInfoName').text(itemName);
         $('#rmRemoveModal p#itemInfoLot').text(itemLot);
         $('#rmRemoveModal p#itemInfoDesc').text(itemDesc);
-        $('#rmRemoveModal p#itemInfoId').text(itemId);
+        $('#rmRemoveModal h1#itemInfoId').text(itemId);
         $('#rmRemoveModal p#itemInfoBin').text(itemBin);
 
         $('#rmRemoveModal p#itemInfoQuantityScrap').text(itemQuantityScrap + ' KG'); 

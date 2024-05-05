@@ -4,16 +4,15 @@ include 'script_con.php'; // $sys_user $dataStatusReceived $dataActive
 include 'sysDateTime.php'; // $sys_date $sys_time
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['rec_rm_name']) && ($_POST['rec_rm_desc']) && ($_POST['rec_rm_id']) && ($_POST['rec_rm_bin']) && ($_POST['rec_rm_quantity'])) {
-        $rm_name = $_POST['rec_rm_name'];
+    if (isset($_POST['rec_rm_desc']) && ($_POST['rec_rm_id']) && ($_POST['rec_rm_bin']) && ($_POST['rec_rm_quantity'])) {
         $rm_desc = $_POST['rec_rm_desc'];
         $rm_id = $_POST['rec_rm_id'];
         $rm_bin = $_POST['rec_rm_bin'];
         $rm_quantity = $_POST['rec_rm_quantity'];
         
         // batch system that will only count the batches daily and reset the next day
-        $stmt = $con->prepare("SELECT MAX(item_lot) AS last_batch_num from rm_data WHERE action_date = ? AND item_name = ?");
-        $stmt->bind_param("ss", $sys_date, $rm_name);
+        $stmt = $con->prepare("SELECT MAX(item_lot) AS last_batch_num from rm_data WHERE action_date = ? AND item_desc = ?");
+        $stmt->bind_param("ss", $sys_date, $rm_desc);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
@@ -35,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // insert raw material to database
             $insertItem = "INSERT INTO rm_data 
-            (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, quantity_receive, item_data_status, item_data_active) VALUES 
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_receive, item_data_status, item_data_active) VALUES 
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $con->prepare($insertItem);
-            $stmt->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $rm_name, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity, $dataStatusReceived, $dataActive);
+            $stmt->bind_param("sssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity, $dataStatusReceived, $dataActive);
             if ($stmt->execute()) {
                 // item receive 
                 echo '0';

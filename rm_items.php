@@ -168,26 +168,8 @@ while ($optionFg = $result->fetch_assoc()) {
                 <form id="rm_receive_form">
                     <div class="rm-form-container">
                         <div class="ipt-container">
-                            <label for="recRmName">Raw Material</label>
-                            <select name="rec_rm_name" id="recRmName" class="form-select form-select-sm dropdown" required>
-                                <option selected hidden value="">Select Raw Material</option>
-                                <?php 
-                                 foreach ($RmOptions as $option) {
-                                    echo "<option value='". $option['rm_name'] ."' data-description='". $option['rm_desc'] ."'>". $option['rm_name'] ."</option>";
-                                 }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="ipt-container">
-                            <label for="recRmDesc">Description</label>
-                            <input name="rec_rm_desc" id="recRmDesc" placeholder="Raw Material Description" title="Raw Material Description" class="form-control form-control-sm" type="text" value="" readonly required>
-                            <script>
-                                $('#recRmName').on('change', function() {
-                                    var selectedRmName = $(this).find(':selected');
-                                    var selectedRmDesc = selectedRmName.data('description');
-                                    $('#recRmDesc').val(selectedRmDesc)
-                                })
-                            </script>
+                            <label for="recRmDesc">Dimensions</label>
+                            <input name="rec_rm_desc" id="recRmDesc" placeholder="Enter Raw Material Dimensions" pattern="^[a-zA-Z0-9 \-]*$"  title="Avoid unecessary special characters" maxlength="25" class="form-control form-control-sm" type="text" required>
                         </div>
                         <div class="ipt-container">
                             <label for="recRmId">Id</label>
@@ -226,7 +208,7 @@ while ($optionFg = $result->fetch_assoc()) {
                 <div class="rm-info-container">
                     <div class="rm-info-header">
                         <div class="info-header-container">
-                            <h1 id="itemInfoName"></h1>
+                            <h1 id="itemInfoId"></h1>
                             <h3 id="itemInfoQuantity"></h3>
                         </div>
                         <div class="info-header-container">
@@ -237,12 +219,8 @@ while ($optionFg = $result->fetch_assoc()) {
                     <hr>
                     <div class="info-container">
                         <div>
-                            <h5>Description</h5>
+                            <h5>Dimensions</h5>
                             <p id="itemInfoDesc"></p>
-                        </div>
-                        <div>
-                            <h5>Id</h5>
-                            <p id="itemInfoId"></p>
                         </div>
                         <div>
                             <h5>Lot</h5>
@@ -282,11 +260,11 @@ while ($optionFg = $result->fetch_assoc()) {
             <div class="modal-body">
                 <div class="rm-depleted-form-container">
                     <div class="rm-info-container">
-                        <h4>Raw Material Used</h4>
+                        <h4>Raw Material that will be Used</h4>
                         <hr>
                         <div class="rm-info-header">
                             <div class="info-header-container">
-                                <h1 id="itemInfoName"></h1>
+                                <h1 id="itemInfoId"></h1>
                                 <h3 id="itemInfoQuantity"></h3>
                             </div>
                             <div class="info-header-container">
@@ -297,12 +275,8 @@ while ($optionFg = $result->fetch_assoc()) {
                         <hr>
                         <div class="info-container">
                             <div>
-                                <h5>Description</h5>
+                                <h5>Dimensions</h5>
                                 <p id="itemInfoDesc"></p>
-                            </div>
-                            <div>
-                                <h5>Id</h5>
-                                <p id="itemInfoId"></p>
                             </div>
                             <div>
                                 <h5>Lot</h5>
@@ -315,7 +289,7 @@ while ($optionFg = $result->fetch_assoc()) {
                         </div>
                     </div>
                     <div class="rm-depleted-form">
-                        <h4>Finished Goods Created</h4>
+                        <h4>FG that will be Created</h4>
                         <hr>
                         <form id="rmDepletedForm">
                             <label for="FgName">FG Name</label>
@@ -376,7 +350,7 @@ while ($optionFg = $result->fetch_assoc()) {
                 <div class="rm-info-container">
                     <div class="rm-info-header">
                         <div class="info-header-container">
-                            <h1 id="itemInfoName"></h1>
+                            <h1 id="itemInfoId"></h1>
                         </div>
                         <div class="info-header-container">
                             <h5>Date of Usage</h5>
@@ -388,10 +362,6 @@ while ($optionFg = $result->fetch_assoc()) {
                         <div>
                             <h5>Description</h5>
                             <p id="itemInfoDesc"></p>
-                        </div>
-                        <div>
-                            <h5>Id</h5>
-                            <p id="itemInfoId"></p>
                         </div>
                         <div>
                             <h5>Lot</h5>

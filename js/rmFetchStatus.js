@@ -24,9 +24,6 @@ let pageSize = 10;
         let filteredResponse = tableData; 
         if (searchKey !== '') { 
             switch (searchFilter) { 
-                case 'name': 
-                    filteredResponse = tableData.filter(item => item.item_name.toLowerCase().includes(searchKey.toLowerCase()));
-                    break;
                 case 'desc': 
                     filteredResponse = tableData.filter(item => item.item_desc.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
@@ -44,14 +41,13 @@ let pageSize = 10;
 
         if (pageData.length === 0) {
             tableRow = '<tr>';
-            tableRow += '<td colspan="9" style="text-align: center;">There is No Data</td>'; 
+            tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; 
             tableRow += '</tr>';
             $('#statusTable').append(tableRow);
         } else {
             pageData.forEach(function(item) { 
                 $('#statusTable tbody').append( 
                     '<tr>' +
-                        '<td>' + item.item_name + '</td>' +
                         '<td>' + item.item_desc + '</td>' +
                         '<td' + (item.total_quantity != null ? ' class="table-success"' : '') + '>' + (item.total_quantity ?  item.total_quantity + ' kg' : 0 + ' kg') + '</td>' +
                         '<td' + (item.total_inProduction != null ? ' class="table-warning"' : '') + '>' + (item.total_inProduction ? item.total_inProduction + ' kg' : 0 + ' kg') + '</td>' +

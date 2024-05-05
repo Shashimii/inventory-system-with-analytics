@@ -11,8 +11,7 @@ $(function(){
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
                     <option selected value="">id lot bin</option>
                     <option value="date">Date Received</option>
-                    <option value="name">Name</option>
-                    <option value="desc">Description</option>
+                    <option value="desc">Dimensions</option>
                     <option value="id">Id</option>
                     <option value="lot">Lot</option>
                     <option value="bin">Bin</option>
@@ -34,8 +33,7 @@ $(function(){
                     <thead>
                         <tr>
                             <th scope="col">Date Received</th>
-                            <th class="table-primary" scope="col">Raw Material</th>
-                            <th scope="col">Description</th>
+                            <th scope="col">Dimensions</th>
                             <th class="table-primary" scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
@@ -73,8 +71,7 @@ $(function(){
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
                     <option selected value="">id lot bin</option>
                     <option value="date">Date In</option>
-                    <option value="name">Name</option>
-                    <option value="desc">Description</option>
+                    <option value="desc">Dimensions</option>
                     <option value="id">Id</option>
                     <option value="lot">Lot</option>
                     <option value="bin">Bin</option>
@@ -92,8 +89,7 @@ $(function(){
                     <thead>
                         <tr>
                             <th scope="col">Date In</th>
-                            <th class="table-primary" scope="col">Raw Material</th>
-                            <th scope="col">Description</th>
+                            <th scope="col">Dimensions</th>
                             <th class="table-primary" scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
@@ -131,8 +127,7 @@ $(function(){
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
                     <option selected value="">id lot bin</option>
                     <option value="date">Date In</option>
-                    <option value="name">Name</option>
-                    <option value="desc">Description</option>
+                    <option value="desc">Dimensions</option>
                     <option value="id">Id</option>
                     <option value="lot">Lot</option>
                     <option value="bin">Bin</option>
@@ -151,8 +146,7 @@ $(function(){
                     <thead>
                         <tr>
                             <th scope="col">Date Depleted</th>
-                            <th class="table-primary" scope="col">Raw Material</th>
-                            <th scope="col">Description</th>
+                            <th scope="col">Dimensions</th>
                             <th class="table-primary" scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
@@ -192,8 +186,7 @@ $(function(){
                     <option selected value="">Id Lot Bin</option>
                     <option value="date">Date Received</option>
                     <option value="time">Time Received</option>
-                    <option value="name">Name</option>
-                    <option value="desc">Description</option>
+                    <option value="desc">Dimensions</option>
                 </select>
                     <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
@@ -204,8 +197,7 @@ $(function(){
                         <tr>
                             <th scope="col">Date Received</th>
                             <th scope="col">Time Received</th>
-                            <th scope="col">Raw Material</th>
-                            <th scope="col">Description</th>
+                            <th scope="col">Dimensions</th>
                             <th scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
@@ -241,8 +233,7 @@ $(function(){
                 <div class="rm-status-md-card-btn-searchbar">
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>
                         <option selected value="">No Filter</option>
-                        <option value="name">Name</option>
-                        <option value="desc">Description</option>
+                        <option value="desc">Dimensions</option>
                     </select>
                     <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
@@ -251,8 +242,7 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="statusTable">
                     <thead>
                         <tr>
-                        <th scope="col">Raw Material</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">Dimensions</th>
                         <th class="table-success" scope="col">In Stock</th>
                         <th class="table-warning" scope="col">In Production</th>
                         <th class="table-secondary" scope="col">Scrap</th>

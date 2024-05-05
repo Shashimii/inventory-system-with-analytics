@@ -66,7 +66,7 @@ $(function() {
 
             if (pageData.length === 0) {
                 tableRow = '<tr>';
-                tableRow += '<td colspan="8" style="text-align: center;">There is No Data</td>'; 
+                tableRow += '<td colspan="7" style="text-align: center;">There is No Data</td>'; 
                 tableRow += '</tr>';
                 $('#inProductionTable').append(tableRow);
             } else {
@@ -74,7 +74,6 @@ $(function() {
                     $('#inProductionTable tbody').append( 
                         '<tr>' +
                             '<td>' + item.action_date + '</td>' +
-                            '<td class="table-primary">' + item.item_name + '</td>' +
                             '<td>' + item.item_desc + '</td>' +
                             '<td class="table-primary">' + item.item_id + '</td>' +
                             '<td>' + item.item_lot + '</td>' +
@@ -169,11 +168,10 @@ $(function() {
 
         // modal data vizualization
         $('#rmDepletedModal p#itemInfoDate').text(actionDate);
-        $('#rmDepletedModal h1#itemInfoName').text(itemName);
         $('#rmDepletedModal h3#itemInfoQuantity').text(itemQuantity + ' KG');
         $('#rmDepletedModal p#itemInfoLot').text(itemLot);
         $('#rmDepletedModal p#itemInfoDesc').text(itemDesc);
-        $('#rmDepletedModal p#itemInfoId').text(itemId);
+        $('#rmDepletedModal h1#itemInfoId').text(itemId);
         $('#rmDepletedModal p#itemInfoBin').text(itemBin);
 
         // data attached to the modal to be used
