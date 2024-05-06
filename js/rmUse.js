@@ -2,13 +2,20 @@ $(function() {
     $('#rmUseForm').on('submit', function(event) { 
         event.preventDefault();
 
-        var rm_name = $('#uitemName').val(); 
         var rm_desc = $('#uitemDesc').val(); 
         var rm_id = $('#uitemId').val(); 
         var rm_lot = $('#uitemLot').val();
         var rm_bin = $('#uitemBin').val();
         var rm_quantity = $('#uitemQuantity').val();
+
+        var rm_use  = $('#rmUseQuantity').val();
+        var rm_scrap = $('#rmScrap').val();
+
         var inputData = $(this).serialize();
+
+        if (!rm_scrap) {
+            rm_scrap = 0;
+        }
 
         $.ajax({
             type: 'POST',
@@ -20,7 +27,18 @@ $(function() {
                     case '0':
                         Swal.fire({
                             title: 'Raw Material Usage Added',
-                            html: '<div style="text-align: center;"><p>Raw Material Info</p><table style="margin: 0 auto; text-align: left;"><tr><td><b>Name:</b></td><td>' + rm_name + '</td></tr><tr><td><b>Description:</b></td><td>' + rm_desc + '</td></tr><tr><td><b>Id:</b></td><td>' + rm_id + '</td></tr><tr><td><b>Lot:</b></td><td>' + rm_lot + '</td></tr><tr><td><b>Bin:</b></td><td>' + rm_bin + '</td></tr><tr><td><b>Quantity (kg):</b></td><td>' + rm_quantity + ' kg</td></tr></table></div>',
+                            html: '<div style="text-align: center;">' +
+                            '<p>Raw Material Info</p>' +
+                            '<table style="margin: 0 auto; text-align: left;">' +
+                            '<tr><td><b>Serial Id:</b></td><td>' + rm_id + '</td></tr>' +
+                            '<tr><td><b>Dimensions:</b></td><td>' + rm_desc + '</td></tr>' +
+                            '<tr><td><b>Lot:</b></td><td>' + rm_lot + '</td></tr>' +
+                            '<tr><td><b>Bin:</b></td><td>' + rm_bin + '</td></tr>' +
+                            '<tr><td><b>Quantity:</b></td><td>' + rm_quantity + ' kg</td></tr>' +
+                            '<tr><td><b>Used Quantity:</b></td><td>' + rm_use + ' kg</td></tr>' +
+                            '<tr><td><b>Production Scrap:</b></td><td>' + rm_scrap + ' kg</td></tr>' +
+                            '</table>' +
+                            '</div>',
                             icon: 'success',
                         }).then(function() {
                             location.reload();

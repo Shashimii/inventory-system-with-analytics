@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         $stmt->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_id, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $dataStatusReceived, $dataActive);
 
                                         if ($stmt->execute()) {
-                                            echo 'work';
+                                            echo '0';
                                         }
                                     }
                                 }
