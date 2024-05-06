@@ -190,12 +190,12 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="historyTable">
                     <thead>
                         <tr>
-                            <th scope="col">Date Received</th>
-                            <th scope="col">Time Received</th>
+                            <th scope="col">Serial Id</th>
                             <th scope="col">Dimensions</th>
-                            <th scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
+                            <th scope="col">Time Received</th>
+                            <th scope="col">Date Received</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>

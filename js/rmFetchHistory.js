@@ -56,12 +56,12 @@ $(function(){
                 var accordionId = "collapse" + index;
                 historyAccordion += `
                     <tr>
-                        <td>${item.item.action_date}</td>
-                        <td>${item.item.action_time}</td>
-                        <td>${item.item.item_desc}</td>
                         <td>${item.item.item_id}</td>
+                        <td>${item.item.item_desc}</td>
                         <td>${item.item.item_lot}</td>
                         <td>${item.item.item_bin}</td>
+                        <td>${item.item.action_time}</td>
+                        <td>${item.item.action_date}</td>
                         <td class="action-btn">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionId}" aria-expanded="false" aria-controls="${accordionId}">View Transactions</button>
                             <tr>
