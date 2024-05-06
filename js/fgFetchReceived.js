@@ -10,6 +10,7 @@ $(function(){
             url: './php/fg_float_data.php',
             method: 'GET',
             success: function(response) {
+                console.log(response)
                 tableData = response;
                 fgReceivedTableData();
                 console.table(tableData)
