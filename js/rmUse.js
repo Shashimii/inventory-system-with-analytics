@@ -54,6 +54,15 @@ $(function() {
                             icon: 'error',
                         })
                         break;
+                    case '6':
+                        Swal.fire({
+                            title: 'Oops',
+                            html: '<div style="text-align: center; font-family: Arial, sans-serif;">' +
+                            '<p style="font-size: 18px; color: #333;">Combined Usage and Production Scrap Quantity is Greater than Raw Material Quantity</p>' +
+                            '<p style="font-size: 18px; color: #333;">Check your usage and production scrap quantity</p></div>',
+                            icon: 'error',
+                        })
+                        break;
                     case '8':
                         Swal.fire({
                             title: 'Oops',

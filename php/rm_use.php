@@ -57,77 +57,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $rm_scrap_valid = $rm_quantity - $rm_scrap;
 
         // quantity validators
-        if ($rm_usage_valid < 0 && $rm_scrap_valid < 0){ // both
+        if ($rm_usage_valid < 0 && $rm_scrap_valid < 0) {
             echo '8';
-        } else if ($rm_usage_valid < 0) { // usage greater
-            echo '9';
-        } else if ($rm_scrap_valid < 0) { // scrap greater
-            echo '7';
         } else {
-            $stmt = $con->prepare("SELECT * FROM rm_data WHERE item_id = ? AND item_data_status = ?");
-            $stmt->bind_param('ss', $rm_id, $dataStatusDepleted);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $num_rows = $result->num_rows;
-            
-            if ($num_rows > 0) {
-                echo '1';
+            if ($rm_scrap_valid < 0){ // scrap greater
+                echo '7';
+            } else if ($rm_usage_valid < 0) { // usage greater
+                echo '9';
+            } else if ($rm_quantity_new < 0 ) { // new quantity -1
+                echo '6';
             } else {
-                $changeStatus = "UPDATE rm_data SET item_data_active = ? WHERE item_id = ? AND item_data_status = ?";
-                $stmt = $con->prepare($changeStatus);
-                $stmt->bind_param("sss", $dataNotActive, $rm_id, $dataStatusInProduction);
-
-                if ($stmt->execute()) {
+                $stmt = $con->prepare("SELECT * FROM rm_data WHERE item_id = ? AND item_data_status = ?");
+                $stmt->bind_param('ss', $rm_id, $dataStatusDepleted);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $num_rows = $result->num_rows;
+                
+                if ($num_rows > 0) {
+                    echo '1';
+                } else {
                     $changeStatus = "UPDATE rm_data SET item_data_active = ? WHERE item_id = ? AND item_data_status = ?";
                     $stmt = $con->prepare($changeStatus);
-                    $stmt->bind_param("sss", $dataNotActive, $rm_id, $dataStatusInUse);
-
+                    $stmt->bind_param("sss", $dataNotActive, $rm_id, $dataStatusInProduction);
+    
                     if ($stmt->execute()) {
-                        $InsertProduction = "INSERT INTO rm_data 
-                        (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_inProduction, item_data_status, item_data_active) VALUES 
-                        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                        $stmt = $con->prepare($InsertProduction);
-                        $stmt->bind_param("sssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_new, $dataStatusInProduction, $dataActive);
+                        $changeStatus = "UPDATE rm_data SET item_data_active = ? WHERE item_id = ? AND item_data_status = ?";
+                        $stmt = $con->prepare($changeStatus);
+                        $stmt->bind_param("sss", $dataNotActive, $rm_id, $dataStatusInUse);
     
                         if ($stmt->execute()) {
-                            $InsertUsed = "INSERT INTO rm_data 
-                            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_used, item_data_status, item_data_active, quantity_OUT) VALUES 
-                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                            $stmt = $con->prepare($InsertUsed);
-                            $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_used, $dataStatusInUse, $dataActive, $rm_quantity_used);
-    
+                            $InsertProduction = "INSERT INTO rm_data 
+                            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_inProduction, item_data_status, item_data_active) VALUES 
+                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            $stmt = $con->prepare($InsertProduction);
+                            $stmt->bind_param("sssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_new, $dataStatusInProduction, $dataActive);
+        
                             if ($stmt->execute()) {
-                                $InsertProduction = "INSERT INTO rm_data 
-                                (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, fg_created_name, fg_created_desc, quantity_created_pcs, item_data_status, item_data_active) VALUES 
-                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                $stmt = $con->prepare($InsertProduction);
-                                $stmt->bind_param("sssssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $fg_name, $fg_desc, $fg_quantity, $dataStatusInUse, $dataActive);  
-
+                                $InsertUsed = "INSERT INTO rm_data 
+                                (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_used, item_data_status, item_data_active, quantity_OUT) VALUES 
+                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                $stmt = $con->prepare($InsertUsed);
+                                $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_used, $dataStatusInUse, $dataActive, $rm_quantity_used);
+        
                                 if ($stmt->execute()) {
-                                    $insertItem = "INSERT INTO rm_data 
-                                    (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_scrap, item_data_status, item_data_active, quantity_OUT) VALUES 
-                                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                    $stmt = $con->prepare($insertItem);
-                                    $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_scrap, $dataStatusInUse, $dataActive, $rm_scrap);
-
+                                    $InsertProduction = "INSERT INTO rm_data 
+                                    (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, fg_created_name, fg_created_desc, quantity_created_pcs, item_data_status, item_data_active) VALUES 
+                                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                    $stmt = $con->prepare($InsertProduction);
+                                    $stmt->bind_param("sssssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $fg_name, $fg_desc, $fg_quantity, $dataStatusInUse, $dataActive);  
+    
                                     if ($stmt->execute()) {
-                                        $insertItem = "INSERT INTO fg_data
-                                        (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, item_data_status, item_data_active) VALUES
+                                        $insertItem = "INSERT INTO rm_data 
+                                        (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_scrap, item_data_status, item_data_active, quantity_OUT) VALUES 
                                         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                                         $stmt = $con->prepare($insertItem);
-                                        $stmt->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_id, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $dataStatusReceived, $dataActive);
-
+                                        $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_scrap, $dataStatusInUse, $dataActive, $rm_scrap);
+    
                                         if ($stmt->execute()) {
-                                            echo '0';
+                                            $insertItem = "INSERT INTO fg_data
+                                            (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, item_data_status, item_data_active) VALUES
+                                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                            $stmt = $con->prepare($insertItem);
+                                            $stmt->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_id, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $dataStatusReceived, $dataActive);
+    
+                                            if ($stmt->execute()) {
+                                                $insertItem = "INSERT INTO fg_data
+                                                (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, item_data_status, item_data_active) VALUES
+                                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                                $stmt = $con->prepare($insertItem);
+                                                $stmt->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_id, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $dataStatusFloat, $dataActive);
+    
+                                                if ($stmt->execute()) {
+                                                    echo '0';
+    
+                                                    $stmt->close();
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
-                    $stmt->close();
                     }
-                }
-            } 
+                } 
+            }
         }
     }
 }
