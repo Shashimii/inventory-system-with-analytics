@@ -26,13 +26,12 @@ $(function(){
                     <thead>
                         <tr>
                             <th scope="col">Date Created</th>
-                            <th scope="col">RawMat</th>
-                            <th class="table-warning" scope="col">RawMat Id</th>
                             <th class="table-primary" scope="col">Finished Goods</th>
-                            <th scope="col">Description</th>
+                            <th class="table-primary" scope="col">Serial Id</th>
+                            <th scope="col">Dimensions</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th class="table-success" scope="col">Quantity</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
