@@ -10,14 +10,13 @@ $(function() {
         const clicked = $(event.target);
         const row = clicked.closest('tr');
         const itemData = {
-            date: row.find('td:nth-child(1)').text(),
-            rawname: row.find('td:nth-child(2)').text(),
-            rawid: row.find('td:nth-child(3)').text(),
-            name: row.find('td:nth-child(4)').text(),
-            desc: row.find('td:nth-child(5)').text(),
-            lot: row.find('td:nth-child(6)').text(),
-            bin: row.find('td:nth-child(7)').text(),
-            maxquantity: parseInt(row.find('td:nth-child(8)').text()) || parseInt(row.find('td:nth-child(9)').text())
+            name: row.find('td:nth-child(1)').text(),
+            id: row.find('td:nth-child(2)').text(),
+            desc: row.find('td:nth-child(3)').text(),
+            lot: row.find('td:nth-child(4)').text(),
+            bin: row.find('td:nth-child(5)').text(),
+            date: row.find('td:nth-child(6)').text(),
+            maxquantity: parseInt(row.find('td:nth-child(7)').text())
         };
 
         if (clicked.is('button')) {
@@ -25,7 +24,7 @@ $(function() {
                 row.addClass('table-success');
             }
             
-            const selectedIndex = selectedList.findIndex(item => item.rawid === itemData.rawid);
+            const selectedIndex = selectedList.findIndex(item => item.id === itemData.id);
 
             if (clicked.hasClass('select') && selectedIndex === -1) {
                 if (selectedQuantity != addLimit) {
@@ -103,11 +102,15 @@ $(function() {
         <div class='selected-box text-center' style="background-color: #F5F5F5; border-radius: 10px; padding: 10px;">
             <div class="row row-cols-3 g-1">
                 <div class='col'>
-                    <h6 style="margin: 0px">FG</h6>
+                    <h6 style="margin: 0px">Finished Goods</h6>
                     ${item.name}
                 </div>
                 <div class='col'>
-                    <h6 style="margin: 0px">Description</h6>
+                    <h6 style="margin: 0px">Serial Id</h6>
+                    ${item.id}
+                </div>
+                <div class='col'>
+                    <h6 style="margin: 0px">Dimensions</h6>
                     ${item.desc}
                 </div>
                 <div class='col'>
@@ -115,17 +118,13 @@ $(function() {
                     ${item.lot}
                 </div>
                 <div class='col'>
-                    <h6 style="margin: 0px">Date Created</h6>
-                    ${item.date}
-                </div>
-                <div class='col'>
-                    <h6 style="margin: 0px">RawMat Id</h6>
-                    ${item.rawid}
-                </div>
-                <div class='col'>
                     <h6 style="margin: 0px">Bin</h6>
                     ${item.bin}
                 </div>
+                <div class='col'>
+                <h6 style="margin: 0px">Date Created</h6>
+                ${item.date}
+            </div>
             </div>
             <hr class="border border-dark opacity-100" style="padding: 0; margin: 5px;">
             <div style="background-color: #FFFFFF; padding: 5px; border-radius: 5px;">
@@ -147,17 +146,17 @@ $(function() {
         $('#receiveTable tr:not(:has(th))').each(function() { // Ignore rows containing <th> elements
             var rowData = {};
             $(this).find('td').each(function(index) {
-                if (index === 2) { // Assuming "rawid" column is at index 2
-                    rowData['rawid'] = $(this).text(); // Store the value of "rawid" column
-                    return false; // Exit the loop after retrieving "rawid" column value
+                if (index === 1) { // Assuming "id" column is at index 2
+                    rowData['id'] = $(this).text(); // Store the value of "id" column
+                    return false; // Exit the loop after retrieving "id" column value
                 }
             });
             tableRowsData.push(rowData);
         });
     
         tableRowsData.forEach(function(rowData, rowIndex) {
-            var rowRawid = rowData['rawid'];
-            if (selectedList.some(item => item['rawid'] === rowRawid)) {
+            var rowid = rowData['id'];
+            if (selectedList.some(item => item['id'] === rowid)) {
                 $('#receiveTable tr:not(:has(th))').eq(rowIndex).addClass('table-success');
             }
         });
@@ -185,8 +184,8 @@ $(function() {
         if (selectedList[itemIndex].quantityselected === 0) {   
             $('#receiveTable tr').each(function() {
                 const row = $(this);
-                const rowRawmatId = row.find('td:nth-child(3)').text();
-                if (rowRawmatId === selectedList[itemIndex].rawid) {
+                const rowRawmatId = row.find('td:nth-child(2)').text();
+                if (rowRawmatId === selectedList[itemIndex].id) {
                     row.removeClass('table-success');
                 }
             });
