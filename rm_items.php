@@ -292,6 +292,10 @@ while ($optionFg = $result->fetch_assoc()) {
                         <form id="rmUseForm">
                         <label for="rmUsageQuantity">Raw Material Usage Quantity (kg)</label>
                         <input name="item_quantity_used" id="rmUseQuantity" placeholder="Enter Raw Material Usage Quantity" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="1" max="100000" class="form-control form-control-sm" type="number" required>
+                        <hr>
+                        <label for="rmScrap">Production Scrap (kg)</label>
+                        <input name="rm_scrap" id="rmScrap" placeholder="Enter Production Scrap" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number">
+                        <span style="color: #666"><i>*leave blank if there is none</i></span>
                     </div>
                     <div class="rm-depleted-form">
                         <h4>Finished Goods that will be Created</h4>
@@ -375,21 +379,17 @@ while ($optionFg = $result->fetch_assoc()) {
                                 <p id="itemInfoBin"></p>
                             </div>
                         </div>
-                        <hr>
-                        <form id="rmDepletedForm">
-                        <label for="rmScrap">Production Scrap (kg)</label>
-                        <input name="rm_scrap" id="rmScrap" placeholder="Enter Production Scrap" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number">
-                        <span style="color: #666"><i>*leave blank if there is none</i></span>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                            <input type="hidden" name="item_desc" id="ditemDesc" value="">
-                            <input type="hidden" name="item_id" id="ditemId" value="">
-                            <input type="hidden" name="item_lot" id="ditemLot" value="">
-                            <input type="hidden" name="item_bin" id="ditemBin" value="">
-                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Mark as Depleted</button>
-                        </form>
+                <form id="rmDepletedForm">
+                    <input type="hidden" name="item_desc" id="ditemDesc" value="">
+                    <input type="hidden" name="item_id" id="ditemId" value="">
+                    <input type="hidden" name="item_lot" id="ditemLot" value="">
+                    <input type="hidden" name="item_bin" id="ditemBin" value="">
+                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Mark as Depleted</button>
+                </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
             </div>
         </div>

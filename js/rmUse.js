@@ -36,17 +36,30 @@ $(function() {
                             icon: 'error',
                         })
                         break;
-                    case '9':
-                        Swal.fire({
-                            title: 'Oops',
-                            html: '<div style="text-align: center; font-family: Arial, sans-serif;"><p style="font-size: 18px; color: #333;">Scrap is quantity is Greater then Raw Material</p><p style="font-size: 18px; color: #333;">Check your scrap quantity</p></div>',
-                            icon: 'error',
-                        })
-                        break;
                     case '8':
                         Swal.fire({
                             title: 'Oops',
-                            html: '<div style="text-align: center; font-family: Arial, sans-serif;"><p style="font-size: 18px; color: #333;">Raw Material is not Used</p><p style="font-size: 18px; color: #333;">Check your scrap quantity</p></div>',
+                            html: '<div style="text-align: center; font-family: Arial, sans-serif;">' +
+                            '<p style="font-size: 18px; color: #333;">Quantity Usage and Production Scrap is Greater than Raw Material Quantity</p>' +
+                            '<p style="font-size: 18px; color: #333;">Check your usage and production scrap quantity</p></div>',
+                            icon: 'error',
+                        })
+                        break;
+                    case '9':
+                        Swal.fire({
+                            title: 'Oops',
+                            html: '<div style="text-align: center; font-family: Arial, sans-serif;">' +
+                            '<p style="font-size: 18px; color: #333;">Usage is Grater than Raw Material Quantity</p>' +
+                            '<p style="font-size: 18px; color: #333;">Check your usage quantity</p></div>',
+                            icon: 'error',
+                        })
+                        break;
+                    case '7':
+                        Swal.fire({
+                            title: 'Oops',
+                            html: '<div style="text-align: center; font-family: Arial, sans-serif;">' +
+                            '<p style="font-size: 18px; color: #333;">Production Scrap is Greater than Raw Material Quantity</p>' +
+                            '<p style="font-size: 18px; color: #333;">Check your scrap quantity</p></div>',
                             icon: 'error',
                         })
                         break;

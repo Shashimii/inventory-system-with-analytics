@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // insert raw material to database
             $insertItem = "INSERT INTO rm_data 
-            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_receive, item_data_status, item_data_active) VALUES 
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_receive, item_data_status, item_data_active, quantity_IN) VALUES 
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $con->prepare($insertItem);
-            $stmt->bind_param("sssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity, $dataStatusReceived, $dataActive);
+            $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity, $dataStatusReceived, $dataActive, $rm_quantity);
             if ($stmt->execute()) {
                 // item receive 
                 echo '0';

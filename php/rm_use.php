@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $rm_bin = $_POST['item_bin'];
         $rm_quantity = $_POST['item_quantity'];
         $rm_quantity_used = $_POST['item_quantity_used'];
+        // scrap
+        $rm_scrap = isset($_POST['rm_scrap']) && $_POST['rm_scrap'] ? $_POST['rm_scrap'] : 0;
         // finished goods
         $fg_name = $_POST['fg_name'];
         $fg_desc = $_POST['fg_desc'];
@@ -30,12 +32,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $batchNumber = $row['last_batch_num'] ? intval(substr($row['last_batch_num'], 5)) + 1 : '1';
         $fg_batch = "Batch" . $batchNumber;
 
-        // scrap and used computation
-        $rm_quantity_new = $rm_quantity - $rm_quantity_used;
-        
+        // new quantity
+        $rm_quantity_new = $rm_quantity - $rm_quantity_used - $rm_scrap;
 
-        if ($rm_quantity_new < 0) {
+        // usage check
+        $rm_usage_valid = $rm_quantity - $rm_quantity_used;
+
+        // scrap check
+        $rm_scrap_valid = $rm_quantity - $rm_scrap;
+
+        // quantity validators
+        if ($rm_usage_valid < 0 && $rm_scrap_valid < 0){ // both
+            echo '8';
+        } else if ($rm_usage_valid < 0) { // usage greater
             echo '9';
+        } else if ($rm_scrap_valid < 0) { // scrap greater
+            echo '7';
         } else {
             $stmt = $con->prepare("SELECT * FROM rm_data WHERE item_id = ? AND item_data_status = ?");
             $stmt->bind_param('ss', $rm_id, $dataStatusDepleted);
@@ -64,20 +76,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
                         if ($stmt->execute()) {
                             $InsertUsed = "INSERT INTO rm_data 
-                            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_used, item_data_status, item_data_active) VALUES 
-                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_used, item_data_status, item_data_active, quantity_OUT) VALUES 
+                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                             $stmt = $con->prepare($InsertUsed);
-                            $stmt->bind_param("sssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_used, $dataStatusInUse, $dataActive);
+                            $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_used, $dataStatusInUse, $dataActive, $rm_quantity_used);
     
                             if ($stmt->execute()) {
+
                                 $InsertProduction = "INSERT INTO rm_data 
                                 (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, fg_created_name, fg_created_desc, quantity_created_pcs, item_data_status, item_data_active) VALUES 
                                 (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                                 $stmt = $con->prepare($InsertProduction);
-                                $stmt->bind_param("sssssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $fg_name, $fg_desc, $fg_quantity, $dataStatusInUse, $dataActive);
-            
+                                $stmt->bind_param("sssssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $fg_name, $fg_desc, $fg_quantity, $dataStatusInUse, $dataActive);                                
                                 if ($stmt->execute()) {
-                                    echo 'work';
+
+                                    $insertItem = "INSERT INTO rm_data 
+                                    (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_scrap, item_data_status, item_data_active, quantity_OUT) VALUES 
+                                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                    $stmt = $con->prepare($insertItem);
+                                    $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_scrap, $dataStatusInUse, $dataActive, $rm_scrap);
+                                    if ($stmt->execute()) {
+                                        echo 'work';
+                                    }
                                 }
                             }
                         }

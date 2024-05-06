@@ -10,6 +10,7 @@ let pageSize = 10;
             url: './php/rm_status_data.php', 
             method: 'GET',
             success: function(response) {
+                console.log(response)
                 tableData = response;
                 statusTableData() 
             },

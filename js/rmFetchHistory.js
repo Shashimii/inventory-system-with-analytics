@@ -78,6 +78,8 @@ $(function(){
                                                     <th>Used</th>
                                                     <th>FG</th>
                                                     <th>Scrap</th>
+                                                    <th>IN</th>
+                                                    <th>OUT</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">`;
@@ -92,6 +94,8 @@ $(function(){
                                                 <td>${data.quantity_used ? data.quantity_used  + ' kg': ''}</td>
                                                 <td>${data.quantity_created_pcs ? data.quantity_created_pcs  + ' pcs': ''}</td>
                                                 <td>${data.quantity_scrap != null ? data.quantity_scrap  + ' kg': ''}</td>
+                                                <td>${data.quantity_IN ? data.quantity_IN  + ' kg': ''}</td>
+                                                <td>${data.quantity_OUT != null ? data.quantity_OUT  + ' kg': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

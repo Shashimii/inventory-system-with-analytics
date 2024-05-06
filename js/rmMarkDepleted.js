@@ -6,10 +6,6 @@ $(function() {
         var rm_id = $('#ditemId').val(); 
         var rm_lot = $('#ditemLot').val();
         var rm_bin = $('#ditemBin').val();
-        var scrap_quantity = $('#rmScrap').val();
-        if (!scrap_quantity) {
-            scrap_quantity = 0;
-        }
 
         var inputData = $(this).serialize();
 
@@ -22,10 +18,8 @@ $(function() {
                   '<tr><td><b>Dimensions:</b></td><td>' + rm_desc + '</td></tr>' +
                   '<tr><td><b>Lot:</b></td><td>' + rm_lot + '</td></tr>' +
                   '<tr><td><b>Bin:</b></td><td>' + rm_bin + '</td></tr>' +
-                  '<tr><td><b>Production Scrap:</b></td><td>' + scrap_quantity + ' kg</td></tr>' +
                   '</table>' +
                   '<p style="margin-block: 20px 0px;">This Raw Material will be Marked as Depleted</p>' +
-                  '<p style="margin: 0px;">Production Scrap will be Recorded</p>' +
                   '</div>',
             icon: "warning",
             showCancelButton: true,
@@ -51,7 +45,6 @@ $(function() {
                                     '<tr><td><b>Dimensions:</b></td><td>' + rm_desc + '</td></tr>' +
                                     '<tr><td><b>Lot:</b></td><td>' + rm_lot + '</td></tr>' +
                                     '<tr><td><b>Bin:</b></td><td>' + rm_bin + '</td></tr>' +
-                                    '<tr><td><b>Production Scrap:</b></td><td>' + scrap_quantity + ' kg</td></tr>' +
                                     '</table>' +
                                     '</div>',
                                     icon: 'success',
