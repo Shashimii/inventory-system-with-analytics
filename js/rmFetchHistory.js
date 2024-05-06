@@ -73,11 +73,11 @@ $(function(){
                                                     <th class="table-primary">Date</th>
                                                     <th class="table-primary">Time</th>
                                                     <th class="table-primary">Action By</th>
-                                                    <th class="table-success">Received</th>
-                                                    <th class="table-warning">In Production</th>
-                                                    <th class="table-secondary">Scrap</th>
-                                                    <th class="table-danger">Used</th>
-                                                    <th class="table-primary">FG</th>
+                                                    <th>Received</th>
+                                                    <th>In Production</th>
+                                                    <th>Used</th>
+                                                    <th>FG</th>
+                                                    <th>Scrap</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">`;
@@ -87,11 +87,11 @@ $(function(){
                                                 <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td ${data.quantity_receive != null ? ' class="table-success"' : ''} >${data.quantity_receive ? data.quantity_receive + ' kg': ''}</td>
-                                                <td ${data.quantity_inProduction != null ? ' class="table-warning"' : ''} >${data.quantity_inProduction ? data.quantity_inProduction  + ' kg': ''}</td>
-                                                <td ${data.quantity_scrap != null && data.quantity_scrap != 0 ? ' class="table-secondary"' : ''} >${data.quantity_scrap ? data.quantity_scrap  + ' kg': ''}</td>
-                                                <td ${data.quantity_used != null ? ' class="table-danger"' : ''} >${data.quantity_used ? data.quantity_used  + ' kg': ''}</td>
-                                                <td ${data.quantity_created_pcs != null ? ' class="table-primary"' : ''} >${data.quantity_created_pcs ? data.quantity_created_pcs  + ' pcs': ''}</td>
+                                                <td>${data.quantity_receive ? data.quantity_receive + ' kg': ''}</td>
+                                                <td>${data.quantity_inProduction  != null ? data.quantity_inProduction  + ' kg': ''}</td>
+                                                <td>${data.quantity_used ? data.quantity_used  + ' kg': ''}</td>
+                                                <td>${data.quantity_created_pcs ? data.quantity_created_pcs  + ' pcs': ''}</td>
+                                                <td>${data.quantity_scrap != null ? data.quantity_scrap  + ' kg': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

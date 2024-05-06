@@ -16,7 +16,15 @@ $(function() { // document ready function
                 if (response === '0') {
                     Swal.fire({
                         title: 'Raw Material Received',
-                        html: '<div style="text-align: center;"><p>Raw Material Info</p><table style="margin: 0 auto; text-align: left;"><tr><td><b>Dimensions:</b></td><td>' + rm_desc + '</td></tr><tr><td><b>Id:</b></td><td>' + rm_id + '</td></tr><tr><td><b>Storage Bin:</b></td><td>' + rm_bin + '</td></tr><tr><td><b>Quantity (kg):</b></td><td>' + rm_quantity + ' kg</td></tr></table></div>',
+                        html: '<div style="text-align: center;">' +
+                              '<p>Raw Material Info</p>' +
+                              '<table style="margin: 0 auto; text-align: left;">' +
+                              '<tr><td><b>Serial Id:</b></td><td>' + rm_id + '</td></tr>' +
+                              '<tr><td><b>Dimensions:</b></td><td>' + rm_desc + '</td></tr>' +
+                              '<tr><td><b>Storage Bin:</b></td><td>' + rm_bin + '</td></tr>' +
+                              '<tr><td><b>Quantity:</b></td><td>' + rm_quantity + ' kg</td></tr>' +
+                              '</table>' +
+                              '</div>',
                         icon: 'success',
                     }).then(function() {
                         location.reload();

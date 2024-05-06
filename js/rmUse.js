@@ -2,12 +2,12 @@ $(function() {
     $('#rmUseForm').on('submit', function(event) { 
         event.preventDefault();
 
-        var rm_name = $('#ditemName').val(); 
-        var rm_desc = $('#ditemDesc').val(); 
-        var rm_id = $('#ditemId').val(); 
-        var rm_lot = $('#ditemLot').val();
-        var rm_bin = $('#ditemBin').val();
-        var rm_quantity = $('#ditemQuantity').val();
+        var rm_name = $('#uitemName').val(); 
+        var rm_desc = $('#uitemDesc').val(); 
+        var rm_id = $('#uitemId').val(); 
+        var rm_lot = $('#uitemLot').val();
+        var rm_bin = $('#uitemBin').val();
+        var rm_quantity = $('#uitemQuantity').val();
         var inputData = $(this).serialize();
 
         $.ajax({

@@ -48,12 +48,12 @@ let pageSize = 10;
             pageData.forEach(function(item) { 
                 $('#statusTable tbody').append( 
                     '<tr>' +
-                        '<td>' + item.item_desc + '</td>' +
-                        '<td' + (item.total_quantity != null ? ' class="table-success"' : '') + '>' + (item.total_quantity ?  item.total_quantity + ' kg' : 0 + ' kg') + '</td>' +
-                        '<td' + (item.total_inProduction != null ? ' class="table-warning"' : '') + '>' + (item.total_inProduction ? item.total_inProduction + ' kg' : 0 + ' kg') + '</td>' +
-                        '<td' + (item.total_scrap != null ? ' class="table-secondary"' : '') + '>' + (item.total_scrap ? item.total_scrap + ' kg' : 0 + ' kg') + '</td>' +
-                        '<td' + (item.total_used != null ? ' class="table-danger"' : '') + '>' + (item.total_used ? item.total_used + ' kg' : 0 + ' kg') + '</td>' +
-                        '<td' + (item.total_pcs != null ? ' class="table-primary"' : '') + '>' + (item.total_pcs ? item.total_pcs + ' pcs' : 0 + ' pcs') + '</td>' +
+                        '<td class="table-primary">' + item.item_desc + '</td>' +
+                        '<td>' + (item.total_quantity ?  item.total_quantity + ' kg' : 0 + ' kg') + '</td>' +
+                        '<td>' + (item.total_inProduction ? item.total_inProduction + ' kg' : 0 + ' kg') + '</td>' +
+                        '<td>' + (item.total_used ? item.total_used + ' kg' : 0 + ' kg') + '</td>' +
+                        '<td>' + (item.total_pcs ? item.total_pcs + ' pcs' : 0 + ' pcs') + '</td>' +
+                        '<td>' + (item.total_scrap ? item.total_scrap + ' kg' : 0 + ' kg') + '</td>' +
                         '<td' + 
                         (item.total_quantity < 2000 ? ' class="table-danger"' : '') +
                         (item.total_quantity >= 2000 && item.total_quantity <= 9999 ? ' class="table-success"' : '') +

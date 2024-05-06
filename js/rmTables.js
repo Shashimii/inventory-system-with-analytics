@@ -18,10 +18,6 @@ $(function(){
                     <option value="quantity">Quantity</option>
                 </select>
                     <input id="recSearch" placeholder="Search..." class="form-control form-control-sm" type="text">
-                    <button class="btn btn-success btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#receiveModal"><i class="fa-solid fa-hands-holding-circle"></i>
-                        Receive
-                    </button>
                     <!---<button id="undoReceive" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
                     data-bs-target="#undoReceivedModal"><i class="fa-solid fa-rotate-left"></i>
                         Undo
@@ -32,12 +28,12 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="receiveTable">
                     <thead>
                         <tr>
-                            <th scope="col">Date Received</th>
-                            <th scope="col">Dimensions</th>
-                            <th class="table-primary" scope="col">Id</th>
+                            <th class="table-primary" scope="col">Serial Id</th>
+                            <th class="table-primary" scope="col">Dimensions</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th class="table-success" scope="col">Quantity</th>
+                            <th scope="col">Date Received</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>
@@ -70,7 +66,6 @@ $(function(){
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
                     <option selected value="">id lot bin</option>
-                    <option value="date">Date In</option>
                     <option value="desc">Dimensions</option>
                     <option value="id">Id</option>
                     <option value="lot">Lot</option>
@@ -88,12 +83,12 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="inProductionTable">
                     <thead>
                         <tr>
-                            <th scope="col">Date In</th>
-                            <th scope="col">Dimensions</th>
-                            <th class="table-primary" scope="col">Id</th>
+                            <th class="table-primary" scope="col">Serial Id</th>
+                            <th class="table-primary" scope="col">Dimensions</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th class="table-warning" scope="col">Quantity</th>
+                            <th scope="col">Date In</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>
@@ -145,11 +140,11 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="depletedTable">
                     <thead>
                         <tr>
-                            <th scope="col">Date Depleted</th>
+                            <th class="table-primary" scope="col">Serial Id</th>
                             <th scope="col">Dimensions</th>
-                            <th class="table-primary" scope="col">Id</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
+                        <th scope="col">Deplation Date</th>
                             <th class="table-warning" scope="col">Quantity Scrap</th>
                             <th class="table-danger" scope="col">Quantity Used</th>
                             <th scope="col" class="action-btn">Action</th>
@@ -242,13 +237,13 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="statusTable">
                     <thead>
                         <tr>
-                        <th scope="col">Dimensions</th>
-                        <th class="table-success" scope="col">In Stock</th>
-                        <th class="table-warning" scope="col">In Production</th>
-                        <th class="table-secondary" scope="col">Scrap</th>
-                        <th class="table-danger" scope="col">Used</th>
-                        <th class="table-info" scope="col">FG</th>
-                        <th>Stock Level</th>
+                        <th class="table-primary" scope="col">Dimensions</th>
+                        <th scope="col">In Stock</th>
+                        <th scope="col">In Production</th>
+                        <th scope="col">Used</th>
+                        <th scope="col">Finished Goods</th>
+                        <th scope="col">Scrap</th>
+                        <th class="table-primary">Stock Level</th>
                         </tr>
                     </thead>
                     <tbody>

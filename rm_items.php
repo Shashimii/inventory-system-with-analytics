@@ -140,9 +140,10 @@ while ($optionFg = $result->fetch_assoc()) {
                                 <h5>Manage Raw Materials</h5>
                             </div>
                             <div class="rm-manage-sm-card-item">
-                                <button class="btn btn-success btn-sm" id="renderReceive"><i class="fa-solid fa-database"></i> Raw Material Inventory</button>
+                                <button class="btn btn-success btn-sm" style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#receiveModal">Receive Raw Material</button>
+                                <button class="btn btn-light btn-sm" id="renderReceive"><i class="fa-solid fa-database"></i> Raw Material Inventory</button>
                                 <button class="btn btn-warning btn-sm" id="renderInProduction"><i class="fa-solid fa-spinner"></i> In Production Raw Materials</button>
-                                <button class="btn btn-danger btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Used Raw Materials</button>
+                                <button class="btn btn-secondary btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Used Raw Materials</button>
                             </div>
                         </div>
                     </div>
@@ -169,14 +170,13 @@ while ($optionFg = $result->fetch_assoc()) {
                 <form id="rm_receive_form">
                     <div class="rm-form-container">
                         <div class="ipt-container">
+                            <label for="recRmId">Serial Id</label>
+                            <input name="rec_rm_id" id="recRmId" placeholder="Enter Raw Material Id" pattern="^[a-zA-Z0-9 \-]*$"  title="Avoid unecessary special characters" maxlength="25" class="form-control form-control-sm" type="text" required>
+                        </div>
+                        <div class="ipt-container">
                             <label for="recRmDesc">Dimensions</label>
                             <input name="rec_rm_desc" id="recRmDesc" placeholder="Enter Raw Material Dimensions" pattern="^[a-zA-Z0-9 \-]*$"  title="Avoid unecessary special characters" maxlength="25" class="form-control form-control-sm" type="text" required>
                         </div>
-                        <div class="ipt-container">
-                            <label for="recRmId">Id</label>
-                            <input name="rec_rm_id" id="recRmId" placeholder="Enter Raw Material Id" pattern="^[a-zA-Z0-9 \-]*$"  title="Avoid unecessary special characters" maxlength="25" class="form-control form-control-sm" type="text" required>
-                        </div>
-
                         <div class="ipt-container">
                             <label for="recRmBin">Storage Bin</label>
                             <input name="rec_rm_bin" id="recRmBin" placeholder="Enter Raw Material Bin" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="15" class="form-control form-control-sm" type="text" required>
@@ -189,7 +189,7 @@ while ($optionFg = $result->fetch_assoc()) {
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success"><i class="fa-solid fa-hands-holding-circle"></i> Receive Raw Material</button>
+                <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Receive Raw Material</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
             </div>
@@ -202,7 +202,7 @@ while ($optionFg = $result->fetch_assoc()) {
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="rmInProductionModal">Add Use Quantity</h1>
+                <h1 class="modal-title fs-5" id="rmInProductionModal">Use In Production</h1>
                 <i class="fa-solid fa-database"></i>
             </div>
             <div class="modal-body">
@@ -242,9 +242,9 @@ while ($optionFg = $result->fetch_assoc()) {
                     <input type="hidden" name="item_lot" id="itemLot" value="">
                     <input type="hidden" name="item_bin" id="itemBin" value="">
                     <input type="hidden" name="quantity_receive" id="quantityReceive" value="">
-                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-arrow-right"></i> Use In Production</button>
+                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Use In Production</button>
                 </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
             </div>
         </div>
     </div>
@@ -325,13 +325,13 @@ while ($optionFg = $result->fetch_assoc()) {
                 </div>
             </div>
             <div class="modal-footer">
-                            <input type="hidden" name="item_name" id="ditemName" value="">
-                            <input type="hidden" name="item_desc" id="ditemDesc" value="">
-                            <input type="hidden" name="item_id" id="ditemId" value="">
-                            <input type="hidden" name="item_lot" id="ditemLot" value="">
-                            <input type="hidden" name="item_bin" id="ditemBin" value="">
-                            <input type="hidden" name="item_quantity" id="ditemQuantity" value="">
-                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Use Raw Material</button>
+                            <input type="hidden" name="item_name" id="uitemName" value="">
+                            <input type="hidden" name="item_desc" id="uitemDesc" value="">
+                            <input type="hidden" name="item_id" id="uitemId" value="">
+                            <input type="hidden" name="item_lot" id="uitemLot" value="">
+                            <input type="hidden" name="item_bin" id="uitemBin" value="">
+                            <input type="hidden" name="item_quantity" id="uitemQuantity" value="">
+                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Use Quantity</button>
                         </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
             </div>
@@ -375,17 +375,20 @@ while ($optionFg = $result->fetch_assoc()) {
                                 <p id="itemInfoBin"></p>
                             </div>
                         </div>
+                        <hr>
+                        <form id="rmDepletedForm">
+                        <label for="rmScrap">Production Scrap (kg)</label>
+                        <input name="rm_scrap" id="rmScrap" placeholder="Enter Production Scrap" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" min="0" max="100000" class="form-control form-control-sm" type="number">
+                        <span style="color: #666"><i>*leave blank if there is none</i></span>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                            <input type="hidden" name="item_name" id="ditemName" value="">
                             <input type="hidden" name="item_desc" id="ditemDesc" value="">
                             <input type="hidden" name="item_id" id="ditemId" value="">
                             <input type="hidden" name="item_lot" id="ditemLot" value="">
                             <input type="hidden" name="item_bin" id="ditemBin" value="">
-                            <input type="hidden" name="item_quantity" id="ditemQuantity" value="">
-                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Marked as Depleted</button>
+                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Mark as Depleted</button>
                         </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
             </div>
@@ -406,16 +409,14 @@ while ($optionFg = $result->fetch_assoc()) {
                     <div class="rm-info-header">
                         <div class="info-header-container">
                             <h1 id="itemInfoId"></h1>
-                        </div>
-                        <div class="info-header-container">
-                            <h5>Date of Usage</h5>
+                            <h5>Deplation Date</h5>
                             <p id="itemInfoDate"></p>
                         </div>
                     </div>
                     <hr>
                     <div class="info-container">
                         <div>
-                            <h5>Description</h5>
+                            <h5>Dimensions</h5>
                             <p id="itemInfoDesc"></p>
                         </div>
                         <div>
@@ -428,29 +429,14 @@ while ($optionFg = $result->fetch_assoc()) {
                         </div>
                     </div>
                     <hr>
-                    <div class="info-container">
-                        <div>
-                            <h5>Fg Created</h5>
-                            <p id="itemInfoFgName"></p>
-                        </div>
-                        <div>
-                            <h5>Fg Description</h5>
-                            <p id="itemInfoFgDesc"></p>
-                        </div>
-                        <div>
-                            <h5>Fg Quantity</h5>
-                            <p id="itemInfoQuantityFg"></p>
-                        </div>
-                    </div>
-                    <hr>
                     <div class="info-quantity-container">
-                        <div>
-                            <h5>Quantity Scrap</h5>
-                            <p id="itemInfoQuantityScrap"></p>
-                        </div>
                         <div>
                             <h5>Quantity Used</h5>
                             <p id="itemInfoQuantityUsed"></p>
+                        </div>
+                        <div>
+                            <h5>Quantity Scrap</h5>
+                            <p id="itemInfoQuantityScrap"></p>
                         </div>
                     </div>
                 </div>
@@ -461,7 +447,7 @@ while ($optionFg = $result->fetch_assoc()) {
                     <input type="hidden" name="item_id" id="itemId" value="">
                     <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Remove From the List</button>
                 </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
             </div>
         </div>
     </div>

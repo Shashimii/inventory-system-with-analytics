@@ -80,14 +80,14 @@ $(function(){
                 pageData.forEach(function(item) { // for each row on the array
                     $('#receiveTable tbody').append( // append it to body of the table
                         '<tr>' +
-                            '<td>' + item.action_date + '</td>' +
-                            '<td>' + item.item_desc + '</td>' +
                             '<td class="table-primary">' + item.item_id + '</td>' +
+                            '<td class="table-primary">' + item.item_desc + '</td>' +
                             '<td>' + item.item_lot + '</td>' +
                             '<td>' + item.item_bin + '</td>' +
-                            '<td class="table-success">' + item.quantity_receive + ' kg</td>' +
+                            '<td>' + item.action_date + '</td>' +
+                            '<td>' + item.quantity_receive + ' kg</td>' +
                             '<td class="action-btn">' + // actions buttons with attached data of every rows on the button
-                                '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_receive + '" class="btn btn-warning btn-sm"><i class="fa-solid fa-arrow-right"></i> Use in Production</button>' +
+                                '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_receive + '" class="btn btn-warning btn-sm"> Use in Production</button>' +
                                 ' ' +
                                 //'<button id="adjReceivedQuantity" data-bs-toggle="modal" data-bs-target="#rmAdjReceivedModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_receive + '" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Adjust Quantity</button>' +
                             '</td>' +

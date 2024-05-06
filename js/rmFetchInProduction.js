@@ -70,21 +70,38 @@ $(function() {
                 tableRow += '</tr>';
                 $('#inProductionTable').append(tableRow);
             } else {
-                pageData.forEach(function(item) { 
-                    $('#inProductionTable tbody').append( 
-                        '<tr>' +
-                            '<td>' + item.action_date + '</td>' +
-                            '<td>' + item.item_desc + '</td>' +
-                            '<td class="table-primary">' + item.item_id + '</td>' +
-                            '<td>' + item.item_lot + '</td>' +
-                            '<td>' + item.item_bin + '</td>' +
-                            '<td class="table-warning">' + item.quantity_inProduction + ' kg</td>' +
-                            '<td class="action-btn">' +
-                                '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmUseModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-bars"></i> Add Use Quantity</button>' +
-                                '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-secondary btn-sm"><i class="fa-solid fa-bars"></i> Mark as Depleted</button>' +
-                            '</td>' +
-                        '</tr>'
-                    );
+                pageData.forEach(function(item) {
+                    if (item.quantity_inProduction != 0) {
+                        $('#inProductionTable tbody').append( 
+                            '<tr>' +
+                                '<td class="table-primary">' + item.item_id + '</td>' +
+                                '<td class="table-primary">' + item.item_desc + '</td>' +
+                                '<td>' + item.item_lot + '</td>' +
+                                '<td>' + item.item_bin + '</td>' +
+                                '<td>' + item.action_date + '</td>' +
+                                '<td>' + item.quantity_inProduction + ' kg</td>' +
+                                '<td class="action-btn">' +
+                                    '<button id="rawmatUse" data-bs-toggle="modal" data-bs-target="#rmUseModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-primary btn-sm"> Use Quantity</button>' +
+                                    '<button hidden id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-secondary btn-sm"> Mark as Depleted</button>' +
+                                '</td>' +
+                            '</tr>'
+                        );
+                    } else {
+                        $('#inProductionTable tbody').append( 
+                                '<tr>' +
+                                '<td class="table-primary">' + item.item_id + '</td>' +
+                                '<td class="table-primary">' + item.item_desc + '</td>' +
+                                '<td>' + item.item_lot + '</td>' +
+                                '<td>' + item.item_bin + '</td>' +
+                                '<td>' + item.action_date + '</td>' +
+                                '<td>' + item.quantity_inProduction + ' kg</td>' +
+                                '<td class="action-btn">' +
+                                    '<button hidden id="rawmatUse" data-bs-toggle="modal" data-bs-target="#rmUseModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-primary btn-sm"> Use Quantity</button>' +
+                                    '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-secondary btn-sm"> Mark as Depleted</button>' +
+                                '</td>' +
+                            '</tr>'
+                        );
+                    }
                 });
             }
             generatePagination(filteredResponse.length);
@@ -158,15 +175,13 @@ $(function() {
         tableFunctions();
     });
 
-    $(document).on('click', '#markAsDepleted', function() {
+    $(document).on('click', '#rawmatUse', function() {
         var actionDate = $(this).data('date');
         var itemDesc = $(this).data('desc');
         var itemId = $(this).data('id');
         var itemLot = $(this).data('lot');
         var itemBin = $(this).data('bin');
         var itemQuantity = $(this).data('quantity');
-
-        // use
 
         // visual
         $('#rmUseModal p#itemInfoDate').text(actionDate);
@@ -177,14 +192,21 @@ $(function() {
         $('#rmUseModal p#itemInfoBin').text(itemBin); 
 
         // attach data
-        $('#rmUseModal #ditemDesc').val(itemDesc);
-        $('#rmUseModal #ditemId').val(itemId);
-        $('#rmUseModal #ditemLot').val(itemLot);
-        $('#rmUseModal #ditemBin').val(itemBin);
-        $('#rmUseModal #ditemQuantity').val(itemQuantity);
+        $('#rmUseModal #uitemDesc').val(itemDesc);
+        $('#rmUseModal #uitemId').val(itemId);
+        $('#rmUseModal #uitemLot').val(itemLot);
+        $('#rmUseModal #uitemBin').val(itemBin);
+        $('#rmUseModal #uitemQuantity').val(itemQuantity);
+    })
 
-        // depleted
-        
+    $(document).on('click', '#markAsDepleted', function() {
+        var actionDate = $(this).data('date');
+        var itemDesc = $(this).data('desc');
+        var itemId = $(this).data('id');
+        var itemLot = $(this).data('lot');
+        var itemBin = $(this).data('bin');
+        var itemQuantity = $(this).data('quantity');
+
         // visual
         $('#rmDepletedModal p#itemInfoDate').text(actionDate);
         $('#rmDepletedModal h3#itemInfoQuantity').text(itemQuantity + ' KG');
@@ -198,6 +220,5 @@ $(function() {
         $('#rmDepletedModal #ditemId').val(itemId);
         $('#rmDepletedModal #ditemLot').val(itemLot);
         $('#rmDepletedModal #ditemBin').val(itemBin);
-        $('#rmDepletedModal #ditemQuantity').val(itemQuantity);
     });
 });

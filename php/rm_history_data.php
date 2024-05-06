@@ -12,8 +12,10 @@ if ($result1->num_rows > 0) {
     while ($row = $result1->fetch_assoc()) {
         $item_identity = $row;
         $item_id = $item_identity['item_id'];
-        $stmt = $con->prepare("SELECT action_date, action_time, action_by, quantity_receive, quantity_inProduction, quantity_scrap, quantity_used, quantity_created_pcs FROM rm_data WHERE item_id = ?");
-        $stmt->bind_param('s', $item_id);
+        $stmt = $con->prepare("SELECT action_date, action_time, action_by, quantity_receive, quantity_inProduction, quantity_scrap, quantity_used, quantity_created_pcs 
+        FROM rm_data
+        WHERE item_id = ? AND item_data_status != ?");
+        $stmt->bind_param('ss', $item_id, $dataStatusDepleted);
         $stmt->execute();
         $result2 = $stmt->get_result();
 

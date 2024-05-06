@@ -76,11 +76,11 @@ $(function() {
                 pageData.forEach(function(item) { 
                     $('#depletedTable tbody').append( 
                         '<tr>' +
-                            '<td>' + item.action_date + '</td>' +
-                            '<td>' + item.item_desc + '</td>' +
                             '<td class="table-primary">' + item.item_id + '</td>' +
+                            '<td>' + item.item_desc + '</td>' +
                             '<td>' + item.item_lot + '</td>' +
                             '<td>' + item.item_bin + '</td>' +
+                            '<td>' + item.action_date + '</td>' +
                             '<td class="table-warning">' + item.quantity_scrap + ' kg</td>' +
                             '<td class="table-danger">' + item.quantity_used + ' kg</td>' +
                             '<td class="action-btn">' +
