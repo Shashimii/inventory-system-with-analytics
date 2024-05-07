@@ -1,6 +1,6 @@
 $(function() {
     let selectedList = [];
-    let selectedQuantity = 0;
+    let selectedQuantity;
     let selectedLimit;
     let selectedBox = '';
     let addLimit = 32;
@@ -78,8 +78,15 @@ $(function() {
 
         if (selectedQuantity != 0) {
             $('#quantityCount').text(`Selected: ${selectedQuantity}/${selectedLimit} ~ ${selectedBox} Box will be used`);
+      
         } else {
             $('#quantityCount').empty();
+        }
+
+        if (selectedQuantity > 32) {
+            $('#selectModal').attr('disabled', 'disabled');
+        } else {
+            $('#selectModal').removeAttr('disabled');
         }
     }
 
@@ -129,9 +136,16 @@ $(function() {
             <hr class="border border-dark opacity-100" style="padding: 0; margin: 5px;">
             <div style="background-color: #FFFFFF; padding: 5px; border-radius: 5px;">
                 <h6>Quantity Selected</h6>
-                ${item.quantityselected} / ${item.maxquantity}
+                <div class="row">
+                    <div class="col-md-6" style="padding-inline: 100px 0">
+                        <input id="quantityInput" class="form-control form-control-sm w-70 text-center" type="number" value="${item.quantityselected}"> 
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-start">/ ${item.maxquantity}</p>
+                    </div>
+                </div>
+                </div>
                 <div class="btn-group" style="width: 100%;">
-                    <button class="plus btn btn-sm btn-success" style="width: 49%;" ${selectedQuantity === addLimit ? 'disabled' : ''}><i class="fa-solid fa-plus"></i></button>
                     <button class="minus btn btn-sm btn-danger" style="width: 49%;"><i class="fa-solid fa-minus"></i></button>
                 </div>
             </div>
@@ -164,15 +178,15 @@ $(function() {
     
     $('#receiveTable').on('click', 'tr', selectItem);
 
-    $('#selectedList').on('click', '.plus', function() {
+    $(document).on('input', '#quantityInput', function() { 
         const itemIndex = $(this).closest('.selected-box').index();
-        if (selectedList[itemIndex].quantityselected < selectedList[itemIndex].maxquantity) {
-            selectedList[itemIndex].quantityselected++;
-            updateSelection();
-            renderSelectedList();
-        }
+        inputQuantity = parseInt($(this).val());
+
+        selectedList[itemIndex].quantityselected = inputQuantity;
+
+        updateSelection();
         listMaxHeight();
-    });
+    })
 
     $('#selectedList').on('click', '.minus', function() {
         const itemIndex = $(this).closest('.selected-box').index();

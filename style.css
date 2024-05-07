@@ -17,6 +17,12 @@ ul, ol {
     margin-left: 0;
 }
 
+#quantityInput::-webkit-inner-spin-button,
+#quantityInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /*== Table Action Button ==*/
 .action-btn {
     text-align: center;
