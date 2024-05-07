@@ -116,6 +116,7 @@ while ($optionProduct = $result->fetch_assoc()) {
                         <hr class="border border-danger border-2 opacity-75">
                             <div class="selected-counter">
                                 <h5 id="quantityCount"></h5>
+                                <span id="quantityInvalid"></span>
                             </div>
                             <div class="row row-cols-1 g-2">
                                 <div class="d-grid gap-2">

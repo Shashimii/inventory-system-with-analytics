@@ -5,6 +5,7 @@ $(function() {
     let selectedBox = '';
     let addLimit = 32;
     let maxHeight;
+    let zeroSelected = false;
 
     function selectItem(event) {
         const clicked = $(event.target);
@@ -29,10 +30,10 @@ $(function() {
             if (clicked.hasClass('select') && selectedIndex === -1) {
                 if (selectedQuantity != addLimit) {
                     if (selectedList.length === 0) {
-                        selectedList.push({ ...itemData, quantityselected: 1 });
+                        selectedList.push({ ...itemData, quantityselected: 0 });
                         enableButtons()
                     } else if (selectedList.some(item => item.name === itemData.name)) {
-                        selectedList.push({ ...itemData, quantityselected: 1 });
+                        selectedList.push({ ...itemData, quantityselected: 0 });
                         enableButtons()
                     } else {
                         row.removeClass('table-success');
@@ -53,6 +54,7 @@ $(function() {
     function enableButtons() {
         $('#selectModal').removeAttr('disabled');
         $('#clearSelected').removeAttr('disabled');
+        $('#quantityInvalid').empty();
     }
 
     function disableButtons() {
@@ -84,8 +86,19 @@ $(function() {
         }
 
         if (selectedQuantity > 32) {
+            $('#quantityInvalid').empty();
+            var invalidQuantityMsg =`
+                <p style="color: red"><b>Selected Quantity is Over the Limit</b></p>
+            `;
+            
+            $('#quantityInvalid').append(invalidQuantityMsg);
             $('#selectModal').attr('disabled', 'disabled');
+
+        } else if (selectedQuantity < 1){
+            $('#selectModal').attr('disabled', 'disabled');
+
         } else {
+            $('#quantityInvalid').empty();
             $('#selectModal').removeAttr('disabled');
         }
     }
@@ -138,16 +151,15 @@ $(function() {
                 <h6>Quantity Selected</h6>
                 <div class="row">
                     <div class="col-md-6" style="padding-inline: 100px 0">
-                        <input id="quantityInput" class="form-control form-control-sm w-70 text-center" type="number" value="${item.quantityselected}"> 
+                        <input id="quantityInput" class="form-control form-control-sm w-70 text-center" type="text" pattern="[0-9]+" value="0"> 
                     </div>
                     <div class="col-md-6">
                         <p class="text-start">/ ${item.maxquantity}</p>
                     </div>
                 </div>
-                </div>
-                <div class="btn-group" style="width: 100%;">
-                    <button class="minus btn btn-sm btn-danger" style="width: 49%;"><i class="fa-solid fa-minus"></i></button>
-                </div>
+            </div>
+            <div class="input-card-button d-flex justify-content-end" style="width: 100%;">
+                <button class="remove btn btn-sm btn-danger" style="width: 25%;"><i class="fa-solid fa-x"></i></button>
             </div>
         </div>    
         `).join('');
@@ -180,35 +192,40 @@ $(function() {
 
     $(document).on('input', '#quantityInput', function() { 
         const itemIndex = $(this).closest('.selected-box').index();
-        inputQuantity = parseInt($(this).val());
+        inputQuantity = $(this).val();
 
-        selectedList[itemIndex].quantityselected = inputQuantity;
+        const maxQuantity = parseInt($(this).closest('.row').find('.text-start').text().trim().split('/')[1]);
+        console.log(maxQuantity)
+        console.log(inputQuantity)
 
+        if(inputQuantity[0] === '0') {
+            $(this).get(0).setCustomValidity("Enter a valid quantity");
+        } else {
+            pushQuantity = parseInt(inputQuantity);
+            selectedList[itemIndex].quantityselected = pushQuantity ? pushQuantity : 0;
+            $(this).get(0).setCustomValidity("");
+        }
+
+        $(this).get(0).reportValidity();
         updateSelection();
         listMaxHeight();
     })
 
-    $('#selectedList').on('click', '.minus', function() {
+    $(document).on('click', '.remove', function() {
         const itemIndex = $(this).closest('.selected-box').index();
-        if (selectedList[itemIndex].quantityselected > 0) {
-            selectedList[itemIndex].quantityselected--;
-            updateSelection();
-            renderSelectedList();
-        }
-        if (selectedList[itemIndex].quantityselected === 0) {   
-            $('#receiveTable tr').each(function() {
-                const row = $(this);
-                const rowRawmatId = row.find('td:nth-child(2)').text();
-                if (rowRawmatId === selectedList[itemIndex].id) {
-                    row.removeClass('table-success');
-                }
-            });
-            selectedList.splice(itemIndex, 1);
-            disableButtons()
-            renderSelectedList();
-        }
+
+        $('#receiveTable tr').each(function() {
+            const row = $(this);
+            const rowRawmatId = row.find('td:nth-child(2)').text();
+            if (rowRawmatId === selectedList[itemIndex].id) {
+                row.removeClass('table-success');
+            }
+        });
+        selectedList.splice(itemIndex, 1);
+        disableButtons()
+        renderSelectedList();
+        updateSelection();
         listMaxHeight();
-        renderNoSelected();
     });
 
     $('#search').on('input', function(){
@@ -235,11 +252,8 @@ $(function() {
     });
 
     function listMaxHeight() {
-        if (selectedQuantity != 0) {
-            $('#selectedList').css("max-height", $('#selectedList').height() + "px");
-        } else {
-            $('#selectedList').css("max-height", maxHeight + "px");
-        }
+        $('#selectedList').css("max-height", $('#selectedList').height() + "px");
+        $('#selectedList').css("max-height", maxHeight + "px");
     };
 
     window.onload = function() {
@@ -248,6 +262,18 @@ $(function() {
 
     $('#packForm').on('submit', function(event) {
         event.preventDefault();
+        for (var i = 0; i < selectedList.length; i++) {
+            if (selectedList[i].quantityselected === 0) {
+                zeroSelected = true;
+                break;
+            }
+        }
+
+        if (zeroSelected) {
+            console.log("MOHAHAHAHA🐸🐸🐸")
+            zeroSelected = false;
+        }
+
         const packName = $('#packName').val().trim();
         const packDesc = $('#packDesc').val().trim();
         const packId = $('#packId').val().trim();
@@ -322,4 +348,9 @@ $(function() {
             })
         }
     }
+
+    function log() {
+        console.table(selectedList)
+    }
+    setInterval(log, 10000)
 });
