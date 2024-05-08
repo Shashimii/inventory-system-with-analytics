@@ -95,6 +95,7 @@ $(function() {
             $('#selectModal').attr('disabled', 'disabled');
 
         } else if (selectedQuantity < 1){
+            $('#quantityInvalid').empty();
             $('#selectModal').attr('disabled', 'disabled');
 
         } else {
@@ -151,7 +152,7 @@ $(function() {
                 <h6>Quantity Selected</h6>
                 <div class="row">
                     <div class="col-md-6" style="padding-inline: 100px 0">
-                        <input id="quantityInput" class="form-control form-control-sm w-70 text-center" type="text" pattern="[0-9]+" value="0"> 
+                        <input id="quantityInput" class="form-control form-control-sm w-70 text-center" type="text" pattern="[0-9]+" value="${item.quantityselected}"> 
                     </div>
                     <div class="col-md-6">
                         <p class="text-start">/ ${item.maxquantity}</p>
