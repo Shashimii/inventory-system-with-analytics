@@ -152,7 +152,7 @@ $(function() {
                 <h6>Quantity Selected</h6>
                 <div class="row">
                     <div class="col-md-6" style="padding-inline: 100px 0">
-                        <input id="quantityInput" class="form-control form-control-sm w-70 text-center" type="text" pattern="[0-9]+" value="${item.quantityselected}"> 
+                        <input id="quantityInput" class="form-control form-control-sm w-70 text-center" type="number" pattern="[0-9]+" value="${item.quantityselected}"> 
                     </div>
                     <div class="col-md-6">
                         <p class="text-start">/ ${item.maxquantity}</p>
@@ -201,6 +201,8 @@ $(function() {
 
         if(inputQuantity[0] === '0') {
             $(this).get(0).setCustomValidity("Enter a valid quantity");
+        } else if (parseInt(inputQuantity) > maxQuantity) {
+            $(this).get(0).setCustomValidity("This Finished Goods quantity is only " + maxQuantity);
         } else {
             pushQuantity = parseInt(inputQuantity);
             selectedList[itemIndex].quantityselected = pushQuantity ? pushQuantity : 0;
