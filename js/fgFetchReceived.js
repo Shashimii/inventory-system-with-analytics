@@ -66,13 +66,13 @@ $(function(){
             pageData.forEach(function(item) { 
                 $('#receiveTable tbody').append( 
                     '<tr class="">' +
-                        '<td class="table-primary">' + item.item_name + '</td>' +
-                        '<td class="table-primary">' + item.item_id + '</td>' +
-                        '<td>' + item.item_desc + '</td>' +
-                        '<td>' + item.item_lot + '</td>' +
-                        '<td>' + item.item_bin + '</td>' +
-                        '<td>' + item.action_date + '</td>' +
-                        '<td>' + (item.quantity_pcs ? item.quantity_pcs.toLocaleString('en')  : '') + ' pcs</td>' +
+                        '<td class="table-primary text-center">' + item.item_id + '</td>' +
+                        '<td class="text-center">' + item.item_name + '</td>' +
+                        '<td class="text-center">' + item.item_desc + '</td>' +
+                        '<td class="text-center">' + item.item_lot + '</td>' +
+                        '<td class="text-center">' + item.item_bin + '</td>' +
+                        '<td class="text-center">' + item.action_date + '</td>' +
+                        '<td class="text-center">' + (item.quantity_pcs ? item.quantity_pcs.toLocaleString('en')  : '') + ' pcs</td>' +
                         '<td>' +
                         '<button class="select btn btn-primary btn-sm col mx-1">Select</button>' +
                         '</td>' +

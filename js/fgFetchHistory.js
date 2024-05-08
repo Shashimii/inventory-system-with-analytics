@@ -71,12 +71,12 @@ $(function(){
                 var accordionId = "collapse" + index;
                 historyAccordion += `
                     <tr>
-                        <td>${item.item.item_id}</td>
-                        <td>${item.item.item_name}</td>
-                        <td>${item.item.item_desc}</td>
-                        <td>${item.item.item_lot}</td>
-                        <td>${item.item.item_bin}</td>
-                        <td>${item.item.action_date}</td>
+                        <td class="text-center">${item.item.item_id}</td>
+                        <td class="text-center">${item.item.item_name}</td>
+                        <td class="text-center">${item.item.item_desc}</td>
+                        <td class="text-center">${item.item.item_lot}</td>
+                        <td class="text-center">${item.item.item_bin}</td>
+                        <td class="text-center">${item.item.action_date}</td>
                         <td class="action-btn">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionId}" aria-expanded="false" aria-controls="${accordionId}">View Transactions</button>
                             <tr>
@@ -85,30 +85,30 @@ $(function(){
                                         <table class="table table-bordered table-responsive table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th class="table-primary">Date</th>
-                                                    <th class="table-primary">Time</th>
-                                                    <th class="table-primary">Action By</th>
-                                                    <th>Quantity</th>
-                                                    <th>Packed Small</th>
-                                                    <th>Packed Medium</th>
-                                                    <th>Packed Large</th>
-                                                    <th>IN</th>
-                                                    <th>OUT</th>
+                                                    <th class="table-primary text-center">Date</th>
+                                                    <th class="table-primary text-center">Time</th>
+                                                    <th class="table-primary text-center">Action By</th>
+                                                    <th class="text-center">Quantity</th>
+                                                    <th class="text-center">Packed Small</th>
+                                                    <th class="text-center">Packed Medium</th>
+                                                    <th class="text-center">Packed Large</th>
+                                                    <th class="text-center">IN</th>
+                                                    <th class="text-center">OUT</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">`;
                                             item.data.forEach(function(data){
                                                 historyAccordion +=`
                                                 <tr>
-                                                <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
-                                                <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
-                                                <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td>${data.quantity_pcs ? data.quantity_pcs.toLocaleString('en')  + ' pcs' : ''}</td>
-                                                <td>${data.pack_small ? data.pack_small.toLocaleString('en')  + ' pcs' : ''}</td>
-                                                <td>${data.pack_medium ? data.pack_medium.toLocaleString('en')  + ' pcs' : ''}</td>
-                                                <td>${data.pack_large ? data.pack_large.toLocaleString('en') + ' pcs': ''}</td>
-                                                <td>${data.quantity_IN ? data.quantity_IN.toLocaleString('en') + ' pcs': ''}</td>
-                                                <td>${data.quantity_OUT ? data.quantity_OUT.toLocaleString('en') + ' pcs': ''}</td>
+                                                <td class="table-primary text-center">${data.action_date ? data.action_date : ''}</td>
+                                                <td class="table-primary text-center">${data.action_time ? data.action_time : ''}</td>
+                                                <td class="table-primary text-center">${data.action_by ? data.action_by : ''}</td>
+                                                <td class="text-center">${data.quantity_pcs ? data.quantity_pcs.toLocaleString('en')  + ' pcs' : ''}</td>
+                                                <td class="text-center">${data.pack_small ? data.pack_small.toLocaleString('en')  + ' pcs' : ''}</td>
+                                                <td class="text-center">${data.pack_medium ? data.pack_medium.toLocaleString('en')  + ' pcs' : ''}</td>
+                                                <td class="text-center">${data.pack_large ? data.pack_large.toLocaleString('en') + ' pcs': ''}</td>
+                                                <td class="text-center">${data.quantity_IN ? data.quantity_IN.toLocaleString('en') + ' pcs': ''}</td>
+                                                <td class="text-center">${data.quantity_OUT ? data.quantity_OUT.toLocaleString('en') + ' pcs': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

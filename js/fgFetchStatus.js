@@ -51,16 +51,16 @@ $(function(){
                 pageData.forEach(function(item) { 
                     $('#statusTable tbody').append( 
                         '<tr>' +
-                            '<td class="table-primary">' + item.item_name + '</td>' +
-                            '<td>' + item.item_desc + '</td>' +
-                            '<td>' + (item.total_quantity ?  item.total_quantity.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td>' + (item.total_small ? item.total_small.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td>' + (item.total_medium ? item.total_medium.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td>' + (item.total_large ? item.total_large.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td class="table-primary text-center">' + item.item_name + '</td>' +
+                            '<td class="text-center">' + item.item_desc + '</td>' +
+                            '<td class="text-center">' + (item.total_quantity ?  item.total_quantity.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td class="text-center">' + (item.total_small ? item.total_small.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td class="text-center">' + (item.total_medium ? item.total_medium.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td class="text-center">' + (item.total_large ? item.total_large.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
                             '<td' + 
-                            (item.total_quantity < 1000 ? ' class="table-danger"' : '') +
-                            (item.total_quantity >= 1000 && item.total_quantity <= 4999 ? ' class="table-success"' : '') +
-                            (item.total_quantity > 4999 ? ' class="table-warning"' : '') +
+                            (item.total_quantity < 1000 ? ' class="table-danger text-center"' : '') +
+                            (item.total_quantity >= 1000 && item.total_quantity <= 4999 ? ' class="table-success text-center"' : '') +
+                            (item.total_quantity > 4999 ? ' class="table-warning text-center"' : '') +
                             '>' + 
                                 (item.total_quantity < 1000 ? 'Low' : '') + 
                                 (item.total_quantity >= 1000 && item.total_quantity <= 4999 ? 'Normal' : '') +

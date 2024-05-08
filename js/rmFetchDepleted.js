@@ -76,13 +76,13 @@ $(function() {
                 pageData.forEach(function(item) { 
                     $('#depletedTable tbody').append( 
                         '<tr>' +
-                            '<td class="table-primary">' + item.item_id + '</td>' +
-                            '<td>' + item.item_desc + '</td>' +
-                            '<td>' + item.item_lot + '</td>' +
-                            '<td>' + item.item_bin + '</td>' +
-                            '<td>' + item.action_date + '</td>' +
-                            '<td>' + item.quantity_scrap.toLocaleString('en')  + ' kg</td>' +
-                            '<td>' + item.quantity_used.toLocaleString('en')  + ' kg</td>' +
+                            '<td class="table-primary text-center">' + item.item_id + '</td>' +
+                            '<td class="text-center">' + item.item_desc + '</td>' +
+                            '<td class="text-center">' + item.item_lot + '</td>' +
+                            '<td class="text-center">' + item.item_bin + '</td>' +
+                            '<td class="text-center">' + item.action_date + '</td>' +
+                            '<td class="text-center">' + item.quantity_scrap.toLocaleString('en')  + ' kg</td>' +
+                            '<td class="text-center">' + item.quantity_used.toLocaleString('en')  + ' kg</td>' +
                             '<td class="action-btn">' +
                             '<button id="removeFromTheList" data-bs-toggle="modal" data-bs-target="#rmRemoveModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantityscrap="' + item.quantity_scrap + '" data-quantityused="'+ item.quantity_used +'" data-fgname="'+ item.fg_created_name +'" data-fgdesc="'+ item.fg_created_desc +'" data-fgquantitypcs="'+ (item.quantity_created_pcs !== null ? item.quantity_created_pcs + ' PCS' : '') +'" class="btn btn-primary btn-sm"><i class="fa-solid fa-bars"></i> View Info</button>' +
                             '</td>' +

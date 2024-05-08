@@ -22,16 +22,16 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="receiveTable">
                     <thead>
                         <tr>
-                            <th class="table-primary" scope="col">Product Id</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Dimensions</th>
-                            <th scope="col">Lot</th>
-                            <th scope="col">Bin</th>
-                            <th scope="col">In Small Boxes</th>
-                            <th scope="col">In Medium Boxes</th>
-                            <th scope="col">In Large Boxes</th>
-                            <th scope="col">Date Created</th>
-                            <th scope="col">Staff</th>
+                            <th class="table-primary text-center" scope="col">Product Id</th>
+                            <th class="text-center" scope="col">Product</th>
+                            <th class="text-center" scope="col">Dimensions</th>
+                            <th class="text-center" scope="col">Lot</th>
+                            <th class="text-center" scope="col">Bin</th>
+                            <th class="text-center" scope="col">In Small Boxes</th>
+                            <th class="text-center" scope="col">In Medium Boxes</th>
+                            <th class="text-center" scope="col">In Large Boxes</th>
+                            <th class="text-center" scope="col">Date Created</th>
+                            <th class="text-center" scope="col">Staff</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -80,14 +80,14 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="historyTable">
                     <thead>
                         <tr>
-                            <th scope="col">Product Id</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Dimensions</th>
-                            <th scope="col">Lot</th>
-                            <th scope="col">Bin</th>
-                            <th scope="col">Date Created</th>
-                            <th scope="col">Time Created</th>
-                            <th scope="col" class="action-btn">Action</th>
+                            <th class="text-center" scope="col">Product Id</th>
+                            <th class="text-center" scope="col">Product</th>
+                            <th class="text-center" scope="col">Dimensions</th>
+                            <th class="text-center" scope="col">Lot</th>
+                            <th class="text-center" scope="col">Bin</th>
+                            <th class="text-center" scope="col">Date Created</th>
+                            <th class="text-center" scope="col">Time Created</th>
+                            <th class="text-center" scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -130,14 +130,14 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="statusTable">
                     <thead>
                         <tr>
-                        <th class="table-primary" scope="col">Products</th>
-                        <th scope="col">Dimensions</th>
-                        <th scope="col">In Stock</th>
-                        <th scope="col">In Small Boxes</th>
-                        <th scope="col">In Medium Boxes</th>
-                        <th scope="col">In Large Boxes</th>
-                        <th scope="col">Shipped</th>
-                        <th>Stock Level</th>
+                        <th class="table-primary text-center" scope="col">Products</th>
+                        <th class="text-center" scope="col">Dimensions</th>
+                        <th class="text-center" scope="col">In Stock</th>
+                        <th class="text-center" scope="col">In Small Boxes</th>
+                        <th class="text-center" scope="col">In Medium Boxes</th>
+                        <th class="text-center" scope="col">In Large Boxes</th>
+                        <th class="text-center" scope="col">Shipped</th>
+                        <th class="text-center">Stock Level</th>
                         </tr>
                     </thead>
                     <tbody>

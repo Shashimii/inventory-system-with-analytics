@@ -74,12 +74,12 @@ $(function() {
                     if (item.quantity_inProduction != 0) {
                         $('#inProductionTable tbody').append( 
                             '<tr>' +
-                                '<td class="table-primary">' + item.item_id + '</td>' +
-                                '<td class="table-primary">' + item.item_desc + '</td>' +
-                                '<td>' + item.item_lot + '</td>' +
-                                '<td>' + item.item_bin + '</td>' +
-                                '<td>' + item.action_date + '</td>' +
-                                '<td>' + item.quantity_inProduction.toLocaleString('en')  + ' kg</td>' +
+                                '<td class="table-primary text-center">' + item.item_id + '</td>' +
+                                '<td class="text-center">' + item.item_desc + '</td>' +
+                                '<td class="text-center">' + item.item_lot + '</td>' +
+                                '<td class="text-center">' + item.item_bin + '</td>' +
+                                '<td class="text-center">' + item.action_date + '</td>' +
+                                '<td class="text-center">' + item.quantity_inProduction.toLocaleString('en')  + ' kg</td>' +
                                 '<td class="action-btn">' +
                                     '<button id="rawmatUse" data-bs-toggle="modal" data-bs-target="#rmUseModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-primary btn-sm"> Use Quantity</button>' +
                                     '<button hidden id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-secondary btn-sm"> Mark as Depleted</button>' +
@@ -89,12 +89,12 @@ $(function() {
                     } else {
                         $('#inProductionTable tbody').append( 
                                 '<tr>' +
-                                '<td class="table-primary">' + item.item_id + '</td>' +
-                                '<td class="table-primary">' + item.item_desc + '</td>' +
-                                '<td>' + item.item_lot + '</td>' +
-                                '<td>' + item.item_bin + '</td>' +
-                                '<td>' + item.action_date + '</td>' +
-                                '<td>' + item.quantity_inProduction.toLocaleString('en')  + ' kg</td>' +
+                                '<td class="table-primary text-center">' + item.item_id + '</td>' +
+                                '<td class="text-center">' + item.item_desc + '</td>' +
+                                '<td class="text-center">' + item.item_lot + '</td>' +
+                                '<td class="text-center">' + item.item_bin + '</td>' +
+                                '<td class="text-center">' + item.action_date + '</td>' +
+                                '<td class="text-center">' + item.quantity_inProduction.toLocaleString('en')  + ' kg</td>' +
                                 '<td class="action-btn">' +
                                     '<button hidden id="rawmatUse" data-bs-toggle="modal" data-bs-target="#rmUseModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-primary btn-sm"> Use Quantity</button>' +
                                     '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-secondary btn-sm"> Mark as Depleted</button>' +

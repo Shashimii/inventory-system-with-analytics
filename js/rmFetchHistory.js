@@ -56,12 +56,12 @@ $(function(){
                 var accordionId = "collapse" + index;
                 historyAccordion += `
                     <tr>
-                        <td>${item.item.item_id}</td>
-                        <td>${item.item.item_desc}</td>
-                        <td>${item.item.item_lot}</td>
-                        <td>${item.item.item_bin}</td>
-                        <td>${item.item.action_time}</td>
-                        <td>${item.item.action_date}</td>
+                        <td class="text-center">${item.item.item_id}</td>
+                        <td class="text-center">${item.item.item_desc}</td>
+                        <td class="text-center">${item.item.item_lot}</td>
+                        <td class="text-center">${item.item.item_bin}</td>
+                        <td class="text-center">${item.item.action_time}</td>
+                        <td class="text-center">${item.item.action_date}</td>
                         <td class="action-btn">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionId}" aria-expanded="false" aria-controls="${accordionId}">View Transactions</button>
                             <tr>
@@ -70,32 +70,32 @@ $(function(){
                                         <table class="table table-bordered table-responsive table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th class="table-primary">Date</th>
-                                                    <th class="table-primary">Time</th>
-                                                    <th class="table-primary">Action By</th>
-                                                    <th>Received</th>
-                                                    <th>In Production</th>
-                                                    <th>Used</th>
-                                                    <th>Scrap</th>
-                                                    <th>FG</th>
-                                                    <th>IN</th>
-                                                    <th>OUT</th>
+                                                    <th class="table-primary text-center">Date</th>
+                                                    <th class="table-primary text-center">Time</th>
+                                                    <th class="table-primary text-center">Action By</th>
+                                                    <th class="text-center">Received</th>
+                                                    <th class="text-center">In Production</th>
+                                                    <th class="text-center">Used</th>
+                                                    <th class="text-center">Scrap</th>
+                                                    <th class="text-center">FG</th>
+                                                    <th class="text-center">IN</th>
+                                                    <th class="text-center">OUT</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">`;
                                             item.data.forEach(function(data){
                                                 historyAccordion +=`
                                                 <tr>
-                                                <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
-                                                <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
-                                                <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td>${data.quantity_receive ? data.quantity_receive.toLocaleString('en') + ' kg': ''}</td>
-                                                <td>${data.quantity_inProduction ? data.quantity_inProduction.toLocaleString('en')  + ' kg': ''}</td>
-                                                <td>${data.quantity_used ? data.quantity_used.toLocaleString('en')  + ' kg': ''}</td>
-                                                <td>${data.quantity_scrap ? data.quantity_scrap.toLocaleString('en')  + ' kg': ''}</td>
-                                                <td>${data.quantity_created_pcs ? data.quantity_created_pcs.toLocaleString('en')  + ' pcs': ''}</td>
-                                                <td>${data.quantity_IN ? data.quantity_IN.toLocaleString('en')  + ' kg': ''}</td>
-                                                <td>${data.quantity_OUT ? data.quantity_OUT.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td class="table-primary text-center">${data.action_date ? data.action_date : ''}</td>
+                                                <td class="table-primary text-center">${data.action_time ? data.action_time : ''}</td>
+                                                <td class="table-primary text-center">${data.action_by ? data.action_by : ''}</td>
+                                                <td class="text-center">${data.quantity_receive ? data.quantity_receive.toLocaleString('en') + ' kg': ''}</td>
+                                                <td class="text-center">${data.quantity_inProduction ? data.quantity_inProduction.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td class="text-center">${data.quantity_used ? data.quantity_used.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td class="text-center">${data.quantity_scrap ? data.quantity_scrap.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td class="text-center">${data.quantity_created_pcs ? data.quantity_created_pcs.toLocaleString('en')  + ' pcs': ''}</td>
+                                                <td class="text-center">${data.quantity_IN ? data.quantity_IN.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td class="text-center">${data.quantity_OUT ? data.quantity_OUT.toLocaleString('en')  + ' kg': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

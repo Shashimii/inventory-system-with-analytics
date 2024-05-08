@@ -12,8 +12,8 @@ $(function() {
         const clicked = $(event.target);
         const row = clicked.closest('tr');
         const itemData = {
-            name: row.find('td:nth-child(1)').text(),
-            id: row.find('td:nth-child(2)').text(),
+            id: row.find('td:nth-child(1)').text(),
+            name: row.find('td:nth-child(2)').text(),
             desc: row.find('td:nth-child(3)').text(),
             lot: row.find('td:nth-child(4)').text(),
             bin: row.find('td:nth-child(5)').text(),
