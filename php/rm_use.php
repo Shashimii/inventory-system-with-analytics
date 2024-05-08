@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $serialPad = str_pad(intval($serialInc), 6, '0', STR_PAD_LEFT);
         $serialNum = $serialPad;
 
-        $fg_id = $serialName . $serialNum;
+        $fg_id = "F" . $serialName . $serialNum;
 
         // new quantity
         $rm_quantity_new = $rm_quantity - $rm_quantity_used - $rm_scrap;

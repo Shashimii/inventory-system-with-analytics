@@ -6,6 +6,7 @@ $(function() {
     let addLimit = 32;
     let maxHeight;
     let zeroSelected = false;
+    let inputError = 0;
 
     function selectItem(event) {
         const clicked = $(event.target);
@@ -47,7 +48,11 @@ $(function() {
                     renderSelectedList();
                     listMaxHeight();
                 }
+
+                $('#packName').val(itemData.name);
+                $('#packDesc').val(itemData.desc);
             }
+
         }
     }
 
@@ -98,11 +103,15 @@ $(function() {
             $('#quantityInvalid').empty();
             $('#selectModal').attr('disabled', 'disabled');
 
+        } else if (inputError > 0) {
+            $('#quantityInvalid').empty();
+            $('#selectModal').attr('disabled', 'disabled');
         } else {
             $('#quantityInvalid').empty();
             $('#selectModal').removeAttr('disabled');
         }
     }
+
 
     function renderNoSelected() {
         if (selectedList.length === 0) {
@@ -203,10 +212,12 @@ $(function() {
             $(this).get(0).setCustomValidity("Enter a valid quantity");
         } else if (parseInt(inputQuantity) > maxQuantity) {
             $(this).get(0).setCustomValidity("This Finished Goods quantity is only " + maxQuantity);
+            inputError++;
         } else {
             pushQuantity = parseInt(inputQuantity);
             selectedList[itemIndex].quantityselected = pushQuantity ? pushQuantity : 0;
             $(this).get(0).setCustomValidity("");
+            inputError = 0;
         }
 
         $(this).get(0).reportValidity();
