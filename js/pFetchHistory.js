@@ -101,13 +101,13 @@ $(function(){
                                                 <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td>${data.pack_small ? data.pack_small  + ' pcs' : ''}</td>
-                                                <td>${data.pack_medium ? data.pack_medium  + ' pcs' : ''}</td>
-                                                <td>${data.pack_large ? data.pack_large + ' pcs': ''}</td>
-                                                <td>${data.shipped_quantity ? data.shipped_quantity : ''}</td>
+                                                <td>${data.pack_small ? data.pack_small.toLocaleString('en')  + ' pcs' : ''}</td>
+                                                <td>${data.pack_medium ? data.pack_medium.toLocaleString('en')  + ' pcs' : ''}</td>
+                                                <td>${data.pack_large ? data.pack_large.toLocaleString('en') + ' pcs': ''}</td>
+                                                <td>${data.shipped_quantity ? data.shipped_quantity.toLocaleString('en') : ''}</td>
                                                 <td>${data.client_company ? data.client_company : ''}</td>
-                                                <td>${data.quantity_IN ? data.quantity_IN : ''}</td>
-                                                <td>${data.quantity_OUT ? data.quantity_OUT : ''}</td>
+                                                <td>${data.quantity_IN ? data.quantity_IN.toLocaleString('en') : ''}</td>
+                                                <td>${data.quantity_OUT ? data.quantity_OUT.toLocaleString('en') : ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

@@ -89,13 +89,13 @@ $(function(){
                                                 <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td>${data.quantity_receive ? data.quantity_receive + ' kg': ''}</td>
-                                                <td>${data.quantity_inProduction ? data.quantity_inProduction  + ' kg': ''}</td>
-                                                <td>${data.quantity_used ? data.quantity_used  + ' kg': ''}</td>
-                                                <td>${data.quantity_scrap ? data.quantity_scrap  + ' kg': ''}</td>
-                                                <td>${data.quantity_created_pcs ? data.quantity_created_pcs  + ' pcs': ''}</td>
-                                                <td>${data.quantity_IN ? data.quantity_IN  + ' kg': ''}</td>
-                                                <td>${data.quantity_OUT ? data.quantity_OUT  + ' kg': ''}</td>
+                                                <td>${data.quantity_receive ? data.quantity_receive.toLocaleString('en') + ' kg': ''}</td>
+                                                <td>${data.quantity_inProduction ? data.quantity_inProduction.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td>${data.quantity_used ? data.quantity_used.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td>${data.quantity_scrap ? data.quantity_scrap.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td>${data.quantity_created_pcs ? data.quantity_created_pcs.toLocaleString('en')  + ' pcs': ''}</td>
+                                                <td>${data.quantity_IN ? data.quantity_IN.toLocaleString('en')  + ' kg': ''}</td>
+                                                <td>${data.quantity_OUT ? data.quantity_OUT.toLocaleString('en')  + ' kg': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

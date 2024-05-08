@@ -145,8 +145,8 @@ $(function(){
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
                         <th scope="col">Deplation Date</th>
-                            <th class="table-warning" scope="col">Quantity Scrap</th>
-                            <th class="table-danger" scope="col">Quantity Used</th>
+                            <th scope="col">Quantity Scrap</th>
+                            <th scope="col">Quantity Used</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>

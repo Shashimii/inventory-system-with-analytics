@@ -85,7 +85,7 @@ $(function(){
                             '<td>' + item.item_lot + '</td>' +
                             '<td>' + item.item_bin + '</td>' +
                             '<td>' + item.action_date + '</td>' +
-                            '<td>' + item.quantity_receive + ' kg</td>' +
+                            '<td>' + item.quantity_receive.toLocaleString('en') + ' kg</td>' +
                             '<td class="action-btn">' + // actions buttons with attached data of every rows on the button
                                 '<button id="useInProduction" data-bs-toggle="modal" data-bs-target="#rmInProductionModal" data-date="' + item.action_date + '" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_receive + '" class="btn btn-warning btn-sm"> Use in Production</button>' +
                                 ' ' +
@@ -187,7 +187,7 @@ $(function(){
 
         // modal data vizualization
         $('#rmInProductionModal p#itemInfoDate').text(actionDate);
-        $('#rmInProductionModal h3#itemInfoQuantity').text(quantityReceive + ' KG');
+        $('#rmInProductionModal h3#itemInfoQuantity').text(quantityReceive.toLocaleString('en')  + ' KG');
         $('#rmInProductionModal p#itemInfoLot').text(itemLot);
         $('#rmInProductionModal p#itemInfoDesc').text(itemDesc);
         $('#rmInProductionModal h2#itemInfoId').text(itemId);
@@ -216,7 +216,7 @@ $(function(){
         // modal data vizualization
         $('#rmAdjReceivedModal p#itemInfoDate').text(actionDate);
         $('#rmAdjReceivedModal h1#itemInfoName').text(itemName);
-        $('#rmAdjReceivedModal h3#itemInfoQuantity').text(quantityReceive + ' KG');
+        $('#rmAdjReceivedModal h3#itemInfoQuantity').text(quantityReceive.toLocaleString('en')  + ' KG');
         $('#rmAdjReceivedModal p#itemInfoLot').text(itemLot);
         $('#rmAdjReceivedModal p#itemInfoDesc').text(itemDesc);
         $('#rmAdjReceivedModal p#itemInfoId').text(itemId);

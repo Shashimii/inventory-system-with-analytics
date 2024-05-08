@@ -53,11 +53,11 @@ $(function(){
                         '<tr>' +
                             '<td class="table-primary">' + item.item_name + '</td>' +
                             '<td>' + item.item_desc + '</td>' +
-                            '<td>' + (item.total_quantity ? item.total_quantity + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td>' + (item.total_small ? item.total_small + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td>' + (item.total_medium ? item.total_medium + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td>' + (item.total_large ? item.total_large + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td>' + (item.total_ship ? item.total_ship + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_quantity ? item.total_quantity.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_small ? item.total_small.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_medium ? item.total_medium.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_large ? item.total_large.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_ship ? item.total_ship.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
                             '<td' + 
                             (item.total_quantity < 100 ? ' class="table-danger"' : '') +
                             (item.total_quantity >= 100 && item.total_quantity <= 999 ? ' class="table-success"' : '') +

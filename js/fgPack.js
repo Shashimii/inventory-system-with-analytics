@@ -18,7 +18,7 @@ $(function() {
             lot: row.find('td:nth-child(4)').text(),
             bin: row.find('td:nth-child(5)').text(),
             date: row.find('td:nth-child(6)').text(),
-            maxquantity: parseInt(row.find('td:nth-child(7)').text())
+            maxquantity: parseInt(row.find('td:nth-child(7)').text().replace(/,/g, ''))
         };
 
         if (clicked.is('button')) {
@@ -84,7 +84,7 @@ $(function() {
         }
 
         if (selectedQuantity != 0) {
-            $('#quantityCount').text(`Selected: ${selectedQuantity}/${selectedLimit} ~ ${selectedBox} Box will be used`);
+            $('#quantityCount').text(`Selected: ${selectedQuantity.toLocaleString('en')}/${selectedLimit} ~ ${selectedBox} Box will be used`);
       
         } else {
             $('#quantityCount').empty();
@@ -164,7 +164,7 @@ $(function() {
                         <input id="quantityInput" class="form-control form-control-sm w-70 text-center" type="number" pattern="[0-9]+" value="${item.quantityselected}"> 
                     </div>
                     <div class="col-md-6">
-                        <p class="text-start">/ ${item.maxquantity}</p>
+                        <p class="text-start">/ ${item.maxquantity.toLocaleString('en')}</p>
                     </div>
                 </div>
             </div>
@@ -204,14 +204,12 @@ $(function() {
         const itemIndex = $(this).closest('.selected-box').index();
         inputQuantity = $(this).val();
 
-        const maxQuantity = parseInt($(this).closest('.row').find('.text-start').text().trim().split('/')[1]);
-        console.log(maxQuantity)
-        console.log(inputQuantity)
+        const maxQuantity = parseInt($(this).closest('.row').find('.text-start').text().trim().split('/')[1].replace(/,/g, ''));
 
         if(inputQuantity[0] === '0') {
             $(this).get(0).setCustomValidity("Enter a valid quantity");
         } else if (parseInt(inputQuantity) > maxQuantity) {
-            $(this).get(0).setCustomValidity("This Finished Goods quantity is only " + maxQuantity);
+            $(this).get(0).setCustomValidity("This Finished Goods quantity is only " + maxQuantity.toLocaleString('en'));
             inputError++;
         } else {
             pushQuantity = parseInt(inputQuantity);
@@ -223,6 +221,8 @@ $(function() {
         $(this).get(0).reportValidity();
         updateSelection();
         listMaxHeight();
+
+        console.log(selectedQuantity)
     })
 
     $(document).on('click', '.remove', function() {

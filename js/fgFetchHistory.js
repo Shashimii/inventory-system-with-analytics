@@ -103,12 +103,12 @@ $(function(){
                                                 <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td>${data.quantity_pcs ? data.quantity_pcs  + ' pcs' : ''}</td>
-                                                <td>${data.pack_small ? data.pack_small  + ' pcs' : ''}</td>
-                                                <td>${data.pack_medium ? data.pack_medium  + ' pcs' : ''}</td>
-                                                <td>${data.pack_large ? data.pack_large + ' pcs': ''}</td>
-                                                <td>${data.quantity_IN ? data.quantity_IN + ' pcs': ''}</td>
-                                                <td>${data.quantity_OUT ? data.quantity_OUT + ' pcs': ''}</td>
+                                                <td>${data.quantity_pcs ? data.quantity_pcs.toLocaleString('en')  + ' pcs' : ''}</td>
+                                                <td>${data.pack_small ? data.pack_small.toLocaleString('en')  + ' pcs' : ''}</td>
+                                                <td>${data.pack_medium ? data.pack_medium.toLocaleString('en')  + ' pcs' : ''}</td>
+                                                <td>${data.pack_large ? data.pack_large.toLocaleString('en') + ' pcs': ''}</td>
+                                                <td>${data.quantity_IN ? data.quantity_IN.toLocaleString('en') + ' pcs': ''}</td>
+                                                <td>${data.quantity_OUT ? data.quantity_OUT.toLocaleString('en') + ' pcs': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

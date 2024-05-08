@@ -16,6 +16,13 @@ $result = $stmt->get_result();
 
 $data = array();
 while ($row = $result->fetch_assoc()) {
+
+    $row['total_quantity'] = intval($row['total_quantity']);
+    $row['total_inProduction'] = intval($row['total_inProduction']);
+    $row['total_scrap'] = intval($row['total_scrap']);
+    $row['total_used'] = intval($row['total_used']);
+    $row['total_pcs'] = intval($row['total_pcs']);
+    
     $data[] = $row;
 }
 

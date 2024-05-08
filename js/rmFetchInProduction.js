@@ -79,7 +79,7 @@ $(function() {
                                 '<td>' + item.item_lot + '</td>' +
                                 '<td>' + item.item_bin + '</td>' +
                                 '<td>' + item.action_date + '</td>' +
-                                '<td>' + item.quantity_inProduction + ' kg</td>' +
+                                '<td>' + item.quantity_inProduction.toLocaleString('en')  + ' kg</td>' +
                                 '<td class="action-btn">' +
                                     '<button id="rawmatUse" data-bs-toggle="modal" data-bs-target="#rmUseModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-primary btn-sm"> Use Quantity</button>' +
                                     '<button hidden id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-secondary btn-sm"> Mark as Depleted</button>' +
@@ -94,7 +94,7 @@ $(function() {
                                 '<td>' + item.item_lot + '</td>' +
                                 '<td>' + item.item_bin + '</td>' +
                                 '<td>' + item.action_date + '</td>' +
-                                '<td>' + item.quantity_inProduction + ' kg</td>' +
+                                '<td>' + item.quantity_inProduction.toLocaleString('en')  + ' kg</td>' +
                                 '<td class="action-btn">' +
                                     '<button hidden id="rawmatUse" data-bs-toggle="modal" data-bs-target="#rmUseModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-primary btn-sm"> Use Quantity</button>' +
                                     '<button id="markAsDepleted" data-bs-toggle="modal" data-bs-target="#rmDepletedModal" data-date="' + item.action_date + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + item.quantity_inProduction + '" class="btn btn-secondary btn-sm"> Mark as Depleted</button>' +
@@ -185,7 +185,7 @@ $(function() {
 
         // visual
         $('#rmUseModal p#itemInfoDate').text(actionDate);
-        $('#rmUseModal h3#itemInfoQuantity').text(itemQuantity + ' KG');
+        $('#rmUseModal h3#itemInfoQuantity').text(itemQuantity.toLocaleString('en')  + ' KG');
         $('#rmUseModal p#itemInfoLot').text(itemLot);
         $('#rmUseModal p#itemInfoDesc').text(itemDesc);
         $('#rmUseModal h1#itemInfoId').text(itemId);
@@ -209,7 +209,7 @@ $(function() {
 
         // visual
         $('#rmDepletedModal p#itemInfoDate').text(actionDate);
-        $('#rmDepletedModal h3#itemInfoQuantity').text(itemQuantity + ' KG');
+        $('#rmDepletedModal h3#itemInfoQuantity').text(itemQuantity.toLocaleString('en') + ' KG');
         $('#rmDepletedModal p#itemInfoLot').text(itemLot);
         $('#rmDepletedModal p#itemInfoDesc').text(itemDesc);
         $('#rmDepletedModal h1#itemInfoId').text(itemId);

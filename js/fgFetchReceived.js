@@ -72,7 +72,7 @@ $(function(){
                         '<td>' + item.item_lot + '</td>' +
                         '<td>' + item.item_bin + '</td>' +
                         '<td>' + item.action_date + '</td>' +
-                        '<td>' + (item.quantity_pcs ? item.quantity_pcs : '') + ' pcs</td>' +
+                        '<td>' + (item.quantity_pcs ? item.quantity_pcs.toLocaleString('en')  : '') + ' pcs</td>' +
                         '<td>' +
                         '<button class="select btn btn-primary btn-sm col mx-1">Select</button>' +
                         '</td>' +

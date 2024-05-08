@@ -131,7 +131,7 @@ $(function(){
                     <thead>
                         <tr>
                         <th class="table-primary" scope="col">Products</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">Dimensions</th>
                         <th scope="col">In Stock</th>
                         <th scope="col">In Small Boxes</th>
                         <th scope="col">In Medium Boxes</th>

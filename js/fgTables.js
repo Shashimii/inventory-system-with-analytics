@@ -132,12 +132,12 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="statusTable">
                     <thead>
                         <tr>
-                        <th scope="col">Finished Goods</th>
-                        <th scope="col">Description</th>
-                        <th class="table-success" scope="col">In Stock</th>
-                        <th class="table-info" scope="col">Packed Small</th>
-                        <th class="table-warning" scope="col">Packed Medium</th>
-                        <th class="table-danger" scope="col">Packed Large</th>
+                        <th class="table-primary" scope="col">Finished Goods</th>
+                        <th scope="col">Dimensions</th>
+                        <th scope="col">In Stock</th>
+                        <th scope="col">Packed Small</th>
+                        <th scope="col">Packed Medium</th>
+                        <th scope="col">Packed Large</th>
                         <th>Stock Level</th>
                         </tr>
                     </thead>

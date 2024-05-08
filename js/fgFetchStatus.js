@@ -51,12 +51,12 @@ $(function(){
                 pageData.forEach(function(item) { 
                     $('#statusTable tbody').append( 
                         '<tr>' +
-                            '<td>' + item.item_name + '</td>' +
+                            '<td class="table-primary">' + item.item_name + '</td>' +
                             '<td>' + item.item_desc + '</td>' +
-                            '<td' + (item.total_quantity != null && item.total_quantity != 0 ? ' class="table-success"' : '') + '>' + (item.total_quantity ?  item.total_quantity + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td' + (item.total_small != null ? ' class="table-info"' : '') + '>' + (item.total_small ? item.total_small + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td' + (item.total_medium != null ? ' class="table-warning"' : '') + '>' + (item.total_medium ? item.total_medium + ' pcs' : 0 +' pcs') + '</td>' +
-                            '<td' + (item.total_large != null ? ' class="table-danger"' : '') + '>' + (item.total_large ? item.total_large + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_quantity ?  item.total_quantity.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_small ? item.total_small.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_medium ? item.total_medium.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
+                            '<td>' + (item.total_large ? item.total_large.toLocaleString('en') + ' pcs' : 0 +' pcs') + '</td>' +
                             '<td' + 
                             (item.total_quantity < 1000 ? ' class="table-danger"' : '') +
                             (item.total_quantity >= 1000 && item.total_quantity <= 4999 ? ' class="table-success"' : '') +

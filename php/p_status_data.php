@@ -18,6 +18,13 @@ $result = $stmt->get_result();
 
 $data = array();
 while ($row = $result->fetch_assoc()) {
+
+    $row['total_quantity'] = intval($row['total_quantity']);
+    $row['total_small'] = intval($row['total_small']);
+    $row['total_medium'] = intval($row['total_medium']);
+    $row['total_large'] = intval($row['total_large']);
+    $row['total_ship'] = intval($row['total_ship']);
+
     $data[] = $row;
 }
 
