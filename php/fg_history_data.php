@@ -2,17 +2,18 @@
 
 include 'script_con.php';
 
-$stmt = $con->prepare("SELECT action_date, action_time, from_rm_name, from_rm_id, item_name, item_desc, item_lot, item_bin  FROM `fg_data` GROUP BY from_rm_id");
+$stmt = $con->prepare("SELECT action_date, action_time, item_name, item_id, item_desc, item_lot, item_bin  FROM `fg_data` GROUP BY item_id");
 $stmt->execute();
 $result1 = $stmt->get_result();
 
+$itemRow = [];
+
 if ($result1->num_rows > 0) {
     while ($row = $result1->fetch_assoc()) {
-        $item_identity = $row;
-        $from_id = $item_identity["from_rm_id"];
-        $from_name = $item_identity["from_rm_name"];
-        $stmt = $con->prepare("SELECT action_date, action_time, action_by, quantity_pcs, pack_small, pack_medium, pack_large FROM `fg_data` WHERE (item_data_status = 'Received' OR item_data_status = 'InUse') AND from_rm_id = ? AND from_rm_name = ? ORDER BY from_rm_id");
-        $stmt->bind_param("ss", $from_id, $from_name);
+        $item_identity = $row;  
+        $item_id = $item_identity["item_id"];
+        $stmt = $con->prepare("SELECT action_date, action_time, action_by, quantity_pcs, pack_small, pack_medium, pack_large, quantity_IN, quantity_OUT FROM `fg_data` WHERE (item_data_status = 'Received' OR item_data_status = 'InUse') AND item_id = ? ORDER BY item_id");
+        $stmt->bind_param("s", $item_id);
         $stmt->execute();
         $result2 = $stmt->get_result();
 
@@ -28,3 +29,4 @@ if ($result1->num_rows > 0) {
 
 header('Content-Type: application/json');
 echo json_encode($itemRow);
+

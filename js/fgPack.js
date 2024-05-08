@@ -290,17 +290,16 @@ $(function() {
 
         const packName = $('#packName').val().trim();
         const packDesc = $('#packDesc').val().trim();
-        const packId = $('#packId').val().trim();
         const packStorage = $('#packStorage').val().trim();
 
-        if (packName !== '' && packDesc !== '' && packId !== '' && packStorage !== '') {
-            packSelectedItems(packName, packDesc, packId, packStorage);
+        if (packName !== '' && packDesc !== '' && packStorage !== '') {
+            packSelectedItems(packName, packDesc, packStorage);
         } else {
             return
         }
     })
 
-    function packSelectedItems(packName, packDesc, packId, packStorage) {
+    function packSelectedItems(packName, packDesc, packStorage) {
         if (selectedList.length != 0) {
             var dataToPost = {
                 selectedList: selectedList,
@@ -308,14 +307,12 @@ $(function() {
                 selectedBox: selectedBox,
                 packName: packName,
                 packDesc: packDesc,
-                packId: packId,
                 packStorage: packStorage
             };
 
             // product info
             var pname = packName;
             var pdesc = packDesc;
-            var pid = packId;
             var pbin = packStorage;
             var pquantity = selectedQuantity;
 

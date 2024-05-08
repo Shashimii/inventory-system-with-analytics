@@ -76,8 +76,8 @@ $(function(){
                                                     <th>Received</th>
                                                     <th>In Production</th>
                                                     <th>Used</th>
-                                                    <th>FG</th>
                                                     <th>Scrap</th>
+                                                    <th>FG</th>
                                                     <th>IN</th>
                                                     <th>OUT</th>
                                                 </tr>
@@ -90,12 +90,12 @@ $(function(){
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
                                                 <td>${data.quantity_receive ? data.quantity_receive + ' kg': ''}</td>
-                                                <td>${data.quantity_inProduction  != null ? data.quantity_inProduction  + ' kg': ''}</td>
+                                                <td>${data.quantity_inProduction ? data.quantity_inProduction  + ' kg': ''}</td>
                                                 <td>${data.quantity_used ? data.quantity_used  + ' kg': ''}</td>
+                                                <td>${data.quantity_scrap ? data.quantity_scrap  + ' kg': ''}</td>
                                                 <td>${data.quantity_created_pcs ? data.quantity_created_pcs  + ' pcs': ''}</td>
-                                                <td>${data.quantity_scrap != null ? data.quantity_scrap  + ' kg': ''}</td>
                                                 <td>${data.quantity_IN ? data.quantity_IN  + ' kg': ''}</td>
-                                                <td>${data.quantity_OUT != null ? data.quantity_OUT  + ' kg': ''}</td>
+                                                <td>${data.quantity_OUT ? data.quantity_OUT  + ' kg': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

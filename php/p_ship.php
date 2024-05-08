@@ -24,10 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo '1';
         } else {
             $InsertShip = "INSERT INTO products_data
-            (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, shipped_quantity, client_company, item_data_status, item_data_active) VALUES
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, shipped_quantity, client_company, item_data_status, item_data_active, quantity_OUT) VALUES
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $con->prepare($InsertShip);
-            $stmt->bind_param("ssssssssisss", $sys_date, $sys_time, $sys_user, $name, $desc, $id, $lot, $bin, $quantity, $code, $dataStatusShip, $dataActive);
+            $stmt->bind_param("ssssssssisssi", $sys_date, $sys_time, $sys_user, $name, $desc, $id, $lot, $bin, $quantity, $code, $dataStatusShip, $dataActive, $quantity);
             if ($stmt->execute()) {
                 $updateStatus = "UPDATE products_data SET item_data_active = ? WHERE item_name = ? AND item_id = ? AND item_data_status = ?";
                 $stmt= $con->prepare($updateStatus);

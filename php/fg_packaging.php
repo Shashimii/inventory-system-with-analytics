@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row['last_serial_num'];
 
         $serialName = strtoupper(substr($packName, 0, 3));
-        $serialInc = $row['last_serial_num'] ? intval(substr($row['last_serial_num'], 3)) + 1 : '000001';
+        $serialInc = $row['last_serial_num'] ? intval(substr($row['last_serial_num'], 4)) + 1 : '000001';
         $serialPad = str_pad(intval($serialInc), 6, '0', STR_PAD_LEFT);
         $serialNum = $serialPad;
 
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $date = $row['date'];
                 $quantity = $row['quantityselected'];
     
-                $stmt1 = $con->prepare("SELECT quantity_pcs FROM fg_data WHERE item_id = ? AND item_data_status = ?");
+                $stmt1 = $con->prepare("SELECT quantity_pcs, item_id FROM fg_data WHERE item_id = ? AND item_data_status = ?");
                 $stmt1->bind_param('ss', $fgid, $dataStatusFloat);
                 if ($stmt1->execute()) {
                     $result1 = $stmt1->get_result();
@@ -74,9 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
                     if ($selectedBox === 'Small') {
                         $stmt2 = $con->prepare("INSERT INTO fg_data 
-                        (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, pack_small, item_data_status, item_data_active)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                        $stmt2->bind_param('ssssssssiiss', $sys_date, $sys_time, $sys_user, $name, $fgid, $desc, $lot, $bin, $newQuantity, $quantity, $dataStatusInUse, $dataActive);
+                        (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, pack_small, item_data_status, item_data_active, quantity_OUT)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        $stmt2->bind_param('ssssssssiissi', $sys_date, $sys_time, $sys_user, $name, $fgid, $desc, $lot, $bin, $newQuantity, $quantity, $dataStatusInUse, $dataActive, $quantity);
                         if ($stmt2->execute()) {
                             $stmt3 = $con->prepare("UPDATE fg_data 
                             SET quantity_pcs = ? 
@@ -85,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             if ($stmt3->execute()) {
                                 $successQuery = true;
-                                echo 'NYA✨';
                             }
                         };
                     } else {
@@ -106,9 +105,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if ($selectedBox === 'Small') {
                     $stmtInsert = $con->prepare("INSERT INTO products_data 
-                    (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_small, item_data_status, item_data_active) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    $stmtInsert->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive);
+                    (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_small, item_data_status, item_data_active, quantity_IN) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $stmtInsert->bind_param("ssssssssissi", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive, $selectedQuantity);
                     if ($stmtInsert->execute()) {
                         echo "0";
                     }

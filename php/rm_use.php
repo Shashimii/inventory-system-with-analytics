@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row['last_serial_num'];
 
         $serialName = strtoupper(substr($fg_name, 0, 3));
-        $serialInc = $row['last_serial_num'] ? intval(substr($row['last_serial_num'], 3)) + 1 : '000001';
+        $serialInc = $row['last_serial_num'] ? intval(substr($row['last_serial_num'], 4)) + 1 : '000001';
         $serialPad = str_pad(intval($serialInc), 6, '0', STR_PAD_LEFT);
         $serialNum = $serialPad;
 
@@ -49,6 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // new quantity
         $rm_quantity_new = $rm_quantity - $rm_quantity_used - $rm_scrap;
+
+        // total OUT
+        $total_out = $rm_quantity_used + $rm_scrap;
 
         // usage check
         $rm_usage_valid = $rm_quantity - $rm_quantity_used;
@@ -87,55 +90,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
                         if ($stmt->execute()) {
                             $InsertProduction = "INSERT INTO rm_data 
-                            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_inProduction, item_data_status, item_data_active) VALUES 
-                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_inProduction, quantity_scrap, quantity_used, item_data_status, item_data_active, quantity_OUT) VALUES 
+                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                             $stmt = $con->prepare($InsertProduction);
-                            $stmt->bind_param("sssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_new, $dataStatusInProduction, $dataActive);
-        
+                            $stmt->bind_param("sssssssiiissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_new, $rm_scrap, $rm_quantity_used, $dataStatusInProduction, $dataActive, $total_out);
+
                             if ($stmt->execute()) {
-                                $InsertUsed = "INSERT INTO rm_data 
-                                (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_used, item_data_status, item_data_active, quantity_OUT) VALUES 
-                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                $stmt = $con->prepare($InsertUsed);
-                                $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_quantity_used, $dataStatusInUse, $dataActive, $rm_quantity_used);
-        
+                                $InsertProduction = "INSERT INTO rm_data 
+                                (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, fg_created_name, fg_created_desc, quantity_created_pcs, item_data_status, item_data_active) VALUES 
+                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                $stmt = $con->prepare($InsertProduction);
+                                $stmt->bind_param("sssssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $fg_name, $fg_desc, $fg_quantity, $dataStatusInUse, $dataActive);  
+
                                 if ($stmt->execute()) {
-                                    $InsertProduction = "INSERT INTO rm_data 
-                                    (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, fg_created_name, fg_created_desc, quantity_created_pcs, item_data_status, item_data_active) VALUES 
+                                    $insertItem = "INSERT INTO fg_data
+                                    (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, item_data_status, item_data_active, quantity_IN) VALUES
                                     (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                    $stmt = $con->prepare($InsertProduction);
-                                    $stmt->bind_param("sssssssssiss", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $fg_name, $fg_desc, $fg_quantity, $dataStatusInUse, $dataActive);  
-    
+                                    $stmt = $con->prepare($insertItem);
+                                    $stmt->bind_param("ssssssssissi", $sys_date, $sys_time, $sys_user, $fg_name, $fg_id, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $dataStatusReceived, $dataActive, $fg_quantity);
+
                                     if ($stmt->execute()) {
-                                        $insertItem = "INSERT INTO rm_data 
-                                        (action_date, action_time, action_by, item_desc, item_id, item_lot, item_bin, quantity_scrap, item_data_status, item_data_active, quantity_OUT) VALUES 
+                                        $insertItem = "INSERT INTO fg_data
+                                        (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, item_data_status, item_data_active) VALUES
                                         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                                         $stmt = $con->prepare($insertItem);
-                                        $stmt->bind_param("sssssssissi", $sys_date, $sys_time, $sys_user, $rm_desc, $rm_id, $rm_batch, $rm_bin, $rm_scrap, $dataStatusInUse, $dataActive, $rm_scrap);
-    
+                                        $stmt->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_id, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $dataStatusFloat, $dataActive);
+
                                         if ($stmt->execute()) {
-                                            $insertItem = "INSERT INTO fg_data
-                                            (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, item_data_status, item_data_active) VALUES
-                                            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                            $stmt = $con->prepare($insertItem);
-                                            $stmt->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_id, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $dataStatusReceived, $dataActive);
-    
-                                            if ($stmt->execute()) {
-                                                $insertItem = "INSERT INTO fg_data
-                                                (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, item_data_status, item_data_active) VALUES
-                                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                                $stmt = $con->prepare($insertItem);
-                                                $stmt->bind_param("ssssssssiss", $sys_date, $sys_time, $sys_user, $fg_name, $fg_id, $fg_desc, $fg_batch, $fg_bin, $fg_quantity, $dataStatusFloat, $dataActive);
-    
-                                                if ($stmt->execute()) {
-                                                    echo '0';
-    
-                                                    $stmt->close();
-                                                }
-                                            }
+                                            echo '0';
+
+                                            $stmt->close();
                                         }
                                     }
                                 }
+                                
                             }
                         }
                     }

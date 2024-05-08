@@ -22,16 +22,16 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="receiveTable">
                     <thead>
                         <tr>
-                            <th scope="col">Date Created</th>
-                            <th scope="col">Staff</th>
-                            <th class="table-primary" scope="col">Product</th>
-                            <th scope="col">Description</th>
                             <th class="table-primary" scope="col">Product Id</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Dimensions</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
-                            <th class="table-info" scope="col">In Small Boxes</th>
-                            <th class="table-warning" scope="col">In Medium Boxes</th>
-                            <th class="table-danger" scope="col">In Large Boxes</th>
+                            <th scope="col">In Small Boxes</th>
+                            <th scope="col">In Medium Boxes</th>
+                            <th scope="col">In Large Boxes</th>
+                            <th scope="col">Date Created</th>
+                            <th scope="col">Staff</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -80,13 +80,13 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="historyTable">
                     <thead>
                         <tr>
-                            <th scope="col">Date Created</th>
-                            <th scope="col">Time Created</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Description</th>
                             <th scope="col">Product Id</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Dimensions</th>
                             <th scope="col">Lot</th>
                             <th scope="col">Bin</th>
+                            <th scope="col">Date Created</th>
+                            <th scope="col">Time Created</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>
@@ -130,13 +130,13 @@ $(function(){
                 <table class="table table-striped table-responsive table-hover" id="statusTable">
                     <thead>
                         <tr>
-                        <th scope="col">Products</th>
+                        <th class="table-primary" scope="col">Products</th>
                         <th scope="col">Description</th>
-                        <th class="table-success" scope="col">In Stock</th>
-                        <th class="table-info" scope="col">In Small Boxes</th>
-                        <th class="table-warning" scope="col">In Medium Boxes</th>
-                        <th class="table-danger" scope="col">In Large Boxes</th>
-                        <th class="table-primary" scope="col">Shipped</th>
+                        <th scope="col">In Stock</th>
+                        <th scope="col">In Small Boxes</th>
+                        <th scope="col">In Medium Boxes</th>
+                        <th scope="col">In Large Boxes</th>
+                        <th scope="col">Shipped</th>
                         <th>Stock Level</th>
                         </tr>
                     </thead>

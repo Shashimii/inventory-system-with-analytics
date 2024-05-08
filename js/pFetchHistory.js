@@ -67,13 +67,13 @@ $(function(){
                 var accordionId = "collapse" + index;
                 historyAccordion += `
                     <tr>
-                        <td>${item.item.action_date}</td>
-                        <td>${item.item.action_time}</td>
+                        <td>${item.item.item_id}</td>
                         <td>${item.item.item_name}</td>
                         <td>${item.item.item_desc}</td>
-                        <td>${item.item.item_id}</td>
                         <td>${item.item.item_lot}</td>
                         <td>${item.item.item_bin}</td>
+                        <td>${item.item.action_date}</td>
+                        <td>${item.item.action_time}</td>
                         <td class="action-btn">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionId}" aria-expanded="false" aria-controls="${accordionId}">View Transactions</button>
                             <tr>
@@ -85,11 +85,13 @@ $(function(){
                                                     <th class="table-primary">Date</th>
                                                     <th class="table-primary">Time</th>
                                                     <th class="table-primary">Action By</th>
-                                                    <th class="table-info">In Small Boxes</th>
-                                                    <th class="table-warning">In Medium Boxes</th>
-                                                    <th class="table-danger">In Large Boxes</th>
-                                                    <th class="table-primary">Shipped Quantity</th>
-                                                    <th class="table-primary">Company Code</th>
+                                                    <th>In Small Boxes</th>
+                                                    <th>In Medium Boxes</th>
+                                                    <th>In Large Boxes</th>
+                                                    <th>Shipped Quantity</th>
+                                                    <th>Company Code</th>
+                                                    <th>IN</th>
+                                                    <th>OUT</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">`;
@@ -99,11 +101,13 @@ $(function(){
                                                 <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td ${data.pack_small != null ? ' class="table-info"' : ''} >${data.pack_small ? data.pack_small  + ' pcs' : ''}</td>
-                                                <td ${data.pack_medium != null ? ' class="table-warning"' : ''} >${data.pack_medium ? data.pack_medium  + ' pcs' : ''}</td>
-                                                <td ${data.pack_large != null ? ' class="table-danger"' : ''} >${data.pack_large ? data.pack_large + ' pcs': ''}</td>
-                                                <td ${data.shipped_quantity != null ? ' class="table-primary"' : ''} >${data.shipped_quantity ? data.shipped_quantity : ''}</td>
-                                                <td ${data.client_company != '' ? ' class="table-primary"' : ''} >${data.client_company ? data.client_company : ''}</td>
+                                                <td>${data.pack_small ? data.pack_small  + ' pcs' : ''}</td>
+                                                <td>${data.pack_medium ? data.pack_medium  + ' pcs' : ''}</td>
+                                                <td>${data.pack_large ? data.pack_large + ' pcs': ''}</td>
+                                                <td>${data.shipped_quantity ? data.shipped_quantity : ''}</td>
+                                                <td>${data.client_company ? data.client_company : ''}</td>
+                                                <td>${data.quantity_IN ? data.quantity_IN : ''}</td>
+                                                <td>${data.quantity_OUT ? data.quantity_OUT : ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

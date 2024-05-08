@@ -10,6 +10,7 @@ $(function(){
             url: './php/fg_history_data.php', 
             method: 'GET',
             success: function(response) {
+                console.log(response)
                 tableData = response;
                 historyTableData(); 
             },
@@ -70,18 +71,16 @@ $(function(){
                 var accordionId = "collapse" + index;
                 historyAccordion += `
                     <tr>
-                        <td>${item.item.action_date}</td>
-                        <td>${item.item.action_time}</td>
-                        <td>${item.item.from_rm_name}</td>
-                        <td>${item.item.from_rm_id}</td>
+                        <td>${item.item.item_id}</td>
                         <td>${item.item.item_name}</td>
                         <td>${item.item.item_desc}</td>
                         <td>${item.item.item_lot}</td>
                         <td>${item.item.item_bin}</td>
+                        <td>${item.item.action_date}</td>
                         <td class="action-btn">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionId}" aria-expanded="false" aria-controls="${accordionId}">View Transactions</button>
                             <tr>
-                                <td colspan="9" style="box-shadow: inset 0px 0px 20px -1px rgba(0,0,0,0.3);">
+                                <td colspan="11" style="box-shadow: inset 0px 0px 20px -1px rgba(0,0,0,0.3);">
                                     <div class="collapse" id="${accordionId}">
                                         <table class="table table-bordered table-responsive table-hover">
                                             <thead>
@@ -89,10 +88,12 @@ $(function(){
                                                     <th class="table-primary">Date</th>
                                                     <th class="table-primary">Time</th>
                                                     <th class="table-primary">Action By</th>
-                                                    <th class="table-success">Quantity (PCS)</th>
-                                                    <th class="table-info">Packed Small</th>
-                                                    <th class="table-warning">Packed Medium</th>
-                                                    <th class="table-danger">Packed Large</th>
+                                                    <th>Quantity</th>
+                                                    <th>Packed Small</th>
+                                                    <th>Packed Medium</th>
+                                                    <th>Packed Large</th>
+                                                    <th>IN</th>
+                                                    <th>OUT</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">`;
@@ -102,10 +103,12 @@ $(function(){
                                                 <td class="table-primary">${data.action_date ? data.action_date : ''}</td>
                                                 <td class="table-primary">${data.action_time ? data.action_time : ''}</td>
                                                 <td class="table-primary">${data.action_by ? data.action_by : ''}</td>
-                                                <td ${data.quantity_pcs != null ? ' class="table-success"' : ''} >${data.quantity_pcs ? data.quantity_pcs  + ' pcs' : ''}</td>
-                                                <td ${data.pack_small != null ? ' class="table-info"' : ''} >${data.pack_small ? data.pack_small  + ' pcs' : ''}</td>
-                                                <td ${data.pack_medium != null ? ' class="table-warning"' : ''} >${data.pack_medium ? data.pack_medium  + ' pcs' : ''}</td>
-                                                <td ${data.pack_large != null ? ' class="table-danger"' : ''} >${data.pack_large ? data.pack_large + ' pcs': ''}</td>
+                                                <td>${data.quantity_pcs ? data.quantity_pcs  + ' pcs' : ''}</td>
+                                                <td>${data.pack_small ? data.pack_small  + ' pcs' : ''}</td>
+                                                <td>${data.pack_medium ? data.pack_medium  + ' pcs' : ''}</td>
+                                                <td>${data.pack_large ? data.pack_large + ' pcs': ''}</td>
+                                                <td>${data.quantity_IN ? data.quantity_IN + ' pcs': ''}</td>
+                                                <td>${data.quantity_OUT ? data.quantity_OUT + ' pcs': ''}</td>
                                             </tr>`;
                                             })
                                             historyAccordion +=`

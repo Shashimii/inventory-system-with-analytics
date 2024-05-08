@@ -58,16 +58,16 @@ $(function(){
             pageData.forEach(function(item) { 
                 $('#receiveTable tbody').append( 
                     '<tr class="">' +
-                        '<td>' + item.action_date + '</td>' +
-                        '<td>' + item.action_by + '</td>' +
-                        '<td class="table-primary">' + item.item_name + '</td>' +
-                        '<td>' + item.item_desc + '</td>' +
                         '<td class="table-primary">' + item.item_id + '</td>' +
+                        '<td>' + item.item_name + '</td>' +
+                        '<td>' + item.item_desc + '</td>' +
                         '<td>' + item.item_lot + '</td>' +
                         '<td>' + item.item_bin + '</td>' +
-                        '<td '+ (item.pack_small ? 'class="table-info"' : '') +'>' + (item.pack_small ? item.pack_small + ' pcs': '') + '</td>' +
-                        '<td '+ (item.pack_medium ? 'class="table-warning"' : '') + '>' + (item.pack_medium ? item.pack_medium + ' pcs': '') + '</td>' +
-                        '<td '+ (item.pack_large ? 'class="table-danger"' : '') +'>' + (item.pack_large ? item.pack_large + ' pcs': '') + '</td>' +
+                        '<td>' + (item.pack_small ? item.pack_small + ' pcs': '') + '</td>' +
+                        '<td>' + (item.pack_medium ? item.pack_medium + ' pcs': '') + '</td>' +
+                        '<td>' + (item.pack_large ? item.pack_large + ' pcs': '') + '</td>' +
+                        '<td>' + item.action_date + '</td>' +
+                        '<td>' + item.action_by + '</td>' +
                         '<td>' +
                         '<button id="pShip" class="select btn btn-primary btn-sm col mx-1" data-bs-toggle="modal" data-bs-target="#pShipModal" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + (item.pack_small ? item.pack_small : '') + (item.pack_medium ? item.pack_medium : '') + (item.pack_large ? item.pack_large : '') + '" data-box="' + (item.pack_small ? 'Small' : '') + (item.pack_medium ? 'Medium' : '') + (item.pack_large ? 'Large' : '') + '"><i class="fa-solid fa-truck-fast"></i> Ship</button>' +
                         '</td>' +
