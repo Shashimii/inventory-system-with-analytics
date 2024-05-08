@@ -323,27 +323,15 @@ $(function() {
                 data: JSON.stringify(dataToPost),
                 success: function(response) {
                     console.log(response)
+                    pid = response;
 
-                    if (response === '0') {
-                        Swal.fire({
-                            title: 'Finished Goods Packed',
-                            html: '<div style="text-align: center;"><p>Packaging Info</p><table style="margin: 0 auto; text-align: left;"><tr><td><b>Name:</b></td><td>' + pname + '</td></tr><tr><td><b>Description:</b></td><td>' + pdesc + '</td></tr><tr><td><b>Id:</b></td><td>' + pid + '</td></tr><tr><td><b>Storage Bin:</b></td><td>' + pbin + '</td></tr><tr><td><b>Quantity (pcs):</b></td><td>' + pquantity + ' pcs</td></tr></table></div>',
-                            icon: 'success',
-                        }).then(function() {
-                            location.reload();
-                        })
-                    } else if (response === '2') {
-                        Swal.fire({
-                            title: 'Oops',
-                            html: '<div style="text-align: center; font-family: Arial, sans-serif;">' +
-                            '<p style="font-size: 18px; color: #333; margin-bottom: 10px;">Product Id: <span style="color: red;">' + pid + '</span> is Already Recorded in Inventory</p>' +
-                            '<p style="font-size: 16px; color: #666;">Are you sure this ID is correct?</p>' +
-                            '</div>',
-                            icon: 'error',
-                        })
-                    } else {
-                        console.log('Hello? Something Went Wrong on Submitting this data')
-                    }
+                    Swal.fire({
+                        title: 'Finished Goods Packed',
+                        html: '<div style="text-align: center;"><p>Packaging Info</p><table style="margin: 0 auto; text-align: left;"><tr><td><b>Name:</b></td><td>' + pname + '</td></tr><tr><td><b>Description:</b></td><td>' + pdesc + '</td></tr><tr><td><b>Id:</b></td><td>' + pid + '</td></tr><tr><td><b>Storage Bin:</b></td><td>' + pbin + '</td></tr><tr><td><b>Quantity (pcs):</b></td><td>' + pquantity + ' pcs</td></tr></table></div>',
+                        icon: 'success',
+                    }).then(function() {
+                        location.reload();
+                    })
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText)

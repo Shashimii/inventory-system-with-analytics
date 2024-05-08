@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $stmtInsert->bind_param("ssssssssissi", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive, $selectedQuantity);
                     if ($stmtInsert->execute()) {
-                        echo "0";
+                        echo $packId;
                     }
                 } else if ($selectedBox === 'Medium') {
                     $stmtInsert = $con->prepare("INSERT INTO products_data 
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $stmtInsert->bind_param("ssssssssissi", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive, $selectedQuantity);
                     if ($stmtInsert->execute()) {
-                        echo "0";
+                        echo $packId;
                     }
                 } else if ($selectedBox === 'Large') {
                     $stmtInsert = $con->prepare("INSERT INTO products_data 
@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $stmtInsert->bind_param("ssssssssissi", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive, $selectedQuantity);
                     if ($stmtInsert->execute()) {
-                        echo "0";
+                        echo $packId;
                     }
                 }
             } else {
