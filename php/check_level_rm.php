@@ -1,9 +1,9 @@
 <?php
 include 'script_con.php';
 
-$stmt = $con->prepare("SELECT item_name,
+$stmt = $con->prepare("SELECT item_desc,
 SUM(quantity_receive) AS total_quantity
-FROM `rm_data` WHERE item_data_active = 'Y' GROUP BY item_name ORDER BY id DESC;");
+FROM `rm_data` WHERE item_data_active = 'Y' GROUP BY item_desc ORDER BY id DESC;");
 $stmt->execute();
 $result = $stmt->get_result();
 

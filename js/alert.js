@@ -33,6 +33,7 @@ function alertCheck() {
         pushNotif(rmList, fgList, pList);
         countNotif(rmList, fgList, pList);
         generateIssue(rmList, fgList, pList);
+
     })
     .catch(function(error) {
         console.error(error);
@@ -55,7 +56,7 @@ function pushNotif(rmList, fgList, pList) {
             var rmNotif = `
                 <li style="background-color: #F3D0D7;">
                     <a class="dropdown-item" href="rm_status">
-                        <h6>${notification.item_name} Stock Level is Low</h6>
+                        <h6>Raw Material ${notification.item_desc} Stock Level is Low</h6>
                         <p>In Stock: ${notification.total_quantity}kg</p>
                         <p class="notif" style="color: #666"><i>Raw Material<i></p>
                     </a>
@@ -68,7 +69,7 @@ function pushNotif(rmList, fgList, pList) {
             var rmNotif = `
                 <li style="background-color: #FFFDCB;">
                     <a class="dropdown-item" href="rm_status">
-                        <h6>${notification.item_name} Stock Level is Overstock</h6>
+                        <h6>Raw Material ${notification.item_desc} Stock Level is Overstock</h6>
                         <p>In Stock: ${notification.total_quantity}kg</p>
                         <p class="notif" style="color: #666"><i>Raw Material<i></p>
                     </a>

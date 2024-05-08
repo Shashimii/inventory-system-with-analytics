@@ -52,7 +52,7 @@ $(function() {
                 var renderRmCount =`
                     <tr>
                         <td>${data.action_time}</td>
-                        <td>${data.item_name}</td>
+                        <td>${data.item_desc}</td>
                         <td>${data.item_id}</td>
                         <td>${data.quantity_used}kg</td>
                     </tr>
@@ -78,7 +78,7 @@ $(function() {
                     <tr>
                         <td>${data.action_time}</td>
                         <td>${data.item_name}</td>
-                        <td>${data.from_rm_id}</td>
+                        <td>${data.item_id}</td>
                         <td>${data.quantity_pcs}pcs</td>
                     </tr>
                 `;

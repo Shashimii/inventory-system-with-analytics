@@ -112,8 +112,8 @@ include 'connections.php';
                                             <thead>
                                                 <tr>
                                                     <th>Time Used</th>
-                                                    <th>Raw Material</th>
-                                                    <th>Id</th>
+                                                    <th>Dimensions</th>
+                                                    <th>Serial Id</th>
                                                     <th>Quantity Used</th>
                                                 </tr>
                                             </thead>
@@ -136,7 +136,7 @@ include 'connections.php';
                                                 <tr>
                                                     <th>Time Used</th>
                                                     <th>Finished Goods</th>
-                                                    <th>RawMat used Id</th>
+                                                    <th>Serial Id</th>
                                                     <th>Quantity Produced</th>
                                                 </tr>
                                             </thead>
