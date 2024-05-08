@@ -87,6 +87,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 $successQuery = true;
                             }
                         };
+                    } else if ($selectedBox === 'Medium') {
+                        $stmt2 = $con->prepare("INSERT INTO fg_data 
+                        (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, pack_medium, item_data_status, item_data_active, quantity_OUT)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        $stmt2->bind_param('ssssssssiissi', $sys_date, $sys_time, $sys_user, $name, $fgid, $desc, $lot, $bin, $newQuantity, $quantity, $dataStatusInUse, $dataActive, $quantity);
+                        if ($stmt2->execute()) {
+                            $stmt3 = $con->prepare("UPDATE fg_data 
+                            SET quantity_pcs = ? 
+                            WHERE item_id = ? AND item_data_status = ?");
+                            $stmt3->bind_param("iss", $newQuantity, $fgid, $dataStatusFloat);
+
+                            if ($stmt3->execute()) {
+                                $successQuery = true;
+                            }
+                        };
+                    } else if ($selectedBox === 'Large') {
+                        $stmt2 = $con->prepare("INSERT INTO fg_data 
+                        (action_date, action_time, action_by, item_name, item_id, item_desc, item_lot, item_bin, quantity_pcs, pack_large, item_data_status, item_data_active, quantity_OUT)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        $stmt2->bind_param('ssssssssiissi', $sys_date, $sys_time, $sys_user, $name, $fgid, $desc, $lot, $bin, $newQuantity, $quantity, $dataStatusInUse, $dataActive, $quantity);
+                        if ($stmt2->execute()) {
+                            $stmt3 = $con->prepare("UPDATE fg_data 
+                            SET quantity_pcs = ? 
+                            WHERE item_id = ? AND item_data_status = ?");
+                            $stmt3->bind_param("iss", $newQuantity, $fgid, $dataStatusFloat);
+
+                            if ($stmt3->execute()) {
+                                $successQuery = true;
+                            }
+                        };
                     } else {
                         $successQuery = false;
                     }
@@ -111,7 +141,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if ($stmtInsert->execute()) {
                         echo "0";
                     }
-                } 
+                } else if ($selectedBox === 'Medium') {
+                    $stmtInsert = $con->prepare("INSERT INTO products_data 
+                    (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_medium, item_data_status, item_data_active, quantity_IN) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $stmtInsert->bind_param("ssssssssissi", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive, $selectedQuantity);
+                    if ($stmtInsert->execute()) {
+                        echo "0";
+                    }
+                } else if ($selectedBox === 'Large') {
+                    $stmtInsert = $con->prepare("INSERT INTO products_data 
+                    (action_date, action_time, action_by, item_name, item_desc, item_id, item_lot, item_bin, pack_large, item_data_status, item_data_active, quantity_IN) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $stmtInsert->bind_param("ssssssssissi", $sys_date, $sys_time, $sys_user, $packName, $packDesc, $packId, $pack_batch, $packStorage, $selectedQuantity, $dataStatusReceived, $dataActive, $selectedQuantity);
+                    if ($stmtInsert->execute()) {
+                        echo "0";
+                    }
+                }
             } else {
                 echo '1';
             }
