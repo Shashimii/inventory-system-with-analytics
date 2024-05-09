@@ -23,6 +23,15 @@ $(function() {
             type: 'GET',
             success: function(response) {
                 var accType = response;
+
+                if (accType === 'admin') {
+                    $('#rmManageHidden').addClass('d-none');
+                    $('#fgManageHidden').addClass('d-none');
+                    $('#pManageHidden').addClass('d-none');
+                    $('#rmManageHidden').addClass('d-none');
+                    $('#itemSetHidden').addClass('d-none');
+                    $('#accSetHidden').addClass('d-none');
+                }
                 
                 if (accType === 'manager') {
                     $('#accSetHide').addClass('d-none');
