@@ -735,3 +735,14 @@ ul, ol {
 }
 
 /*== End ==*/
+
+/*== Hiding Styles ==*/
+
+.hidden-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*== End ==*/

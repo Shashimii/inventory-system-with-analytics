@@ -100,7 +100,10 @@ while ($optionProduct = $result->fetch_assoc()) {
         </div>
         <div class="content-body">
             <div class="main-content">
-                <div class="fg-manage-row-1">
+                <div id="fgManageHidden" class="hidden-container">
+
+                </div>
+                <div id="fgManageWrapper" class="fg-manage-row-1">
                     <div class="fg-manage-table" id="renderfgTable">
 
                     </div>

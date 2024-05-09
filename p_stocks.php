@@ -100,7 +100,10 @@ while ($optionCode = $result->fetch_assoc()) {
         </div>
         <div class="content-body">
             <div class="main-content">
-                <div class="p-manage-row-1">
+                <div id="pManageHidden" class="hidden-container">
+
+                </div>
+                <div id="pManageWrapper" class="p-manage-row-1">
                     <div class="p-manage-table" id="renderpTable">
 
                     </div>

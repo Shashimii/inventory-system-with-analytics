@@ -133,7 +133,10 @@ while ($optionFg = $result->fetch_assoc()) {
         </div>
         <div class="content-body">
             <div class="main-content">
-                <div class="rm-manage-main-wrapper">
+                <div id="rmManageHidden" class="hidden-container">
+
+                </div>
+                <div id="rmManageWrapper" class="rm-manage-main-wrapper">
                     <div class="rm-manage-row-1">
                         <div class="rm-manage-sm-card">
                             <div class="rm-manage-sm-card-item">

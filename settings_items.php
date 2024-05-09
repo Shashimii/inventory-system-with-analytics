@@ -94,14 +94,17 @@ include 'connections.php';
                 <div class="s-container">
                     <div class="s-header">
                         <h3><i class="fa-solid fa-list"></i> Inventory Items Settings</h3>
-                        <div class="s-buttons">
+                        <div id="itemSetHide"class="s-buttons">
                             <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rmModal"><i class="fa-solid fa-database"></i> Register Raw Material</button>
                             <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#fgModal"><i class="fa-solid fa-toilet-paper"></i> Register Finished Goods</button>
                             <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#pModal"><i class="fa-solid fa-box"></i> Register Products</button>
                             <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#cModal"><i class="fa-solid fa-users"></i> Register Client Code</button>
                         </div>
                     </div>
-                    <div class="s-tables">
+                    <div id="itemSetHidden" class="hidden-container">
+
+                    </div>
+                    <div id="itemTableSetHide" class="s-tables">
                         <div class="s-c-table" id="rm">
 
                         </div>

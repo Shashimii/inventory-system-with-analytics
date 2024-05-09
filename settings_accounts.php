@@ -97,7 +97,10 @@
                         <h3>Account Settings</h3>
                     </div>
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
-                    <div class="s-body">
+                    <div id="accSetHidden" class="hidden-container">
+                        
+                    </div>
+                    <div id="accSetHide" class="s-body">
                         <div class="accounts">
                             <div id="accountTable" class="s-container">
 
