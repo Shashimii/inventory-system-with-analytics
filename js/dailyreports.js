@@ -93,7 +93,7 @@ $(function() {
             rmUsed.forEach(function(data) {
                 var renderData =  `
                 <tr class="table-row">
-                    <td><strong><i>Name:</i></strong> ${data.item_name}</td>
+                    <td><strong><i>Dimensions:</i></strong> ${data.item_desc}</td>
                     <td><strong><i>ID:</i></strong> ${data.item_id}</td>
                     <td><strong><i>Qty:</i></strong> ${data.quantity_used.toLocaleString('en')}kg</td>
                 </tr>

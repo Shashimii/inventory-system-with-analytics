@@ -37,19 +37,19 @@ $(function() {
     }
 
     function displayTotal(rmTotal, fgTotal, pTotal, sTotal) {
-        var rmCount = `${rmTotal.toLocaleString('en')}kg`;
+        var rmCount = `${rmTotal ? rmTotal.toLocaleString('en') : '0'}kg`;
         $('#rmStocks').append(rmCount);
 
         
-        var fgCount = `${fgTotal.toLocaleString('en')}pcs`;
+        var fgCount = `${fgTotal ? fgTotal.toLocaleString('en') : '0'}pcs`;
         $('#fgStocks').append(fgCount);
 
         
-        var pCount = `${pTotal.toLocaleString('en')}pcs`;
+        var pCount = `${pTotal ? pTotal.toLocaleString('en') : ''}pcs`;
         $('#pStocks').append(pCount);
 
         
-        var sCount = `${sTotal.toLocaleString('en')}pcs`;
+        var sCount = `${sTotal ? sTotal.toLocaleString('en') : ''}pcs`;
         $('#sStocks').append(sCount);
     }
 

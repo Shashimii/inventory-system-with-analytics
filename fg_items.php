@@ -146,7 +146,7 @@ while ($optionProduct = $result->fetch_assoc()) {
                     <div class="ipt-container">
                         <label for="packName">Product Name</label>
                         <input id="packName" type="text" title="Product Name" class="form-control form-control-sm" value="" readonly required>
-                        <label for="packDesc">Product Description</label>
+                        <label for="packDesc">Product Dimensions</label>
                         <input id="packDesc" type="text" title="Product Dimensions" class="form-control form-control-sm" value="" readonly required>
                         <label for="packStorage">Storage Bin</label>
                         <input name="pack_storage" id="packStorage" placeholder="Enter Storage Bin" pattern="[a-zA-Z0-9 ]*" title="Avoid unecessary special characters" maxlength="20" class="form-control form-control-sm" type="text" required>

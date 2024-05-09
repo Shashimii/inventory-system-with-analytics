@@ -122,8 +122,8 @@ while ($optionCode = $result->fetch_assoc()) {
                     <div class="ipt-container">
                         <label for="shipName">Product Name</label>
                         <input name="ship_name" id="shipName" placeholder="Product Name" title="Product Name" class="form-control form-control-sm" type="text" value="" readonly required>
-                        <label for="shipName">Product Description</label>
-                        <input name="ship_desc" id="shipDesc" placeholder="Product Description" title="Product Description" class="form-control form-control-sm" type="text" value="" readonly required>
+                        <label for="shipName">Product Dimensions</label>
+                        <input name="ship_desc" id="shipDesc" placeholder="Product Dimensions" title="Product Dimensions" class="form-control form-control-sm" type="text" value="" readonly required>
                         <label for="shipId">Product Id</label>
                         <input name="ship_id" id="shipId" placeholder="Product Id" title="Product Id" class="form-control form-control-sm" type="text" value="" readonly required>
                         <label for="shipLot">Product Lot</label>
