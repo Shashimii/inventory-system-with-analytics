@@ -139,7 +139,7 @@ while ($optionProduct = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="fgPackModal">Pack Finished Goods</h1>
-                <i class="fa-solid fa-box"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="packForm">

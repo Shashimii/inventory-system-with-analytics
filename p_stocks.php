@@ -115,7 +115,7 @@ while ($optionCode = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="pShipModal">Ship Products</h1>
-                <i class="fa-solid fa-truck-fast"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="shipForm">
@@ -146,7 +146,7 @@ while ($optionCode = $result->fetch_assoc()) {
                     </div>
             </div>
             <div class="modal-footer">
-                    <button type="submit" id="shipProduct" class="btn btn-success"><i class="fa-solid fa-truck-fast"></i> Ship Product</button>
+                    <button type="submit" id="shipProduct" class="btn btn-success">Ship Product</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>

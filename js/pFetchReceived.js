@@ -69,7 +69,7 @@ $(function(){
                         '<td class="text-center">' + item.action_date + '</td>' +
                         '<td class="text-center">' + item.action_by + '</td>' +
                         '<td>' +
-                        '<button id="pShip" class="select btn btn-primary btn-sm col mx-1" data-bs-toggle="modal" data-bs-target="#pShipModal" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + (item.pack_small ? item.pack_small : '') + (item.pack_medium ? item.pack_medium : '') + (item.pack_large ? item.pack_large : '') + '" data-box="' + (item.pack_small ? 'Small' : '') + (item.pack_medium ? 'Medium' : '') + (item.pack_large ? 'Large' : '') + '"><i class="fa-solid fa-truck-fast"></i> Ship</button>' +
+                        '<button id="pShip" class="select btn btn-primary btn-sm col mx-1" data-bs-toggle="modal" data-bs-target="#pShipModal" data-name="' + item.item_name + '" data-desc="' + item.item_desc + '" data-id="' + item.item_id + '" data-lot="' + item.item_lot + '" data-bin="' + item.item_bin + '" data-quantity="' + (item.pack_small ? item.pack_small : '') + (item.pack_medium ? item.pack_medium : '') + (item.pack_large ? item.pack_large : '') + '" data-box="' + (item.pack_small ? 'Small' : '') + (item.pack_medium ? 'Medium' : '') + (item.pack_large ? 'Large' : '') + '">Ship</button>' +
                         '</td>' +
                     '</tr>'
                 );

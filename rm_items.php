@@ -164,7 +164,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="receiveModalLabel">Receive Raw Materials</h1>
-                <i class="fa-solid fa-hands-holding-circle"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="rm_receive_form">
@@ -189,9 +189,9 @@ while ($optionFg = $result->fetch_assoc()) {
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Receive Raw Material</button>
+                <button type="submit" class="btn btn-success">Receive Raw Material</button>
                 </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -203,7 +203,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="rmInProductionModal">Use In Production</h1>
-                <i class="fa-solid fa-database"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
@@ -242,9 +242,9 @@ while ($optionFg = $result->fetch_assoc()) {
                     <input type="hidden" name="item_lot" id="itemLot" value="">
                     <input type="hidden" name="item_bin" id="itemBin" value="">
                     <input type="hidden" name="quantity_receive" id="quantityReceive" value="">
-                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Use In Production</button>
+                    <button type="submit" class="btn btn-success">Use In Production</button>
                 </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -256,7 +256,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="rmUseModal">Use Raw Material</h1>
-                <i class="fa-solid fa-database"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="rm-use-form-container">
@@ -335,9 +335,9 @@ while ($optionFg = $result->fetch_assoc()) {
                             <input type="hidden" name="item_lot" id="uitemLot" value="">
                             <input type="hidden" name="item_bin" id="uitemBin" value="">
                             <input type="hidden" name="item_quantity" id="uitemQuantity" value="">
-                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Use Quantity</button>
+                            <button type="submit" class="btn btn-success">Use Quantity</button>
                         </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -349,7 +349,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="rmDepletedModal">Mark Raw Material as Depleted</h1>
-                <i class="fa-solid fa-database"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="rm-depleted-form-container">
@@ -388,9 +388,9 @@ while ($optionFg = $result->fetch_assoc()) {
                     <input type="hidden" name="item_id" id="ditemId" value="">
                     <input type="hidden" name="item_lot" id="ditemLot" value="">
                     <input type="hidden" name="item_bin" id="ditemBin" value="">
-                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Mark as Depleted</button>
+                    <button type="submit" class="btn btn-success">Mark as Depleted</button>
                 </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -402,7 +402,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="rmRemoveModal">Used Raw Material Info</h1>
-                <i class="fa-solid fa-database"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
@@ -445,9 +445,9 @@ while ($optionFg = $result->fetch_assoc()) {
                 <form id="rmRemoveForm">
                     <input type="hidden" name="item_name" id="itemName" value="">
                     <input type="hidden" name="item_id" id="itemId" value="">
-                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Remove From the List</button>
+                    <button type="submit" class="btn btn-warning">Remove From the List</button>
                 </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -459,7 +459,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="undoReceivedModal">Undo Last Received Raw Material</h1>
-                <i class="fa-solid fa-rotate-left"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
@@ -506,7 +506,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="undoInProductionModal">Undo Last In Production Raw Material</h1>
-                <i class="fa-solid fa-rotate-left"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
@@ -553,7 +553,7 @@ while ($optionFg = $result->fetch_assoc()) {
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="undoDepletedModal">Undo Last Marked as Depleted Raw Material</h1>
-                <i class="fa-solid fa-database"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="rm-info-container">
