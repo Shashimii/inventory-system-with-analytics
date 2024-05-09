@@ -105,7 +105,7 @@ while ($optionFg = $result->fetch_assoc()) {
                                 </li>
                             </ul>
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <a class="nav-link"><i class="fa-solid fa-user-plus"></i>
+                                <a class="nav-link"><?php echo $user_icon ?>
                                     <?php echo $sys_user ?>
                                 </a>
                                 <a class="nav-link">

@@ -68,7 +68,7 @@ include 'connections.php';
                                 </li>
                             </ul>
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <a class="nav-link"><i class="fa-solid fa-user-plus"></i><?php echo $sys_user ?></a>
+                                <a class="nav-link"><?php echo $user_icon ?><?php echo $sys_user ?></a>
                                 <a class="nav-link"><?php echo $sys_date ?></a>
                                 <a class="nav-link" id="sysTime"></a>
                                 <div class="notification-wrapper">

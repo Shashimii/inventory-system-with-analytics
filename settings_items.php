@@ -67,7 +67,7 @@ include 'connections.php';
                                 </li>
                             </ul>
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <a class="nav-link"><i class="fa-solid fa-user-plus"></i><?php echo $sys_user ?></a>
+                                <a class="nav-link"><?php echo $user_icon ?><?php echo $sys_user ?></a>
                                 <a class="nav-link"><?php echo $sys_date ?></a>
                                 <a class="nav-link" id="sysTime"></a>
                                 <div class="notification-wrapper">
@@ -95,10 +95,10 @@ include 'connections.php';
                     <div class="s-header">
                         <h3><i class="fa-solid fa-list"></i> Inventory Items Settings</h3>
                         <div id="itemSetHide"class="s-buttons">
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rmModal"><i class="fa-solid fa-database"></i> Register Raw Material</button>
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#fgModal"><i class="fa-solid fa-toilet-paper"></i> Register Finished Goods</button>
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#pModal"><i class="fa-solid fa-box"></i> Register Products</button>
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#cModal"><i class="fa-solid fa-users"></i> Register Client Code</button>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#rmModal">Register Raw Material</button>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#fgModal">Register Finished Goods</button>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#pModal">Register Products</button>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#cModal">Register Client Code</button>
                         </div>
                     </div>
                     <div id="itemSetHidden" class="hidden-container">
