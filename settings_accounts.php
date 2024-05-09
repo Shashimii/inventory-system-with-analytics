@@ -132,12 +132,14 @@
                     <div class="ipt-container">
                         <label for="user-input">Username</label>
                         <input class="form-control form-control-sm" type="text" name="user" id="user-input" required placeholder="Username" pattern="[a-zA-Z0-9]+" title="Enter Username">
-                        <label for="password-input">Password/Pin</label>
-                        <input class="form-control form-control-sm" type="password" name="password" id="password-input" pattern="[0-9]{8}" title="Enter correct PIN" required placeholder="Enter Password/Pin">
+                        <label for="password-input">Password</label>
+                        <input class="form-control form-control-sm" type="password" name="password" id="password-input" pattern="[0-9]+" title="Enter correct Password Format" required placeholder="Enter Password">
                         <label for="accountType">Account Type</label>
                         <select name="account_type" id="accountType" class="form-select form-select-sm dropdown" required>
                             <option selected hidden value="">Select Account Type</option>
-                            <option value="Admin">Admin</option>
+                            <option value="Admin">Inventory Admin</option>
+                            <option value="Manager">Inventory Manager</option>
+                            <option value="Checker">Inventory Checker</option>
                         </select>
                     </div>
             </div>

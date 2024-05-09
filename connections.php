@@ -1,12 +1,12 @@
 <?php 
 session_start();
+
 if(!isset($_SESSION['admin_name'])){
     header('location: login');
 }
 
 // user config
 $sys_user = $_SESSION['admin_name'];
-
 
 // database config
 $con = mysqli_connect ("localhost", "root", "", "imsdatabase");

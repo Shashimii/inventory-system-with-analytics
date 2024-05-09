@@ -9,26 +9,10 @@ $loggedManager = "manager";
 $loggedChecker = "checker";
 $loggedId = 1;
 
-//redirect Query if there is already a active session
-
-// Admin
 if (isset($_SESSION['admin_name'])) {
-    // Redirect to the main page or dashboard if a session is already active
     header("location: dashboard");
-    exit; // Ensure the script stops executing after the header redirect
+    exit; 
 } 
-// User
-else if (isset($_SESSION['user_name'])) {
-    // Redirect to the main page or dashboard if a session is already active
-    header("location: location: dashboard");
-    exit; // Ensure the script stops executing after the header redirect
-}
-// Inventory User
-else if (isset($_SESSION['inventory'])) {
-    // Redirect to the main page or dashboard for inventory users
-    header("location: location: dashboard");
-    exit; // Ensure the script stops executing after the header redirect
-}
 
 
 //login query
@@ -53,7 +37,7 @@ if(isset($_POST['submit'])){
 
         // Manager login
         } else if ($row['user_type'] == 'Manager'){
-            $_SESSION['user_name'] = $row['user_name'];
+            $_SESSION['admin_name'] = $row['user_name'];
             header('Location: dashboard');
 
             $stmt = $con->prepare("UPDATE u_logged SET login_type = ? WHERE id = ?");
@@ -62,7 +46,7 @@ if(isset($_POST['submit'])){
 
         // Checker login
         } else if ($row['user_type'] == 'Checker'){
-            $_SESSION['inventory_name'] = $row['user_name'];
+            $_SESSION['admin_name'] = $row['user_name'];
             header('Location: dashboard');
             
             $stmt = $con->prepare("UPDATE u_logged SET login_type = ? WHERE id = ?");
@@ -133,7 +117,7 @@ if(isset($err)){
                     </div>
                     <div class="mb-3">
                         <div class="password-field">
-                            <input class="form-control" type="password" name="password" id="password-input" pattern="[0-9]{8}" title="Enter correct Password" required placeholder="Password">
+                            <input class="form-control" type="password" name="password" id="password-input" pattern="[0-9]+" title="Enter correct Password" required placeholder="Password">
                         </div>
                     </div>
                     <div class="mb-1">
