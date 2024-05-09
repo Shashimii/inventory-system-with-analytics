@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2024 at 11:21 PM
+-- Generation Time: May 09, 2024 at 03:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,40 +52,35 @@ CREATE TABLE `fg_data` (
   `action_time` varchar(255) NOT NULL,
   `action_by` varchar(255) NOT NULL,
   `item_name` varchar(255) NOT NULL,
+  `item_id` varchar(255) NOT NULL,
   `item_desc` varchar(255) NOT NULL,
   `item_lot` varchar(255) NOT NULL,
   `item_bin` varchar(255) NOT NULL,
-  `from_rm_name` varchar(255) NOT NULL,
-  `from_rm_id` varchar(255) NOT NULL,
   `quantity_pcs` int(11) DEFAULT NULL,
   `pack_small` int(11) DEFAULT NULL,
   `pack_medium` int(11) DEFAULT NULL,
   `pack_large` int(11) DEFAULT NULL,
   `item_data_status` varchar(255) NOT NULL,
-  `item_data_active` varchar(255) NOT NULL
+  `item_data_active` varchar(255) NOT NULL,
+  `quantity_IN` int(11) DEFAULT NULL,
+  `quantity_OUT` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `fg_data`
 --
 
-INSERT INTO `fg_data` (`id`, `action_date`, `action_time`, `action_by`, `item_name`, `item_desc`, `item_lot`, `item_bin`, `from_rm_name`, `from_rm_id`, `quantity_pcs`, `pack_small`, `pack_medium`, `pack_large`, `item_data_status`, `item_data_active`) VALUES
-(1, '04/27/2024', '01:09 PM', 'Developer', 'Interfolded', '150mm', 'Batch1', 'F001', 'RawMat0', 'ID001', 1000, NULL, NULL, NULL, 'Received', 'Y'),
-(2, '04/27/2024', '01:09 PM', 'Developer', 'Interfolded', '150mm', 'Batch1', 'F001', 'RawMat0', 'ID001', 984, NULL, NULL, NULL, 'Float', 'Y'),
-(3, '04/27/2024', '01:10 PM', 'Developer', 'Interfolded', '150mm', 'Batch2', 'F002', 'RawMat1', 'ID002', 2000, NULL, NULL, NULL, 'Received', 'Y'),
-(4, '04/27/2024', '01:10 PM', 'Developer', 'Interfolded', '150mm', 'Batch2', 'F002', 'RawMat1', 'ID002', 1936, NULL, NULL, NULL, 'Float', 'Y'),
-(5, '06/27/2024', '01:10 PM', 'Developer', 'Jumbo Roll', '120mm', 'Batch1', 'F003', 'RawMat3', 'ID003', 500, NULL, NULL, NULL, 'Received', 'Y'),
-(6, '04/27/2024', '01:10 PM', 'Developer', 'Jumbo Roll', '120mm', 'Batch1', 'F003', 'RawMat3', 'ID003', 468, NULL, NULL, NULL, 'Float', 'Y'),
-(7, '04/27/2024', '01:11 PM', 'Developer', 'Jumbo Roll', '120mm', 'Batch1', 'F003', 'RawMat3', 'ID003', 468, NULL, NULL, 32, 'InUse', 'Y'),
-(8, '04/27/2024', '01:12 PM', 'Developer', 'Interfolded', '150mm', 'Batch2', 'F002', 'RawMat1', 'ID002', 1968, NULL, NULL, 32, 'InUse', 'Y'),
-(9, '04/27/2024', '01:15 PM', 'Developer', 'Interfolded', '150mm', 'Batch1', 'F001', 'RawMat0', 'ID001', 984, 16, NULL, NULL, 'InUse', 'Y'),
-(10, '04/28/2024', '12:02 PM', 'Developer', 'Interfolded', '150mm', 'Batch2', 'F002', 'RawMat1', 'ID002', 1936, NULL, NULL, 32, 'InUse', 'Y'),
-(11, '06/29/2024', '11:29 AM', 'Developer', 'Interfolded', '150mm', 'Batch1', 'F001', 'RawMat1', 'Test1', 1000, NULL, NULL, NULL, 'Received', 'Y'),
-(12, '04/29/2024', '11:29 AM', 'Developer', 'Interfolded', '150mm', 'Batch1', 'F001', 'RawMat1', 'Test1', 1000, NULL, NULL, NULL, 'Float', 'Y'),
-(13, '07/29/2024', '01:08 PM', 'Developer', 'Interfolded', '150mm', 'Batch2', 'F001', 'RawMat0', 'Test', 500, NULL, NULL, NULL, 'Received', 'Y'),
-(14, '04/29/2024', '01:08 PM', 'Developer', 'Interfolded', '150mm', 'Batch2', 'F001', 'RawMat0', 'Test', 500, NULL, NULL, NULL, 'Float', 'Y'),
-(15, '04/29/2024', '09:14 PM', 'Developer', 'Jumbo Roll', '120mm', 'Batch1', 'P001', 'RawMat3', 'ID10100', 3000, NULL, NULL, NULL, 'Received', 'Y'),
-(16, '04/29/2024', '09:14 PM', 'Developer', 'Jumbo Roll', '120mm', 'Batch1', 'P001', 'RawMat3', 'ID10100', 3000, NULL, NULL, NULL, 'Float', 'Y');
+INSERT INTO `fg_data` (`id`, `action_date`, `action_time`, `action_by`, `item_name`, `item_id`, `item_desc`, `item_lot`, `item_bin`, `quantity_pcs`, `pack_small`, `pack_medium`, `pack_large`, `item_data_status`, `item_data_active`, `quantity_IN`, `quantity_OUT`) VALUES
+(1, '05/08/2024', '03:31 PM', 'Developer', 'Interfolded', 'FINT000001', '150mm', 'Batch1', 'W2A1', 1000, NULL, NULL, NULL, 'Received', 'Y', 1000, NULL),
+(2, '05/08/2024', '03:31 PM', 'Developer', 'Interfolded', 'FINT000001', '150mm', 'Batch1', 'W2A1', 980, NULL, NULL, NULL, 'Float', 'Y', NULL, NULL),
+(3, '05/08/2024', '04:03 PM', 'Developer', 'Interfolded', 'FINT000001', '150mm', 'Batch1', 'W2A1', 990, 10, NULL, NULL, 'InUse', 'Y', NULL, 10),
+(4, '05/08/2024', '04:13 PM', 'Developer', 'Interfolded', 'FINT000001', '150mm', 'Batch1', 'W2A1', 980, 10, NULL, NULL, 'InUse', 'Y', NULL, 10),
+(5, '05/09/2024', '08:36 AM', 'Developer', 'Interfolded', 'FINT000002', '150mm', 'Batch1', 'W2A1', 200, NULL, NULL, NULL, 'Received', 'Y', 200, NULL),
+(6, '05/09/2024', '08:36 AM', 'Developer', 'Interfolded', 'FINT000002', '150mm', 'Batch1', 'W2A1', 200, NULL, NULL, NULL, 'Float', 'Y', NULL, NULL),
+(7, '05/09/2024', '08:45 AM', 'Developer', 'Interfolded', 'FINT000003', '150mm', 'Batch2', 'W2A1', 200, NULL, NULL, NULL, 'Received', 'Y', 200, NULL),
+(8, '05/09/2024', '08:45 AM', 'Developer', 'Interfolded', 'FINT000003', '150mm', 'Batch2', 'W2A1', 200, NULL, NULL, NULL, 'Float', 'Y', NULL, NULL),
+(9, '05/09/2024', '09:12 AM', 'Developer', 'Jumbo Roll', 'FJUM000001', '120mm', 'Batch1', 'W2A1', 200, NULL, NULL, NULL, 'Received', 'Y', 200, NULL),
+(10, '05/09/2024', '09:12 AM', 'Developer', 'Jumbo Roll', 'FJUM000001', '120mm', 'Batch1', 'W2A1', 200, NULL, NULL, NULL, 'Float', 'Y', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -130,22 +125,19 @@ CREATE TABLE `products_data` (
   `shipped_quantity` int(11) DEFAULT NULL,
   `client_company` varchar(255) NOT NULL,
   `item_data_status` varchar(255) NOT NULL,
-  `item_data_active` varchar(255) NOT NULL
+  `item_data_active` varchar(255) NOT NULL,
+  `quantity_IN` int(11) DEFAULT NULL,
+  `quantity_OUT` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products_data`
 --
 
-INSERT INTO `products_data` (`id`, `action_date`, `action_time`, `action_by`, `item_name`, `item_desc`, `item_id`, `item_lot`, `item_bin`, `pack_small`, `pack_medium`, `pack_large`, `shipped_quantity`, `client_company`, `item_data_status`, `item_data_active`) VALUES
-(1, '04/27/2024', '01:11 PM', 'Developer', 'Jumbo Roll', '120mm', 'JRT15010121K', 'Batch1', 'P001', NULL, NULL, 32, NULL, '', 'Received', 'N'),
-(2, '04/27/2024', '01:12 PM', 'Developer', 'Interfolded', '150mm', 'IRT15011121K', 'Batch1', 'P002', NULL, NULL, 32, NULL, '', 'Received', 'N'),
-(3, '04/27/2024', '01:15 PM', 'Developer', 'Interfolded', '150mm', 'IRT15110121K', 'Batch2', 'P003', 16, NULL, NULL, NULL, '', 'Received', 'N'),
-(4, '04/27/2024', '01:15 PM', 'Developer', 'Interfolded', '150mm', 'IRT15011121K', 'Batch1', 'P002', NULL, NULL, NULL, 32, 'SODEXO', 'Shipped', 'Y'),
-(5, '04/28/2024', '12:02 PM', 'Developer', 'Interfolded', '150mm', 'ID0010', 'Batch1', 'F0010', NULL, NULL, 32, NULL, '', 'Received', 'N'),
-(6, '05/28/2024', '12:03 PM', 'Developer', 'Interfolded', '150mm', 'ID0010', 'Batch1', 'F0010', NULL, NULL, NULL, 32, 'SODEXO', 'Shipped', 'Y'),
-(7, '05/28/2024', '12:05 PM', 'Developer', 'Interfolded', '150mm', 'IRT15110121K', 'Batch2', 'P003', NULL, NULL, NULL, 16, 'VP101', 'Shipped', 'Y'),
-(8, '05/29/2024', '09:09 PM', 'Developer', 'Jumbo Roll', '120mm', 'JRT15010121K', 'Batch1', 'P001', NULL, NULL, NULL, 32, 'SODEXO', 'Shipped', 'Y');
+INSERT INTO `products_data` (`id`, `action_date`, `action_time`, `action_by`, `item_name`, `item_desc`, `item_id`, `item_lot`, `item_bin`, `pack_small`, `pack_medium`, `pack_large`, `shipped_quantity`, `client_company`, `item_data_status`, `item_data_active`, `quantity_IN`, `quantity_OUT`) VALUES
+(10, '05/08/2024', '04:03 PM', 'Developer', 'Interfolded', '150mm', 'PINT000001', 'Batch1', 'W3A1', 10, NULL, NULL, NULL, '', 'Received', 'Y', 10, NULL),
+(11, '05/08/2024', '04:13 PM', 'Developer', 'Interfolded', '150mm', 'PINT000002', 'Batch2', 'W3A1', 10, NULL, NULL, NULL, '', 'Received', 'N', 10, NULL),
+(12, '05/08/2024', '04:23 PM', 'Developer', 'Interfolded', '150mm', 'PINT000002', 'Batch2', 'W3A1', NULL, NULL, NULL, 10, 'SODEXO', 'Shipped', 'Y', NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -164,8 +156,8 @@ CREATE TABLE `products_registered` (
 --
 
 INSERT INTO `products_registered` (`id`, `product_name`, `product_desc`) VALUES
-(1, 'Interfolded', '150mm'),
-(5, 'Jumbo Roll', '120mm');
+(5, 'Jumbo Roll', '120mm'),
+(6, 'Interfolded', '150mm');
 
 -- --------------------------------------------------------
 
@@ -233,7 +225,6 @@ CREATE TABLE `rm_data` (
   `action_date` varchar(255) NOT NULL,
   `action_time` varchar(255) NOT NULL,
   `action_by` varchar(255) NOT NULL,
-  `item_name` varchar(255) NOT NULL,
   `item_desc` varchar(255) NOT NULL,
   `item_id` varchar(255) NOT NULL,
   `item_lot` varchar(255) NOT NULL,
@@ -246,33 +237,30 @@ CREATE TABLE `rm_data` (
   `fg_created_desc` varchar(255) NOT NULL,
   `quantity_created_pcs` int(11) DEFAULT NULL,
   `item_data_status` varchar(255) NOT NULL,
-  `item_data_active` varchar(255) NOT NULL
+  `item_data_active` varchar(255) NOT NULL,
+  `quantity_IN` int(11) DEFAULT NULL,
+  `quantity_OUT` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rm_data`
 --
 
-INSERT INTO `rm_data` (`id`, `action_date`, `action_time`, `action_by`, `item_name`, `item_desc`, `item_id`, `item_lot`, `item_bin`, `quantity_receive`, `quantity_inProduction`, `quantity_scrap`, `quantity_used`, `fg_created_name`, `fg_created_desc`, `quantity_created_pcs`, `item_data_status`, `item_data_active`) VALUES
-(1, '04/27/2024', '01:06 PM', 'Developer', 'RawMat0', 'Test0', 'ID001', 'Batch1', 'R001', 1000, NULL, NULL, NULL, '', '', NULL, 'Received', 'N'),
-(2, '04/27/2024', '01:07 PM', 'Developer', 'RawMat1', 'Test1', 'ID002', 'Batch1', 'R002', 1000, NULL, NULL, NULL, '', '', NULL, 'Received', 'N'),
-(3, '04/27/2024', '01:07 PM', 'Developer', 'RawMat3', 'Test3', 'ID003', 'Batch1', 'R003', 700, NULL, NULL, NULL, '', '', NULL, 'Received', 'N'),
-(4, '04/27/2024', '01:07 PM', 'Developer', 'RawMat3', 'Test3', 'ID003', 'Batch1', 'R003', NULL, 700, NULL, NULL, '', '', NULL, 'InProduction', 'N'),
-(5, '04/27/2024', '01:08 PM', 'Developer', 'RawMat1', 'Test1', 'ID002', 'Batch1', 'R002', NULL, 1000, NULL, NULL, '', '', NULL, 'InProduction', 'N'),
-(6, '04/27/2024', '01:08 PM', 'Developer', 'RawMat0', 'Test0', 'ID001', 'Batch1', 'R001', NULL, 1000, NULL, NULL, '', '', NULL, 'InProduction', 'N'),
-(7, '04/27/2024', '01:09 PM', 'Developer', 'RawMat0', 'Test0', 'ID001', 'Batch1', 'R001', NULL, NULL, 100, 900, 'Interfolded', '150mm', 1000, 'Depleted', 'Y'),
-(8, '04/27/2024', '01:10 PM', 'Developer', 'RawMat1', 'Test1', 'ID002', 'Batch1', 'R002', NULL, NULL, 100, 900, 'Interfolded', '150mm', 2000, 'Depleted', 'Y'),
-(9, '04/27/2024', '01:10 PM', 'Developer', 'RawMat3', 'Test3', 'ID003', 'Batch1', 'R003', NULL, NULL, 100, 600, 'Jumbo Roll', '120mm', 500, 'Depleted', 'Y'),
-(10, '04/27/2024', '01:17 PM', 'Developer', 'RawMat0', 'Test0', 'Test', 'Batch2', 'Test', 10000, NULL, NULL, NULL, '', '', NULL, 'Received', 'N'),
-(11, '04/27/2024', '01:18 PM', 'Developer', 'RawMat1', 'Test1', 'Test1', 'Batch2', 'Test', 5000, NULL, NULL, NULL, '', '', NULL, 'Received', 'N'),
-(12, '04/29/2024', '08:17 AM', 'Developer', 'RawMat1', 'Test1', 'Test1', 'Batch2', 'Test', NULL, 5000, NULL, NULL, '', '', NULL, 'InProduction', 'N'),
-(13, '04/29/2024', '08:17 AM', 'Developer', 'RawMat0', 'Test0', 'Test', 'Batch2', 'Test', NULL, 10000, NULL, NULL, '', '', NULL, 'InProduction', 'N'),
-(14, '04/29/2024', '08:19 AM', 'Developer', 'RawMat3', 'Test3', 'ID10100', 'Batch1', 'R1000', 1000, NULL, NULL, NULL, '', '', NULL, 'Received', 'N'),
-(15, '04/29/2024', '08:20 AM', 'Developer', 'RawMat3', 'Test3', 'ID11000', 'Batch2', 'R0001', 10000, NULL, NULL, NULL, '', '', NULL, 'Received', 'Y'),
-(16, '04/29/2024', '11:29 AM', 'Developer', 'RawMat1', 'Test1', 'Test1', 'Batch2', 'Test', NULL, NULL, 1000, 4000, 'Interfolded', '150mm', 1000, 'Depleted', 'Y'),
-(17, '04/29/2024', '01:08 PM', 'Developer', 'RawMat0', 'Test0', 'Test', 'Batch2', 'Test', NULL, NULL, 1000, 9000, 'Interfolded', '150mm', 500, 'Depleted', 'Y'),
-(18, '04/29/2024', '09:14 PM', 'Developer', 'RawMat3', 'Test3', 'ID10100', 'Batch1', 'R1000', NULL, 1000, NULL, NULL, '', '', NULL, 'InProduction', 'N'),
-(19, '04/29/2024', '09:14 PM', 'Developer', 'RawMat3', 'Test3', 'ID10100', 'Batch1', 'R1000', NULL, NULL, 100, 900, 'Jumbo Roll', '120mm', 3000, 'Depleted', 'Y');
+INSERT INTO `rm_data` (`id`, `action_date`, `action_time`, `action_by`, `item_desc`, `item_id`, `item_lot`, `item_bin`, `quantity_receive`, `quantity_inProduction`, `quantity_scrap`, `quantity_used`, `fg_created_name`, `fg_created_desc`, `quantity_created_pcs`, `item_data_status`, `item_data_active`, `quantity_IN`, `quantity_OUT`) VALUES
+(1, '05/08/2024', '03:31 PM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', 1000, NULL, NULL, NULL, '', '', NULL, 'Received', 'N', 1000, NULL),
+(2, '05/08/2024', '03:31 PM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', NULL, 1000, NULL, NULL, '', '', NULL, 'InProduction', 'N', NULL, NULL),
+(3, '05/08/2024', '03:31 PM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', NULL, 400, 100, 500, '', '', NULL, 'InProduction', 'N', NULL, 600),
+(4, '05/08/2024', '03:31 PM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', NULL, NULL, NULL, NULL, 'Interfolded', '150mm', 1000, 'InUse', 'N', NULL, NULL),
+(5, '05/09/2024', '08:12 AM', 'Developer', '150mm', 'ITX10100022K', 'Batch1', 'W1A3', 100000, NULL, NULL, NULL, '', '', NULL, 'Received', 'N', 100000, NULL),
+(6, '05/09/2024', '08:36 AM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', NULL, 300, 0, 100, '', '', NULL, 'InProduction', 'N', NULL, 100),
+(7, '05/09/2024', '08:36 AM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', NULL, NULL, NULL, NULL, 'Interfolded', '150mm', 200, 'InUse', 'N', NULL, NULL),
+(8, '05/09/2024', '08:45 AM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', NULL, 0, 200, 100, '', '', NULL, 'InProduction', 'N', NULL, 300),
+(9, '05/09/2024', '08:45 AM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', NULL, NULL, NULL, NULL, 'Interfolded', '150mm', 200, 'InUse', 'Y', NULL, NULL),
+(10, '05/09/2024', '08:45 AM', 'Developer', '150mm', 'ITX10100001K', 'Batch1', 'W1A1', NULL, NULL, 300, 700, '', '', NULL, 'Depleted', 'Y', NULL, NULL),
+(11, '05/09/2024', '08:57 AM', 'Developer', '150mm', 'ITX10100022K', 'Batch1', 'W1A3', NULL, 100000, NULL, NULL, '', '', NULL, 'InProduction', 'N', NULL, NULL),
+(12, '05/09/2024', '09:12 AM', 'Developer', '150mm', 'ITX10100022K', 'Batch1', 'W1A3', NULL, 99700, 200, 100, '', '', NULL, 'InProduction', 'Y', NULL, 300),
+(13, '05/09/2024', '09:12 AM', 'Developer', '150mm', 'ITX10100022K', 'Batch1', 'W1A3', NULL, NULL, NULL, NULL, 'Jumbo Roll', '120mm', 200, 'InUse', 'Y', NULL, NULL),
+(14, '05/09/2024', '09:24 AM', 'Developer', '150mm', 'ITX10122001K', 'Batch2', 'W1A1', 1000, NULL, NULL, NULL, '', '', NULL, 'Received', 'Y', 1000, NULL);
 
 -- --------------------------------------------------------
 
@@ -317,7 +305,27 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `user_name`, `user_password`, `user_type`) VALUES
 (1, 'Admin', 12345678, 'Admin'),
-(2, 'Admin2', 12312112, 'Admin');
+(2, 'Admin2', 12312112, 'Admin'),
+(4, 'Manager', 2147483647, 'Manager'),
+(5, 'Checker', 12345678, 'Checker');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `u_logged`
+--
+
+CREATE TABLE `u_logged` (
+  `id` int(11) NOT NULL,
+  `login_type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `u_logged`
+--
+
+INSERT INTO `u_logged` (`id`, `login_type`) VALUES
+(1, 'none');
 
 --
 -- Indexes for dumped tables
@@ -378,6 +386,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `u_logged`
+--
+ALTER TABLE `u_logged`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -391,7 +405,7 @@ ALTER TABLE `company_clients`
 -- AUTO_INCREMENT for table `fg_data`
 --
 ALTER TABLE `fg_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `fg_registered`
@@ -403,13 +417,13 @@ ALTER TABLE `fg_registered`
 -- AUTO_INCREMENT for table `products_data`
 --
 ALTER TABLE `products_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `products_registered`
 --
 ALTER TABLE `products_registered`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `rm_adj_data`
@@ -421,7 +435,7 @@ ALTER TABLE `rm_adj_data`
 -- AUTO_INCREMENT for table `rm_data`
 --
 ALTER TABLE `rm_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `rm_registered`
@@ -433,7 +447,13 @@ ALTER TABLE `rm_registered`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `u_logged`
+--
+ALTER TABLE `u_logged`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
