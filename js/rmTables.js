@@ -5,7 +5,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-solid fa-database"></i> Raw Material Inventory</h4>
+                    <h4><span class="material-symbols-outlined">pallet</span> Raw Material Inventory</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
@@ -61,7 +61,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-solid fa-spinner"></i> Raw Material Production</h4>
+                    <h4><span class="material-symbols-outlined">pallet</span> Raw Material Production</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
@@ -117,7 +117,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-regular fa-square-full"></i> Used Raw Material List</h4>
+                    <h4><span class="material-symbols-outlined">pallet</span> Used Raw Material List</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
@@ -175,7 +175,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-solid fa-database"></i> Raw Material History</h4>
+                    <h4><span class="material-symbols-outlined">pallet</span> Raw Material History</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
@@ -227,7 +227,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-status-md-card-row">
                 <div class="rm-row-md-card-item">
-                    <h4><i class="fa-solid fa-database"></i> Raw Material Status</h4>
+                    <h4><span class="material-symbols-outlined">pallet</span> Raw Material Status</h4>
                 </div>
                 <div class="rm-status-md-card-btn-searchbar">
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>

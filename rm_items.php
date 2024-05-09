@@ -144,9 +144,9 @@ while ($optionFg = $result->fetch_assoc()) {
                             </div>
                             <div class="rm-manage-sm-card-item">
                                 <button class="btn btn-success btn-sm" style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#receiveModal">Receive Raw Material</button>
-                                <button class="btn btn-light btn-sm" id="renderReceive"><i class="fa-solid fa-database"></i> Raw Material Inventory</button>
-                                <button class="btn btn-warning btn-sm" id="renderInProduction"><i class="fa-solid fa-spinner"></i> In Production Raw Materials</button>
-                                <button class="btn btn-secondary btn-sm" id="renderUsed"><i class="fa-regular fa-square-full"></i> Used Raw Materials</button>
+                                <button class="btn btn-light btn-sm" id="renderReceive">Raw Material Inventory</button>
+                                <button class="btn btn-warning btn-sm" id="renderInProduction">In Production Raw Materials</button>
+                                <button class="btn btn-secondary btn-sm" id="renderUsed">Used Raw Materials</button>
                             </div>
                         </div>
                     </div>

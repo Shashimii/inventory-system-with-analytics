@@ -5,7 +5,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-solid fa-boxes-stacked"></i> Products Stocks</h4>
+                    <h4><span class="material-symbols-outlined">package_2</span> Products Stocks</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
@@ -62,7 +62,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-manage-md-card-row">
                 <div class="rm-manage-md-card-item">
-                    <h4><i class="fa-solid fa-boxes-stacked"></i> Products History</h4>
+                    <h4><span class="material-symbols-outlined">package_2</span> Products History</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
@@ -117,7 +117,7 @@ $(function(){
         <div class="rm-manage-md-card">
             <div class="rm-status-md-card-row">
                 <div class="rm-row-md-card-item">
-                    <h4><i class="fa-solid fa-boxes-stacked"></i> Products Status</h4>
+                    <h4><span class="material-symbols-outlined">package_2</span> Products Status</h4>
                 </div>
                 <div class="rm-status-md-card-btn-searchbar">
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>
