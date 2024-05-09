@@ -23,10 +23,10 @@ $(function() {
         Promise.all([rmPromise, fgPromise, pPromise, sPromise])
     
         .then(function(responses) {
-            var rmTotal = responses[0];
-            var fgTotal = responses[1];
-            var pTotal = responses[2];
-            var sTotal = responses[3];
+            var rmTotal = parseInt(responses[0]);
+            var fgTotal = parseInt(responses[1]);
+            var pTotal = parseInt(responses[2]);
+            var sTotal = parseInt(responses[3]);
 
             displayTotal(rmTotal, fgTotal, pTotal, sTotal);
 
@@ -37,19 +37,19 @@ $(function() {
     }
 
     function displayTotal(rmTotal, fgTotal, pTotal, sTotal) {
-        var rmCount = `${rmTotal}kg`;
+        var rmCount = `${rmTotal.toLocaleString('en')}kg`;
         $('#rmStocks').append(rmCount);
 
         
-        var fgCount = `${fgTotal}pcs`;
+        var fgCount = `${fgTotal.toLocaleString('en')}pcs`;
         $('#fgStocks').append(fgCount);
 
         
-        var pCount = `${pTotal}pcs`;
+        var pCount = `${pTotal.toLocaleString('en')}pcs`;
         $('#pStocks').append(pCount);
 
         
-        var sCount = `${sTotal}pcs`;
+        var sCount = `${sTotal.toLocaleString('en')}pcs`;
         $('#sStocks').append(sCount);
     }
 
@@ -81,13 +81,14 @@ $(function() {
         $('#clients').append(clients);
         } else {
             data.forEach(function(data) {
+                shipQuantity = parseInt(data.total_quantity)
                 var clients = `
                 <div class="container mt-1">
                     <div class="card shadow">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fa-solid fa-user"></i> ${data.client_company}</h5>
                             <p class="card-text">
-                            <i class="fa-solid fa-truck-fast"></i> <strong>Shipped:</strong> ${data.total_quantity}pcs<br>
+                            <i class="fa-solid fa-truck-fast"></i> <strong>Shipped:</strong> ${shipQuantity.toLocaleString('en')}pcs<br>
                             </p>
                         </div>
                     </div>
@@ -127,13 +128,14 @@ $(function() {
         $('#products').append(products);
         } else {
             data.forEach(function(data) {
+                productQuantity = parseInt(data.total_quantity)
                 var products = `
                 <div class="container mt-1">
                     <div class="card shadow">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fa-solid fa-boxes-stacked"></i> ${data.item_name}</h5>
                             <p class="card-text">
-                            <i class="fa-solid fa-hashtag"></i> <strong>Quantity:</strong> ${data.total_quantity}pcs<br>
+                            <i class="fa-solid fa-hashtag"></i> <strong>Quantity:</strong> ${productQuantity.toLocaleString('en')}pcs<br>
                             <i>Description: ${data.item_desc}</i><br>
                             </p>
                         </div>

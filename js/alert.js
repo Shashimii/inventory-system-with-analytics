@@ -53,11 +53,12 @@ function pushNotif(rmList, fgList, pList) {
 
     rmList.forEach(function(notification) {
         if (notification.total_quantity < 2000) {
+            IntTotalQuantity = parseInt(notification.total_quantity);
             var rmNotif = `
                 <li style="background-color: #F3D0D7;">
                     <a class="dropdown-item" href="rm_status">
                         <h6>Raw Material ${notification.item_desc} Stock Level is Low</h6>
-                        <p>In Stock: ${notification.total_quantity}kg</p>
+                        <p>In Stock: ${IntTotalQuantity.toLocaleString('en')}kg</p>
                         <p class="notif" style="color: #666"><i>Raw Material<i></p>
                     </a>
                 </li>
@@ -66,11 +67,12 @@ function pushNotif(rmList, fgList, pList) {
             lowstockRm++
             
         } else if (notification.total_quantity > 9999) {
+            IntTotalQuantity = parseInt(notification.total_quantity);
             var rmNotif = `
                 <li style="background-color: #FFFDCB;">
                     <a class="dropdown-item" href="rm_status">
                         <h6>Raw Material ${notification.item_desc} Stock Level is Overstock</h6>
-                        <p>In Stock: ${notification.total_quantity}kg</p>
+                        <p>In Stock: ${IntTotalQuantity.toLocaleString('en')}kg</p>
                         <p class="notif" style="color: #666"><i>Raw Material<i></p>
                     </a>
                 </li>
@@ -85,11 +87,12 @@ function pushNotif(rmList, fgList, pList) {
 
     fgList.forEach(function(notification) {
         if (notification.total_quantity < 1000) {
+            IntTotalQuantity = parseInt(notification.total_quantity);
             var fgNotif = `
                 <li style="background-color: #F3D0D7;">
                     <a class="dropdown-item" href="fg_status">
                         <h6>${notification.item_name} Stock Level is Low</h6>
-                        <p>In Stock: ${notification.total_quantity}pcs</p>
+                        <p>In Stock: ${IntTotalQuantity.toLocaleString('en')}pcs</p>
                         <p class="notif" style="color: #666"><i>Finished Goods<i></p>
                     </a>
                 </li>
@@ -98,11 +101,12 @@ function pushNotif(rmList, fgList, pList) {
             lowstockFg++
 
         } else if (notification.total_quantity > 4999) {
+            IntTotalQuantity = parseInt(notification.total_quantity);
             var fgNotif = `
                 <li style="background-color: #FFFDCB;">
                     <a class="dropdown-item" href="fg_status">
                         <h6>${notification.item_name} Stock Level is Overstock</h6>
-                        <p>In Stock: ${notification.total_quantity}pcs</p>
+                        <p>In Stock: ${IntTotalQuantity.toLocaleString('en')}pcs</p>
                         <p class="notif" style="color: #666"><i>Finished Goods<i></p>
                     </a>
                 </li>
@@ -118,11 +122,12 @@ function pushNotif(rmList, fgList, pList) {
 
     pList.forEach(function(notification) {
         if (notification.total_quantity < 1000) {
+            IntTotalQuantity = parseInt(notification.total_quantity);
             var pNotif = `
                 <li style="background-color: #F3D0D7;">
                     <a class="dropdown-item" href="p_status">
                         <h6>${notification.item_name} Stock Level is Low</h6>
-                        <p>In Stock: ${notification.total_quantity}pcs</p>
+                        <p>In Stock: ${IntTotalQuantity.toLocaleString('en')}pcs</p>
                         <p class="notif" style="color: #666"><i>Products<i></p>
                     </a>
                 </li>
@@ -131,11 +136,12 @@ function pushNotif(rmList, fgList, pList) {
             lowstockP++
 
         } else if (notification.total_quantity > 4999) {
+            IntTotalQuantity = parseInt(notification.total_quantity);
             var pNotif = `
                 <li style="background-color: #FFFDCB;">
                     <a class="dropdown-item" href="p_status">
                         <h6>${notification.item_name} Stock Level is Overstock</h6>
-                        <p>In Stock: ${notification.total_quantity}pcs</p>
+                        <p>In Stock: ${IntTotalQuantity.toLocaleString('en')}pcs</p>
                         <p class="notif" style="color: #666"><i>Products<i></p>
                     </a>
                 </li>
