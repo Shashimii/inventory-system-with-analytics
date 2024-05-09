@@ -4,6 +4,11 @@ include 'login_con.php';
 
 session_start();
 
+$loggedAdmin = "admin";
+$loggedManager = "manager";
+$loggedChecker = "checker";
+$loggedId = 1;
+
 //redirect Query if there is already a active session
 
 // Admin
@@ -42,21 +47,33 @@ if(isset($_POST['submit'])){
             $_SESSION['admin_name'] = $row['user_name'];
             header('Location: dashboard');
 
-        // User login
-        } else if ($row['user_type'] == 'Inventory User'){
+            $stmt = $con->prepare("UPDATE u_logged SET login_type = ? WHERE id = ?");
+            $stmt->bind_param("si", $loggedAdmin, $loggedId);
+            $stmt->execute();
+
+        // Manager login
+        } else if ($row['user_type'] == 'Manager'){
             $_SESSION['user_name'] = $row['user_name'];
             header('Location: dashboard');
 
-        // Inventory login
-        } else if ($row['user_type'] == 'Inventory Staff'){
+            $stmt = $con->prepare("UPDATE u_logged SET login_type = ? WHERE id = ?");
+            $stmt->bind_param("si", $loggedManager, $loggedId);
+            $stmt->execute();
+
+        // Checker login
+        } else if ($row['user_type'] == 'Checker'){
             $_SESSION['inventory_name'] = $row['user_name'];
-            header('Location: dashboard'); 
+            header('Location: dashboard');
+            
+            $stmt = $con->prepare("UPDATE u_logged SET login_type = ? WHERE id = ?");
+            $stmt->bind_param("si", $loggedChecker, $loggedId);
+            $stmt->execute();
 
         } else {
-            $err[] = 'Incorrect username or pin';
+            $err[] = 'Incorrect username or password';
         }
     } else {
-        $err[] = 'Incorrect username or pin';
+        $err[] = 'Incorrect username or password';
     }
 }
 
@@ -103,22 +120,26 @@ if(isset($err)){
                 </div>
                 <center>
                 <form action ="" method="post">
-                    <div class="mb-1">
-                    <input class="form-control" type="text" name="user" required placeholder="Username" pattern="[a-zA-Z0-9]+" title="Enter correct Name">
+                    <div class="mb-2">
+                        <input class="form-control" type="text" name="user" required placeholder="Username" pattern="[a-zA-Z0-9]+" title="Enter correct Name">
+                    </div>
+                    <div class="mb-2">
+                        <select class="form-select" name="type" required>
+                            <option value="" hidden>Account Type</option>
+                            <option value="admin">Inventory Admin</option>
+                            <option value="user">Inventory Manager</option>
+                            <option valye="view">Inventory Checker</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <div class="password-field">
-                            <input class="form-control" type="password" name="password" id="password-input" pattern="[0-9]{8}" title="Enter correct PIN" required placeholder="PIN">
+                            <input class="form-control" type="password" name="password" id="password-input" pattern="[0-9]{8}" title="Enter correct Password" required placeholder="Password">
                         </div>
                     </div>
                     <div class="mb-1">
                     <button type="submit" name="submit" class="btn btn-success">Login</button>
                     </div>
                 </form>
-                
-                <div class="mb-1">
-                    <p>Accounts can be only created by the Company Admin contact the company for more info</p>
-                </div>
                 </center>
                 </div>
             </div>

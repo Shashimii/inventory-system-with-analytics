@@ -24,6 +24,14 @@ if ($date_result->num_rows > 0) {
     $sys_date = "WARNING: current date cannot be fetched";
 }
 
+// login type
+$stmt = $con->prepare('SELECT login_type FROM u_logged');
+$stmt->execute();
+$result = $stmt->get_result();
+$type = $result->fetch_assoc();
+
+$login_type = $type['login_type'];
+
 
 ?>
 
