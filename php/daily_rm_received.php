@@ -3,7 +3,7 @@
 include 'script_con.php';
 include 'sysDateTime.php';
 
-$stmt = $con->prepare("SELECT item_name, item_id, quantity_receive FROM rm_data WHERE action_date = ? AND item_data_status = ?");
+$stmt = $con->prepare("SELECT item_desc, item_id, quantity_receive FROM rm_data WHERE action_date = ? AND item_data_status = ?");
 $stmt->bind_param('ss', $sys_date, $dataStatusReceived);
 $stmt->execute();
 $result = $stmt->get_result();

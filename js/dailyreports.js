@@ -70,9 +70,9 @@ $(function() {
             rmReceived.forEach(function(data) {
                 var renderData =  `
                 <tr class="table-row">
-                    <td><strong><i>Name:</i></strong> ${data.item_name}</td>
+                    <td><strong><i>Dimensions:</i></strong> ${data.item_desc}</td>
                     <td><strong><i>ID:</i></strong> ${data.item_id}</td>
-                    <td><strong><i>Qty:</i></strong> ${data.quantity_receive}kg</td>
+                    <td><strong><i>Qty:</i></strong> ${data.quantity_receive.toLocaleString('en')}kg</td>
                 </tr>
                 `;
                 $('#rmReceived').append(renderData);
@@ -85,7 +85,7 @@ $(function() {
         if (rmUsed.length === 0) {
             var renderData =  `
             <tr class="table-row">
-                <td><i> No Used Raw Material</i></td>
+                <td><i> No Marked as Depleted</i></td>
             </tr>
             `;
             $('#rmUsed').append(renderData);
@@ -95,7 +95,7 @@ $(function() {
                 <tr class="table-row">
                     <td><strong><i>Name:</i></strong> ${data.item_name}</td>
                     <td><strong><i>ID:</i></strong> ${data.item_id}</td>
-                    <td><strong><i>Qty:</i></strong> ${data.quantity_used}kg</td>
+                    <td><strong><i>Qty:</i></strong> ${data.quantity_used.toLocaleString('en')}kg</td>
                 </tr>
                 `;
                 $('#rmUsed').append(renderData);
@@ -118,7 +118,7 @@ $(function() {
                 rmScrap.forEach(function(data) {
                     var renderData =  `
                     <tr class="table-row">
-                        <td><strong><i>Production Scrap:</i></strong> ${data.total_scrap}kg</td>
+                        <td><strong><i>Production Scrap:</i></strong> ${data.total_scrap.toLocaleString('en')}kg</td>
                     </tr>
                     `;
                     $('#rmScrap').append(renderData);
@@ -141,7 +141,7 @@ $(function() {
                 var renderData =  `
                 <tr class="table-row">
                     <td><strong><i>Name:</i></strong> ${data.item_name}</td>
-                    <td><strong><i>Qty:</i></strong> ${data.quantity_pcs}pcs</td>
+                    <td><strong><i>Qty:</i></strong> ${data.quantity_pcs.toLocaleString('en')}pcs</td>
                 </tr>
                 `;
                 $('#fgProduced').append(renderData);
@@ -166,17 +166,17 @@ $(function() {
                 `;
                 if (data.pack_small != null) {
                     renderData +=`
-                    <td><strong><i>Small Box:</i></strong> ${data.pack_small}pcs</td>
+                    <td><strong><i>Small Box:</i></strong> ${data.pack_small.toLocaleString('en')}pcs</td>
                 </tr>
                 `;
                 } else if (data.pack_medium != null) {
                     renderData +=`
-                    <td><strong><i>Medium Box:</i></strong> ${data.pack_medium}pcs</td>
+                    <td><strong><i>Medium Box:</i></strong> ${data.pack_medium.toLocaleString('en')}pcs</td>
                 </tr>
                 `;
                 } else if (data.pack_large != null) {
                     renderData +=`
-                    <td><strong><i>Large Box:</i></strong> ${data.pack_large}pcs</td>
+                    <td><strong><i>Large Box:</i></strong> ${data.pack_large.toLocaleString('en')}pcs</td>
                 </tr>
                 `;
                 }
@@ -201,7 +201,7 @@ $(function() {
                 <tr class="table-row">
                     <td><strong><i>Name:</i></strong> ${data.item_name}</td>
                     <td><strong><i>Product Id:</i></strong> ${data.item_id}</td>
-                    <td><strong><i>Ship Qty:</i></strong> ${data.shipped_quantity}pcs</td>
+                    <td><strong><i>Ship Qty:</i></strong> ${data.shipped_quantity.toLocaleString('en')}pcs</td>
                 </tr>
                 `;
                 $('#pShipped').append(renderData);

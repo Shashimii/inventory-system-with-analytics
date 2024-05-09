@@ -113,7 +113,7 @@ include 'connections.php';
                                     </div>
                                 </div>
                                 <div class="daily-card">
-                                    <h5><i class="fa-solid fa-spinner"></i> Used</h5>
+                                    <h5><i class="fa-solid fa-spinner"></i> Marked as Depleted</h5>
                                     <div id="rmUsed">
 
                                     </div>
