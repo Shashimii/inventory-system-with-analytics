@@ -230,7 +230,7 @@ $(function() {
 
         $('#receiveTable tr').each(function() {
             const row = $(this);
-            const rowRawmatId = row.find('td:nth-child(2)').text();
+            const rowRawmatId = row.find('td:nth-child(1)').text();
             if (rowRawmatId === selectedList[itemIndex].id) {
                 row.removeClass('table-success');
             }

@@ -104,24 +104,24 @@ include 'connections.php';
                         <div class="an-body">
                             <div class="an-daily-card">
                                 <div class="an-card-header">
-                                    <h4><i class="fa-solid fa-database"></i> Used Raw Materials</h4>
+                                    <h4><i class="fa-solid fa-database"></i> Marked as Depleted Raw Materials</h4>
                                 </div>
                                 <div id="rmDailyBody" class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
-                                    <h4>Raw Materials Used Today<h4>
+                                    <h4>Raw Materials Marked as Depleted Today<h4>
                                         <table class="table table-borderless table-danger">
                                             <thead>
                                                 <tr>
-                                                    <th>Time Used</th>
+                                                    <th>Marking Time</th>
                                                     <th>Dimensions</th>
                                                     <th>Serial Id</th>
-                                                    <th>Quantity Used</th>
+                                                    <th>Quantity</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="rmCount">
 
                                             </tbody>
                                         </table>    
-                                    <h4>Total Quantity of Raw Materials used</h4>
+                                    <h4>Total Quantity of Raw Materials</h4>
                                     <h4 id="rmTotal" style="font-weight: bold; color: red;"></h4>
                                 </div>
                             </div>
