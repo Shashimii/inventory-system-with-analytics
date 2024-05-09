@@ -28,7 +28,7 @@ let pageSize = 10;
                     filteredResponse = tableData.filter(item => item.item_desc.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
                 default:
-                    filteredResponse = tableData.filter(item => `${item.item_name} ${item.item_desc}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
+                    filteredResponse = tableData.filter(item => `${item.item_desc}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
                     break;
             };
         };

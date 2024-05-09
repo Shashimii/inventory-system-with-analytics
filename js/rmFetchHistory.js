@@ -33,8 +33,17 @@ $(function(){
                 case 'desc': 
                     filteredResponse = tableData.filter(item => item.item.item_desc.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
+                case 'id': 
+                    filteredResponse = tableData.filter(item => item.item.item_id.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
+                case 'lot': 
+                    filteredResponse = tableData.filter(item => item.item.item_lot.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
+                case 'bin': 
+                    filteredResponse = tableData.filter(item => item.item.item_bin.toLowerCase().includes(searchKey.toLowerCase()));
+                    break;
                 default:
-                    filteredResponse = tableData.filter(item => `${item.item.item_id} ${item.item.item_lot} ${item.item.item_bin}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
+                    filteredResponse = tableData.filter(item => `${item.item.item_id} ${item.item.item_desc} ${item.item.item_lot} ${item.item.item_bin} ${item.item.action_time} ${item.item.action_date}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
                     break;
             };
         };

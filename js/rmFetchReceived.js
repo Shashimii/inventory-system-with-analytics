@@ -53,7 +53,7 @@ $(function(){
                         break;
                     default:
                         // if no filter selected search by item lot bin combined
-                        filteredResponse = tableData.filter(item => `${item.item_id} ${item.item_lot} ${item.item_bin}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
+                        filteredResponse = tableData.filter(item => `${item.item_id} ${item.item_desc} ${item.item_lot} ${item.item_bin} ${item.action_date}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
                         break;
                 };
             };

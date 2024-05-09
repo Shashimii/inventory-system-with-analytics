@@ -72,8 +72,8 @@ $(function(){
                         <td class="text-center">${item.item.item_desc}</td>
                         <td class="text-center">${item.item.item_lot}</td>
                         <td class="text-center">${item.item.item_bin}</td>
-                        <td class="text-center">${item.item.action_date}</td>
                         <td class="text-center">${item.item.action_time}</td>
+                        <td class="text-center">${item.item.action_date}</td>
                         <td class="action-btn">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionId}" aria-expanded="false" aria-controls="${accordionId}">View Transactions</button>
                             <tr>

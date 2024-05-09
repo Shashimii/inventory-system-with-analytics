@@ -10,12 +10,12 @@ $(function(){
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
                     <option selected value="">No Filter</option>
-                    <option value="date">Date Created</option>
-                    <option value="id">Raw Material Id</option>
-                    <option value="name">Name</option>
-                    <option value="desc">Description</option>
+                    <option value="id">Serial Id</option>
+                    <option value="name">Finished Goods</option>
+                    <option value="desc">Dimensions</option>
                     <option value="lot">Lot</option>
                     <option value="bin">Bin</option>
+                    <option value="date">Date Created</option>
                     <option value="quantityPcs">Quantity</option>
                 </select>
                     <input id="search" placeholder="Search..." class="form-control form-control-sm" type="text">
@@ -66,14 +66,13 @@ $(function(){
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
                     <option selected value="">No Filter</option>
-                    <option value="date">Date Created</option>
-                    <option value="time">Time Created</option>
-                    <option value="rawname">Raw Material Name</option>
-                    <option value="rawid">Raw Material Id</option>
-                    <option value="name">FG Name</option>
-                    <option value="desc">FG Description</option>
-                    <option value="lot">FG Lot</option>
-                    <option value="bin">FG Bin</option>
+                        <option value="rawid">Serial Id</option>
+                        <option value="name">Finished Goods</option>
+                        <option value="desc">Dimensions</option>
+                        <option value="lot">Lot</option>
+                        <option value="bin">Bin</option>
+                        <option value="time">Time Created</option>
+                        <option value="date">Date Created</option>
                 </select>
                     <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
@@ -87,6 +86,7 @@ $(function(){
                             <th class="text-center" scope="col">Dimensions</th>
                             <th class="text-center" scope="col">Lot</th>
                             <th class="text-center" scope="col">Bin</th>
+                            <th class="text-center" scope="col">Time Created</th>
                             <th class="text-center" scope="col">Date Created</th>
                             <th scope="col" class="action-btn">Action</th>
                         </tr>
@@ -122,8 +122,8 @@ $(function(){
                 <div class="rm-status-md-card-btn-searchbar">
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>
                         <option selected value="">No Filter</option>
-                        <option value="name">Name</option>
-                        <option value="desc">Description</option>
+                        <option value="name">Finished Goods</option>
+                        <option value="desc">Dimensions</option>
                     </select>
                     <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>

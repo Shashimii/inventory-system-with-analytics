@@ -30,11 +30,8 @@ $(function(){
                 case 'time': 
                     filteredResponse = tableData.filter(item => item.item.action_time.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
-                case 'rawname': 
-                    filteredResponse = tableData.filter(item => item.item.from_rm_name.toLowerCase().includes(searchKey.toLowerCase()));
-                    break;
                 case 'rawid': 
-                    filteredResponse = tableData.filter(item => item.item.from_rm_id.toLowerCase().includes(searchKey.toLowerCase()));
+                    filteredResponse = tableData.filter(item => item.item.item_id.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
                 case 'name': 
                     filteredResponse = tableData.filter(item => item.item.item_name.toLowerCase().includes(searchKey.toLowerCase()));
@@ -49,7 +46,7 @@ $(function(){
                     filteredResponse = tableData.filter(item => item.item.item_bin.toLowerCase().includes(searchKey.toLowerCase()));
                     break;
                 default:
-                    filteredResponse = tableData.filter(item => `${item.item.action_date} ${item.item.action_time} ${item.item.from_rm_name} ${item.item.from_rm_id} ${item.item.item_name} ${item.item.item_desc} ${item.item.item_lot} ${item.item.item_bin}`.toLocaleLowerCase().includes(searchKey.toLowerCase()));
+                    filteredResponse = tableData.filter(item => `${item.item.item_id} ${item.item.item_name} ${item.item.item_desc} ${item.item.item_lot} ${item.item.item_bin} ${item.item.action_time} ${item.item.action_date} `.toLocaleLowerCase().includes(searchKey.toLowerCase()));
                     break;
             };
         };
@@ -61,7 +58,7 @@ $(function(){
         $('#historyTable tbody').empty(); 
         if (pageData.length === 0) {
             tableRow = '<tr>';
-            tableRow += '<td colspan="9" style="text-align: center;">There is No Data</td>'; // show this message
+            tableRow += '<td colspan="10" style="text-align: center;">There is No Data</td>'; // show this message
             tableRow += '</tr>';
             $('#historyTable').append(tableRow);
         } else {
@@ -76,6 +73,7 @@ $(function(){
                         <td class="text-center">${item.item.item_desc}</td>
                         <td class="text-center">${item.item.item_lot}</td>
                         <td class="text-center">${item.item.item_bin}</td>
+                        <td class="text-center">${item.item.action_time}</td>
                         <td class="text-center">${item.item.action_date}</td>
                         <td class="action-btn">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionId}" aria-expanded="false" aria-controls="${accordionId}">View Transactions</button>

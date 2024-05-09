@@ -9,12 +9,12 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">id lot bin</option>
-                    <option value="date">Date Received</option>
+                    <option selected value="">No Filter</option>
+                    <option value="id">Serial Id</option>
                     <option value="desc">Dimensions</option>
-                    <option value="id">Id</option>
                     <option value="lot">Lot</option>
                     <option value="bin">Bin</option>
+                    <option value="date">Date Received</option>
                     <option value="quantity">Quantity</option>
                 </select>
                     <input id="recSearch" placeholder="Search..." class="form-control form-control-sm" type="text">
@@ -65,11 +65,12 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">id lot bin</option>
+                    <option selected value="">No Filter</option>
+                    <option value="id">Serial Id</option>
                     <option value="desc">Dimensions</option>
-                    <option value="id">Id</option>
                     <option value="lot">Lot</option>
                     <option value="bin">Bin</option>
+                    <option value="date">Date In</option>
                     <option value="quantity">Quantity</option>
                 </select>
                     <input id="recSearch" placeholder="Search..." class="form-control form-control-sm" type="text">
@@ -120,14 +121,14 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="recSearchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">id lot bin</option>
-                    <option value="date">Date In</option>
+                    <option selected value="">No Filter</option>
+                    <option value="id">Serial Id</option>
                     <option value="desc">Dimensions</option>
-                    <option value="id">Id</option>
                     <option value="lot">Lot</option>
                     <option value="bin">Bin</option>
-                    <option value="quantityScrap">Quantity Scrap</option>
-                    <option value="quantityUsed">Quantity Used</option>
+                    <option value="date">Deplation Date</option>
+                    <option value="quantityScrap">Scrap Quantity</option>
+                    <option value="quantityUsed">Used Quantity</option>
                 </select>
                     <input id="recSearch" placeholder="Search..." class="form-control form-control-sm" type="text">
                     <!----<button id="undoDepleted" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
@@ -178,10 +179,13 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">Id Lot Bin</option>
-                    <option value="date">Date Received</option>
-                    <option value="time">Time Received</option>
+                    <option selected value="">No Filter</option>
+                    <option value="id">Serial Id</option>
                     <option value="desc">Dimensions</option>
+                    <option value="lot">Lot</option>
+                    <option value="bin">Bin</option>
+                    <option value="time">Time Received</option>
+                    <option value="date">Date Received</option>
                 </select>
                     <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
@@ -227,7 +231,6 @@ $(function(){
                 </div>
                 <div class="rm-status-md-card-btn-searchbar">
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                        <option selected value="">No Filter</option>
                         <option value="desc">Dimensions</option>
                     </select>
                     <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">

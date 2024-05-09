@@ -9,11 +9,13 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">id lot bin</option>
-                    <option value="date">Date Created</option>
+                    <option selected value="">No Filter</option>
+                    <option value="id">Serial Id</option>
+                    <option value="name">Product</option>
+                    <option value="desc">Dimensions</option>
+                    <option value="lot">Lot</option>
                     <option value="staff">Staff</option>
-                    <option value="name">Product Name</option>
-                    <option value="desc">Description</option>
+                    <option value="date">Date Created</option>
                 </select>
                     <input id="search" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
@@ -64,14 +66,14 @@ $(function(){
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
                 <select id="searchFilter" class="form-select form-select-sm dropdown" required>
-                    <option selected value="">id lot bin</option>
-                    <option value="date">Date Created</option>
+                    <option selected value="">No Filter</option>
+                    <option value="id">Serial Id</option>
+                    <option value="name">Product</option>
+                    <option value="desc">Dimensions</option>
+                    <option value="lot">Lot</option>
+                    <option value="bin">Bin</option>
                     <option value="time">Time Created</option>
-                    <option value="name">Product Name</option>
-                    <option value="desc">Product Description</option>
-                    <option value="id">Product Id</option>
-                    <option value="lot">Product Lot</option>
-                    <option value="bin">Product Bin</option>
+                    <option value="date">Date Created</option>
                 </select>
                     <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
@@ -85,8 +87,8 @@ $(function(){
                             <th class="text-center" scope="col">Dimensions</th>
                             <th class="text-center" scope="col">Lot</th>
                             <th class="text-center" scope="col">Bin</th>
-                            <th class="text-center" scope="col">Date Created</th>
                             <th class="text-center" scope="col">Time Created</th>
+                            <th class="text-center" scope="col">Date Created</th>
                             <th class="text-center" scope="col" class="action-btn">Action</th>
                         </tr>
                     </thead>
@@ -121,7 +123,7 @@ $(function(){
                     <select id="searchFilter" class="form-select form-select-sm dropdown" required>
                         <option selected value="">No Filter</option>
                         <option value="name">Name</option>
-                        <option value="desc">Description</option>
+                        <option value="desc">Dimensions</option>
                     </select>
                     <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
