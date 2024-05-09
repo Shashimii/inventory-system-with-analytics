@@ -36,4 +36,5 @@ if ($date_result->num_rows > 0) {
     <script src="./js/chart.js"></script>
     <link rel="stylesheet" href="style.css">
     <script defer src="./js/time.js"></script>   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>

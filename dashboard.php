@@ -98,7 +98,9 @@ include 'connections.php';
                                     <h3>Raw Material</h3>
                                 </div>
                                 <div class="dashboard-card-sm-item">
-                                    <i class="fa-solid fa-database"></i>
+                                    <span class="material-symbols-outlined">
+                                        pallet
+                                    </span>
                                 </div>
                             </div>
                             <div class="dashboard-card-sm-row">
@@ -113,7 +115,7 @@ include 'connections.php';
                                     <h3>Finished Goods</h3>
                                 </div>
                                 <div class="dashboard-card-sm-item">
-                                    <i class="fa-solid fa-box-tissue"></i>
+                                    <i class="fa-solid fa-toilet-paper"></i>
                                 </div>
                             </div>
                             <div class="dashboard-card-sm-row">
@@ -128,7 +130,9 @@ include 'connections.php';
                                     <h3>Products</h3>
                                 </div>
                                 <div class="dashboard-card-sm-item">
-                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                    <span class="material-symbols-outlined">
+                                        package_2
+                                    </span>
                                 </div>
                             </div>
                             <div class="dashboard-card-sm-row">
@@ -143,7 +147,9 @@ include 'connections.php';
                                     <h3>Shipped</h3>
                                 </div>
                                 <div class="dashboard-card-sm-item">
-                                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                                    <span class="material-symbols-outlined">
+                                        local_shipping
+                                    </span>
                                 </div>
                             </div>
                             <div class="dashboard-card-sm-row">
@@ -166,7 +172,9 @@ include 'connections.php';
                         <div class="dashboard-card-md">
                             <div class="dashboard-card-md-row">
                                 <h4>Products</h4>
-                                <i class="fa-solid fa-boxes-stacked"></i>
+                                <span class="material-symbols-outlined">
+                                    package_2
+                                </span>
                             </div>
                             <div id="products" class="dashboard-card-md-row">
 

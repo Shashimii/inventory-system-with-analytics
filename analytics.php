@@ -99,12 +99,12 @@ include 'connections.php';
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="an-daily">
                         <div class="an-header">
-                            <h4><i class="fa-solid fa-bolt"></i><i> Daily Reports</i></h4>
+                            <h4><span class="material-symbols-outlined" style="font-size: 30px;">problem</span><i> Daily Reports</i></h4>
                         </div>
                         <div class="an-body">
                             <div class="an-daily-card">
                                 <div class="an-card-header">
-                                    <h4><i class="fa-solid fa-database"></i> Marked as Depleted Raw Materials</h4>
+                                    <h4><span class="material-symbols-outlined" style="font-size: 25px;">pallet</span> Marked as Depleted Raw Materials</h4>
                                 </div>
                                 <div id="rmDailyBody" class="an-card-body" style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #333;">
                                     <h4>Raw Materials Marked as Depleted Today<h4>
@@ -172,7 +172,7 @@ include 'connections.php';
                         </div>
                         <div class="an-monthly-card">
                             <div class="an-card-header">
-                                <h4><i class="fa-solid fa-box"></i> Products Shipped <span style="color: #666;">(pcs)</span></h4>
+                                <h4><span class="material-symbols-outlined" style="font-size: 30px">package_2</span> Products Shipped <span style="color: #666;">(pcs)</span></h4>
                             </div>
                             <div class="an-card-body" style="height: 450px;">
                                 <canvas id="pMonthlyChart"></canvas>
@@ -193,7 +193,7 @@ include 'connections.php';
                     <div class="an-client-body">
                         <div class="an-client-card">
                             <div class="an-card-header">
-                                <h4><i class="fa-solid fa-truck-fast"></i> Shipments Count <span style="color: #666;">(pcs)</span></h4>
+                                <h4><span class="material-symbols-outlined" style="font-size: 30px;">local_shipping</span> Shipments Count <span style="color: #666;">(pcs)</span></h4>
                             </div>
                             <div class="an-card-body" style="height: 450px;">
                                 <canvas id="clientChart"></canvas>
@@ -214,7 +214,7 @@ include 'connections.php';
                     <div class="an-analysis-body">
                         <div class="an-analysis-card">
                             <div class="an-card-header">
-                                <h4><i class="fa-brands fa-instalod"></i> Inventory</h4>
+                                <h4><span class="material-symbols-outlined" style="font-size: 30px">inventory</span> Inventory</h4>
                             </div>
                             <div class="an-analysis-card-body">
                                <div class="analysis-card">
@@ -274,7 +274,7 @@ include 'connections.php';
                         </div>
                         <div class="an-analysis-card">
                             <div class="an-card-header">
-                                <h4><i class="fa-brands fa-instalod"></i> Inventory Issues</h4>
+                                <h4><span class="material-symbols-outlined" style="font-size: 30px;">pulse_alert</span> Inventory Issues</h4>
                             </div>
                             <div class="an-card-body">
                                 <div id="issueInventory" class="analysis-card">

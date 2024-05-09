@@ -104,16 +104,16 @@ include 'connections.php';
                     <hr class="border border-danger border-3 opacity-100" style="margin: 0; padding: 0;">
                     <div class="daily-body">
                         <div class="daily-count">
-                            <h4><i class="fa-solid fa-database"></i> Raw Material</h4>
+                            <h4><span class="material-symbols-outlined" style="font-size: 30px;">pallet</span> Raw Material</h4>
                             <div class="daily-card-wrapper">
                                 <div class="daily-card">
-                                    <h5><i class="fa-solid fa-hands-holding-circle"></i> Received</h5>
+                                    <h5><span class="material-symbols-outlined" style="font-size: 30px;">call_received</span> Received</h5>
                                     <div id="rmReceived">
 
                                     </div>
                                 </div>
                                 <div class="daily-card">
-                                    <h5><i class="fa-solid fa-spinner"></i> Marked as Depleted</h5>
+                                    <h5><span class="material-symbols-outlined" style="font-size: 30px">close</span> Marked as Depleted</h5>
                                     <div id="rmUsed">
 
                                     </div>
@@ -130,7 +130,7 @@ include 'connections.php';
                             <h4><i class="fa-solid fa-toilet-paper"></i> Finished Goods</h4>
                             <div class="daily-card-wrapper">
                                 <div class="daily-card">
-                                    <h5><i class="fa-solid fa-layer-group"></i> Produced</h5>
+                                    <h5><span class="material-symbols-outlined" style="font-size: 30px;">procedure</span> Produced</h5>
                                     <div id="fgProduced">
 
                                     </div>
@@ -138,16 +138,16 @@ include 'connections.php';
                             </div>  
                         </div>
                         <div class="daily-count">
-                            <h4><i class="fa-solid fa-boxes-stacked"></i> Products</h4>
+                            <h4><span class="material-symbols-outlined" style="font-size: 30px;">package_2</span> Products</h4>
                             <div class="daily-card-wrapper">
                                 <div class="daily-card">
-                                    <h5><i class="fa-solid fa-layer-group"></i> Produced</h5>
+                                    <h5><span class="material-symbols-outlined" style="font-size: 30px;">procedure</span> Produced</h5>
                                     <div id="pProduced">
 
                                     </div>
                                 </div>
                                 <div class="daily-card">
-                                    <h5><i class="fa-solid fa-truck-fast"></i> Shipped</h5>
+                                    <h5><span class="material-symbols-outlined" style="font-size: 30px;">local_shipping</span> Shipped</h5>
                                     <div id="pShipped">
 
                                     </div>
