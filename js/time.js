@@ -34,6 +34,12 @@ $(function() {
                 }
                 
                 if (accType === 'manager') {
+                    $('#rmManageHidden').addClass('d-none');
+                    $('#fgManageHidden').addClass('d-none');
+                    $('#pManageHidden').addClass('d-none');
+                    $('#rmManageHidden').addClass('d-none');
+                    $('#itemSetHidden').addClass('d-none');
+
                     $('#accSetHide').addClass('d-none');
                     
                     var hiddenReplacement =`
