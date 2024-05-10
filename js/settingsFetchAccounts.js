@@ -36,14 +36,14 @@ $(function() {
             tableRow = '<tr>';
             tableRow += '<td colspan="3" style="text-align: center;">There is No Data</td>'; 
             tableRow += '</tr>';
-            $('#accountTable').append(tableRow);
+            $('#accountTable tbody').append(tableRow);
         } else {
             pageData.forEach(function(item) { 
                 $('#accountTable tbody').append( 
                     '<tr>' +
-                        '<td>' + item.user_name + '</td>' +
-                        '<td>' + item.user_password + '</td>' +
-                        '<td>' + item.user_type + '</td>' + 
+                        '<td class="text-center">' + item.user_name + '</td>' +
+                        '<td class="text-center">' + item.user_password + '</td>' +
+                        '<td class="text-center">' + item.user_type + '</td>' + 
                         '<td class="action-btn">' +
                         '<button id="RemoveAccount" data-bs-toggle="modal" data-bs-target="#removeAccountModal" data-id="' + item.id + '" data-username="' + item.user_name + '" data-password="' + item.user_password + '" data-type="' + item.user_type + '" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Remove</button>' +
                         '</td>' +
@@ -85,6 +85,12 @@ $(function() {
     }
 
     fetchAccounts()
+
+    $(document).on('input', '#searchBar', function() { 
+        searchKey = $(this).val(); 
+        pageNumber = 1; 
+        accountTableData(); 
+    }); 
 
     $(document).on('click', '#RemoveAccount', function() {
         var username = $(this).data('username');

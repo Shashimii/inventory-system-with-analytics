@@ -46,16 +46,17 @@ $(function() {
                     <h4><i class="fa-solid fa-users"></i> Accounts</h4>
                 </div>
                 <div class="rm-manage-md-card-btn-searchbar">
-                    <input id="recSearch" placeholder="Search..." class="form-control form-control-sm" type="text">
+                    <input id="searchBar" placeholder="Search..." class="form-control form-control-sm" type="text">
                 </div>
             </div>
             <div class="table-body">
                 <table class="table table-striped table-responsive table-hover" id="accountTable">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Account Type</th>
+                            <th class="text-center" scope="col">Name</th>
+                            <th class="text-center" scope="col">Password</th>
+                            <th class="text-center" scope="col">Account Type</th>
+                            <th class="text-center" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
