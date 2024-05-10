@@ -40,9 +40,9 @@ $(function() {
         <table class="table table-striped table-bordered">
             <thead class="table-danger">
                 <tr>
-                    <th scope="col">Raw Material</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Action</th>
+                    <th class="text-center" scope="col">Raw Material</th>
+                    <th class="text-center" scope="col">Description</th>
+                    <th class="text-center" scope="col">Action</th>
                 </tr>
             </thead>
             <tbody id="rmTableBody">
@@ -51,9 +51,9 @@ $(function() {
         rm.forEach(item => {
             rmTable += `
                 <tr>
-                    <td>${item.rm_name}</td>
-                    <td>${item.rm_description}</td>
-                    <td>
+                    <td class="text-center">${item.rm_name}</td>
+                    <td class="text-center">${item.rm_description}</td>
+                    <td class="text-center">
                         <button class="btn btn-danger btn-sm rmDelete" data-id="${item.id}" data-name="${item.rm_name}" data-desc="${item.rm_description}">
                             Remove
                         </button>
@@ -73,9 +73,9 @@ $(function() {
         <table class="table table-striped table-bordered">
             <thead class="table-danger">
                 <tr>
-                    <th scope="col">Finished Goods</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Action</th>
+                    <th class="text-center" scope="col">Finished Goods</th>
+                    <th class="text-center" scope="col">Description</th>
+                    <th class="text-center" scope="col">Action</th>
                 </tr>
             </thead>
             <tbody id="fgTableBody">
@@ -84,9 +84,9 @@ $(function() {
         fg.forEach(item => {
             fgTable += `
                 <tr>
-                    <td>${item.fg_name}</td>
-                    <td>${item.fg_description}</td>
-                    <td>
+                    <td class="text-center">${item.fg_name}</td>
+                    <td class="text-center">${item.fg_description}</td>
+                    <td class="text-center">
                     <button class="btn btn-danger btn-sm fgDelete" data-id="${item.id}" data-name="${item.fg_name}" data-desc="${item.fg_description}">
                             Remove
                         </button>
@@ -106,9 +106,9 @@ $(function() {
         <table class="table table-striped table-bordered">
             <thead class="table-danger">
                 <tr>
-                    <th scope="col">Products</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Action</th>
+                    <th class="text-center" scope="col">Products</th>
+                    <th class="text-center" scope="col">Description</th>
+                    <th class="text-center" scope="col">Action</th>
                 </tr>
             </thead>
             <tbody id="fgTableBody">
@@ -117,9 +117,9 @@ $(function() {
         p.forEach(item => {
             pTable += `
                 <tr>
-                    <td>${item.product_name}</td>
-                    <td>${item.product_desc}</td>
-                    <td>
+                    <td class="text-center">${item.product_name}</td>
+                    <td class="text-center">${item.product_desc}</td>
+                    <td class="text-center">
                         <button class="btn btn-danger btn-sm pDelete" data-id="${item.id}" data-name="${item.product_name}" data-desc="${item.product_desc}">
                             Remove
                         </button>
@@ -139,8 +139,8 @@ $(function() {
         <table class="table table-striped table-bordered">
             <thead class="table-danger">
                 <tr>
-                    <th scope="col">Company Code</th>
-                    <th scope="col">Action</th>
+                    <th class="text-center" scope="col">Company Code</th>
+                    <th class="text-center" scope="col">Action</th>
                 </tr>
             </thead>
             <tbody id="fgTableBody">
@@ -149,8 +149,8 @@ $(function() {
         c.forEach(item => {
             cTable += `
                 <tr>
-                    <td>${item.company_code}</td>
-                    <td>
+                    <td class="text-center">${item.company_code}</td>
+                    <td class="text-center">
                         <button class="btn btn-danger btn-sm cDelete" data-id="${item.id}" data-name="${item.company_code}">
                             Remove
                         </button>
