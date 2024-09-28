@@ -1,1 +1,1 @@
-⚠️ This is still in development not operational ❌
+Capstone Project Only || Will Create a New One for Production
